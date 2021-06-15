@@ -1,0 +1,383 @@
+@extends('layouts.app')
+
+@section('content')
+
+     @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+    @if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session()->get('message') }}
+    </div>
+@endif
+
+
+  
+    <script src="../../js/ajax-jquery.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+                    <form method="post" action="/Event/{{ $RealEvent->EVID }}" class="form-horizontal" >
+                                @csrf
+                                @method('PUT')
+<div class="row">
+                                <div class="col-md-6">
+                             <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Event Form</h4>
+                                    
+                                    <div class="form-group row">
+                                        <label for="email1" class="col-sm-3 text-right control-label col-form-label">Event Name</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" id="email1" name="Event_Name" placeholder="" value="{{ $RealEvent->Event_Name }}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="email1" class="col-sm-3 text-right control-label col-form-label">Date From</label>
+                                        <div class="col-sm-2">
+                                              
+   
+                                            <input type="text" class="form-control" id="email1" name="Date_From" style="background-color: white;" placeholder="" value="{{   $newDate = date("m/d/Y", strtotime($RealEvent->Date_From)) }}" disabled>
+                                           
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="email1" class="col-sm-3 text-right control-label col-form-label">Date To</label>
+                                        <div class="col-sm-2">
+                                            <input type="text" class="form-control" id="email1" name="Date_To" style="background-color: white;" placeholder="" value="{{   $newDate = date("m/d/Y", strtotime($RealEvent->Date_To)) }}" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="email1" class="col-sm-3 text-right control-label col-form-label">Location</label>
+                                        <div class="col-sm-2">
+                                            <input type="text" class="form-control" id="email1" name="Location" style="background-color: white;" placeholder="" value="{{ $RealEvent->Location }}" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="email1" class="col-sm-3 text-right control-label col-form-label">Description</label>
+                                        <div class="col-sm-9">
+                                            <textarea  class="form-control" id="email1" name="Event_Name" placeholder="" value="{{ $RealEvent->Description }}" disabled cols="5" rows="5" style="background-color: white;">{{ $RealEvent->Description }}</textarea> 
+                                        </div>
+                                    </div>
+
+                                    <input type="hidden" id="eventid" value="{{ $RealEvent->EVID }}">
+                                    <input type="hidden" id="itemrqid" value="{{ $ItemRequest->IRID }}">
+                                    <div class="form-group row">
+                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Event Type</label>
+                                    <div class="col-md-9">
+                                             <select class="select2 form-control custom-select" style="width: 40%; height:36px;background-color: white;" name='Event_Type' disabled>
+                                        <option value="">select</option>
+        @foreach($event as  $type)
+            <option value="{{ $type->Type_Name}}" {{$type->Type_Name == $RealEvent->Event_Type  ? 'selected' : ''}} >{{ $type->Type_Name }}</option>
+        @endforeach
+    </select>
+                         
+                                    </div>
+                                </div>
+                                    <input type="hidden" name="CUID" id="CUID" value="{{ Auth::user()->id }}">
+                                    <input type="hidden" name="UUID" id="UUID" value="{{ Auth::user()->id }}">
+                                </div>
+                                
+                                 </div>
+</div>
+
+  <div class="col-md-6">
+                              <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Request Form</h4>
+                                    <div class="form-group row">
+                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Requester</label>
+                                    <div class="col-md-9">
+                        <input type="text" class="form-control" id="email1" name="Requester" style="width: 450px;background-color: white;"  value="{{ $ItemRequest->Requester }}" disabled>
+                         
+                                    </div>
+                                </div>
+                                    <div class="form-group row">
+                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Responsible Person</label>
+                                    <div class="col-md-9">
+                                             <input type="text" class="form-control" id="email1" name="Responsible_Person" style="width: 450px;background-color: white;"  value="{{ $ItemRequest->Responsible_person }}" disabled>
+                         
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Phone Number</label>
+                                    <div class="col-md-9">
+                                             <input type="text" class="form-control" id="email1" name="Phone_Number" style="width: 450px;background-color: white;" value="{{ $ItemRequest->Phone_Number }}" disabled>
+                         
+                                    </div>
+                                </div>
+                                    <div class="form-group row">
+                                        <label for="email1" class="col-sm-3 text-right control-label col-form-label">Return Date</label>
+                                        <div class="col-sm-9">
+                                        <input type="date" class="form-control" id="email1" name="Return_date" style="width: 450px;background-color: white;" disabled value="{{ $ItemRequest->Return_date }}">
+                                        </div>
+                                    </div>
+                                    
+                                    <input type="hidden" name="CUID" value="{{ Auth::user()->id }}">
+                                    <input type="hidden" name="UUID" value="{{ Auth::user()->id }}">
+                                </div>
+                                
+                                </div>
+
+                              <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Select Items</h4>
+                                    
+                                    
+                                <div class="form-group row">
+                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Category</label>
+                                <div class="col-md-9">
+                                 <select theme="google" width="400" style="" placeholder="Select Your Favorite" data-search="true" id="category1" class="form-control">
+                                  <option value="">Please Select</option>
+                                   @foreach($Stock_category as  $type)
+            <option value="{{ $type->Type}}"  >{{ $type->Type }}</option>
+        @endforeach
+                                 </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Item List</label>
+                                <div class="col-md-9">
+                                 <select theme="google" width="400" style="" placeholder="Select Your Favorite" data-search="true" id="itemlist" class="form-control">
+                                   <option value="">choose from one</option>
+                                 </select>
+                                    </div>
+                                </div>
+                                    <div class="form-group row">
+                                        
+                                        <label for="email1" class="col-sm-3 text-right control-label col-form-label"> Stock Quantity</label>
+                                        <div class="col-sm-9">
+                                          <div class="row">
+                                        <input type="number" class="form-control" id="stockqty" name="Return_date" style="width: 180px;background-color: white;" disabled value="">
+                                        <label class="Control-label col-form-label"> &nbsp; Request QTY. &nbsp; </label> 
+                                        <input type="number" class="form-control" id="requestQ" name="Return_date" style="width: 230px;background-color: white;"  value="" required>
+                                        </div>
+                                        </div>
+                                        <div class="col-sm-2"><button type="button" name="Submit" id="addbtn" class="btn btn-primary" onclick="additemcall()">Add</button></div>
+
+                                    </div>
+      
+       <script type="text/javascript">
+       
+         $("#category1").change(function(e){
+
+        var t=$(this).val();
+      //alert(t);
+        e.preventDefault();
+  
+         $.ajax({
+           method:'POST',
+           url:"{{ route('ajaxRequest2.Fabric2') }}",
+           data:{value:t},
+           headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+           success:function(data){
+          //  alert(data)
+
+            //var test  = JSON.stringify(data);
+              //alert(data.success);
+              //alert(test)
+              $('#itemlist').html(data.htmlappend);
+
+              
+           },
+           error:function(xhr, ajaxOptions, thrownError){
+            alert('n')
+            alert(xhr.status);
+
+           }
+
+        });
+     });
+        
+             $("#itemlist").change(function(e){
+
+        var t=$(this).val();
+      //alert(t);
+        e.preventDefault();
+  
+         $.ajax({
+           method:'POST',
+           url:"{{ route('ajaxRequest4.Fabric4') }}",
+           data:{value:t},
+           headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+           success:function(data){
+          
+          
+           
+  
+            //var test  = JSON.stringify(data);
+              //alert(data.success);
+              //alert(test)
+              //$('#stockqty').html(data);
+               document.getElementById('stockqty').value=data
+               if(data=='1'){
+                 document.getElementById('requestQ').value=1;
+               }
+               else if (data == '0')
+               {
+                document.getElementById('requestQ').value='No Stock';
+                document.getElementById('requestQ').disabled=true;
+                document.getElementById('addbtn').disabled=true;
+               }
+               else{
+                document.getElementById('requestQ').disabled=false;
+                
+                document.getElementById('addbtn').disabled=false;
+               }
+
+              
+           },
+           error:function(xhr, ajaxOptions, thrownError){
+            alert('n')
+            alert(xhr.status);
+
+           }
+
+        });
+     });
+   function additemcall(){
+   
+   var t=document.getElementById('requestQ').value
+   var t1=document.getElementById('itemlist').value
+   var t2= document.getElementById('eventid').value
+   var t3=document.getElementById('itemrqid').value
+   var t4=document.getElementById('CUID').value
+   var t5=document.getElementById('CUID').value
+
+   //alert(t)
+   
+
+    
+  
+         $.ajax({
+           method:'POST',
+           url:"{{ route('ajaxRequest5.Fabric5') }}",
+           data:{value:t3,value1:t2,value2:t1,value3:t,value4:t4,value5:t5},
+           headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+           success:function(data){
+          
+          
+           
+  //alert(data);
+            //var test  = JSON.stringify(data);
+              //alert(data.success);
+              //alert(test)
+              //$('#stockqty').html(data);
+              location.reload();
+              
+           },
+           error:function(xhr, ajaxOptions, thrownError){
+            alert('n')
+            alert(xhr.status);
+
+           }
+
+        });
+
+
+   }
+    </script>
+    <script src="../../js/ajax-jquery2.js"></script>
+
+         
+       
+      
+                                    <input type="hidden" name="CUID" value="{{ Auth::user()->id }}">
+                                    <input type="hidden" name="UUID" value="{{ Auth::user()->id }}">
+                                </div>
+                                
+                                </div>
+</div>
+
+<!--
+<div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Approval</h5>
+                                <div class="form-group row">
+                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Approval One</label>
+                                    <div class="col-md-9">
+                                        
+                                             <select class="select2 form-control custom-select" style="width: 40%; height:36px;" name='ApprovalOne'>
+                                        <option value="">Select</option>
+                                        <option value="Approve" {{'Approve' == $ItemRequest->ApprovalOne   ? 'selected' : ''}}>Approve</option>
+                                        <option value="Reject" {{'Reject' == $ItemRequest->ApprovalOne   ? 'selected' : ''}}>Reject</option>
+      
+                                          </select>
+                         
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Approval Two</label>
+                                    <div class="col-md-9">
+                                             <select class="select2 form-control custom-select" style="width: 40%; height:36px;" name='ApprovalTwo'>
+                                                <option value="">Select</option>
+                                        <option value="Approve" {{'Approve' == $ItemRequest->ApprovalTwo   ? 'selected' : ''}} >Approve</option>
+                                        <option value="Reject" {{'Reject' == $ItemRequest->ApprovalTwo   ? 'selected' : ''}}>Reject</option>
+      
+                                          </select>
+                         
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                          
+-->
+         </div>
+                                 
+                              
+                            
+                         <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Item Selection Form</h4>
+                                          @foreach($category as  $type)
+                                             
+                             <div class="form-group row">
+                            
+                                        <div class="col-sm-4">
+                                         <label for="email1" class="col-sm-6 text-right control-label col-form-label">{{  $type->Item_Code }}</label>
+                                        </div>
+                                         <div class="col-sm-4">
+                                            <input type="number" class="form-control" id="email1"  placeholder="Quantity :  {{ $type->Qty }}" disabled>
+                                       
+                                        </div>
+<div class="col-sm-2">
+                                           
+                                       
+        <form method="POST" action="/Item/{{ $type->RILID }}">
+           {{ csrf_field() }}
+  {{ method_field('DELETE') }}
+
+  <button    type="submit" class="btn btn-danger btn-sm">Delete</button>
+</form>
+                                        </div>
+                                    </div>
+                                        
+                                    @endforeach
+                                    </div>
+
+                                </div>
+                            
+                                
+                   
+               
+                                    <div class="border-top">
+                                    <div class="card-body">
+                                        <button type="submit" name="Submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </div>
+                               
+                            </form>
+                        
+@endsection()
