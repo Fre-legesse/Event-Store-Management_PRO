@@ -31,25 +31,25 @@ class HomeController extends Controller
         //$users=User::role('admin')->get();
 
 
-    //$role = Role::create(['name' => 'Admin']);
-      
-     // $permission = Permission::create(['name' => 'Configration']);
-
-   // $role=Role::findById(5);
-    //$permission1=Permission::findById(11);
+//    Role::create(['name' => 'User']);
+//
+//    Permission::create(['name' => 'Normal']);
+//
+//    $role=Role::findByName('User');
+//    $permission=Permission::findByName('Normal');
     //$permission2=Permission::findById(12);
-    
+
     //$permission5=Permission::findById(13);
      //$permission=Permission::findById(6);
 
-    // $role->givePermissionTo($permission);
+//     $role->givePermissionTo($permission);
      //$role->givePermissionTo($permission2);
-    
+
     // $role->givePermissionTo($permission5);
 
      //$role->revokePermissionTo($permission);
         //$role->removeRole($role);
-      // auth()->user()->assignRole('Admin'); 
+//       auth()->user()->assignRole('User');
 
         return view('home2');
     }

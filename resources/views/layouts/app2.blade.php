@@ -28,7 +28,7 @@ catch(\PDOException $ex){
     <!-- <link href="../../assets/libs/flot/css/float-chart.css" rel="stylesheet"> -->
     <!-- Custom CSS -->
     <link href="../../dist/css/style.min.css" rel="stylesheet">
-   
+
     <script src="../../js/popper.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -43,7 +43,7 @@ catch(\PDOException $ex){
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
-    
+
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
@@ -65,7 +65,7 @@ catch(\PDOException $ex){
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
                             <img src="../../assets/images/logo.png" width="50" height="50" alt="homepage" class="light-logo" />
-                           
+
                         </b>
                         <!--End Logo icon -->
                          <!-- Logo text -->
@@ -73,14 +73,14 @@ catch(\PDOException $ex){
                              <!-- dark Logo text -->
                             &nbsp &nbsp  BGI ETHIOPIA
                           <!--   <img src="../../assets/images/logo-text.png" alt="homepage" class="light-logo" /> -->
-                            
+
                         </span>
                         <!-- Logo icon -->
                         <!-- <b class="logo-icon"> -->
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
                             <!-- <img src="../../assets/images/logo-text.png" alt="homepage" class="light-logo" /> -->
-                            
+
                         <!-- </b> -->
                         <!--End Logo icon -->
                     </a>
@@ -107,7 +107,7 @@ catch(\PDOException $ex){
                       <!--  <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                              <span class="d-none d-md-block">Create New <i class="fa fa-angle-down"></i></span>
-                             <span class="d-block d-md-none"><i class="fa fa-plus"></i></span>   
+                             <span class="d-block d-md-none"><i class="fa fa-plus"></i></span>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="#">Action</a>
@@ -160,8 +160,8 @@ catch(\PDOException $ex){
                                                 <div class="d-flex no-block align-items-center p-10">
                                                     <span class="btn btn-success btn-circle"><i class="ti-calendar"></i></span>
                                                     <div class="m-l-10">
-                                                        <h5 class="m-b-0">Event today</h5> 
-                                                        <span class="mail-desc">Just a reminder that event</span> 
+                                                        <h5 class="m-b-0">Event today</h5>
+                                                        <span class="mail-desc">Just a reminder that event</span>
                                                     </div>
                                                 </div>
                                             </a>
@@ -170,15 +170,15 @@ catch(\PDOException $ex){
                                                 <div class="d-flex no-block align-items-center p-10">
                                                     <span class="btn btn-info btn-circle"><i class="ti-settings"></i></span>
                                                     <div class="m-l-10">
-                                                        <h5 class="m-b-0">Settings</h5> 
-                                                        <span class="mail-desc">You can customize this template</span> 
+                                                        <h5 class="m-b-0">Settings</h5>
+                                                        <span class="mail-desc">You can customize this template</span>
                                                     </div>
                                                 </div>
                                             </a> -->
                                             <!-- Message -->
-                                            
+
                                             <!-- Message -->
-                                            
+
                                         </div>
                                     </li>
                                 </ul>
@@ -192,9 +192,9 @@ catch(\PDOException $ex){
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown" style="color: black!important;">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../../assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31" >  </a>@php 
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../../assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31" >  </a>@php
                             if(Auth::user())
-                            Auth::user()->name 
+                            Auth::user()->name
                             @endphp
                             <div class="dropdown-menu dropdown-menu-right user-dd animated">
                              <!--   <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
@@ -222,14 +222,14 @@ catch(\PDOException $ex){
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
-                            
+
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
-                           
+
                         @endguest
                     </ul>
                         <!-- ============================================================== -->
@@ -254,13 +254,14 @@ catch(\PDOException $ex){
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{url('/home')}}" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu" >Dashboard</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{url('/Transaction')}}" aria-expanded="false"><i class="mdi mdi-transcribe"></i><span class="hide-menu">Transaction</span></a></li>
                       <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{url('/Event')}}" aria-expanded="false"><i class="fab fa-wpforms"></i><span class="hide-menu">Event Form</span></a></li>
+                      <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{url('/Event')}}" aria-expanded="false"><i class="fab fa-wpforms"></i><span class="hide-menu">Events</span></a></li>
                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#" aria-expanded="false"><i class="mdi mdi-shuffle-variant"></i><span class="hide-menu">Stock Movment</span></a></li>
 
                     <!--    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{url('/ItemRequest')}}" aria-expanded="false"><i class="mdi mdi-creation"></i><span class="hide-menu">Requests</span></a></li> -->
-                  
-                          
+
+
                         <li class="sidebar-item" > <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{url('/Stock')}}" aria-expanded="false" ><i class="mdi mdi-eye" ></i><span class="hide-menu">Stock View</span></a></li>
-                      
+
                       @role('Admin')
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Setting </span></a>
                             <ul aria-expanded="false" class="collapse  first-level" style="background-color: #5b5757;">
@@ -275,8 +276,8 @@ catch(\PDOException $ex){
                             </ul>
                         </li>
                         @endrole
-                        
-                       
+
+
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -293,7 +294,7 @@ catch(\PDOException $ex){
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
-            
+
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
@@ -305,9 +306,9 @@ catch(\PDOException $ex){
                 <!-- Sales Cards  -->
                 <!-- ============================================================== -->
                   @yield('content')
-                
-                
-                
+
+
+
                 <!-- ============================================================== -->
                 <!-- Recent comment and chats -->
                 <!-- ============================================================== -->
@@ -318,7 +319,7 @@ catch(\PDOException $ex){
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-        
+
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->
@@ -346,7 +347,7 @@ catch(\PDOException $ex){
     <!--Custom JavaScript -->
     <script src="../../dist/js/custom.min.js"></script>
     <!--This page JavaScript -->
-    <script src="../../dist/js/pages/dashboards/dashboard1.js"></script> 
+    <script src="../../dist/js/pages/dashboards/dashboard1.js"></script>
     <!-- Charts js Files -->
     <script src="../../assets/libs/flot/excanvas.js"></script>
     <script src="../../assets/libs/flot/jquery.flot.js"></script>
@@ -355,7 +356,7 @@ catch(\PDOException $ex){
     <script src="../../assets/libs/flot/jquery.flot.stack.js"></script>
     <script src="../../assets/libs/flot/jquery.flot.crosshair.js"></script>
     <script src="../../assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
-    <script src="../../dist/js/pages/chart/chart-page-init.js"></script> 
+    <script src="../../dist/js/pages/chart/chart-page-init.js"></script>
 
 </body>
 

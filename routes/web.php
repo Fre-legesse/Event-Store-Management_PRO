@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EventController as EventControllerAlias;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App\Http\Controllers;
 
@@ -87,3 +88,11 @@ Route::post('ajaxRequest2', [App\Http\Controllers\Admin\dependencycontroller::cl
 Route::post('ajaxRequest3', [App\Http\Controllers\Admin\dependencycontroller::class, 'Fabric3'])->name('ajaxRequest3.Fabric3');
 Route::post('ajaxRequest4', [App\Http\Controllers\Admin\dependencycontroller::class, 'Fabric4'])->name('ajaxRequest4.Fabric4');
 Route::post('ajaxRequest5', [App\Http\Controllers\Admin\dependencycontroller::class, 'additemstore'])->name('ajaxRequest5.Fabric5');
+
+
+//GET
+Route::get('/event/approve',[EventControllerAlias::class,'display_approval'])->middleware('auth')->name('approve_event');
+
+
+//POST
+Route::post('/event/approve',[EventControllerAlias::class,'approve'])->middleware('auth')->name('approve_event_post');

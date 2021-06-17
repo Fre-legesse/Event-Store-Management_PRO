@@ -10,7 +10,7 @@ use Spatie\Permission\Traits\HasRoles;
 class Event extends Model
 {
     use HasFactory;use HasRoles;
-    
+
    protected $table = 'events';
 	//primary Key
 	public $primaryKey ='EVID';
@@ -54,4 +54,5 @@ class Event extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
+
 }
