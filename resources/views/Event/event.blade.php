@@ -28,7 +28,6 @@
 
                         $row = $(this);
 
-
                         var id = $row.find("td:nth-child(2)").text();
 
                         if (id.indexOf(value) !== 0) {
@@ -57,26 +56,22 @@
                         <thead>
                         <tr>
 
-
                             <th scope="col">Event Name</th>
                             <th scope="col">Event Type</th>
                             <th scope="col">Event Location</th>
                             <th scope="col">Requester</th>
                             <th scope="col">Return date</th>
                             <th scope="col">Item Requests</th>
-                            <th scope="col">Remaing Date For Return</th>
-                            <th scope="col">Status</th>
-
+                            <th scope="col">Remaining Date For Return</th>
                             <th scope="col">First Approval</th>
                             <th scope="col">Second Approval</th>
                             <th scope="col">Action</th>
-
 
                         </tr>
                         </thead>
                         <tbody>
 
-                        @if(count($event) >= 1)
+                        @if(isset($event))
                             @foreach($event as $item)
                                 <tr>
 
@@ -124,12 +119,7 @@
                                                     </a></div>
                                             </div>
                                         </td>
-                                        <td></td>
-                                        @if($item->ApprovalOne == 'Approver')
-                                            <td>Approve</td>
-                                        @else
-                                            <td>Approval Pending</td>
-                                        @endif
+                                        <td>{{date_diff(date_create_from_format('Y-m-d',$item->Return_date),now())->format('%a')}} days</td>
 
                                         <td>{{ $item->ApprovalOne }}</td>
                                         <td>{{ $item->ApprovalTwo }}</td>

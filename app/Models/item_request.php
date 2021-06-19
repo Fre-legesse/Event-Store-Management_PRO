@@ -8,7 +8,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class item_request extends Model
 {
-    
+
     use HasRoles;
  protected $table = 'item_requests';
 	//primary Key
@@ -22,7 +22,7 @@ class item_request extends Model
      * @var array
      */
     protected $fillable = [
-        'Event_type',
+        'Event_id',
         'Requester',
         'Responsible_person',
         'Return_date',

@@ -27,7 +27,7 @@
                     </thead>
                     <tbody>
 
-                    @if(count($event) >= 1)
+                    @if(isset($event))
                         @foreach($event as $item)
                             <tr>
 
@@ -82,24 +82,18 @@
 
                                     <td>
                                         <div class="row">
-
-                                            <form action="/approve/event/{{$item->EVID}}" method="POST">
-                                                @csrf
-                                                <button type="submit" class="btn btn-success btn-md"><i
-                                                        class="mdi mdi-check"></i> Approve</button>
-                                            </form>
-
                                             <a style="white-space: nowrap;" type="button"
-                                               href="/Event/{{ $item->EVID }}/itemadd"
+                                               href="/Event/{{ $item->EVID }}/edit"
                                                class="btn btn-default btn-md"><i
-                                                    class="mdi mdi-table-edit"></i> Edit</a>
+                                                    class="fa fa-list"></i> Detail</a>
 
                                             <form method="POST" action="/Event/{{ $item->EVID }}">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
 
                                                 <button type="submit" class="btn btn-danger btn-md"><i
-                                                        class="mdi mdi-close"></i> Reject</button>
+                                                        class="mdi mdi-close"></i> Reject
+                                                </button>
                                             </form>
                                         </div>
                                     </td>
@@ -144,10 +138,11 @@
                 </table>
             </div>
 
-            <div class="d-flex justify-content-left">
-                {{ $event->links("pagination::bootstrap-4") }}
-            </div>
-
+            @if(isset($event))
+                <div class="d-flex justify-content-left">
+                    {{ $event->links("pagination::bootstrap-4") }}
+                </div>
+            @endif
         </div>
     </div>
 @endsection

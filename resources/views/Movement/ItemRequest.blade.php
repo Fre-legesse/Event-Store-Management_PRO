@@ -3,7 +3,7 @@
 @section('content')
 <h3>Item Request</h3>
 <br>
-    
+
          @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -27,7 +27,7 @@ $("#table tr").each(function(index) {
         if (index !== 0) {
 
             $row = $(this);
-          
+
 
             var id = $row.find("td:nth-child(2)").text();
 
@@ -47,18 +47,18 @@ $("#table tr").each(function(index) {
             <h4 class="card-title"></h4>
             <div class="form-group row">
             <a class="btn btn-lg btn-default" href="ItemRequest/create/">Add New</a>
-           
+
            <input type="text" class="form-control" style="width: 400px; float: right;margin-left: 1000px;" id="searchh" placeholder="Listed Type live search" onkeyup="myFunction()" >
        </div>
          <div class="form-group row">
 <!--          <a href="docAdd.php"><i class="glyphicon glyphicon-plus"></i><span>New</span></a> -->
-         
+
      <table class="table" id="table">
            <thead>
   <tr>
-    
-    
-    
+
+
+
     <th scope="col">Event Type</th>
     <th scope="col">Requester</th>
     <th scope="col">Return date</th>
@@ -71,11 +71,11 @@ $("#table tr").each(function(index) {
   </tr>
   </thead>
   <tbody>
-  
+
       @if(count($items) >= 1)
-        @foreach($items as $item)      
+        @foreach($items as $item)
   <tr>
-    
+
             <div class="well">
                 <td>{{ $item->type }}</td>
                 <td>{{ $item->Requester }}</td>
@@ -85,51 +85,51 @@ $("#table tr").each(function(index) {
                 <td>{{ $item->Transaction }}</td>
                 <td>{{ $item->ApprovalOne }}</td>
                 <td>{{ $item->ApprovalTwo }}</td>
-                
-                
+
+
                 <td>
  <div class="row">
             <form method="POST" action="/Item/{{ $item->SIID }}">
            {{ csrf_field() }}
   {{ method_field('DELETE') }}
 
-  <button    type="submit" class="btn btn-default btn-sm">Approve</button>
-</form>  
+  <button    type="submit" class="btn btn-default btn-sm">Approved</button>
+</form>
 <form method="POST" action="/Item/{{ $item->SIID }}">
            {{ csrf_field() }}
   {{ method_field('DELETE') }}
 
-  <button    type="submit" class="btn btn-default btn-sm">Approve</button>
-</form>      
-                          
+  <button    type="submit" class="btn btn-default btn-sm">Approved</button>
+</form>
+
             <a style="white-space: nowrap;"  type="button" href="Item/{{ $item->SIID }}/edit" class="btn btn-default btn-sm">Edit</a>
-           
+
            <form method="POST" action="/Item/{{ $item->SIID }}">
            {{ csrf_field() }}
   {{ method_field('DELETE') }}
 
   <button    type="submit" class="btn btn-danger btn-sm">Delete</button>
 </form>
-        </div>  
+        </div>
 </td>
-              
+
             </div>
    </tr>
         @endforeach
 
-    
+
     @else
   <td>No Item Found</td>
 
 
 @endif
-    
 
-  
+
+
   </tbody>
   <script type="text/javascript">
-    
-   function downloadURI(uri, name) 
+
+   function downloadURI(uri, name)
 {
   alert(uri);
     var link = document.createElement("a");
@@ -138,13 +138,13 @@ $("#table tr").each(function(index) {
     link.click();
 }
   </script>
-   
+
            </table>
-      
-         
+
+
          </div>
-         
-         
+
+
             </div>
         </div>
 

@@ -17,7 +17,7 @@ class CreateItemRequestsTables extends Migration
             $table->integer('IRID', true);
             $table->string('Company');
             $table->string('Department');
-            $table->string('Event_type');
+            $table->string('Event_id');
             $table->string('Requester');
             $table->string('Responsible_person')->nullable();
             $table->string('Phone_Number')->nullable();
@@ -28,7 +28,7 @@ class CreateItemRequestsTables extends Migration
             $table->string('ApprovalTwo')->nullable();
             $table->string('Issued')->nullable();
             $table->integer('CUID');
-            
+
             $table->integer('UUID');
             $table->timestamps();
         });

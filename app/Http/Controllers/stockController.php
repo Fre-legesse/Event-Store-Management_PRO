@@ -23,9 +23,9 @@ class stockController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index()
-    {   
+    {
         $loc=Auth::user()->Location;
         $dep=Auth::user()->Department;
         $id=Auth::user()->id;
@@ -34,7 +34,7 @@ class stockController extends Controller
          if($items >=1){
         $data=DB::table('Stock_stock_rooms')->join('stock_users', 'stock_users.Stock_ID', '=', 'Stock_stock_rooms.SRID')->paginate(10);
         }else{
-          $data=DB::table('Stock_stock_rooms')->where('Company',$loc)->where('Department',$dep)->paginate(10);   
+          $data=DB::table('Stock_stock_rooms')->where('Company',$loc)->where('Department',$dep)->paginate(10);
         }
         //   $Stock = Stock_category::all();
         //  return view('Item.category')->with('items',$data);
@@ -50,11 +50,11 @@ class stockController extends Controller
     public function create($id)
     {
         $stockid=$id;
-        
+
         $stockroomtype=Stock_stock_room::where('SRID','=',$stockid)->get();
         //dd($stockroomtype);
         $test=$stockroomtype[0]->Stock_Room;
-       
+
         $test2=explode(" ",$test);
         // dd($test2);
           $items = Stock_item::where('item_Code','LIKE','%'.$test2[0].'%')->get();
@@ -70,28 +70,28 @@ class stockController extends Controller
      */
     public function store(Request $request)
     {
-         
+
 
          //dd($request);
           $request->validate([
          'Type' => 'required',
         'Quantity' => 'required',
-       
-        ]); 
+
+        ]);
           $id=$request->Stock_Room;
           $Item=Stock_stock_room::find($id);
           //dd($Item);
        $ItemCom=$Item->Company;
        $ItemDep=$Item->Department;
-           
+
         $request->merge([
     'Item' => $request->Type,
     'Company' => $ItemCom,
     'Department' => $ItemDep,
 ]);
         if($request->Countuncount == "Countable"){
-           
-                 for ($i=0; $i < $request->Quantity; $i++) { 
+
+                 for ($i=0; $i < $request->Quantity; $i++) {
                       $row = new Stock();
                       $row->Company = $request->Company;
                       $row->Department = $request->Department;
@@ -103,12 +103,12 @@ class stockController extends Controller
                       $row->Asset_No = $request->Asset_No + $i;
                       // and so on for your all columns s
                       $row->save();   //at last save into db
-                   }  
+                   }
 
 
 
         }else{
-       
+
        Stock::create($request->all());
    }
        return redirect('/Stock')->with('message','Created Successfully');
@@ -126,9 +126,9 @@ class stockController extends Controller
         //
 
            $items=DB::table('Stocks')->join('stock_items', 'stock_items.SIID', '=', 'Stocks.Item')->where('Stock_Room',$id)->paginate(10);
-          // $data=DB::table('events')->join('item_requests', 'item_requests.Event_type', '=', 'events.EVID')->paginate(10);
-           // Check Joins  
-           
+          // $data=DB::table('events')->join('item_requests', 'item_requests.Event_id', '=', 'events.EVID')->paginate(10);
+           // Check Joins
+
          return view('stock.stockshow',compact('items','id'));
     }
 
@@ -165,5 +165,5 @@ class stockController extends Controller
     {
         //
     }
-    
+
 }

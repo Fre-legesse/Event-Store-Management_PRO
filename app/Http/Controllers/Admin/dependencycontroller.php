@@ -4,188 +4,184 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Stock_fabric;
-use App\Models\stock_color;
-use App\Models\Stock_brand;
-use App\Models\Stock_manufacturer;
-use App\Models\Stock;
 use App\Models\item_request;
-use App\Models\requested_item_list;
-use App\Models\Event;
-use App\Models\Event_Type;
+use App\Models\Stock_brand;
+use App\Models\stock_color;
+use App\Models\Stock_fabric;
 use App\Models\Stock_item;
-use Illuminate\Support\Facades\DB;
+use App\Models\Stock_manufacturer;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class dependencycontroller extends Controller
 {
     //
     public function Fabric(Request $request)
-{
-    /*abort_unless(\Gate::allows('city_access'), 401);
+    {
+        /*abort_unless(\Gate::allows('city_access'), 401);
 
-    if (!$request->value) {
-        $html = '<option value="">'.trans('global.please Select').'</option>';
-    } else {
-        $html = '';
-        $cities = stock_fabric::where('Type', $request->country_id)->get();
-        foreach ($cities as $city) {
-            $html .= '<option value="'.$city->Fabric.'">'.$city->Fabric.'</option>';
+        if (!$request->value) {
+            $html = '<option value="">'.trans('global.please Select').'</option>';
+        } else {
+            $html = '';
+            $cities = stock_fabric::where('Type', $request->country_id)->get();
+            foreach ($cities as $city) {
+                $html .= '<option value="'.$city->Fabric.'">'.$city->Fabric.'</option>';
+            }
         }
-    }
 
-    return response()->json(['html' => $html]);
-    */
+        return response()->json(['html' => $html]);
+        */
 
-    $input = $request->all();
-        
-        $category=Stock_fabric::all();
-         $htmlfabric = '';
-         $htmlcolor ='';
-         $htmlbrand ='<option value="Null">Select</option>';
-         $htmlmanufacturer='';
+        $input = $request->all();
+
+        $category = Stock_fabric::all();
+        $htmlfabric = '';
+        $htmlcolor = '';
+        $htmlbrand = '<option value="Null">Select</option>';
+        $htmlmanufacturer = '';
         $fabrics = Stock_fabric::where('Type', $input['value'])->get();
         $colors = stock_color::where('Type', $input['value'])->get();
         $brands = Stock_brand::where('Type', $input['value'])->get();
         $manufacturers = Stock_manufacturer::where('Type', $input['value'])->get();
-//return view('profile_update',compact('profile_data','country_data'));   
-   foreach ($fabrics as $fabric) {
+//return view('profile_update',compact('profile_data','country_data'));
+        foreach ($fabrics as $fabric) {
 
-            $htmlfabric .= '<option value="'.$fabric->Fabric.'">'.$fabric->Fabric.'</option>';
+            $htmlfabric .= '<option value="' . $fabric->Fabric . '">' . $fabric->Fabric . '</option>';
         }
-       foreach ($colors as $color) {
-            $htmlcolor .= '<option value="'.$color->Color.'">'.$color->Color.'</option>';
+        foreach ($colors as $color) {
+            $htmlcolor .= '<option value="' . $color->Color . '">' . $color->Color . '</option>';
         }
-      foreach ($brands as $brand) {
-            $htmlbrand .= '<option value="'.$brand->Brand.'">'.$brand->Brand.'</option>';
+        foreach ($brands as $brand) {
+            $htmlbrand .= '<option value="' . $brand->Brand . '">' . $brand->Brand . '</option>';
         }
 
- foreach ($manufacturers as $manufacturer) {
-            $htmlmanufacturer .= '<option value="'.$manufacturer->Manufacturer.'">'.$manufacturer->Manufacturer.'</option>';
+        foreach ($manufacturers as $manufacturer) {
+            $htmlmanufacturer .= '<option value="' . $manufacturer->Manufacturer . '">' . $manufacturer->Manufacturer . '</option>';
         }
         //
-  return response()->json(['htmlfabric'=>$htmlfabric,'htmlcolor'=>$htmlcolor,'htmlmanufacturer'=>$htmlmanufacturer,'htmlbrand'=>$htmlbrand]);
+        return response()->json(['htmlfabric' => $htmlfabric, 'htmlcolor' => $htmlcolor, 'htmlmanufacturer' => $htmlmanufacturer, 'htmlbrand' => $htmlbrand]);
 
-   
-}
-  public function Fabric2(Request $request)
-{
+
+    }
+
+    public function Fabric2(Request $request)
+    {
 //return response()->json('y');
 
-         $input = $request->all();
-                
-        
-         $htmlappend = '<option value="">Please Select</option>';
-      // return response()->json(htmlfabric);
-       //$Type = DB::table('stock_items')->where('Type', '=', $value)->get();
+        $input = $request->all();
+
+        $htmlappend = '<option value="">Please Select</option>';
+        // return response()->json(htmlfabric);
+        //$Type = DB::table('stock_items')->where('Type', '=', $value)->get();
 //$Type = DB::table('Stocks')->join('stock_items', 'stock_items.SIID', '=', 'Stocks.Item')->where('stock_items.Type', $input['value'])->paginate(10);
-$items=DB::table('Stocks')->join('stock_items', 'stock_items.SIID', '=', 'Stocks.Item')->where('stock_items.Type',$input['value'])->paginate(10);
-//return view('profile_update',compact('profile_data','country_data')); 
-  
-   foreach ($items as $cat) {
+        $items = DB::table('Stocks')->join('stock_items', 'Item', '=', 'SIID')->where('stock_items.Type', '=', $input['value'])->paginate(10);
+//return view('profile_update',compact('profile_data','country_data'));
 
-            $htmlappend .= '<option value="'.$cat->Item.'">'.$cat->Item_Code." | ".$cat->Asset_No.'</option>';
+        foreach ($items as $cat) {
+
+            $htmlappend .= '<option value="' . $cat->Item . '">' . $cat->Item_Code . " | " . $cat->Asset_No . '</option>';
         }
-     
-     
+
+
         //
-  return response()->json(['htmlappend'=>$htmlappend]);
+        return response()->json(['htmlappend' => $htmlappend]);
 
 
+    }
+
+    public function Fabric3(Request $request)
+    {
 
 
-}
-  public function Fabric3(Request $request)
-{
+        $input = $request->all();
+
+        $category = Stock_item::where('SIID', $input['value'])->get();
+        $co = $category[0]->Countable;
+        //dd($category);
+        $htmlfabric = '';
+
+        //return response()->json($co);
 
 
-  $input = $request->all();
-        
-        $category=Stock_item::where('SIID',$input['value'])->get();
-        $co=$category[0]->Countable;
-         //dd($category);
-         $htmlfabric = '';
-         
-         //return response()->json($co);
-      
-       
         //
-  return response()->json(['htmlfabric'=>$co]);
-  
-
-}
-  public function Fabric4(Request $request)
-{
+        return response()->json(['htmlfabric' => $co]);
 
 
-         $input = $request->all();
-                
-        
-         //$htmlappend = '';
-      // return response()->json(htmlfabric);
-       //$Type = DB::table('stock_items')->where('Type', '=', $value)->get();
+    }
+
+    public function Fabric4(Request $request)
+    {
+
+
+        $input = $request->all();
+
+
+        //$htmlappend = '';
+        // return response()->json(htmlfabric);
+        //$Type = DB::table('stock_items')->where('Type', '=', $value)->get();
 //$Type = DB::table('Stocks')->join('stock_items', 'stock_items.SIID', '=', 'Stocks.Item')->where('stock_items.Type', $input['value'])->paginate(10);
 //$items=DB::table('Stocks')->join('stock_items', 'stock_items.SIID', '=', 'Stocks.Item')->where(['stock_items.Type'=>$input['value'],])->paginate(10);
-//return view('profile_update',compact('profile_data','country_data')); 
-  $item=DB::table('stocks')
-        ->select('stocks.Item', \DB::raw('SUM(Quantity ) as t'),'k.Qty',\DB::raw('SUM(Quantity - k.Qty) as ssum'))
+//return view('profile_update',compact('profile_data','country_data'));
+        $item = DB::table('stocks')
+            ->select('stocks.Item', \DB::raw('SUM(Quantity ) as t'), 'k.Qty', \DB::raw('SUM(Quantity - k.Qty) as ssum'))
+            ->leftjoin(DB::raw('(SELECT SUM(Qty) as Qty,ItemCode  FROM reqested_item_lists  GROUP BY ItemCode) k'),
+                function ($join) {
+                    $join->on('stocks.Item', '=', 'k.ItemCode');
+                })
+            ->where('stocks.Item', $input['value'])
+            ->groupby('stocks.Item')
+            ->get();
 
-        ->leftjoin(DB::raw('(SELECT SUM(Qty) as Qty,ItemCode  FROM reqested_item_lists  GROUP BY ItemCode) k'), 
-        function($join)
-        {
-           $join->on('stocks.Item', '=', 'k.ItemCode');
-        })
-        ->where('stocks.Item',$input['value'])
-        ->groupby('stocks.Item')
-        ->get();
 
-  
-       
-      
-     if(!empty($item[0])){
+        if (!empty($item[0])) {
 
-     $Qty1=$item[0]->t - $item[0]->Qty;
-    $a=(string)$Qty1;
-  }else{
-    $a=(string)1;
-  }
-  if( $Qty1 < 0){
-    $a=0;
-  }
-   // dd($a);
-    
+            $Qty1 = $item[0]->t - $item[0]->Qty;
+            $a = (string)$Qty1;
+        } else {
+            $a = (string)1;
+        }
+        if ($Qty1 < 0) {
+            $a = 0;
+        }
+        // dd($a);
+
         //
-  return $a;
+        return $a;
 
 
+    }
+
+    public function additemstore(Request $request)
+    {
+
+        $input = $request->all();
+        $id = $input['value1'];
+        // return $id;
+        // $link = DB::connection()->getPdo();
+
+        $loc = Auth::user()->Location;
+        $dep = Auth::user()->Department;
+        if($input['category'] == 'PRODUCT' && $input['value3'] < 100){
+            item_request::where('Event_id','=',$input['value1'])->update([
+                'ApprovalTwo'=>'Not Required',
+            ]);
+        }elseif($input['category'] == 'PRODUCT' && $input['value3'] >= 100){
+            item_request::where('Event_id','=',$input['value1'])->update([
+                'ApprovalTwo'=>'Pending',
+            ]);
+        }
+
+        $test = DB::insert('insert into reqested_item_lists (Request_Id,Event_ID,ItemCode,Quantity,Qty,CUID,UUID,created_at,updated_at) values(?,?,?,?,?,?,?,now(),now())', [$input['value'], $input['value1'], $input['value2'], $input['value3'], $input['value3'], $input['value4'], $input['value5']]);
 
 
-}
+        //dd($item);
 
-public function additemstore(Request $request){
-
-      $input=$request->all();
-        $id=$input['value1'];
-               // return $id;
-     // $link = DB::connection()->getPdo();
-    
-        $loc=Auth::user()->Location;
-        $dep=Auth::user()->Department;
-
-$test=DB::insert('insert into reqested_item_lists (Request_Id,Event_ID,ItemCode,Quantity,Qty,CUID,UUID,created_at,updated_at) values(?,?,?,?,?,?,?,now(),now())',[$input['value'],$input['value1'],$input['value2'],$input['value3'],$input['value3'],$input['value4'],$input['value5']]);
-
-          
-  
-       
-      
-     
-     //dd($item);
-
-         // dd($itemrequest[0]);
+        // dd($itemrequest[0]);
         // return view('Item.category')->with('items',$Stock);
         return "K";
-    
+
 
     }
 }

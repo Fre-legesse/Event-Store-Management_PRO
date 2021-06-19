@@ -95,4 +95,4 @@ Route::get('/event/approve',[EventControllerAlias::class,'display_approval'])->m
 
 
 //POST
-Route::post('/event/approve',[EventControllerAlias::class,'approve'])->middleware('auth')->name('approve_event_post');
+Route::post('/event/approve/{id}',[EventControllerAlias::class,'approve'])->middleware('auth')->name('approve_event_post');

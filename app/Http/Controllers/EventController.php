@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use App\Models\Event_Type;
 use App\Models\item_request;
+use App\Models\requested_item_list;
 use App\Models\Stock;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,7 +36,7 @@ class EventController extends Controller
 
         $loc = Auth::user()->Location;
         $dep = Auth::user()->Department;
-        $data = DB::table('events')->join('item_requests', 'item_requests.Event_type', '=', 'events.EVID')->paginate(10);
+        $data = DB::table('events')->join('item_requests', 'item_requests.Event_id', '=', 'events.EVID')->paginate(10);
         //$data=$dat->paginate(10);
         //   $Stock = Stock_category::all();
         // return view('Item.category')->with('items',$Stock);
@@ -84,15 +85,15 @@ class EventController extends Controller
         $id = $Event_id->EVID;
 
         $request->merge([
-            'Event_type' => $id,
+            'Event_id' => $id,
             'Transaction' => 'Withdraw_Event',
             'Transaction_Type' => '0',
-            'ApprovalOne' => 'Not Approve',
-            'ApprovalTwo' => 'Not Approve',
+            'ApprovalOne' => 'Not Required',
+            'ApprovalTwo' => 'Not Required',
 
         ]);
         $request1 = item_request::create($request->all());
-        // dd($request);
+
         $idd = $request1->IRID;
 
         $request->merge([
@@ -121,9 +122,9 @@ class EventController extends Controller
           //  var_dump($key->Item);
         }
         */
-        $data = DB::table('events')->join('item_requests', 'item_requests.Event_type', '=', 'events.EVID')->paginate(10);
+        $data = DB::table('events')->join('item_requests', 'item_requests.Event_id', '=', 'events.EVID')->paginate(10);
 
-        return view('Event.event')->with(['message' => 'Created Successfully', 'event' => $data, 'Company' => $loc, 'Department' => $dep, 'link' => $link]);
+        return response()->view('Event.event')->with(['message' => 'Created Successfully', 'event' => $data, 'Company' => $loc, 'Department' => $dep, 'link' => $link]);
     }
 
     /**
@@ -147,15 +148,15 @@ class EventController extends Controller
     {
         //
         $data = Event_Type::all();
-        $item = DB::table('stocks')->select('Item', \DB::raw('SUM(Quantity) AS Quantity'))->groupby('Item')->get();
+        $item = DB::table('stocks')->select('Item', DB::raw('SUM(Quantity) AS Quantity'))->groupby('Item')->get();
         $Event = Event::find($id);
         $requested_list = DB::table('reqested_item_lists')->where('Event_ID', '=', $id)->get();
         $idd = $Event->EVID;
-        $itemrequest = DB::table('item_requests')->where('Event_type', '=', $idd)->get();
+        $itemrequest = DB::table('item_requests')->where('Event_id', '=', $id)->get();
 
         //  dd($itemrequest[0]);
         // return view('Item.category')->with('items',$Stock);
-        return view('Event.eventedit', ['event' => $data, 'category' => $requested_list, 'RealEvent' => $Event, 'ItemRequest' => $itemrequest[0], 'item' => $item]);
+        return view('Event.eventedit', ['event' => $data, 'requested_items' => $requested_list, 'RealEvent' => $Event, 'ItemRequest' => $itemrequest[0], 'item' => $item]);
     }
 
     /**
@@ -167,6 +168,44 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (Auth::user()->hasRole('Approver_One')) {
+            $request->validate([
+                'first_approver_status' => 'required',
+                'first_approver_quantity_array' => 'required',
+            ]);
+
+            foreach ($request->first_approver_quantity_array as $first_approver_quantity_array) {
+                foreach ($first_approver_quantity_array as $key => $first_approver_quantity) {
+                    requested_item_list::where('Event_ID', $id)->where('ItemCode', $key)->update([
+                        'Approval1Quantity' => $first_approver_quantity,
+                    ]);
+                }
+            }
+
+            item_request::where('Event_id',$id)->update([
+                'ApprovalOne'=> 'Approved',
+            ]);
+
+        } elseif (Auth::user()->hasRole('Approver_Two')) {
+            $request->validate([
+                'second_approver_status' => 'required',
+                'second_approver_quantity_array' => 'required',
+            ]);
+//            dd($request->second_approver_quantity_array);
+            foreach ($request->second_approver_quantity_array as $second_approver_quantity_array) {
+                foreach ($second_approver_quantity_array as $key => $second_approver_quantity) {
+                    requested_item_list::where('Event_ID', $id)->where('ItemCode', $key)->update([
+                        'Approval2Quantity' => $second_approver_quantity,
+                    ]);
+                }
+            }
+
+            item_request::where('Event_id',$id)->update([
+                'ApprovalTwo'=> 'Approved',
+            ]);
+
+        }
+
         $link = DB::connection()->getPdo();
 
 
@@ -175,73 +214,68 @@ class EventController extends Controller
         //
         $data = Event_Type::all();
         $item = Stock::all();
-        if ($request->ApprovalOne == NULL && $request->ApprovalTwo != NULL) {
-            $request->validate([
-                'ApprovalOne' => 'required',
 
-            ]);
-        }
-        $update = item_request::where('Event_Type', '=', $id);
-        //dd($request->all());
-        //  $update->update(['ApprovalOne' => $request->ApprovalOne]);
-        if ($request->ApprovalOne != NULL) {
-            $update->update(['ApprovalOne' => $request->ApprovalOne]);
-            $item = $request->Quantity;
-            foreach ($item as $key => $value) {
-
-                $text = str_replace('.', '_', $key);
-                $text = str_replace(' ', '_', $text);
-                $test = $key;
-                //echo "                                 ".$test.":".$value."<br>";
-
-
-                if ($value[0] != NULL) {
-
-                    //$test=DB::update('reqested_item_lists set IssuedQuantity='.$value.',Issued='.$issue[$key].',UUID='.$request->UUID)->where('');
-                    $test = DB::table('reqested_item_lists')
-                        ->where(['Event_ID' => $id, 'ItemCode' => $key])
-                        ->update(['Approval1Quantity' => $value[0], 'UUID' => $request->UUID]);
-                    //echo "Record inserted successfully.<br/>";
-                    // echo '<a href = "/insert">Click Here</a> to go back.';
-
-                }
-                //  var_dump($key->Item);
-            }
-
-        }
-        if ($request->ApprovalTwo != NULL) {
-            $update->update(['ApprovalTwo' => $request->ApprovalTwo]);
-            $item = $request->Quantity;
-            foreach ($item as $key => $value) {
-
-                $text = str_replace('.', '_', $key);
-                $text = str_replace(' ', '_', $text);
-                $test = $key;
-//echo "                                 ".$test.":".$value."<br>";
-
-
-                if ($value[0] != NULL) {
-
-                    //$test=DB::update('reqested_item_lists set IssuedQuantity='.$value.',Issued='.$issue[$key].',UUID='.$request->UUID)->where('');
-                    $test = DB::table('reqested_item_lists')
-                        ->where(['Event_ID' => $id, 'ItemCode' => $key])
-                        ->update(['Approval2Quantity' => $value[0], 'UUID' => $request->UUID]);
-                    //echo "Record inserted successfully.<br/>";
-                    // echo '<a href = "/insert">Click Here</a> to go back.';
-
-                }
-                //  var_dump($key->Item);
-            }
-        }
-
-        // $id=$Event_id->EVID;
-        $update->update(['UUID' => $request->UUID]);
-
-        $data = DB::table('events')->join('item_requests', 'item_requests.Event_type', '=', 'events.EVID')->paginate(10);
+//        $update = item_request::where('Event_id', '=', $id);
+//        //  dd($request->all());
+//        //  $update->update(['ApprovalOne' => $request->ApprovalOne]);
+//        if ($request->ApprovalOne != NULL) {
+//            $update->update(['ApprovalOne' => $request->ApprovalOne]);
+//            $item = $request->Quantity;
+//            foreach ($item as $key => $value) {
+//
+//                $text = str_replace('.', '_', $key);
+//                $text = str_replace(' ', '_', $text);
+//                $test = $key;
+//                //echo "                                 ".$test.":".$value."<br>";
+//
+//
+//                if ($value[0] != NULL) {
+//
+//                    //$test=DB::update('reqested_item_lists set IssuedQuantity='.$value.',Issued='.$issue[$key].',UUID='.$request->UUID)->where('');
+//                    $test = DB::table('reqested_item_lists')
+//                        ->where(['Event_ID' => $id, 'ItemCode' => $key])
+//                        ->update(['Approval1Quantity' => $value[0], 'UUID' => $request->UUID]);
+//                    //echo "Record inserted successfully.<br/>";
+//                    // echo '<a href = "/insert">Click Here</a> to go back.';
+//
+//                }
+//                //  var_dump($key->Item);
+//            }
+//
+//        }
+//        if ($request->ApprovalTwo != NULL) {
+//            $update->update(['ApprovalTwo' => $request->ApprovalTwo]);
+//            $item = $request->Quantity;
+//            foreach ($item as $key => $value) {
+//
+//                $text = str_replace('.', '_', $key);
+//                $text = str_replace(' ', '_', $text);
+//                $test = $key;
+////echo "                                 ".$test.":".$value."<br>";
+//
+//
+//                if ($value[0] != NULL) {
+//
+//                    //$test=DB::update('reqested_item_lists set IssuedQuantity='.$value.',Issued='.$issue[$key].',UUID='.$request->UUID)->where('');
+//                    $test = DB::table('reqested_item_lists')
+//                        ->where(['Event_ID' => $id, 'ItemCode' => $key])
+//                        ->update(['Approval2Quantity' => $value[0], 'UUID' => $request->UUID]);
+//                    //echo "Record inserted successfully.<br/>";
+//                    // echo '<a href = "/insert">Click Here</a> to go back.';
+//
+//                }
+//                //  var_dump($key->Item);
+//            }
+//        }
+//
+//        // $id=$Event_id->EVID;
+//        $update->update(['UUID' => $request->UUID]);
+//
+//        $data = DB::table('events')->join('item_requests', 'item_requests.Event_id', '=', 'events.EVID')->paginate(10);
         //$data=$dat->paginate(10);
         //   $Stock = Stock_category::all();
         // return view('Item.category')->with('items',$Stock);
-        return view('Event.event', ['event' => $data, 'Company' => $loc, 'Department' => $dep, 'link' => $link]);
+        return redirect('/event/approve');
 
         // return view('Event.event');
         // dd($request);
@@ -255,7 +289,19 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
+        $request_id = DB::table('reqested_item_lists')->where('Event_ID', '=', $id)->first()->Request_ID;
 
+        if (Auth::user()->hasRole('Approver_One')) {
+            item_request::find($request_id)->update([
+                'ApprovalOne' => 'Rejected',
+            ]);
+        } elseif (Auth::user()->hasRole('Approver_Two')) {
+            item_request::find($request_id)->update([
+                'ApprovalTwo' => 'Rejected',
+            ]);
+        }
+
+        return back();
     }
 
     public function additem($id)
@@ -265,7 +311,7 @@ class EventController extends Controller
         $Event = Event::find($id);
         $requested_list = DB::table('reqested_item_lists')->join('stock_items', 'stock_items.SIId', 'ItemCode')->where('Event_ID', '=', $id)->get();
         $idd = $Event->EVID;
-        $itemrequest = DB::table('item_requests')->where('Event_type', '=', $idd)->get();
+        $itemrequest = DB::table('item_requests')->where('Event_id', '=', $idd)->get();
         $Stock_category = DB::table('stock_categorys')->get();
         /*
    $result = DB::table('stocks')->select('Item',\DB::raw('(SUM(stocks.Quantity) - kj.Qty)AS Quantity'))->join(DB::table('reqested_item_lists')->select('Item',\DB::raw('ItemCode','SUM(Qty) AS Qty'))->groupby('Item'))->where([['stocks.Item','=',5]])->groupby('Item')->get();
@@ -303,7 +349,8 @@ DB::table('stocks')->select('Item',\DB::raw('(SUM(stocks.Quantity)'))->join(DB::
     }
 
 
-    public function display_approval(){
+    public function display_approval()
+    {
         if (Auth::guest()) {
             //is a guest so redirect
             return redirect('/');
@@ -311,24 +358,51 @@ DB::table('stocks')->select('Item',\DB::raw('(SUM(stocks.Quantity)'))->join(DB::
 
         $link = DB::connection()->getPdo();
 
-
         $loc = Auth::user()->Location;
         $dep = Auth::user()->Department;
-        $data = DB::table('events')->join('item_requests', 'item_requests.Event_type', '=', 'events.EVID')->where('ApprovalOne','<>','Approve')->orWhere('ApprovalTwo','<>','Approve')->paginate(10);
 
-        //$data=$dat->paginate(10);
-        //   $Stock = Stock_category::all();
-        // return view('Item.category')->with('items',$Stock);
-        return view('Event.approval', ['event' => $data, 'Company' => $loc, 'Department' => $dep, 'link' => $link]);
+//        dd(Auth::user()->hasRole('Approver_One'));
+
+        if (Auth::user()->hasRole('Approver_One')) {
+//            dd("Hello");
+            $data = DB::table('events')->join('item_requests', 'item_requests.Event_id', '=', 'events.EVID')->where('ApprovalOne', '=', 'Pending')->paginate(10);
+            return view('Event.approval', ['event' => $data, 'Company' => $loc, 'Department' => $dep, 'link' => $link]);
+        } elseif (Auth::user()->hasRole('Approver_Two')) {
+//            dd("World");
+            $data = DB::table('events')
+                ->join('item_requests', 'item_requests.Event_id', '=', 'events.EVID')
+                ->join('reqested_item_lists','item_requests.Event_id','=','reqested_item_lists.Event_ID')
+                ->join('stock_items','reqested_item_lists.ItemCode','=','stock_items.SIID')
+                ->where('reqested_item_lists.Approval1Quantity', '>=', 100)
+                ->where('ApprovalTwo', '=', 'Pending')
+                ->where('ApprovalOne','=','Approved')
+                ->where('stock_items.Type','=','PRODUCT')
+                ->paginate(10);
+            return view('Event.approval', ['event' => $data, 'Company' => $loc, 'Department' => $dep, 'link' => $link]);
+        }
     }
 
     /**
-     * Approve the specified event
+     * Approved the specified event
      *
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function approve($id){
-        e
+    public function approve($id)
+    {
+        $request_id = DB::table('reqested_item_lists')->where('Event_ID', '=', $id)->first()->Request_ID;
+
+        if (Auth::user()->hasRole('Approver_One')) {
+            item_request::find($request_id)->update([
+                'ApprovalOne' => 'Approved',
+            ]);
+        } elseif (Auth::user()->hasRole('Approver_Two')) {
+            item_request::find($request_id)->update([
+                'ApprovalTwo' => 'Approved',
+            ]);
+        }
+
+        return back();
     }
+
 }

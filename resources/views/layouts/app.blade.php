@@ -257,7 +257,7 @@ catch(\PDOException $ex){
                       <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{url('/Event')}}" aria-expanded="false"><i class="fab fa-wpforms"></i><span class="hide-menu">Event Form</span></a></li>
                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#" aria-expanded="false"><i class="mdi mdi-shuffle-variant"></i><span class="hide-menu">Stock Movement</span></a></li>
                         @role('Admin')
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{url('/event/approve')}}" aria-expanded="false"><i class="fab fa-wpforms"></i><span class="hide-menu">Events</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{url('/event/approve')}}" aria-expanded="false"><i class="fa fa-check-square"></i><span class="hide-menu">Approval</span></a></li>
                         @endrole
 
                     <!--    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{url('/ItemRequest')}}" aria-expanded="false"><i class="mdi mdi-creation"></i><span class="hide-menu">Requests</span></a></li> -->

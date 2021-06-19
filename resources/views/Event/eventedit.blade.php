@@ -141,21 +141,22 @@
 
                 </div>
             </div>
+            @role('Admin')
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Approval</h5>
+                        @role('Approver_One')
                         <div class="form-group row">
                             <label for="lname" class="col-sm-3 text-right control-label col-form-label">Approval
                                 One</label>
                             <div class="col-md-9">
-
                                 <select class="select2 form-control custom-select" style="width: 40%; height:36px;"
-                                        name='ApprovalOne'>
-                                    <option value="">Select</option>
+                                        name='first_approver_status' required>
+                                    <option value="Pending" selected>< Not Yet Approved ></option>
                                     <option
-                                        value="Approve" {{'Approve' == $ItemRequest->ApprovalOne   ? 'selected' : ''}}>
-                                        Approve
+                                        value="Approved" {{'Approved' == $ItemRequest->ApprovalOne   ? 'selected' : ''}}>
+                                        Approved
                                     </option>
                                     <option
                                         value="Reject" {{'Reject' == $ItemRequest->ApprovalOne   ? 'selected' : ''}}>
@@ -166,16 +167,18 @@
 
                             </div>
                         </div>
+                        @endrole
+                        @role('Approver_Two')
                         <div class="form-group row">
                             <label for="lname" class="col-sm-3 text-right control-label col-form-label">Approval
                                 Two</label>
                             <div class="col-md-9">
                                 <select class="select2 form-control custom-select" style="width: 40%; height:36px;"
-                                        name='ApprovalTwo'>
-                                    <option value="">Select</option>
+                                        name='second_approver_status' required>
+                                    <option value="Pending" selected>< Not Yet Approved ></option>
                                     <option
-                                        value="Approve" {{'Approve' == $ItemRequest->ApprovalTwo   ? 'selected' : ''}} >
-                                        Approve
+                                        value="Approved" {{'Approved' == $ItemRequest->ApprovalTwo   ? 'selected' : ''}} >
+                                        Approved
                                     </option>
                                     <option
                                         value="Reject" {{'Reject' == $ItemRequest->ApprovalTwo   ? 'selected' : ''}}>
@@ -186,50 +189,71 @@
 
                             </div>
                         </div>
+                        @endrole
                     </div>
                 </div>
             </div>
-
-
+            @endrole
         </div>
 
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Item Selection Form</h4>
-                @foreach($item as  $type)
-
+                @foreach($requested_items as $requested_item)
                     <div class="form-group row">
                         <label for="email1"
-                               class="col-sm-3 text-right control-label col-form-label">{{  $type->Item }}</label>
-                        <div class="col-sm-4">
-                            @php $val=0; @endphp
-                            @foreach($category as  $type2)
-                                @if($type2->ItemCode == $type->Item)
-                                    @if($ItemRequest->ApprovalOne == 'Approve' and $ItemRequest->ApprovalTwo == 'Not Approve')
-                                        @php $val=$type2->Approval1Quantity @endphp
-                                    @elseif($ItemRequest->ApprovalTwo == 'Approve')
-                                        <?php $val = $type2->Approval2Quantity ?>
-                                    @else
-                                        <?php $val = $type2->Quantity ?>
-                                    @endif
-                                    <?php break; ?>
-                                @endif
-                            @endforeach
-                            @if($val != null || $val > 0)
+                               {{debug(\App\Models\Stock_item::find($requested_item->ItemCode)->Item_Code )}}
+                               class="col-sm-3 text-right control-label col-form-label">{{ \App\Models\Stock_item::find($requested_item->ItemCode)->Item_Code }}</label>
 
-                                <input type="number" class="form-control" id="email1"
-                                       name="Quantity[{{ $type->Item }}][]" placeholder="Quantity" value="{{ $val }}">
-                                <?php $val = 0; ?>
-                            @else
-                                <input type="number" class="form-control" id="email1"
-                                       name="Quantity[{{ $type->Item }}][]" placeholder="Quantity">
-                            @endif
+                        <div class="col-sm-4">
+                            @role('Approver_One')
+                            <div class="col-sm-8 col-lg-9">
+                                <input type="number" class="form-control"
+                                       name="first_approver_quantity_array[][{{$requested_item->ItemCode}}]"
+                                       min="0" max="{{ $requested_item->Approval1Quantity??\App\Models\stock::where('Item',$requested_item->ItemCode)->first()->Quantity}}"
+                                       value="{{ $requested_item->Quantity}}"
+                                       placeholder="Requested Quantity: {{ $requested_item->Quantity}}" required>
+                            </div>
+                            @endrole
+
+                            @role('Approver_Two')
+                            <div class="col-sm-8 col-lg-9">
+                                <input type="number" class="form-control" id="second_approver_quantity"
+                                       name="second_approver_quantity_array[][{{$requested_item->ItemCode}}]"
+                                       min="0" max="{{ $requested_item->Approval1Quantity??\App\Models\stock::where('Item',$requested_item->ItemCode)->first()->Quantity}}"
+                                       value="{{ $requested_item->Approval1Quantity}}"
+                                       placeholder="First Approved : {{ $requested_item->Approval1Quantity  ?? "Haven't Approved Yet"}}" required>
+                            </div>
+                            @endrole
+                            {{--                            @php $val=0; @endphp--}}
+                            {{--                            @foreach($category as  $type2)--}}
+                            {{--                                @if($type2->ItemCode == $type->Item)--}}
+                            {{--                                    @if($ItemRequest->ApprovalOne == 'Approved' and $ItemRequest->ApprovalTwo == 'Not Approved')--}}
+                            {{--                                        @php $val=$type2->Approval1Quantity @endphp--}}
+                            {{--                                    @elseif($ItemRequest->ApprovalTwo == 'Approved')--}}
+                            {{--                                        <?php $val = $type2->Approval2Quantity ?>--}}
+                            {{--                                    @else--}}
+                            {{--                                        <?php $val = $type2->Quantity ?>--}}
+                            {{--                                    @endif--}}
+                            {{--                                    <?php break; ?>--}}
+                            {{--                                @endif--}}
+                            {{--                            @endforeach--}}
+                            {{--                            @if($val != null || $val > 0)--}}
+
+                            {{--                                <input type="number" class="form-control" id="email1"--}}
+                            {{--                                       name="Quantity[{{ $type->Item }}][]" placeholder="Quantity To Approved"--}}
+                            {{--                                       value="{{ $val }}">--}}
+                            {{--                                <?php $val = 0; ?>--}}
+                            {{--                            @else--}}
+                            {{--                                <input type="number" class="form-control" id="email1"--}}
+                            {{--                                       name="Quantity[{{ $type->Item }}][]" placeholder="Quantity To Approved">--}}
+                            {{--                            @endif--}}
 
 
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <input type="number" class="form-control" id="email1"
-                                   placeholder="Quantity in Stock : {{ $type->Quantity }}" disabled>
+                                   placeholder="Quantity in Stock : {{\App\Models\stock::where('Item',$requested_item->ItemCode)->first()->Quantity}}" disabled>
 
                         </div>
 

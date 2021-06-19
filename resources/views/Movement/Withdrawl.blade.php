@@ -1,77 +1,77 @@
 @extends('layouts.app')
 
 @section('content')
-<h3>Item List</h3>
-	
-		 @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
+    <h3>Item List</h3>
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
     @endif
     @if(session()->has('message'))
-    <div class="alert alert-success">
-        {{ session()->get('message') }}
-    </div>
-@endif
-<div class="box-content">
-                <!-- put your content here -->
-                <script type="text/javascript">
-                function myFunction(){
-  var value = $('#searchh').val();
-$("#table tr").each(function(index) {
-        if (index !== 0) {
+        <div class="alert alert-success">
+            {{ session()->get('message') }}
+        </div>
+    @endif
+    <div class="box-content">
+        <!-- put your content here -->
+        <script type="text/javascript">
+            function myFunction() {
+                var value = $('#searchh').val();
+                $("#table tr").each(function (index) {
+                    if (index !== 0) {
 
-            $row = $(this);
-          
+                        $row = $(this);
 
-            var id = $row.find("td:nth-child(2)").text();
 
-            if (id.indexOf(value) !== 0) {
-                $row.hide();
+                        var id = $row.find("td:nth-child(2)").text();
+
+                        if (id.indexOf(value) !== 0) {
+                            $row.hide();
+                        } else {
+                            $row.show();
+                        }
+                    }
+                });
             }
-            else {
-                $row.show();
-            }
-        }
-    });
-}
-</script>
-<div class="card">
-<div class="card-body">
+        </script>
+        <div class="card">
+            <div class="card-body">
 
-                                    <h4 class="card-title">Items In Stock</h4>
-                                    <div class="form-group row">
-                                    <a class="btn btn-lg btn-default" href="Stock/create/">Add New</a>
-         <input type="text" class="form-control" style="width: 200px; float: right;margin-left: 1300px;" id="searchh" placeholder="Listed Type live search" onkeyup="myFunction()" >
-       </div>
-         <div class="form-group row">
-           @if(count($Stockroom) >= 1)
-                @foreach($Stockroom as $item) 
+                <h4 class="card-title">Items In Stock</h4>
+                <div class="form-group row">
+                    <a class="btn btn-lg btn-default" href="Stock/create/">Add New</a>
+                    <input type="text" class="form-control" style="width: 200px; float: right;margin-left: 1300px;"
+                           id="searchh" placeholder="Listed Type live search" onkeyup="myFunction()">
+                </div>
+                <div class="form-group row">
+                @if(count($Stockroom) >= 1)
+                    @foreach($Stockroom as $item)
 
-                    <!-- Column -->
-                    <a class="col-md-6 col-lg-3" href="Stock/show">
-                        <div class="card card-hover">
-                         
-                            <div class="box bg-cyan text-center">
-                                <h1 class="font-light text-white"><i class="mdi mdi-view-dashboard"></i></h1>
-                                <h5 class="text-white">{{ $item->Description  }}</h5>
-                                <h6 class="text-white">{{ $item->Stock_Room  }}</h6>
-                            </div>
-                        </div>
-                    </a>
-                  @endforeach
+                        <!-- Column -->
+                            <a class="col-md-6 col-lg-3" href="Stock/show">
+                                <div class="card card-hover">
 
-    
-  @else
-  <td>No Item Found</td>
+                                    <div class="box bg-cyan text-center">
+                                        <h1 class="font-light text-white"><i class="mdi mdi-view-dashboard"></i></h1>
+                                        <h5 class="text-white">{{ $item->Description  }}</h5>
+                                        <h6 class="text-white">{{ $item->Stock_Room  }}</h6>
+                                    </div>
+                                </div>
+                            </a>
+                        @endforeach
 
 
-@endif
-                    <!-- Column -->
+                    @else
+                        <td>No Item Found</td>
+
+
+                @endif
+                <!-- Column -->
                     <!--
                     <div class="col-md-6 col-lg-3">
                         <div class="card card-hover">
@@ -82,18 +82,17 @@ $("#table tr").each(function(index) {
                         </div>
                     </div>
                   -->
-                     <!-- Column -->
-                    
-              
-<!--          <a href="docAdd.php"><i class="glyphicon glyphicon-plus"></i><span>New</span></a> -->
-         
-	
-      
-         </div>
-           <div  class="d-flex justify-content-left">
+                    <!-- Column -->
 
-</div>
-         
+
+                    <!--          <a href="docAdd.php"><i class="glyphicon glyphicon-plus"></i><span>New</span></a> -->
+
+
+                </div>
+                <div class="d-flex justify-content-left">
+
+                </div>
+
             </div>
         </div>
 
