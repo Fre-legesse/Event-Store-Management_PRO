@@ -88,7 +88,7 @@ class EventController extends Controller
             'Event_id' => $id,
             'Transaction' => 'Withdraw_Event',
             'Transaction_Type' => '0',
-            'ApprovalOne' => 'Not Required',
+            'ApprovalOne' => 'Pending',
             'ApprovalTwo' => 'Not Required',
 
         ]);

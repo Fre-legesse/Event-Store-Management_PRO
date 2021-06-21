@@ -73,33 +73,36 @@ class withdrawal extends Controller
      */
     public function store(Request $request, $event_id)
     {
-        dd($request->all());
+//        dd($request->all());
         foreach ($request->issued_item as $key => $issued_status) {
-            foreach ($request->issued_quantity as $issued_quantity) {
-                if (isset($issued_quantity[$key])) {
-                    requested_item_list::where('Event_ID', $event_id)->where('ItemCode', $key)
-                        ->update([
-                            'Issued' => $issued_status,
-                            'IssuedQuantity' => $issued_quantity[$key],
+
+            if ($issued_status !== null) {
+                foreach ($request->issued_quantity as $issued_quantity) {
+                    if (isset($issued_quantity[$key])) {
+                        requested_item_list::where('Event_ID', $event_id)->where('ItemCode', $key)
+                            ->update([
+                                'Issued' => $issued_status,
+                                'IssuedQuantity' => $issued_quantity[$key],
+                            ]);
+                        $current_quantity = stock::where('Item', $key)->first()->Quantity;
+                        stock::where('Item', $key)
+                            ->update([
+                                'Quantity' => $current_quantity - $issued_quantity[$key],
+                            ]);
+                        StockMovement::create([
+                            'Company' => Auth::user()->Location,
+                            'Department' => Auth::user()->Department,
+                            'Stock_Room' => stock::where('Item', $key)->first()->Stock_Room,
+                            'Item' => $key,
+                            'Transaction' => 'Withdrawal',
+                            'Transaction_Type' => 0,
+                            'Quantity' => $issued_quantity[$key],
+                            'Date_MVT' => now()->format('Y-m-d'),
+                            'Event' => $event_id,
+                            'CUID' => Auth::id(),
+                            'UUID' => Auth::id(),
                         ]);
-                    $current_quantity = stock::where('Item', $key)->first()->Quantity;
-                    stock::where('Item', $key)
-                        ->update([
-                            'Quantity' => $current_quantity - $issued_quantity[$key],
-                        ]);
-                    StockMovement::create([
-                        'Company'=>Auth::user()->Location,
-                        'Department'=>Auth::user()->Department,
-                        'Stock_Room' => stock::where('Item',$key)->first()->Stock_Room,
-                        'Item'=>$key,
-                        'Transaction'=>'Withdrawal',
-                        'Transaction_Type'=> 0,
-                        'Quantity'=>$issued_quantity[$key],
-                        'Date_MVT'=>now()->format('Y-m-d'),
-                        'Event'=>$event_id,
-                        'CUID'=>Auth::id(),
-                        'UUID'=>Auth::id(),
-                    ]);
+                    }
                 }
             }
         }

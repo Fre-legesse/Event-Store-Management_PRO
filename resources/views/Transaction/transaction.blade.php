@@ -42,14 +42,14 @@
                     </a>
                     <!-- Column -->
                     <a class="col-md-6 col-lg-3" href="{{  url('/Received') }}">
-                    
+
                         <div class="card card-hover">
                             <div class="box bg-success text-center">
                                 <h1 class="font-light text-white"><i class="mdi mdi-chart-areaspline"></i></h1>
                                 <h6 class="text-white">Receiving Note</h6>
                             </div>
                         </div>
-                  
+
                     </a>
                      <!-- Column -->
                     <a class="col-md-6 col-lg-3" href="{{  url('/Withdrawal') }}">
@@ -60,15 +60,15 @@
                             </div>
                         </div>
                     </a>
-                    <!-- Column -->
-                    <div class="col-md-6 col-lg-3">
+                     <!-- Column -->
+                    <a class="col-md-6 col-lg-3" href="{{  url('/Withdrawal') }}">
                         <div class="card card-hover">
                             <div class="box bg-danger text-center">
                                 <h1 class="font-light text-white"><i class="mdi mdi-border-outside"></i></h1>
                                 <h6 class="text-white">Restock</h6>
                             </div>
                         </div>
-                    </div>
+                    </a>
                     <div class="col-md-6 col-lg-3">
                         <div class="card card-hover">
                             <div class="box bg-info text-center">
@@ -89,7 +89,7 @@
                 </div>
 
                 </div>
-                
+
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
@@ -97,9 +97,9 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-          
+
             <!-- ============================================================== -->
-         
+
 
 
 
