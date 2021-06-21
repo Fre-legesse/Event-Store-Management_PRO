@@ -61,7 +61,7 @@
                         </div>
                     </a>
                      <!-- Column -->
-                    <a class="col-md-6 col-lg-3" href="{{  url('/Withdrawal') }}">
+                    <a class="col-md-6 col-lg-3" href="{{  url('/restock') }}">
                         <div class="card card-hover">
                             <div class="box bg-danger text-center">
                                 <h1 class="font-light text-white"><i class="mdi mdi-border-outside"></i></h1>

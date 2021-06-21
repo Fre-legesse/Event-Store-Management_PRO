@@ -20,18 +20,8 @@ class requested_item_list extends Model
      *
      * @var array
      */
-    protected $fillable = [
-        'Request_ID',
-        'Event_ID',
-        'ItemCode',
-        'Quantity',
-        'Approval1Quantity',
-        'Approval2Quantity',
-        'IssuedQuantity',
-        'CUID',
-        'UUID',
-    ];
+    protected $guarded = [];
 
-   
-   
+
+
 }

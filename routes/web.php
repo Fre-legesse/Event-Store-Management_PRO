@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EventController as EventControllerAlias;
+use App\Http\Controllers\RestockController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App\Http\Controllers;
 
@@ -91,8 +92,20 @@ Route::post('ajaxRequest5', [App\Http\Controllers\Admin\dependencycontroller::cl
 
 
 //GET
+
+//Event
 Route::get('/event/approve',[EventControllerAlias::class,'display_approval'])->middleware('auth')->name('approve_event');
+
+//Restock
+Route::get('/restock',[RestockController::class,'index'])->middleware('auth')->name('restock');
+Route::get('/restock/{id}',[RestockController::class,'show'])->middleware('auth')->name('detail_restock_item');
+
 
 
 //POST
+
+//Event
 Route::post('/event/approve/{id}',[EventControllerAlias::class,'approve'])->middleware('auth')->name('approve_event_post');
+
+//Restock
+Route::post('/restock/{id}',[RestockController::class,'update'])->middleware('auth')->name('restock_post');
