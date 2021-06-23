@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Models\Event_Type;
+use App\Models\item_request;
 use App\Models\requested_item_list;
 use App\Models\stock;
 use App\Models\StockMovement;
@@ -74,29 +75,29 @@ class withdrawal extends Controller
     public function store(Request $request, $event_id)
     {
 //        dd($request->all());
-        foreach ($request->issued_item as $key => $issued_status) {
-
+        foreach ($request->issued_item as $stock_id => $issued_status) {
             if ($issued_status !== null) {
                 foreach ($request->issued_quantity as $issued_quantity) {
-                    if (isset($issued_quantity[$key])) {
-                        requested_item_list::where('Event_ID', $event_id)->where('ItemCode', $key)
+                    if (isset($issued_quantity[$stock_id])) {
+                        requested_item_list::where('Stock_ID', $stock_id)->where('Event_ID',$event_id)->first()
                             ->update([
                                 'Issued' => $issued_status,
-                                'IssuedQuantity' => $issued_quantity[$key],
+                                'IssuedQuantity' => $issued_quantity[$stock_id],
                             ]);
-                        $current_quantity = stock::where('Item', $key)->first()->Quantity;
-                        stock::where('Item', $key)
-                            ->update([
-                                'Quantity' => $current_quantity - $issued_quantity[$key],
-                            ]);
+
+                        stock::find($stock_id)
+                            ->decrement(
+                                'Quantity', $issued_quantity[$stock_id],
+                            );
+
                         StockMovement::create([
                             'Company' => Auth::user()->Location,
                             'Department' => Auth::user()->Department,
-                            'Stock_Room' => stock::where('Item', $key)->first()->Stock_Room,
-                            'Item' => $key,
+                            'Stock_Room' => stock::find($stock_id)->Stock_Room,
+                            'Item' => $stock_id,
                             'Transaction' => 'Withdrawal',
                             'Transaction_Type' => 0,
-                            'Quantity' => $issued_quantity[$key],
+                            'Quantity' => $issued_quantity[$stock_id],
                             'Date_MVT' => now()->format('Y-m-d'),
                             'Event' => $event_id,
                             'CUID' => Auth::id(),

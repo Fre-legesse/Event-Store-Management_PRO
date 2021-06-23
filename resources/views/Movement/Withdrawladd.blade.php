@@ -50,16 +50,16 @@
                     <label for="email1" class="col-sm-3 text-right control-label col-form-label">Quantity</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" id="email1" name="Stock_Room"
-                               placeholder="example: Table, chaire">
+                               placeholder="example: Table, chair">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="email1" class="col-sm-3 text-right control-label col-form-label">Description</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" id="email1" name="Description"
-                               placeholder="example: Table, chaire">
+                               placeholder="example: Table, chair">
                         <input type="text" class="form-control" id="email1" name="Description"
-                               placeholder="example: Table, chaire">
+                               placeholder="example: Table, chair">
                     </div>
                 </div>
                 <input type="hidden" name="CUID" value="{{ Auth::user()->id }}">

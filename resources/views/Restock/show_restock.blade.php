@@ -141,13 +141,13 @@
                     <div class="col-sm-3 col-lg-2 ">
                         <input type="text" class="form-control"
                                readonly
-                               value="{{$item->Approval2Quantity ?? $item->Approval1Quantity}}">
+                               value="{{$item->IssuedQuantity}}">
                     </div>
 
                     <div class="col-sm-3 col-lg-2 ">
                         <input type="number" class="form-control"
                                name="returned_quantity"
-                               min="0" max="{{$item->Approval2Quantity ?? $item->Approval1Quantity}}"
+                               min="0" max="{{$item->IssuedQuantity}}"
                                placeholder="Returned Quantity" required>
                     </div>
                     <div class="col-sm-3 col-lg-2">

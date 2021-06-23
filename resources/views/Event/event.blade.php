@@ -65,6 +65,7 @@
                             <th scope="col">Remaining Date For Return</th>
                             <th scope="col">First Approval</th>
                             <th scope="col">Second Approval</th>
+                            <th scope="col">Post Status</th>
                             <th scope="col">Action</th>
 
                         </tr>
@@ -115,25 +116,29 @@
                                                                   }
                                                     @endphp
                                                         </tbody>
-                                                            </table>" title="Requested Items"><i class="mdi mdi-view-sequential"></i>
+                                                            </table>" title="Requested Items"><i
+                                                            class="mdi mdi-view-sequential"></i>
                                                     </a></div>
                                             </div>
                                         </td>
-                                        <td>{{date_diff(date_create_from_format('Y-m-d',$item->Return_date),now())->format('%a')}} days</td>
+                                        <td>{{date_diff(date_create_from_format('Y-m-d',$item->Return_date),now())->format('%a')}}
+                                            days
+                                        </td>
 
                                         <td>{{ $item->ApprovalOne }}</td>
                                         <td>{{ $item->ApprovalTwo }}</td>
+                                        <td>{{ $item->Posted }}</td>
 
                                         <td>
                                             <div class="row">
-
+                                                @if($item->Posted != 'Posted')
                                                 <a style="white-space: nowrap;" type="button"
                                                    href="/Event/{{ $item->EVID }}/itemadd"
                                                    class="btn btn-warning btn-sm"><i
                                                         class="mdi mdi-library-plus"></i></a>
-
-                                                <a style="white-space: nowrap;" type="button"
-                                                   href="/Event/{{ $item->EVID }}/edit" class="btn btn-default btn-sm">Edit</a>
+                                                @endif
+{{--                                                <a style="white-space: nowrap;" type="button"--}}
+{{--                                                   href="/Event/{{ $item->EVID }}/edit" class="btn btn-default btn-sm">Edit</a>--}}
 
                                                 <form method="POST" action="/Event/{{ $item->EVID }}">
                                                     {{ csrf_field() }}

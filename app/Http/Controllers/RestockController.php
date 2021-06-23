@@ -21,7 +21,7 @@ class RestockController extends Controller
     public function index()
     {
         return response()->view('Restock.restock', [
-            'items' => requested_item_list::where('Issued', 1)->where('Qty','<=>','IssuedQuantity')->get(),
+            'items' => requested_item_list::where('Issued', 1)->where('Item_Remaining','=',null)->get(),
         ]);
     }
 
@@ -54,7 +54,6 @@ class RestockController extends Controller
      */
     public function show($id)
     {
-        debug($id);
         return response()->view('Restock.show_restock', [
             'item' => requested_item_list::find($id),
             'event' => Event::find(requested_item_list::find($id)->Event_ID),
@@ -82,7 +81,6 @@ class RestockController extends Controller
      */
     public function update(Request $request, $request_item_id)
     {
-//        dd($request->file('item_image'));
         $requested_item = requested_item_list::find($request_item_id);
         $requested_item->update([
             'Item_Remaining' => $requested_item->IssuedQuantity - $request->returned_quantity,

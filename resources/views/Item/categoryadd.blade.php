@@ -20,13 +20,13 @@
                     <form method="post" action="/Category" class="form-horizontal" >
                             	@csrf
                                 <div class="card-body">
-                                    
-                                   
-                                    
+
+
+
                                     <div class="form-group row">
                                         <label for="email1" class="col-sm-3 text-right control-label col-form-label">Type</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="email1" name="Type" placeholder="example: Table, chaire">
+                                            <input type="text" class="form-control" id="email1" name="Type" placeholder="example: Table, chair">
                                         </div>
                                     </div>
                                     <input type="hidden" name="CUID" value="{{ Auth::user()->id }}">

@@ -105,8 +105,6 @@
 
                     @else
                         <td>No Event Found</td>
-
-
                     @endif
 
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\item_request;
+use App\Models\stock;
 use App\Models\Stock_brand;
 use App\Models\stock_color;
 use App\Models\Stock_fabric;
@@ -81,11 +82,12 @@ class dependencycontroller extends Controller
 
         foreach ($items as $cat) {
 
-            $htmlappend .= '<option value="' . $cat->Item . '">' . $cat->Item_Code . " | " . $cat->Asset_No . '</option>';
+            $htmlappend .= '<option value="' . $cat->SID . '">' . $cat->Item_Code . " | " . $cat->Asset_No . '</option>';
         }
 
 
         //
+        debug(response()->json(['htmlappend' => $htmlappend])->getData());
         return response()->json(['htmlappend' => $htmlappend]);
 
 
@@ -124,13 +126,17 @@ class dependencycontroller extends Controller
 //$Type = DB::table('Stocks')->join('stock_items', 'stock_items.SIID', '=', 'Stocks.Item')->where('stock_items.Type', $input['value'])->paginate(10);
 //$items=DB::table('Stocks')->join('stock_items', 'stock_items.SIID', '=', 'Stocks.Item')->where(['stock_items.Type'=>$input['value'],])->paginate(10);
 //return view('profile_update',compact('profile_data','country_data'));
+        #select item to check asset no if no
+        if (isset(stock::find($input['value'])->Asset_No)) {
+            return 1;
+        }
         $item = DB::table('stocks')
             ->select('stocks.Item', \DB::raw('SUM(Quantity ) as t'), 'k.Qty', \DB::raw('SUM(Quantity - k.Qty) as ssum'))
             ->leftjoin(DB::raw('(SELECT SUM(Qty) as Qty,ItemCode  FROM reqested_item_lists  GROUP BY ItemCode) k'),
                 function ($join) {
                     $join->on('stocks.Item', '=', 'k.ItemCode');
                 })
-            ->where('stocks.Item', $input['value'])
+            ->where('stocks.Item', stock::find($input['value'])->Item)
             ->groupby('stocks.Item')
             ->get();
 
@@ -155,7 +161,7 @@ class dependencycontroller extends Controller
 
     public function additemstore(Request $request)
     {
-
+        debug($request->all());
         $input = $request->all();
         $id = $input['value1'];
         // return $id;
@@ -163,17 +169,19 @@ class dependencycontroller extends Controller
 
         $loc = Auth::user()->Location;
         $dep = Auth::user()->Department;
-        if($input['category'] == 'PRODUCT' && $input['value3'] < 100){
-            item_request::where('Event_id','=',$input['value1'])->update([
-                'ApprovalTwo'=>'Not Required',
+        if ($input['category'] == 'PRODUCT' && $input['value3'] < 100) {
+            item_request::where('Event_id', '=', $input['value1'])->update([
+                'ApprovalTwo' => 'Not Required',
             ]);
-        }elseif($input['category'] == 'PRODUCT' && $input['value3'] >= 100){
-            item_request::where('Event_id','=',$input['value1'])->update([
-                'ApprovalTwo'=>'Pending',
+        } elseif ($input['category'] == 'PRODUCT' && $input['value3'] >= 100) {
+            item_request::where('Event_id', '=', $input['value1'])->update([
+                'ApprovalTwo' => 'Pending',
             ]);
         }
 
-        $test = DB::insert('insert into reqested_item_lists (Request_Id,Event_ID,ItemCode,Quantity,Qty,CUID,UUID,created_at,updated_at) values(?,?,?,?,?,?,?,now(),now())', [$input['value'], $input['value1'], $input['value2'], $input['value3'], $input['value3'], $input['value4'], $input['value5']]);
+        $item_code = stock::find($input['value2'])->Item;
+
+        $test = DB::insert('insert into reqested_item_lists (Request_Id,Event_ID,ItemCode,Stock_ID,Quantity,Qty,CUID,UUID,created_at,updated_at) values(?,?,?,?,?,?,?,?,now(),now())', [$input['value'], $input['value1'], $item_code, $input['value2'], $input['value3'], $input['value3'], $input['value4'], $input['value5']]);
 
 
         //dd($item);

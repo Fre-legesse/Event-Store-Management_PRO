@@ -21,9 +21,8 @@
 
     <script src="../../js/ajax-jquery.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
-    <form method="post" action="/Event/{{ $RealEvent->EVID }}" class="form-horizontal">
+    <form method="post" action="/event/publish/{{ $ItemRequest->IRID }}" class="form-horizontal">
         @csrf
-        @method('PUT')
         <div class="row">
             <div class="col-md-6">
                 <div class="card">
@@ -35,7 +34,9 @@
                                 Name</label>
                             <div class="col-sm-4">
                                 <input type="text" class="form-control" id="email1" name="Event_Name" placeholder=""
-                                       value="{{ $RealEvent->Event_Name }}">
+                                       value="{{ $RealEvent->Event_Name }}"
+                                       style="background-color: white;"
+                                       disabled>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -101,6 +102,33 @@
                         <input type="hidden" name="UUID" id="UUID" value="{{ Auth::user()->id }}">
                     </div>
 
+                </div>
+                <div class="card col-lg-12 col-sm-12">
+                    <div class="card-body">
+                        <h4 class="card-title">Post Form</h4>
+                        <div class="form-group row">
+                            <label class="col-md-3">Confirm publication when submit: </label>
+                            <div class="col-md-9">
+                                <div class="form-check mr-sm-2">
+                                    @if($ItemRequest->Posted == 'Posted')
+                                        <input type="checkbox"
+                                               class="form-check-input"
+                                               value="Posted"
+                                               checked
+                                               name="post_checkbox">
+                                        <label class="form-check-label mb-0" for="post_checkbox">Publish</label>
+                                    @else
+                                        <input type="checkbox"
+                                               class="form-check-input"
+                                               value="Not_Posted"
+                                               name="post_checkbox">
+                                        <label class="form-check-label mb-0" for="post_checkbox">Publish</label>
+                                    @endif
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -193,12 +221,12 @@
                                            style="width: 180px;background-color: white;" disabled value="">
                                     <label class="Control-label col-form-label"> &nbsp; Request QTY. &nbsp; </label>
                                     <input type="number" min="1" max="" class="form-control" id="requestQ"
-                                           name="Return_date"
-                                           style="width: 230px;background-color: white;" required>
+                                           name="requestQ"
+                                           style="width: 230px;background-color: white;">
                                 </div>
                             </div>
                             <div class="col-sm-2">
-                                <button name="Submit" id="addbtn" class="btn btn-primary"
+                                <button type="button" id="addbtn" class="btn btn-primary"
                                         onclick="additemcall()">Add
                                 </button>
                             </div>
@@ -242,14 +270,14 @@
 
                             $("#itemlist").change(function (e) {
 
-                                var t = $(this).val();
+                                var stock_item_id = $(this).val();
                                 //alert(t);
                                 e.preventDefault();
 
                                 $.ajax({
                                     method: 'POST',
                                     url: "{{ route('ajaxRequest4.Fabric4') }}",
-                                    data: {value: t},
+                                    data: {value: stock_item_id},
                                     headers: {
                                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                     },
@@ -286,6 +314,13 @@
                             });
 
                             function additemcall() {
+
+                                var max = document.getElementById('requestQ').getAttribute('max')
+                                var QuanitityofItem = document.getElementById('requestQ').value
+
+                                if (max < QuanitityofItem) {
+                                    return false;
+                                }
 
                                 var t = document.getElementById('requestQ').value
                                 var t1 = document.getElementById('itemlist').value
@@ -343,6 +378,7 @@
                     </div>
 
                 </div>
+
             </div>
 
         <!--
@@ -380,6 +416,7 @@
                     </div>
 
 -->
+
         </div>
 
 
@@ -402,12 +439,12 @@
                         <div class="col-sm-2">
 
 
-                            <form method="POST" action="/Item/{{ $type->RILID }}">
-                                {{ csrf_field() }}
-                                {{ method_field('DELETE') }}
+                            <div class="col-sm-2">
+                                <button type="button" id="delete_button" class="btn btn-danger"
+                                        onclick="delete_requested_item({{$type->Stock_ID}})">Delete
+                                </button>
+                            </div>
 
-                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                            </form>
                         </div>
                     </div>
 
@@ -424,5 +461,23 @@
         </div>
 
     </form>
+
+    <script>
+        function delete_requested_item(stock_id) {
+            $.ajax({
+                method: 'POST',
+                url: "/item/delete",
+                data: {
+                    stock_id: stock_id,
+                },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function (data) {
+                    location.reload();
+                }
+            });
+        }
+    </script>
 
 @endsection()

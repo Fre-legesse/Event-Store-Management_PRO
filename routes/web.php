@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\App\Http\Controllers;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
+| routes are loaded by the RouteServiceProvider within a group whichStockitemController
 | contains the "web" middleware group. Now create something great!
 |
 */
@@ -106,6 +106,11 @@ Route::get('/restock/{id}',[RestockController::class,'show'])->middleware('auth'
 
 //Event
 Route::post('/event/approve/{id}',[EventControllerAlias::class,'approve'])->middleware('auth')->name('approve_event_post');
+Route::post('/event/publish/{item_request_id}',[EventControllerAlias::class,'publish'])->middleware('auth')->name('publish_item_request_post');
 
 //Restock
 Route::post('/restock/{id}',[RestockController::class,'update'])->middleware('auth')->name('restock_post');
+
+
+//Ajax
+Route::post('/item/delete',[\App\Http\Controllers\StockitemController::class,'destroy'])->middleware('auth')->name('delete_stock_item_post');

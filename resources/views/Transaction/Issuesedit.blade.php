@@ -157,15 +157,14 @@
                         <div class="col-sm-4">
                             <div class="col-sm-8 col-lg-9">
                                 <input type="text" class="form-control"
-                                       name="issued_quantity[][{{$requested_item->ItemCode}}]"
+                                       name="issued_quantity[][{{$requested_item->Stock_ID}}]"
                                        readonly
                                        {{--                                       placeholder="Approved Quantity: {{$requested_item->Approval2Quantity ?? $requested_item->Approval1Quantity}}"--}}
                                        value="{{$requested_item->Approval2Quantity ?? $requested_item->Approval1Quantity}}">
                             </div>
                         </div>
-
                         <div class="col-sm-3">
-                            <select name="issued_item[{{$requested_item->ItemCode}}]"
+                            <select name="issued_item[{{$requested_item->Stock_ID}}]"
                                     class="select2 form-control custom-select" style="width: 40%; height:36px;">
                                 <option value="">Select</option>
                                 <option value=1>Issued
