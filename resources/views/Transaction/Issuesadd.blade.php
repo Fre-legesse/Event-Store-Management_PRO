@@ -25,7 +25,7 @@
                     <label for="lname" class="col-sm-3 text-right control-label col-form-label">Item</label>
                     <div class="col-md-9">
                         <select class="select2 form-control custom-select" style="width: 40%; height:36px;" name='Type'>
-                            <option value="">select</option>
+                            <option value="">Select</option>
                             @foreach($items as  $type)
                                 <option value="{{ $type->Item_Code}}">{{ $type->Item_Code }}
                                     | {{ $type->Asset_No }}</option>

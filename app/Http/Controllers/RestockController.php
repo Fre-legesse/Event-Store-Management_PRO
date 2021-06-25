@@ -7,6 +7,7 @@ use App\Models\item_request;
 use App\Models\requested_item_list;
 use App\Models\stock;
 use App\Models\StockMovement;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,13 +21,18 @@ class RestockController extends Controller
     public function index()
     {
         return response()->view('Restock.restock', [
-            'items' => requested_item_list::where('reqested_item_lists.Issued', 1)
-                ->where('Item_Remaining', '=', null)
+            'items' => requested_item_list::query()
+                ->where('reqested_item_lists.Issued', 1)
+                ->where(function (Builder $query) {
+                    $query->where('Item_Remaining', '=', null)
+                        ->orWhere('Item_Remaining', '!=', 0);
+                })
                 ->leftJoin('events as events', 'reqested_item_lists.Event_ID', '=', 'events.EVID')
                 ->leftJoin('item_requests as item_requests', 'reqested_item_lists.Request_ID', '=', 'item_requests.IRID')
                 ->leftJoin('stock_items as stock_items', 'reqested_item_lists.ItemCode', '=', 'stock_items.SIID')
-                ->where('stock_items.Status','Returnable')
+//                ->where('stock_items.Status', 'Returnable')
                 ->groupBy('item_requests.Event_ID')
+                ->orderByDesc('reqested_item_lists.updated_at')
                 ->get(),
         ]);
     }
@@ -87,10 +93,9 @@ class RestockController extends Controller
      */
     public function update(Request $request, $request_item_id)
     {
-        $requested_item = requested_item_list::find($request_item_id);
+        $requested_item = requested_item_list::query()->find($request_item_id);
         $requested_item->update([
-            'Item_Remaining' => $requested_item->IssuedQuantity - $request->returned_quantity,
-            'Qty' => $request->returned_quantity,
+            'Item_Remaining' => $requested_item->Item_Remaining > 0 ? $requested_item->Item_Remaining - $request->returned_quantity : $requested_item->IssuedQuantity - $request->returned_quantity,
             'Damage_Status' => $request->damage_status,
             'Image_Name' => $request->file('item_image')->getClientOriginalName() . '.' . $request->file('item_image')->getClientOriginalExtension(),
             'File_Path' => $request->file('item_image')->getRealPath(),

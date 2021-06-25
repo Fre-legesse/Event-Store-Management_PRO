@@ -65,7 +65,7 @@
                                     <label for="lname" class="col-sm-3 text-right control-label col-form-label">Event Type</label>
                                     <div class="col-md-9">
                                              <select class="select2 form-control custom-select" style="width: 40%; height:36px;background-color: white;" name='Event_Type' disabled >
-                                        <option value="">select</option>
+                                        <option value="">Select</option>
         @foreach($event as  $type)
             <option value="{{ $type->Type_Name}}" {{$type->Type_Name == $RealEvent->Event_Type  ? 'selected' : ''}} >{{ $type->Type_Name }}</option>
         @endforeach

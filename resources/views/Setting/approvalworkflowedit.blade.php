@@ -71,7 +71,7 @@
                     <label for="email1" class="col-sm-3 text-right control-label col-form-label">Type</label>
                     <div class="col-md-9">
                         <select class="select2 form-control custom-select" style="width: 40%; height:36px;" name='Type'>
-                            <option value="">select</option>
+                            <option value="">Select</option>
                             @foreach($category as  $type)
                                 <option
                                     value="{{ $type->Type}}" {{$type->Type == $Item->Type  ? 'selected' : ''}}>{{ $type->Type }}</option>

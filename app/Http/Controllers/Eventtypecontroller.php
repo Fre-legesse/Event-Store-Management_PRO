@@ -22,7 +22,9 @@ class Eventtypecontroller extends Controller
 
     public function index()
     {
-        $data = DB::table('event_types')->paginate(10);
+        $data = DB::table('event_types')
+            ->orderByDesc('Type_Name')
+            ->paginate(10);
         //   $Stock = Stock_category::all();
         // return view('Item.category')->with('items',$Stock);
         return view('Event.eventtype', ['event' => $data]);

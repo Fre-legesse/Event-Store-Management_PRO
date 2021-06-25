@@ -131,20 +131,21 @@
 
                                         <td>
                                             <div class="row">
-                                                @if($item->Posted != 'Posted')
-                                                <a style="white-space: nowrap;" type="button"
-                                                   href="/Event/{{ $item->EVID }}/itemadd"
-                                                   class="btn btn-warning btn-md"><i
-                                                        class="mdi mdi-library-plus"></i> Request Items</a>
+                                                @if($item->Posted != 'Posted' && $item->CUID == \Illuminate\Support\Facades\Auth::id() )
+                                                    <a style="white-space: nowrap;" type="button"
+                                                       href="/Event/{{ $item->EVID }}/itemadd"
+                                                       class="btn btn-warning btn-md"><i
+                                                            class="mdi mdi-library-plus"></i> Request Items</a>
                                                 @endif
-{{--                                                <a style="white-space: nowrap;" type="button"--}}
-{{--                                                   href="/Event/{{ $item->EVID }}/edit" class="btn btn-default btn-sm">Edit</a>--}}
+                                                {{--                                                <a style="white-space: nowrap;" type="button"--}}
+                                                {{--                                                   href="/Event/{{ $item->EVID }}/edit" class="btn btn-default btn-sm">Edit</a>--}}
 
                                             </div>
                                         </td>
 
                                     </div>
                                 </tr>
+
                             @endforeach
 
 

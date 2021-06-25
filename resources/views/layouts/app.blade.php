@@ -40,8 +40,9 @@
     <link href="{{asset('dist/css/style.min.css')}}" rel="stylesheet">
 
     {{--    Bootstrap CDN --}}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+{{--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"--}}
+{{--          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">--}}
+    <link rel="{{asset('asset')}}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -102,12 +103,12 @@
                 <!-- ============================================================== -->
                 <!-- Logo -->
                 <!-- ============================================================== -->
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="{{route('home')}}">
                     <!-- Logo icon -->
                     <b class="logo-icon p-l-10">
                         <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                         <!-- Dark Logo icon -->
-                        <img src="../../assets/images/logo.png" width="50" height="50" alt="homepage"
+                        <img src="{{asset('assets/images/logo.png')}}" width="50" height="50" alt="homepage"
                              class="light-logo"/>
 
                     </b>
@@ -320,9 +321,9 @@
                     <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
                                                 href="{{url('/Event')}}" aria-expanded="false"><i
                                 class="fab fa-wpforms"></i><span class="hide-menu">Event Form</span></a></li>
-                    <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
-                                                aria-expanded="false"><i class="mdi mdi-shuffle-variant"></i><span
-                                class="hide-menu">Stock Movement</span></a></li>
+{{--                    <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"--}}
+{{--                                                aria-expanded="false"><i class="mdi mdi-shuffle-variant"></i><span--}}
+{{--                                class="hide-menu">Stock Movement</span></a></li>--}}
                     @role('Admin')
                     <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
                                                 href="{{url('/event/approve')}}" aria-expanded="false"><i
@@ -338,7 +339,7 @@
 
                     @role('Admin')
                     <li class="sidebar-item"><a class="sidebar-link has-arrow waves-effect waves-dark"
-                                                href="javascript:;" aria-expanded="false"><i
+                                                href="javascript:void(0);" aria-expanded="false"><i
                                 class="mdi mdi-receipt"></i><span class="hide-menu">Setting </span></a>
                         <ul aria-expanded="false" class="collapse  first-level">
                             <li class="sidebar-item"><a href="{{url('/Category')}}" class="sidebar-link"><i

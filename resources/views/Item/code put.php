@@ -1,8 +1,8 @@
-   
+
  Select from database
- 
+
    <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name='Department'>
-                                        <option value="">select</option>
+                                        <option value="">Select</option>
         @foreach($category as  $Items)
             <option value="{{ $Items->Department}}" {{$Items->STID == $Item->STID  ? 'selected' : ''}}>{{ $Items->Department }}</option>
         @endforeach

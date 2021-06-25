@@ -62,7 +62,7 @@
                         {{--                                <select class="select2 form-control custom-select"--}}
                         {{--                                        style="width: 40%; height:36px;background-color: white;" name='Event_Type'--}}
                         {{--                                        disabled>--}}
-                        {{--                                    <option value="">select</option>--}}
+                        {{--                                    <option value="">Select</option>--}}
                         {{--                                    @foreach($event as  $type)--}}
                         {{--                                        <option--}}
                         {{--                                            value="{{ $type->Type_Name}}" {{$type->Type_Name == $event->Event_Type  ? 'selected' : ''}} >{{ $type->Type_Name }}</option>--}}
@@ -141,7 +141,7 @@
                     <div class="col-sm-3 col-lg-2 ">
                         <input type="text" class="form-control"
                                readonly
-                               value="{{$item->IssuedQuantity}}">
+                               value="{{$item->Item_Remaining > 0?$item->Item_Remaining: $item->IssuedQuantity}}">
                     </div>
 
                     <div class="col-sm-3 col-lg-2 ">
@@ -158,7 +158,8 @@
                         </select>
                     </div>
                     <div class="col-sm-3 col-lg-2">
-                        <input required class="form-control" type="file" accept="image/*" name="item_image" placeholder="Insert image of the returned item">
+                        <input required class="form-control" type="file" accept="image/*" name="item_image"
+                               placeholder="Insert image of the returned item">
                     </div>
                 </div>
             </div>

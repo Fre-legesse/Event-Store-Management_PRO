@@ -89,7 +89,7 @@
                                 <select class="select2 form-control custom-select"
                                         style="width: 40%; height:36px;background-color: white;" name='Event_Type'
                                         disabled>
-                                    <option value="">select</option>
+                                    <option value="">Select</option>
                                     @foreach($event as  $type)
                                         <option
                                             value="{{ $type->Type_Name}}" {{$type->Type_Name == $RealEvent->Event_Type  ? 'selected' : ''}} >{{ $type->Type_Name }}</option>
@@ -120,7 +120,7 @@
                                     @else
                                         <input type="checkbox"
                                                class="form-check-input"
-                                               value="Not_Posted"
+                                               value="Posted"
                                                name="post_checkbox">
                                         <label class="form-check-label mb-0" for="post_checkbox">Publish</label>
                                     @endif
@@ -318,7 +318,7 @@
                                 var max = document.getElementById('requestQ').getAttribute('max')
                                 var QuanitityofItem = document.getElementById('requestQ').value
 
-                                if (max < QuanitityofItem) {
+                                if (parseInt(max) < parseInt(QuanitityofItem)) {
                                     return false;
                                 }
 

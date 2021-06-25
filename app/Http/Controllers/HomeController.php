@@ -56,8 +56,8 @@ class HomeController extends Controller
             'total_events_count' => Event::count(),
             'active_events_count' => DB::select('SELECT COUNT("events.EVID") AS active_events_count FROM events WHERE now() BETWEEN events.Date_From and events.Date_To')[0]->active_events_count,
             'this_month_events_count' => DB::select('SELECT count("events.EVID") as this_month_events_count FROM events WHERE DATE_FORMAT(events.Date_From,"%m") =  DATE_FORMAT(now(),"%m") OR DATE_FORMAT(events.Date_To,"%m") =  DATE_FORMAT(now(),"%m") ')[0]->this_month_events_count,
-            'pending_approval_count' => Auth::user()->hasRole('Approver_One') ? item_request::query()->where('ApprovalOne', '=', 'Pending')->count() : item_request::query()->where('ApprovalTwo', '=', 'Pending')->count(),
-            'pie_chart_data'=> DB::select('SELECT stock_items.Brand as brand,SUM(stocks.Quantity) as total FROM stocks,stock_items WHERE stocks.Item = stock_items.SIID AND stock_items.Type = "PRODUCT"'),
+            'pending_approval_count' => Auth::user()->hasRole('Approver_One') ? item_request::query()->where('ApprovalOne', '=', 'Pending')->where('Posted','=','Posted')->count() : item_request::query()->where('ApprovalTwo', '=', 'Pending')->where('Posted','=','Posted')->count(),
+            'pie_chart_data'=> DB::select('SELECT stock_items.Brand as brand,SUM(stocks.Quantity) as total FROM stocks,stock_items WHERE stocks.Item = stock_items.SIID AND stock_items.Type = "PRODUCT" GROUP BY Brand'),
         ]);
     }
 

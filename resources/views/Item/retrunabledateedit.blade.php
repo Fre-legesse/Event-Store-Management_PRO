@@ -25,32 +25,32 @@
                                 @method('PUT')
 
                                 <div class="card-body">
-                                   
+
 
                                  <div class="form-group row">
                                     <label for="lname" class="col-sm-3 text-right control-label col-form-label">Fabric</label>
                                     <div class="col-md-9">
-                                     
+
     <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name='Fabric'>
                             <option value="">Select</option>
-                           
+
                                  <option value="Metal" {{'Metal' == $Item->Fabric   ? 'selected' : ''}}>Metal</option>
                                  <option value="Wooden" {{'Wooden' == $Item->Fabric   ? 'selected' : ''}}>Wooden</option>
                                 <option value="Plastic"{{'Plastic' == $Item->Fabric   ? 'selected' : ''}}>Plastic</option>
                                 <option value="Plastic"{{'Plastic' == $Item->Fabric   ? 'selected' : ''}}>Plastic</option>
                                 <option value="other" {{'other' == $Item->Fabric   ? 'selected' : ''}}>other</option>
-                                            
+
                                         </select>
                                     </div>
                                 </div>
-                                   
-                                   
-                                    
+
+
+
                                     <div class="form-group row">
                                         <label for="email1" class="col-sm-3 text-right control-label col-form-label">Type</label>
                                          <div class="col-md-9">
                                         <select class="select2 form-control custom-select" style="width: 40%; height:36px;" name='Type'>
-                                        <option value="">select</option>
+                                        <option value="">Select</option>
         @foreach($category as  $type)
             <option value="{{ $type->Type}}" {{$type->Type == $Item->Type  ? 'selected' : ''}}>{{ $type->Type }}</option>
         @endforeach
@@ -65,7 +65,7 @@
                                         <button type="submit" name="Submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </div>
-                               
+
                             </form>
                         </div>
 @endsection()

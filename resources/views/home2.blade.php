@@ -4,7 +4,7 @@
     <h4>Dashboard</h4>
     <!-- Start Row 1 -->
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3" onclick="location.href='/Event'">
             <div class="card mt-0">
                 <div class="row  justify-content-center">
                     <div class="col-md-6 text-center pt-5 pb-5">
@@ -44,7 +44,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3" onclick="location.href='/event/approve'">
             <div class="card mt-0">
                 <div class="row">
                     <div class="col-md-6">
@@ -59,7 +59,6 @@
                 </div>
             </div>
         </div>
-
     </div>
     <!-- End Row 1 -->
 
@@ -68,7 +67,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Pie Chart</h5>
+                    <h5 class="card-title">Products</h5>
                     <div class="pie" style="height: 450px;"></div>
                 </div>
             </div>
@@ -77,7 +76,7 @@
     </div>
     <!-- End Row 2 -->
 
-<script>
-    create_pie_chart(@json($pie_chart_data));
-</script>
+    <script>
+        create_pie_chart(@json($pie_chart_data));
+    </script>
 @endsection

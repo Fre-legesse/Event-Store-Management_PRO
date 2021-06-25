@@ -79,7 +79,7 @@
                             <div class="col-md-9">
                                 <select class="select2 form-control custom-select" style="width: 40%; height:36px;"
                                         name='Event_Type' disabled>
-                                    <option value="">select</option>
+                                    <option value="">Select</option>
                                     @foreach($event as  $type)
                                         <option
                                             value="{{ $type->Type_Name}}" {{$type->Type_Name == $RealEvent->Event_Type  ? 'selected' : ''}} >{{ $type->Type_Name }}</option>
@@ -177,7 +177,7 @@
                                         name='second_approver_status' required>
                                     <option value="Pending" selected>< Not Yet Approved ></option>
                                     <option
-                                        value="Approved" >
+                                        value="Approved">
                                         Approved
                                     </option>
                                     <option
@@ -208,7 +208,8 @@
                             <div class="col-sm-8 col-lg-9">
                                 <input type="number" class="form-control"
                                        name="first_approver_quantity_array[][{{$requested_item->Stock_ID}}]"
-                                       min="0" max="{{ $requested_item->Approval1Quantity??\App\Models\stock::find($requested_item->Stock_ID)->Quantity}}"
+                                       min="0"
+                                       max="{{ $requested_item->Approval1Quantity??\App\Models\stock::find($requested_item->Stock_ID)->Quantity}}"
                                        value="{{ $requested_item->Quantity}}"
                                        placeholder="Requested Quantity: {{ $requested_item->Quantity}}" required>
                             </div>
@@ -218,15 +219,18 @@
                             <div class="col-sm-8 col-lg-9">
                                 <input type="number" class="form-control" id="second_approver_quantity"
                                        name="second_approver_quantity_array[][{{$requested_item->Stock_ID}}]"
-                                       min="0" max="{{ $requested_item->Approval1Quantity??\App\Models\stock::find($requested_item->Stock_ID)->Quantity}}"
+                                       min="0"
+                                       max="{{ $requested_item->Approval1Quantity??\App\Models\stock::find($requested_item->Stock_ID)->Quantity}}"
                                        value="{{ $requested_item->Approval1Quantity}}"
-                                       placeholder="First Approved : {{ $requested_item->Approval1Quantity  ?? "Haven't Approved Yet"}}" required>
+                                       placeholder="First Approved : {{ $requested_item->Approval1Quantity  ?? "Haven't Approved Yet"}}"
+                                       required>
                             </div>
                             @endrole
                         </div>
                         <div class="col-sm-3">
                             <input type="number" class="form-control" id="email1"
-                                   placeholder="Quantity in Stock : {{\App\Models\stock::where('Item',$requested_item->ItemCode)->first()->Quantity}}" disabled>
+                                   placeholder="Quantity in Stock : {{\App\Models\stock::where('Item',$requested_item->ItemCode)->first()->Quantity}}"
+                                   disabled>
 
                         </div>
 

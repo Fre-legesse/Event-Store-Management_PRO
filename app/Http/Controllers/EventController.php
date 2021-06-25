@@ -36,7 +36,10 @@ class EventController extends Controller
 
         $loc = Auth::user()->Location;
         $dep = Auth::user()->Department;
-        $data = DB::table('events')->join('item_requests', 'item_requests.Event_id', '=', 'events.EVID')->paginate(10);
+        $data = DB::table('events')
+            ->join('item_requests', 'item_requests.Event_id', '=', 'events.EVID')
+            ->orderByDesc('events.created_at')
+            ->paginate(10);
         //$data=$dat->paginate(10);
         //   $Stock = Stock_category::all();
         // return view('Item.category')->with('items',$Stock);
@@ -52,9 +55,13 @@ class EventController extends Controller
     {
         //
 
-        $data = Event_Type::all();
+        $data = Event_Type::all()->sortByDesc('ETID');
         //  $item = Stock::all();
-        $item = DB::table('stocks')->select('Item', \DB::raw('SUM(Quantity) AS Quantity'))->groupby('Item')->get();
+        $item = DB::table('stocks')
+            ->select('Item', \DB::raw('SUM(Quantity) AS Quantity'))
+            ->groupby('Item')
+            ->orderByDesc('stocks.updated_at')
+            ->get();
         //$list=Stock::distinct()
         //dd($requested_list);
         // return view('Item.category')->with('items',$Stock);
@@ -109,6 +116,7 @@ class EventController extends Controller
             'CUID' => Auth::id(),
             'UUID' => Auth::id(),
         ]);
+
 
 //        $idd = $request1->IRID;
 //
@@ -194,8 +202,9 @@ class EventController extends Controller
 
             foreach ($request->first_approver_quantity_array as $first_approver_quantity_array) {
                 foreach ($first_approver_quantity_array as $stock_id => $first_approver_quantity) {
-                    requested_item_list::where('Stock_ID', $stock_id)->where('Event_ID',$id)->first()->update([
+                    requested_item_list::where('Stock_ID', $stock_id)->where('Event_ID', $id)->first()->update([
                         'Approval1Quantity' => $first_approver_quantity,
+                        'Qty' => $first_approver_quantity,
                     ]);
                 }
             }
@@ -212,8 +221,9 @@ class EventController extends Controller
 //            dd($request->second_approver_quantity_array);
             foreach ($request->second_approver_quantity_array as $second_approver_quantity_array) {
                 foreach ($second_approver_quantity_array as $stock_id => $second_approver_quantity) {
-                    requested_item_list::where('Stock_ID', $stock_id)->where('Event_ID',$id)->first()->update([
+                    requested_item_list::where('Stock_ID', $stock_id)->where('Event_ID', $id)->first()->update([
                         'Approval2Quantity' => $second_approver_quantity,
+                        'Qty' => $second_approver_quantity,
                     ]);
                 }
             }
@@ -385,8 +395,8 @@ DB::table('stocks')->select('Item',\DB::raw('(SUM(stocks.Quantity)'))->join(DB::
 //            dd("Hello");
             $data = DB::table('events')
                 ->join('item_requests', 'item_requests.Event_id', '=', 'events.EVID')
-                ->where('Posted','=','Posted')
-                ->orderBy('ApprovalOne','DESC')
+                ->where('Posted', '=', 'Posted')
+                ->orderBy('ApprovalOne', 'DESC')
                 ->paginate(10);
             return view('Event.approval', ['event' => $data, 'Company' => $loc, 'Department' => $dep, 'link' => $link]);
         } elseif (Auth::user()->hasRole('Approver_Two')) {
@@ -396,11 +406,11 @@ DB::table('stocks')->select('Item',\DB::raw('(SUM(stocks.Quantity)'))->join(DB::
                 ->join('reqested_item_lists', 'item_requests.Event_id', '=', 'reqested_item_lists.Event_ID')
                 ->join('stock_items', 'reqested_item_lists.ItemCode', '=', 'stock_items.SIID')
                 ->where('reqested_item_lists.Approval1Quantity', '>=', 100)
-                ->where('Posted','=','Posted')
+                ->where('Posted', '=', 'Posted')
                 ->where('ApprovalTwo', '=', 'Pending')
                 ->where('ApprovalOne', '=', 'Approved')
                 ->where('stock_items.Type', '=', 'PRODUCT')
-                ->orderBy('ApprovalTwo','DESC')
+                ->orderBy('ApprovalTwo', 'DESC')
                 ->paginate(10);
             return view('Event.approval', ['event' => $data, 'Company' => $loc, 'Department' => $dep, 'link' => $link]);
         }
@@ -438,9 +448,12 @@ DB::table('stocks')->select('Item',\DB::raw('(SUM(stocks.Quantity)'))->join(DB::
      */
     public function publish(Request $request, $item_request_id)
     {
-        item_request::find($item_request_id)->update([
-            'Posted' => 'Posted',
-        ]);
+//        dd($request->all());
+        if ($request->post_checkbox == 'Posted') {
+            item_request::find($item_request_id)->update([
+                'Posted' => 'Posted',
+            ]);
+        }
 
         return response()->redirectTo('/Event');
     }
