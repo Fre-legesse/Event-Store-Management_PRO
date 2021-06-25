@@ -49,8 +49,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="peity_line_good left text-center mt-3 pt-5 pb-5">
-                            <label><i class="fa fa-list"></i> </label>
-                            <h6>+60%</h6>
+                            <img src="{{asset('images/check-mark-symbol-1.jpg')}}" width="100">
                         </div>
                     </div>
                     <div class="col-md-6 border-left text-center pt-5 pb-5">

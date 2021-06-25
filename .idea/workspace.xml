@@ -20,56 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cbfe88f1-96b0-46e1-961f-1a43d4b3fd8f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/build/css/custom.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/build/css/custom.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/build/images/back_disabled.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/build/images/back_enabled.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/build/images/back_enabled_hover.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/build/images/forward_disabled.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/build/images/forward_enabled.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/build/images/forward_enabled_hover.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/build/images/loading.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/build/js/custom.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/build/js/custom.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/loading_animation.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/event_this_month.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/events.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/my_js/my_charts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/en/messages.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/testblog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/testblog.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/check-mark-symbol-1.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/dependencycontroller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/dependencycontroller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EventController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Eventtypecontroller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Eventtypecontroller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RestockController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RestockController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StockbrandController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StockbrandController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StockcategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StockcategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StockfabricController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StockfabricController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StockitemController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StockitemController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StockmanufacturerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StockmanufacturerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Stockroomcontroller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Stockroomcontroller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/stockController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/stockController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/validation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Event/approval.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Event/approval.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Event/event.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Event/event.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Item/categoryadd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Item/categoryadd.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Item/categorybrandadd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Item/categorybrandadd.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Item/categorycoloradd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Item/categorycoloradd.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Movement/stock.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Movement/stock.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Movement/stockadd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Movement/stockadd.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Movement/stockedit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Movement/stockedit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Restock/restock.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Restock/restock.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Setting/approvalworkflowedit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Setting/approvalworkflowedit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/home2.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home2.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/stock/item.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/stock/item.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/stock/itemadd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/stock/itemadd.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/stock/stock.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/stock/stock.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/stock/stockadd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/stock/stockadd.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/stock/stockroom.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/stock/stockroom.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/stock/stockshow.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/stock/stockshow.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -285,7 +238,7 @@
       <workItem from="1624085765499" duration="4976000" />
       <workItem from="1624165160982" duration="54028000" />
       <workItem from="1624434219740" duration="33560000" />
-      <workItem from="1624594610423" duration="269000" />
+      <workItem from="1624594610423" duration="1902000" />
     </task>
     <servers />
   </component>
