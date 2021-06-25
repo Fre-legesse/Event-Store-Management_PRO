@@ -26,10 +26,10 @@
 
                 <div class="form-group row">
                     <label for="lname" class="col-sm-3 text-right control-label col-form-label">Item</label>
-                    <div class="col-md-9">
-                        <select class="select2 form-control custom-select" id="Type" style="width: 40%; height:36px;"
+                    <div class="col-md-9 col-lg-4">
+                        <select class="select2 form-control custom-select" id="Type"
                                 name='Type'>
-                            <option value="">select</option>
+                            <option value="">Select</option>
                             @foreach($items as  $type)
                                 <option value="{{ $type->SIID}}">{{ $type->Item_Code }} | {{ $type->Asset_No }}</option>
                             @endforeach
@@ -39,7 +39,7 @@
                 </div>
                 <div class="form-group row">
                     <label for="email1" class="col-sm-3 text-right control-label col-form-label">Quantity</label>
-                    <div class="col-sm-9">
+                    <div class="col-md-9 col-lg-4">
                         <input type="number" class="form-control" onkeyup="addFields()" id="Quantity" name="Quantity">
 
                     </div>

@@ -2,8 +2,9 @@
 
 use App\Http\Controllers\EventController as EventControllerAlias;
 use App\Http\Controllers\RestockController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StockitemController;
 use Illuminate\Support\Facades\App\Http\Controllers;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,46 +28,46 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/home2', [App\Http\Controllers\HomeController::class, 'test'])->name('home2');
 Route::get('/Event/{id}/itemadd', [App\Http\Controllers\EventController::class, 'additem'])->name('itemadd');
 
-Route::resource('Item',App\Http\Controllers\StockitemController::class);
-Route::resource('Category',App\Http\Controllers\StockcategoryController::class);
-Route::resource('Color',App\Http\Controllers\StockcolorController::class);
-Route::resource('Fabric',App\Http\Controllers\StockfabricController::class);
-Route::resource('Brand',App\Http\Controllers\StockbrandController::class);
-Route::resource('Manufacture',App\Http\Controllers\StockmanufacturerController::class);
-Route::resource('StockRoom',App\Http\Controllers\StockroomController::class);
+Route::resource('Item', App\Http\Controllers\StockitemController::class);
+Route::resource('Category', App\Http\Controllers\StockcategoryController::class);
+Route::resource('Color', App\Http\Controllers\StockcolorController::class);
+Route::resource('Fabric', App\Http\Controllers\StockfabricController::class);
+Route::resource('Brand', App\Http\Controllers\StockbrandController::class);
+Route::resource('Manufacture', App\Http\Controllers\StockmanufacturerController::class);
+Route::resource('StockRoom', App\Http\Controllers\StockroomController::class);
 
-Route::resource('Event',App\Http\Controllers\EventController::class);
-Route::resource('Eventtype',App\Http\Controllers\EventtypeController::class);
-Route::resource('Stock',App\Http\Controllers\stockController::class);
+Route::resource('Event', App\Http\Controllers\EventController::class);
+Route::resource('Eventtype', App\Http\Controllers\EventtypeController::class);
+Route::resource('Stock', App\Http\Controllers\stockController::class);
 
-Route::resource('ItemRequest',App\Http\Controllers\ItemRequestController::class);
-Route::resource('Transaction',App\Http\Controllers\TransactionController::class);
+Route::resource('ItemRequest', App\Http\Controllers\ItemRequestController::class);
+Route::resource('Transaction', App\Http\Controllers\TransactionController::class);
 
-Route::resource('Retrunable',App\Http\Controllers\returnabledatecontroller::class);
+Route::resource('Retrunable', App\Http\Controllers\returnabledatecontroller::class);
 
-Route::resource('Received',App\Http\Controllers\ReceivedController::class);
-Route::resource('Received/{id}/test',App\Http\Controllers\ReceivedController::class);
-$router->get('Received/{id}/test',[
+Route::resource('Received', App\Http\Controllers\ReceivedController::class);
+Route::resource('Received/{id}/test', App\Http\Controllers\ReceivedController::class);
+$router->get('Received/{id}/test', [
     'uses' => 'App\Http\Controllers\ReceivedController@test',
-    'as'   => 'ReceivedStock'
+    'as' => 'ReceivedStock'
 ]);
 
 
-Route::resource('Withdrawal',App\Http\Controllers\withdrawal::class);
-Route::resource('Withdrawal/{id}/test',App\Http\Controllers\withdrawal::class);
-$router->get('withdrawl/{id}/test',[
+Route::resource('Withdrawal', App\Http\Controllers\withdrawal::class);
+Route::resource('Withdrawal/{id}/test', App\Http\Controllers\withdrawal::class);
+$router->get('withdrawl/{id}/test', [
     'uses' => 'App\Http\Controllers\withdrawal@test',
-    'as'   => 'WithdrawalIssue'
+    'as' => 'WithdrawalIssue'
 ]);
 //Route::resource('Stock',App\Http\Controllers\stockController::class);
 //Route::get('Stock/search', [App\Http\Controllers\stockController::class, 'search']);
-$router->get('Stock/show/{id}',[
+$router->get('Stock/show/{id}', [
     'uses' => 'App\Http\Controllers\stockController@show',
-    'as'   => 'show'
+    'as' => 'show'
 ]);
-$router->get('Stock/create/{id}',[
+$router->get('Stock/create/{id}', [
     'uses' => 'App\Http\Controllers\stockController@create',
-    'as'   => 'create'
+    'as' => 'create'
 ]);
 /*
 $router->get('Withdrawal',[
@@ -80,7 +81,7 @@ $router->get('WithdrawalAdd',[
     'as'   => 'Withdrawaladd'
 ]);
 */
-Route::group(['middleware' => ['auth']], function() {
+Route::group(['middleware' => ['auth']], function () {
     // your routes
 });
 //Route::post('Item/Fabric', 'dependencycontroller@Fabric')->name('admin.cities.get_by_country');
@@ -94,23 +95,25 @@ Route::post('ajaxRequest5', [App\Http\Controllers\Admin\dependencycontroller::cl
 //GET
 
 //Event
-Route::get('/event/approve',[EventControllerAlias::class,'display_approval'])->middleware('auth')->name('approve_event');
+Route::get('/event/approve', [EventControllerAlias::class, 'display_approval'])->middleware('auth')->name('approve_event');
 
 //Restock
-Route::get('/restock',[RestockController::class,'index'])->middleware('auth')->name('restock');
-Route::get('/restock/{id}',[RestockController::class,'show'])->middleware('auth')->name('detail_restock_item');
-
+Route::get('/restock', [RestockController::class, 'index'])->middleware('auth')->name('restock');
+Route::get('/restock/{id}', [RestockController::class, 'show'])->middleware('auth')->name('detail_restock_item');
 
 
 //POST
 
 //Event
-Route::post('/event/approve/{id}',[EventControllerAlias::class,'approve'])->middleware('auth')->name('approve_event_post');
-Route::post('/event/publish/{item_request_id}',[EventControllerAlias::class,'publish'])->middleware('auth')->name('publish_item_request_post');
+Route::post('/event/approve/{id}', [EventControllerAlias::class, 'approve'])->middleware('auth')->name('approve_event_post');
+Route::post('/event/publish/{item_request_id}', [EventControllerAlias::class, 'publish'])->middleware('auth')->name('publish_item_request_post');
 
 //Restock
-Route::post('/restock/{id}',[RestockController::class,'update'])->middleware('auth')->name('restock_post');
+Route::post('/restock/{id}', [RestockController::class, 'update'])->middleware('auth')->name('restock_post');
+
+//Item
+Route::post('/item/delete/{item_id}', [StockitemController::class, 'delete'])->middleware('auth')->name('delete_item_post');
 
 
 //Ajax
-Route::post('/item/delete',[\App\Http\Controllers\StockitemController::class,'destroy'])->middleware('auth')->name('delete_stock_item_post');
+Route::post('/item/delete', [StockitemController::class, 'destroy'])->middleware('auth')->name('delete_stock_item_post');

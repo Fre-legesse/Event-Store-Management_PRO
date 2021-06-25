@@ -383,7 +383,11 @@ DB::table('stocks')->select('Item',\DB::raw('(SUM(stocks.Quantity)'))->join(DB::
 
         if (Auth::user()->hasRole('Approver_One')) {
 //            dd("Hello");
-            $data = DB::table('events')->join('item_requests', 'item_requests.Event_id', '=', 'events.EVID')->where('ApprovalOne', '=', 'Pending')->paginate(10);
+            $data = DB::table('events')
+                ->join('item_requests', 'item_requests.Event_id', '=', 'events.EVID')
+                ->where('Posted','=','Posted')
+                ->orderBy('ApprovalOne','DESC')
+                ->paginate(10);
             return view('Event.approval', ['event' => $data, 'Company' => $loc, 'Department' => $dep, 'link' => $link]);
         } elseif (Auth::user()->hasRole('Approver_Two')) {
 //            dd("World");
@@ -392,9 +396,11 @@ DB::table('stocks')->select('Item',\DB::raw('(SUM(stocks.Quantity)'))->join(DB::
                 ->join('reqested_item_lists', 'item_requests.Event_id', '=', 'reqested_item_lists.Event_ID')
                 ->join('stock_items', 'reqested_item_lists.ItemCode', '=', 'stock_items.SIID')
                 ->where('reqested_item_lists.Approval1Quantity', '>=', 100)
+                ->where('Posted','=','Posted')
                 ->where('ApprovalTwo', '=', 'Pending')
                 ->where('ApprovalOne', '=', 'Approved')
                 ->where('stock_items.Type', '=', 'PRODUCT')
+                ->orderBy('ApprovalTwo','DESC')
                 ->paginate(10);
             return view('Event.approval', ['event' => $data, 'Company' => $loc, 'Department' => $dep, 'link' => $link]);
         }

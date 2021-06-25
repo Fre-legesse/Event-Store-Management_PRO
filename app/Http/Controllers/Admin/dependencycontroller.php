@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\item_request;
+use App\Models\requested_item_list;
 use App\Models\stock;
 use App\Models\Stock_brand;
 use App\Models\stock_color;
@@ -181,8 +182,24 @@ class dependencycontroller extends Controller
 
         $item_code = stock::find($input['value2'])->Item;
 
-        $test = DB::insert('insert into reqested_item_lists (Request_Id,Event_ID,ItemCode,Stock_ID,Quantity,Qty,CUID,UUID,created_at,updated_at) values(?,?,?,?,?,?,?,?,now(),now())', [$input['value'], $input['value1'], $item_code, $input['value2'], $input['value3'], $input['value3'], $input['value4'], $input['value5']]);
+//        DB::insert('insert into reqested_item_lists (Request_Id,Event_ID,ItemCode,Stock_ID,Quantity,Qty,CUID,UUID,created_at,updated_at) values(?,?,?,?,?,?,?,?,now(),now())', [$input['value'], $input['value1'], $item_code, $input['value2'], $input['value3'], $input['value3'], $input['value4'], $input['value5']]);
 
+        $latest_quantity= requested_item_list::where('Event_ID',$input['value1'])->where('Stock_ID',$input['value2'])->first()->Quantity + $input['value3'];
+
+        requested_item_list::updateOrCreate(
+            [
+                'Event_ID' => $input['value1'],
+                'Stock_ID' => $input['value2'],
+            ],
+            [
+                'Request_Id' => $input['value'],
+                'ItemCode' => $item_code,
+                'Quantity' => $latest_quantity,
+                'Qty' => $latest_quantity,
+                'CUID' => $input['value4'],
+                'UUID' => $input['value5'],
+            ]
+        );
 
         //dd($item);
 

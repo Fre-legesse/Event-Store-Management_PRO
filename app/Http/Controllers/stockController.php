@@ -89,23 +89,48 @@ class stockController extends Controller
         if ($request->Countuncount == "Countable") {
 //            dd($request->all());
             for ($i = 0; $i < $request->Quantity; $i++) {
-                $row = new Stock();
-                $row->Company = $request->Company;
-                $row->Department = $request->Department;
-                $row->Stock_Room = $request->Stock_Room;
-                $row->CUID = $request->CUID;
-                $row->UUID = $request->UUID;
-                $row->Item = $request->Item;
-                $row->Quantity = 1;
-                $row->Asset_No = $request->input('Asset_No_'.$i);
-                // and so on for your all columns s
-                $row->save();   //at last save into db
+//                $row = new Stock();
+//                $row->Company = $request->Company;
+//                $row->Department = $request->Department;
+//                $row->Stock_Room = $request->Stock_Room;
+//                $row->CUID = $request->CUID;
+//                $row->UUID = $request->UUID;
+//                $row->Item = $request->Item;
+//                $row->Quantity = 1;
+//                $row->Asset_No = $request->input('Asset_No_'.$i);
+//                // and so on for your all columns s
+//                $row->save();   //at last save into db
+                stock::updateOrCreate(
+                    [
+                        'Stock_Room' => $request->Stock_Room,
+                        'Item' => $request->Item,
+                    ],
+                    [
+                        'Company' => $request->Company,
+                        'Department' => $request->Department,
+                        'CUID' => $request->CUID,
+                        'UUID' => $request->UUID,
+                        'Quantity' => 1,
+                        'Asset_No' => $request->input('Asset_No_' . $i),
+                    ]
+                );
             }
 
 
         } else {
-
-            Stock::create($request->all());
+            stock::updateOrCreate(
+                [
+                    'Stock_Room' => $request->Stock_Room,
+                    'Item' => $request->Item,
+                ],
+                [
+//                     $current_quantity + $request->Quantity,
+                    'Company' => $request->Company,
+                    'Department' => $request->Department,
+                    'CUID' => $request->CUID,
+                    'UUID' => $request->UUID,
+                ]
+            )->increment('Quantity',$request->Quantity);
         }
         return redirect('/Stock')->with('message', 'Created Successfully');
 

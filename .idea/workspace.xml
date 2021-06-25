@@ -20,26 +20,55 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cbfe88f1-96b0-46e1-961f-1a43d4b3fd8f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/build/css/custom.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/build/css/custom.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/build/images/back_disabled.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/build/images/back_enabled.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/build/images/back_enabled_hover.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/build/images/forward_disabled.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/build/images/forward_enabled.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/build/images/forward_enabled_hover.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/build/images/loading.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/build/js/custom.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/build/js/custom.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/loading_animation.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/event_this_month.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/events.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/my_js/my_charts.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/en/messages.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/testblog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/testblog.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/dependencycontroller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/dependencycontroller.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EventController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Eventtypecontroller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Eventtypecontroller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RestockController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RestockController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StockbrandController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StockbrandController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StockcategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StockcategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StockfabricController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StockfabricController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StockitemController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StockitemController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StockmanufacturerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StockmanufacturerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Stockroomcontroller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Stockroomcontroller.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/stockController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/stockController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/withdrawal.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/withdrawal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/item_request.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/item_request.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/validation.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Event/approval.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Event/approval.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Event/event.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Event/event.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Event/eventedit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Event/eventedit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Event/eventitemadd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Event/eventitemadd.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Item/categoryadd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Item/categoryadd.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Movement/ItemRequestAdd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Movement/ItemRequestAdd.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Movement/Withdrawladd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Movement/Withdrawladd.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Item/categorybrandadd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Item/categorybrandadd.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Item/categorycoloradd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Item/categorycoloradd.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Movement/stock.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Movement/stock.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Movement/stockadd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Movement/stockadd.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Restock/show_restock.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Restock/show_restock.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Transaction/Issuesedit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Transaction/Issuesedit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Movement/stockedit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Movement/stockedit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Restock/restock.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Restock/restock.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Setting/approvalworkflowedit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Setting/approvalworkflowedit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home2.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home2.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/stock/item.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/stock/item.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/stock/itemadd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/stock/itemadd.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/stock/stock.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/stock/stock.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/stock/stockadd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/stock/stockadd.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/stock/stockroom.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/stock/stockroom.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/stock/stockshow.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/stock/stockshow.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,6 +79,14 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -207,10 +244,17 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="ignore.virus.scanning.warn.message" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../gift_and_entertainment" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/images" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Work Files\Projects\Event Store - Copy\testblog\public\images" />
+      <recent name="C:\Work Files\Projects\Event Store - Copy\testblog\public" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -239,7 +283,9 @@
       <workItem from="1623913889443" duration="1704000" />
       <workItem from="1623918240356" duration="36530000" />
       <workItem from="1624085765499" duration="4976000" />
-      <workItem from="1624165160982" duration="53289000" />
+      <workItem from="1624165160982" duration="54028000" />
+      <workItem from="1624434219740" duration="33560000" />
+      <workItem from="1624594610423" duration="269000" />
     </task>
     <servers />
   </component>
@@ -266,33 +312,33 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="669" y="58" key="#8.0/Dockerfile/0.0.1920.1040@0.0.1920.1040" timestamp="1623913917355" />
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1621926191952">
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1624514936878">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621926191952" />
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1624514936878" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1623915595753">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1623915595753" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1624261265318">
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1624512156334">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1624261265318" />
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1624512156334" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1623913873709">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1623913873709" />
-    <state x="667" y="255" width="585" height="582" key="find.popup" timestamp="1624364136867">
+    <state x="667" y="255" width="585" height="582" key="find.popup" timestamp="1624456786905">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="667" y="255" width="585" height="582" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1624364136867" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1624345448805">
+    <state x="667" y="255" width="585" height="582" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1624456786905" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1624540147199">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1624345448805" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1624362631696">
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1624540147199" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1624558184885">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1624362631696" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1624558184885" />
   </component>
 </project>

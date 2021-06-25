@@ -80,23 +80,19 @@
                                     <td>{{ $item->ApprovalOne }}</td>
                                     <td>{{ $item->ApprovalTwo }}</td>
 
+                                    @if((auth()->user()->hasRole('Approver_Two') && $item->ApprovalTwo == 'Pending') || (auth()->user()->hasRole('Approver_One') && $item->ApprovalOne == 'Pending'))
+
                                     <td>
                                         <div class="row">
                                             <a style="white-space: nowrap;" type="button"
                                                href="/Event/{{ $item->EVID }}/edit"
                                                class="btn btn-default btn-md"><i
                                                     class="fa fa-list"></i> Detail</a>
-
-                                            <form method="POST" action="/Event/{{ $item->EVID }}">
-                                                {{ csrf_field() }}
-                                                {{ method_field('DELETE') }}
-
-                                                <button type="submit" class="btn btn-danger btn-md"><i
-                                                        class="mdi mdi-close"></i> Reject
-                                                </button>
-                                            </form>
                                         </div>
                                     </td>
+                                    @else
+                                        <td></td>
+                                    @endif
 
                                 </div>
                             </tr>
@@ -143,4 +139,5 @@
             @endif
         </div>
     </div>
+
 @endsection

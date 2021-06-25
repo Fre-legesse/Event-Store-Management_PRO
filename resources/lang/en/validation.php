@@ -134,7 +134,19 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'stock_brands' => [
+
+            'error' => [
+                'unique' => 'The combination [":Type", ":Brand"] already exists',
+            ],
+
+            'flash' => [
+                'updated' => '...',
+                'created' => '...',
+            ],
+        ]
     ],
+
 
     /*
     |--------------------------------------------------------------------------

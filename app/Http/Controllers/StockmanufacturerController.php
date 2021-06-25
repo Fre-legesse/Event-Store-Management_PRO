@@ -7,6 +7,7 @@ use App\Models\stock_manufacturer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 
 class StockmanufacturerController extends Controller
 {
@@ -53,7 +54,13 @@ class StockmanufacturerController extends Controller
         //
         $request->validate([
             'Manufacturer' => 'required',
-            'Type' => 'required',
+            'Type' => [
+                'required',
+                Rule::unique('stock_manufacturers')->where(function ($query) use ($request) {
+                    $query->whereManufacturer($request->Manufacturer)
+                        ->whereType($request->Type);
+                }),
+            ],
         ]);
 
         $loc = Auth::user()->Location;

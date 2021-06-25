@@ -134,18 +134,12 @@
                                                 @if($item->Posted != 'Posted')
                                                 <a style="white-space: nowrap;" type="button"
                                                    href="/Event/{{ $item->EVID }}/itemadd"
-                                                   class="btn btn-warning btn-sm"><i
-                                                        class="mdi mdi-library-plus"></i></a>
+                                                   class="btn btn-warning btn-md"><i
+                                                        class="mdi mdi-library-plus"></i> Request Items</a>
                                                 @endif
 {{--                                                <a style="white-space: nowrap;" type="button"--}}
 {{--                                                   href="/Event/{{ $item->EVID }}/edit" class="btn btn-default btn-sm">Edit</a>--}}
 
-                                                <form method="POST" action="/Event/{{ $item->EVID }}">
-                                                    {{ csrf_field() }}
-                                                    {{ method_field('DELETE') }}
-
-                                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                                </form>
                                             </div>
                                         </td>
 

@@ -8,6 +8,7 @@ use App\Models\stock_item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 
 class StockitemController extends Controller
 {
@@ -55,10 +56,18 @@ class StockitemController extends Controller
         //
         $request->validate([
 
-            'Type' => 'required',
             'Countable' => 'required',
-
             'Status' => 'required',
+            'Type' => [
+                'required',
+                Rule::unique('stock_items')->where(function ($query) use ($request) {
+                    $query->whereType($request->Type)
+                        ->whereFabric($request->Fabric)
+                        ->whereColor($request->Color)
+                        ->whereSize($request->Size)
+                        ->whereBrand($request->Brand);
+                }),
+            ],
         ]);
         $Name = '';
         if (!is_null($request->Size) and !is_null($request->Fabric) and !is_null($request->Brand)) {
@@ -130,5 +139,17 @@ class StockitemController extends Controller
     public function destroy(Request $request)
     {
         return requested_item_list::where('Stock_ID', $request->stock_id)->first()->delete();
+    }
+
+    /**
+     * Remove the specified item from Stock Items list.
+     *
+     * @param int $item_id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($item_id){
+        stock_item::find($item_id)->delete();
+
+        return back();
     }
 }

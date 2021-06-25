@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
+use App\Models\Event;
+use App\Models\item_request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -25,7 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-     //auth()->user()->getAllPermissions();
+        //auth()->user()->getAllPermissions();
         //auth()->user()->getDirectPermissions();
 
         //$users=User::role('admin')->get();
@@ -37,23 +38,31 @@ class HomeController extends Controller
 //
 //    $role=Role::findByName('User');
 //    $permission=Permission::findByName('Normal');
-    //$permission2=Permission::findById(12);
+        //$permission2=Permission::findById(12);
 
-    //$permission5=Permission::findById(13);
-     //$permission=Permission::findById(6);
+        //$permission5=Permission::findById(13);
+        //$permission=Permission::findById(6);
 
 //     $role->givePermissionTo($permission);
-     //$role->givePermissionTo($permission2);
+        //$role->givePermissionTo($permission2);
 
-    // $role->givePermissionTo($permission5);
+        // $role->givePermissionTo($permission5);
 
-     //$role->revokePermissionTo($permission);
+        //$role->revokePermissionTo($permission);
         //$role->removeRole($role);
 //       auth()->user()->assignRole('User');
 
-        return view('home2');
+        return view('home2', [
+            'total_events_count' => Event::count(),
+            'active_events_count' => DB::select('SELECT COUNT("events.EVID") AS active_events_count FROM events WHERE now() BETWEEN events.Date_From and events.Date_To')[0]->active_events_count,
+            'this_month_events_count' => DB::select('SELECT count("events.EVID") as this_month_events_count FROM events WHERE DATE_FORMAT(events.Date_From,"%m") =  DATE_FORMAT(now(),"%m") OR DATE_FORMAT(events.Date_To,"%m") =  DATE_FORMAT(now(),"%m") ')[0]->this_month_events_count,
+            'pending_approval_count' => Auth::user()->hasRole('Approver_One') ? item_request::query()->where('ApprovalOne', '=', 'Pending')->count() : item_request::query()->where('ApprovalTwo', '=', 'Pending')->count(),
+            'pie_chart_data'=> DB::select('SELECT stock_items.Brand as brand,SUM(stocks.Quantity) as total FROM stocks,stock_items WHERE stocks.Item = stock_items.SIID AND stock_items.Type = "PRODUCT"'),
+        ]);
     }
-   public function test(){
+
+    public function test()
+    {
         return view('home2');
     }
 }
