@@ -10,7 +10,7 @@
 @endphp
 
 <{{ $widget['wrapper']['element'] ?? 'div' }}
-@foreach(Arr::where($widget['wrapper'],function($value, $key) { return $key != 'element'; }) as $element => $value)
+@foreach(Arr::query()->where($widget['wrapper'],function($value, $key) { return $key != 'element'; }) as $element => $value)
     {{$element}}="{{$value}}"
 @endforeach
 >

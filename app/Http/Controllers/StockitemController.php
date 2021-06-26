@@ -138,7 +138,8 @@ class StockitemController extends Controller
      */
     public function destroy(Request $request)
     {
-        return requested_item_list::where('Stock_ID', $request->stock_id)->first()->delete();
+        debug($request->all());
+        return requested_item_list::query()->where('Stock_ID', $request->stock_id)->where('Event_ID', $request->event_id)->first()->delete();
     }
 
     /**

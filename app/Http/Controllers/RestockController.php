@@ -69,7 +69,7 @@ class RestockController extends Controller
         return response()->view('Restock.show_restock', [
             'item' => requested_item_list::find($id),
             'event' => Event::find(requested_item_list::find($id)->Event_ID),
-            'item_request' => item_request::where('Event_id', Event::find(requested_item_list::find($id)->Event_ID)->EVID)->first(),
+            'item_request' => item_request::query()->where('Event_id', Event::find(requested_item_list::find($id)->Event_ID)->EVID)->first(),
         ]);
     }
 
@@ -101,14 +101,14 @@ class RestockController extends Controller
             'File_Path' => $request->file('item_image')->getRealPath(),
         ]);
 
-        stock::where('Item', $requested_item->ItemCode)->first()->increment(
+        stock::query()->where('Item', $requested_item->ItemCode)->first()->increment(
             'Quantity', $request->returned_quantity,
         );
 
         StockMovement::create([
             'Company' => Auth::user()->Location,
             'Department' => Auth::user()->Department,
-            'Stock_Room' => stock::where('Item', $requested_item->ItemCode)->first()->SID,
+            'Stock_Room' => stock::query()->where('Item', $requested_item->ItemCode)->first()->SID,
             'Item' => $requested_item->ItemCode,
             'Transaction' => 'Restocking',
             'Transaction_Type' => 1,

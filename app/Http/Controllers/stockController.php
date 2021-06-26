@@ -49,13 +49,13 @@ class stockController extends Controller
     {
         $stockid = $id;
 
-        $stockroomtype = Stock_stock_room::where('SRID', '=', $stockid)->get();
+        $stockroomtype = Stock_stock_room::query()->where('SRID', '=', $stockid)->get();
         //dd($stockroomtype);
         $test = $stockroomtype[0]->Stock_Room;
 
         $test2 = explode(" ", $test);
         // dd($test2);
-        $items = Stock_item::where('item_Code', 'LIKE', '%' . $test2[0] . '%')->get();
+        $items = Stock_item::query()->where('item_Code', 'LIKE', '%' . $test2[0] . '%')->get();
         //  dd($items);
         return view('stock.stockadd', compact('items', 'stockid'));
     }

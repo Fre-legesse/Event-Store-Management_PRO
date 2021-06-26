@@ -457,7 +457,7 @@
 
                             <div class="col-sm-2">
                                 <button type="button" id="delete_button" class="btn btn-danger"
-                                        onclick="delete_requested_item({{$type->Stock_ID}})">Delete
+                                        onclick="delete_requested_item({{$type->Stock_ID}},{{$type->Event_ID}})">Delete
                                 </button>
                             </div>
 
@@ -479,12 +479,13 @@
     </form>
 
     <script>
-        function delete_requested_item(stock_id) {
+        function delete_requested_item(stock_id,event_id) {
             $.ajax({
                 method: 'POST',
                 url: "/item/delete",
                 data: {
                     stock_id: stock_id,
+                    event_id:event_id,
                 },
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

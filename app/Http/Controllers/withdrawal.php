@@ -79,7 +79,7 @@ class withdrawal extends Controller
             if ($issued_status !== null) {
                 foreach ($request->issued_quantity as $issued_quantity) {
                     if (isset($issued_quantity[$stock_id])) {
-                        requested_item_list::where('Stock_ID', $stock_id)->where('Event_ID',$event_id)->first()
+                        requested_item_list::query()->where('Stock_ID', $stock_id)->where('Event_ID',$event_id)->first()
                             ->update([
                                 'Issued' => $issued_status,
                                 'IssuedQuantity' => $issued_quantity[$stock_id],

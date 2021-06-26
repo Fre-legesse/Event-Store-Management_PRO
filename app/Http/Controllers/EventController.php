@@ -136,6 +136,7 @@ class EventController extends Controller
                     'ItemCode' => $stock_item->SIID,
                     'Stock_ID' => $stock_id,
                     'Quantity' => $quantity,
+                    'Qty' => $quantity,
                     'CUID' => auth()->id(),
                     'UUID' => auth()->id(),
                 ]);
@@ -233,14 +234,14 @@ class EventController extends Controller
 
             foreach ($request->first_approver_quantity_array as $first_approver_quantity_array) {
                 foreach ($first_approver_quantity_array as $stock_id => $first_approver_quantity) {
-                    requested_item_list::where('Stock_ID', $stock_id)->where('Event_ID', $id)->first()->update([
+                    requested_item_list::query()->where('Stock_ID', $stock_id)->where('Event_ID', $id)->first()->update([
                         'Approval1Quantity' => $first_approver_quantity,
                         'Qty' => $first_approver_quantity,
                     ]);
                 }
             }
 
-            item_request::where('Event_id', $id)->update([
+            item_request::query()->where('Event_id', $id)->update([
                 'ApprovalOne' => $request->first_approver_status,
             ]);
 
@@ -252,14 +253,14 @@ class EventController extends Controller
 //            dd($request->second_approver_quantity_array);
             foreach ($request->second_approver_quantity_array as $second_approver_quantity_array) {
                 foreach ($second_approver_quantity_array as $stock_id => $second_approver_quantity) {
-                    requested_item_list::where('Stock_ID', $stock_id)->where('Event_ID', $id)->first()->update([
+                    requested_item_list::query()->where('Stock_ID', $stock_id)->where('Event_ID', $id)->first()->update([
                         'Approval2Quantity' => $second_approver_quantity,
                         'Qty' => $second_approver_quantity,
                     ]);
                 }
             }
 
-            item_request::where('Event_id', $id)->update([
+            item_request::query()->where('Event_id', $id)->update([
                 'ApprovalTwo' => $request->second_approver_status,
             ]);
 
@@ -274,7 +275,7 @@ class EventController extends Controller
         $data = Event_Type::all();
         $item = Stock::all();
 
-//        $update = item_request::where('Event_id', '=', $id);
+//        $update = item_request::query()->where('Event_id', '=', $id);
 //        //  dd($request->all());
 //        //  $update->update(['ApprovalOne' => $request->ApprovalOne]);
 //        if ($request->ApprovalOne != NULL) {

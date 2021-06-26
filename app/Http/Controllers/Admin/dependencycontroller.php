@@ -27,7 +27,7 @@ class dependencycontroller extends Controller
             $html = '<option value="">'.trans('global.please Select').'</option>';
         } else {
             $html = '';
-            $cities = stock_fabric::where('Type', $request->country_id)->get();
+            $cities = stock_fabric::query()->where('Type', $request->country_id)->get();
             foreach ($cities as $city) {
                 $html .= '<option value="'.$city->Fabric.'">'.$city->Fabric.'</option>';
             }
@@ -43,10 +43,10 @@ class dependencycontroller extends Controller
         $htmlcolor = '';
         $htmlbrand = '<option value="Null">Select</option>';
         $htmlmanufacturer = '';
-        $fabrics = Stock_fabric::where('Type', $input['value'])->get();
-        $colors = stock_color::where('Type', $input['value'])->get();
-        $brands = Stock_brand::where('Type', $input['value'])->get();
-        $manufacturers = Stock_manufacturer::where('Type', $input['value'])->get();
+        $fabrics = Stock_fabric::query()->where('Type', $input['value'])->get();
+        $colors = stock_color::query()->where('Type', $input['value'])->get();
+        $brands = Stock_brand::query()->where('Type', $input['value'])->get();
+        $manufacturers = Stock_manufacturer::query()->where('Type', $input['value'])->get();
 //return view('profile_update',compact('profile_data','country_data'));
         foreach ($fabrics as $fabric) {
 
@@ -100,7 +100,7 @@ class dependencycontroller extends Controller
 
         $input = $request->all();
 
-        $category = Stock_item::where('SIID', $input['value'])->get();
+        $category = Stock_item::query()->where('SIID', $input['value'])->get();
         $co = $category[0]->Countable;
         //dd($category);
         $htmlfabric = '';
@@ -171,11 +171,11 @@ class dependencycontroller extends Controller
         $loc = Auth::user()->Location;
         $dep = Auth::user()->Department;
         if ($input['category'] == 'PRODUCT' && $input['value3'] < 100) {
-            item_request::where('Event_id', '=', $input['value1'])->update([
+            item_request::query()->where('Event_id', '=', $input['value1'])->update([
                 'ApprovalTwo' => 'Not Required',
             ]);
         } elseif ($input['category'] == 'PRODUCT' && $input['value3'] >= 100) {
-            item_request::where('Event_id', '=', $input['value1'])->update([
+            item_request::query()->where('Event_id', '=', $input['value1'])->update([
                 'ApprovalTwo' => 'Pending',
             ]);
         }
@@ -184,8 +184,8 @@ class dependencycontroller extends Controller
 
 //        DB::insert('insert into reqested_item_lists (Request_Id,Event_ID,ItemCode,Stock_ID,Quantity,Qty,CUID,UUID,created_at,updated_at) values(?,?,?,?,?,?,?,?,now(),now())', [$input['value'], $input['value1'], $item_code, $input['value2'], $input['value3'], $input['value3'], $input['value4'], $input['value5']]);
         debug('Event_ID: ' . $input['value1'] . ' Stock_ID: ' . $input['value2']);
-        $latest_quantity = requested_item_list::where('Event_ID', $input['value1'])->where('Stock_ID', $input['value2'])->first() !== null
-                ? requested_item_list::where('Event_ID', $input['value1'])->where('Stock_ID', $input['value2'])->first()->Quantity + $input['value3']
+        $latest_quantity = requested_item_list::query()->where('Event_ID', $input['value1'])->where('Stock_ID', $input['value2'])->first() !== null
+                ? requested_item_list::query()->where('Event_ID', $input['value1'])->where('Stock_ID', $input['value2'])->first()->Quantity + $input['value3']
                 : $input['value3'];
 
         requested_item_list::query()->updateOrCreate(

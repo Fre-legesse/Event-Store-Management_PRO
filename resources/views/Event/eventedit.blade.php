@@ -229,7 +229,7 @@
                         </div>
                         <div class="col-sm-3">
                             <input type="number" class="form-control" id="email1"
-                                   placeholder="Quantity in Stock : {{\App\Models\stock::where('Item',$requested_item->ItemCode)->first()->Quantity}}"
+                                   placeholder="Quantity in Stock : {{\App\Models\stock::query()->where('Item',$requested_item->ItemCode)->first()->Quantity}}"
                                    disabled>
 
                         </div>

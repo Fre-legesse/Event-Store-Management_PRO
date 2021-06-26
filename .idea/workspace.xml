@@ -20,21 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cbfe88f1-96b0-46e1-961f-1a43d4b3fd8f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/images/bell.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/loading_animation.gif" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/dependencycontroller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/dependencycontroller.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EventController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/item_request.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/item_request.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Event/eventadd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Event/eventadd.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RestockController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RestockController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StockitemController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StockitemController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/stockController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/stockController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/withdrawal.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/withdrawal.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Event/eventedit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Event/eventedit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Event/eventitemadd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Event/eventitemadd.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Movement/ItemRequestAdd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Movement/ItemRequestAdd.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Movement/ItemRequestEdit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Movement/ItemRequestEdit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home2.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home2.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/stock/itemadd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/stock/itemadd.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/vendor/backpack/base/widgets/inc/wrapper_start.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/backpack/base/widgets/inc/wrapper_start.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -263,7 +258,7 @@
       <workItem from="1624599141534" duration="357000" />
       <workItem from="1624599521661" duration="53000" />
       <workItem from="1624599602170" duration="10341000" />
-      <workItem from="1624689269623" duration="15048000" />
+      <workItem from="1624689269623" duration="15818000" />
     </task>
     <servers />
   </component>
@@ -326,10 +321,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1624599460797" />
-    <state x="224" y="53" width="1388" height="899" key="find.popup" timestamp="1624702652278">
+    <state x="224" y="53" width="1388" height="899" key="find.popup" timestamp="1624705237045">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="224" y="53" width="1388" height="899" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1624702652278" />
+    <state x="224" y="53" width="1388" height="899" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1624705237045" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1624540147199">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
