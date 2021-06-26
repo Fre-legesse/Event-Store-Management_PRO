@@ -78,7 +78,7 @@ class dependencycontroller extends Controller
         // return response()->json(htmlfabric);
         //$Type = DB::table('stock_items')->where('Type', '=', $value)->get();
 //$Type = DB::table('Stocks')->join('stock_items', 'stock_items.SIID', '=', 'Stocks.Item')->where('stock_items.Type', $input['value'])->paginate(10);
-        $items = DB::table('Stocks')->join('stock_items', 'Item', '=', 'SIID')->where('stock_items.Type', '=', $input['value'])->paginate(10);
+        $items = DB::table('stocks')->join('stock_items', 'Item', '=', 'SIID')->where('stock_items.Type', '=', $input['value'])->paginate(10);
 //return view('profile_update',compact('profile_data','country_data'));
 
         foreach ($items as $cat) {

@@ -16,10 +16,6 @@
             {{ session()->get('message') }}
         </div>
     @endif
-
-
-
-    <script src="../../js/ajax-jquery.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <form method="post" action="/event/publish/{{ $ItemRequest->IRID }}" class="form-horizontal">
         @csrf
@@ -142,27 +138,47 @@
                             <div class="col-md-9">
                                 <input type="text" class="form-control" id="email1" name="Requester"
                                        style="width: 450px;background-color: white;"
-                                       value="{{ $ItemRequest->Requester }}" disabled>
+                                       value="{{ $ItemRequest->Requester }}" readonly>
 
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="lname" class="col-sm-3 text-right control-label col-form-label">Responsible
-                                Person</label>
+                                Person (BGI)</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" id="email1" name="Responsible_Person"
+                                <input type="text" class="form-control" id="email1" name="Responsible_Person_BGI"
                                        style="width: 450px;background-color: white;"
-                                       value="{{ $ItemRequest->Responsible_person }}" disabled>
+                                       value="{{ $ItemRequest->Responsible_person_BGI }}" disabled>
 
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="lname" class="col-sm-3 text-right control-label col-form-label">Phone
-                                Number</label>
+                                Number (BGI)</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="email1" name="Phone_Number_BGI"
+                                       style="width: 450px;background-color: white;"
+                                       value="{{ $ItemRequest->Phone_Number_BGI }}" disabled>
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Responsible
+                                Person (Client)</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="email1" name="Responsible_Person"
+                                       style="width: 450px;background-color: white;"
+                                       value="{{ $ItemRequest->Responsible_person_Client }}" disabled>
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Phone
+                                Number (Client)</label>
                             <div class="col-md-9">
                                 <input type="text" class="form-control" id="email1" name="Phone_Number"
                                        style="width: 450px;background-color: white;"
-                                       value="{{ $ItemRequest->Phone_Number }}" disabled>
+                                       value="{{ $ItemRequest->Phone_Number_Client }}" disabled>
 
                             </div>
                         </div>

@@ -22,9 +22,9 @@
                             <img src="{{asset('images/events.png')}}" width="100">
                         </div>
                     </div>
-                    <div class="col-md-6 border-left text-center pt-5 pb-5">
+                    <div class="col-md-6 border-left text-center pt-5 pb-3">
                         <h3 class="mb-0" style="font-size: 70px">{{$active_events_count}}</h3>
-                        <span class="text-muted" style="font-size: 20px">Active Events</span>
+                        <span class="text-muted" style="font-size: 20px">Currently Ongoing Events</span>
                     </div>
                 </div>
             </div>
@@ -38,8 +38,8 @@
                         </div>
                     </div>
                     <div class="col-md-6 border-left text-center pt-5 pb-5">
-                        <h3 class="mb-0" style="font-size: 70px">{{$this_month_events_count}}</h3>
-                        <span class="text-muted" style="font-size: 20px">Events This Month</span>
+                        <h3 class="mb-0" style="font-size: 70px">{{$this_week_events_count}}</h3>
+                        <span class="text-muted" style="font-size: 20px">Events This Week</span>
                     </div>
                 </div>
             </div>
@@ -72,7 +72,36 @@
                 </div>
             </div>
         </div>
-
+        <div class="col-md-3" onclick="location.href='/event/approve'">
+            <div class="card mt-0">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="peity_line_good left text-center mt-3 pt-5 pb-5">
+                            <img src="{{asset('images/bell.png')}}" width="100">
+                        </div>
+                    </div>
+                    <div class="col-md-6 border-left text-center pt-5 pb-5">
+                        <h3 class="mb-0" style="font-size: 70px">{{$pending_approval_count}}</h3>
+                        <span class="text-muted" style="font-size: 20px">Unretured Items Count</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3" onclick="location.href='/event/approve'">
+            <div class="card mt-0">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="peity_line_good left text-center mt-3 pt-5 pb-5">
+                            <img src="{{asset('images/check-mark-symbol-1.jpg')}}" width="100">
+                        </div>
+                    </div>
+                    <div class="col-md-6 border-left text-center pt-5 pb-5">
+                        <h3 class="mb-0" style="font-size: 70px">{{$this_week_returnables}}</h3>
+                        <span class="text-muted" style="font-size: 20px">This Week Returnables</span>a
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- End Row 2 -->
 

@@ -116,4 +116,5 @@ Route::post('/item/delete/{item_id}', [StockitemController::class, 'delete'])->m
 
 
 //Ajax
-Route::post('/item/delete', [StockitemController::class, 'destroy'])->middleware('auth')->name('delete_stock_item_post');
+Route::post('/item/delete', [StockitemController::class, 'destroy'])->middleware('auth')->name('delete_stock_item_ajax');
+Route::post('/item/add/event',[EventControllerAlias::class,'add_item_to_event'])->middleware('auth')->name('add_item_event_ajax');

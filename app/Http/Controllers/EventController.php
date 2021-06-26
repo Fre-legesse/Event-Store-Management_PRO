@@ -7,7 +7,11 @@ use App\Models\Event_Type;
 use App\Models\item_request;
 use App\Models\requested_item_list;
 use App\Models\Stock;
+use App\Models\Stock_item;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -17,7 +21,7 @@ class EventController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function __construct()
     {
@@ -49,7 +53,7 @@ class EventController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -62,21 +66,22 @@ class EventController extends Controller
             ->groupby('Item')
             ->orderByDesc('stocks.updated_at')
             ->get();
+        $Stock_category = DB::table('stock_categorys')->get();
         //$list=Stock::distinct()
         //dd($requested_list);
         // return view('Item.category')->with('items',$Stock);
-        return view('Event.eventadd', ['event' => $data, 'category' => $item]);
+        return view('Event.eventadd', ['event' => $data, 'category' => $item, 'Stock_category' => $Stock_category]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return RedirectResponse
      */
     public function store(Request $request)
     {
-//        dd($request->Phone_Number);
+//        dd($request->all());
         $link = DB::connection()->getPdo();
 
         $loc = Auth::user()->Location;
@@ -89,33 +94,59 @@ class EventController extends Controller
             'Department' => $dep,
         ]);
 
-        $Event_id = Event::create($request->all());
-        $id = $Event_id->EVID;
+        $Event_id = Event::create($request->all())->EVID;
 
-        $request->merge([
-            'Phone_Number' => '090909090909',
-            'Event_id' => $id,
-            'Transaction' => 'Withdraw_Event',
-            'Transaction_Type' => '0',
-            'ApprovalOne' => 'Pending',
-            'ApprovalTwo' => 'Not Required',
-        ]);
-//        dd($request->all());
-        item_request::create([
-            'Company' => $loc,
-            'Department' => $dep,
-            'Event_id' => $id,
-            'Requester' => $request->Requester,
-            'Responsible_person' => $request->Responsible_person,
-            'Phone_Number' => $request->Phone_Number,
-            'Return_date' => $request->Return_date,
-            'Transaction' => 'Withdraw_Event',
-            'Transaction_Type' => '0',
-            'ApprovalOne' => 'Pending',
-            'ApprovalTwo' => 'Not Required',
-            'CUID' => Auth::id(),
-            'UUID' => Auth::id(),
-        ]);
+//        $request->merge([
+//            'Phone_Number' => $request->Phone_Number,
+//            'Event_id' => $id,
+//            'Transaction' => 'Withdraw_Event',
+//            'Transaction_Type' => '0',
+//            'ApprovalOne' => 'Pending',
+//            'ApprovalTwo' => 'Not Required',
+//        ]);
+//        dd($Event_id);
+        $item_request_id = item_request::query()->updateOrCreate(
+            [
+                'Event_id' => $Event_id,
+            ],
+            [
+                'Company' => $loc,
+                'Department' => $dep,
+                'Requester' => $request->Requester,
+                'Responsible_person_BGI' => $request->Responsible_person_BGI,
+                'Phone_Number_BGI' => $request->Phone_Number_BGI,
+                'Responsible_person_Client' => $request->Responsible_person_Client,
+                'Phone_Number_Client' => $request->Phone_Number_Client,
+                'Return_date' => $request->Return_date,
+                'Transaction' => 'Withdraw_Event',
+                'Transaction_Type' => '0',
+                'ApprovalOne' => 'Pending',
+                'ApprovalTwo' => 'Not Required',
+                'Posted' => $request->post_checkbox ?? 'Not_Posted',
+                'CUID' => Auth::id(),
+                'UUID' => Auth::id(),
+            ])->IRID;
+
+        foreach ($request->requested_quantity as $requested_quantity) {
+            foreach ($requested_quantity as $stock_id => $quantity) {
+                $stock_item = Stock_item::query()->find(stock::query()->find($stock_id)->Item);
+                requested_item_list::query()->create([
+                    'Request_ID' => $item_request_id,
+                    'Event_ID' => $Event_id,
+                    'ItemCode' => $stock_item->SIID,
+                    'Stock_ID' => $stock_id,
+                    'Quantity' => $quantity,
+                    'CUID' => auth()->id(),
+                    'UUID' => auth()->id(),
+                ]);
+
+                if (intval($quantity) > 100 and $stock_item->Type == "PRODUCT") {
+                    item_request::query()->find($item_request_id)->update([
+                        'ApprovalTwo' => "Pending",
+                    ]);
+                }
+            }
+        }
 
 
 //        $idd = $request1->IRID;
@@ -156,7 +187,7 @@ class EventController extends Controller
      * Display the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show($id)
     {
@@ -167,7 +198,7 @@ class EventController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit($id)
     {
@@ -181,15 +212,15 @@ class EventController extends Controller
 
         //  dd($itemrequest[0]);
         // return view('Item.category')->with('items',$Stock);
-        return view('Event.eventedit', ['event' => $data, 'requested_items' => $requested_list, 'RealEvent' => $Event, 'ItemRequest' => $itemrequest[0], 'item' => $item]);
+        return response()->view('Event.eventedit', ['event' => $data, 'requested_items' => $requested_list, 'RealEvent' => $Event, 'ItemRequest' => $itemrequest[0], 'item' => $item]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(Request $request, $id)
     {
@@ -313,7 +344,7 @@ class EventController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy($id)
     {
@@ -420,7 +451,7 @@ DB::table('stocks')->select('Item',\DB::raw('(SUM(stocks.Quantity)'))->join(DB::
      * Approve the specified event
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function approve($id)
     {
@@ -443,8 +474,8 @@ DB::table('stocks')->select('Item',\DB::raw('(SUM(stocks.Quantity)'))->join(DB::
      * Publish the specified event
      *
      * @param int $item_request_id
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return RedirectResponse
      */
     public function publish(Request $request, $item_request_id)
     {
@@ -458,5 +489,19 @@ DB::table('stocks')->select('Item',\DB::raw('(SUM(stocks.Quantity)'))->join(DB::
         return response()->redirectTo('/Event');
     }
 
+    /**
+     * Add item to an event
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function add_item_to_event(Request $request)
+    {
+        return response()->json([
+            'item_code' => Stock_item::query()->find(stock::query()->find($request->item_stock_id)->Item)->Item_Code,
+            'requested_quantity' => $request->requested_quantity,
+            'stock_id' => $request->item_stock_id,
+        ]);
+    }
 
 }
