@@ -66,7 +66,7 @@ class StockmanufacturerController extends Controller
         $loc = Auth::user()->Location;
         $dep = Auth::user()->Department;
 
-        Stock_manufacturer::create($request->all());
+        Stock_manufacturer::query()->create($request->all());
         //dd($request->all());
         return redirect()->back()->with('message', 'Created Successfully');
 
@@ -94,7 +94,7 @@ class StockmanufacturerController extends Controller
         //
         $category = Stock_category::all();
 //return view('profile_update',compact('profile_data','country_data'));
-        $Item = Stock_manufacturer::find($id);
+        $Item = Stock_manufacturer::query()->find($id);
         return view('Item.categorymanufactureredit', compact('Item', 'category'));
     }
 
@@ -114,7 +114,7 @@ class StockmanufacturerController extends Controller
 
         ]);
 
-        $update = Stock_manufacturer::find($id);
+        $update = Stock_manufacturer::query()->find($id);
         //dd($request->all());
         $update->update(['Brand' => $request->Brand]);
         $update->update(['Type' => $request->Type]);
@@ -133,7 +133,7 @@ class StockmanufacturerController extends Controller
     public function destroy($id)
     {
         //
-        $category = Stock_manufacturer::find($id);
+        $category = Stock_manufacturer::query()->find($id);
         $category->delete();
         return redirect('/Manufacture')->with('message', 'Manufacturer Removed');
     }

@@ -97,7 +97,7 @@
                     </div>
                     <div class="col-md-6 border-left text-center pt-5 pb-5">
                         <h3 class="mb-0" style="font-size: 70px">{{$this_week_returnables}}</h3>
-                        <span class="text-muted" style="font-size: 20px">This Week Returnables</span>a
+                        <span class="text-muted" style="font-size: 20px">This Week Returnables</span>
                     </div>
                 </div>
             </div>

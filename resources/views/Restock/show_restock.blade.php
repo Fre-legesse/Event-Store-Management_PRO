@@ -2,7 +2,7 @@
 
 @section('content')
     <h4>Restock Item</h4>
-    <form method="post" action="/restock/{{$item->RILID}}" class="form-horizontal" enctype="multipart/form-data">
+    <form method="post" action="/restock/{{$event->EVID}}" class="form-horizontal" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-md-6">
@@ -94,21 +94,37 @@
                         </div>
                         <div class="form-group row">
                             <label for="lname" class="col-sm-3 text-right control-label col-form-label">Responsible
-                                Person</label>
+                                Person (BGI)</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" id="email1" name="Responsible_Person"
-                                       style="width: 450px;background-color: white;"
-                                       value="{{ $item_request->Responsible_person }}" disabled>
+                                <input type="text" class="form-control" id="email1" name="Responsible_Person_BGI"
+                                       style="width: 450px;" value="{{ $item_request->Responsible_person_BGI }}" disabled>
 
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="lname" class="col-sm-3 text-right control-label col-form-label">Phone
-                                Number</label>
+                                Number (BGI)</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" id="email1" name="Phone_Number"
-                                       style="width: 450px;background-color: white;"
-                                       value="{{ $item_request->Phone_Number }}" disabled>
+                                <input type="text" class="form-control" id="email1" name="Phone_Number_BGI"
+                                       style="width: 450px;" value="{{ $item_request->Phone_Number_BGI }}" disabled>
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Responsible
+                                Person (Client)</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="email1" name="Responsible_Person_Client"
+                                       style="width: 450px;" value="{{ $item_request->Responsible_person_Client }}" disabled>
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Phone
+                                Number (Client)</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="email1" name="Phone_Number_Client"
+                                       style="width: 450px;" value="{{ $item_request->Phone_Number_Client }}" disabled>
 
                             </div>
                         </div>
@@ -136,31 +152,33 @@
             <div class="card-body">
                 <h4 class="card-title">Item Restock Form</h4>
                 <div class="form-group row">
-                    <label for="issued_quantity"
-                           class="col-sm-3 col-lg-3 text-right control-label col-form-label">{{ \App\Models\Stock_item::find($item->ItemCode)->Item_Code }}</label>
-                    <div class="col-sm-3 col-lg-2 ">
-                        <input type="text" class="form-control"
-                               readonly
-                               value="{{$item->Item_Remaining > 0?$item->Item_Remaining: $item->IssuedQuantity}}">
-                    </div>
+                    @foreach($items as $item)
+                        <label for="issued_quantity"
+                               class="col-sm-3 col-lg-3 text-right control-label col-form-label">{{ \App\Models\Stock_item::query()->find($item->ItemCode)->Item_Code }}</label>
+                        <div class="col-sm-3 col-lg-2 ">
+                            <input type="text" class="form-control"
+                                   readonly
+                                   value="{{$item->Item_Remaining > 0?$item->Item_Remaining: $item->IssuedQuantity}}">
+                        </div>
 
-                    <div class="col-sm-3 col-lg-2 ">
-                        <input type="number" class="form-control"
-                               name="returned_quantity"
-                               min="0" max="{{$item->IssuedQuantity}}"
-                               placeholder="Returned Quantity" required>
-                    </div>
-                    <div class="col-sm-3 col-lg-2">
-                        <select name="damage_status" class="form-control" required>
-                            <option hidden selected value="">Choose item status</option>
-                            <option value="Good">Good</option>
-                            <option value="Damaged">Damaged</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-3 col-lg-2">
-                        <input required class="form-control" type="file" accept="image/*" name="item_image"
-                               placeholder="Insert image of the returned item">
-                    </div>
+                        <div class="col-sm-3 col-lg-2 ">
+                            <input type="number" class="form-control"
+                                   name="returned_quantity[][{{$item->Stock_ID}}]"
+                                   min="0" max="{{$item->IssuedQuantity}}"
+                                   placeholder="Returned Quantity" required>
+                        </div>
+                        <div class="col-sm-3 col-lg-2">
+                            <select name="damage_status[][{{$item->Stock_ID}}]" class="form-control" required>
+                                <option hidden selected value="">Choose item status</option>
+                                <option value="Good">Good</option>
+                                <option value="Damaged">Damaged</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-3 col-lg-2">
+                            <input required class="form-control" type="file" accept="image/*" name="item_image[][{{$item->Stock_ID}}]"
+                                   placeholder="Insert image of the returned item">
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>

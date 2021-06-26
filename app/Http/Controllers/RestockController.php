@@ -8,7 +8,9 @@ use App\Models\requested_item_list;
 use App\Models\stock;
 use App\Models\StockMovement;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class RestockController extends Controller
@@ -16,7 +18,7 @@ class RestockController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -40,7 +42,7 @@ class RestockController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -50,8 +52,8 @@ class RestockController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -61,15 +63,15 @@ class RestockController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $id
-     * @return \Illuminate\Http\Response
+     * @param int $event_id
+     * @return Response
      */
-    public function show($id)
+    public function show($event_id)
     {
         return response()->view('Restock.show_restock', [
-            'item' => requested_item_list::find($id),
-            'event' => Event::find(requested_item_list::find($id)->Event_ID),
-            'item_request' => item_request::query()->where('Event_id', Event::find(requested_item_list::find($id)->Event_ID)->EVID)->first(),
+            'items' => requested_item_list::query()->where('Event_ID', '=', $event_id)->where('Request_ID', '=', item_request::query()->where('Event_id', $event_id)->first()->IRID)->get(),
+            'event' => Event::query()->find($event_id),
+            'item_request' => item_request::query()->where('Event_id', $event_id)->first(),
         ]);
     }
 
@@ -77,7 +79,7 @@ class RestockController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit($id)
     {
@@ -87,39 +89,51 @@ class RestockController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param int $request_item_id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param int $event_id
+     * @return RedirectResponse
      */
-    public function update(Request $request, $request_item_id)
+    public function update(Request $request, $event_id)
     {
-        $requested_item = requested_item_list::query()->find($request_item_id);
-        $requested_item->update([
-            'Item_Remaining' => $requested_item->Item_Remaining > 0 ? $requested_item->Item_Remaining - $request->returned_quantity : $requested_item->IssuedQuantity - $request->returned_quantity,
-            'Damage_Status' => $request->damage_status,
-            'Image_Name' => $request->file('item_image')->getClientOriginalName() . '.' . $request->file('item_image')->getClientOriginalExtension(),
-            'File_Path' => $request->file('item_image')->getRealPath(),
-        ]);
+        foreach ($request->returned_quantity as $key => $returned_quantity) {
+            foreach ($returned_quantity as $stock_id => $item_returned_quantity) {
+//                dd($request->file('item_image')[$key][$stock_id]);
+                $requested_item = requested_item_list::query()->where('Event_ID', '=', $event_id)->where('Stock_ID', '=', $stock_id)->first();
+                $item_remaining = $requested_item->Item_Remaining == null
+                    ? intval($requested_item->IssuedQuantity) - intval($item_returned_quantity)
+                    : (intval($requested_item->Item_Remaining) > 0 ? intval($requested_item->Item_Remaining) - intval($item_returned_quantity) : intval($requested_item->IssuedQuantity) - intval($item_returned_quantity));
+                $requested_item->update([
+                    'Item_Remaining' => $item_remaining,
+                    'Damage_Status' => $request->damage_status[$key][$stock_id],
+                    'Image_Name' => $request->file('item_image')[$key][$stock_id]->getClientOriginalName() . '.' . $request->file('item_image')[$key][$stock_id]->getClientOriginalExtension(),
+                    'File_Path' => $request->file('item_image')[$key][$stock_id]->getRealPath(),
+                ]);
 
-        stock::query()->where('Item', $requested_item->ItemCode)->first()->increment(
-            'Quantity', $request->returned_quantity,
-        );
+                stock::query()
+                    ->where('Item', $requested_item->ItemCode)
+                    ->first()
+                    ->increment(
+                        'Quantity', $item_returned_quantity,
+                    );
 
-        StockMovement::create([
-            'Company' => Auth::user()->Location,
-            'Department' => Auth::user()->Department,
-            'Stock_Room' => stock::query()->where('Item', $requested_item->ItemCode)->first()->SID,
-            'Item' => $requested_item->ItemCode,
-            'Transaction' => 'Restocking',
-            'Transaction_Type' => 1,
-            'Damage_Status' => $request->damage_status,
-            'Path_Image' => $request->file('item_image')->getRealPath(),
-            'Quantity' => $request->returned_quantity,
-            'Date_MVT' => now()->format('Y-m-d'),
-            'Event' => $requested_item->Event_ID,
-            'CUID' => Auth::id(),
-            'UUID' => Auth::id(),
-        ]);
+                StockMovement::query()->create([
+                    'Company' => Auth::user()->Location,
+                    'Department' => Auth::user()->Department,
+                    'Stock_Room' => stock::query()->where('Item', $requested_item->ItemCode)->first()->SID,
+                    'Item' => $requested_item->ItemCode,
+                    'Transaction' => 'Restocking',
+                    'Transaction_Type' => 1,
+                    'Damage_Status' => $request->damage_status[$key][$stock_id],
+                    'Path_Image' => $request->file('item_image')[$key][$stock_id]->getRealPath(),
+                    'Quantity' => $item_returned_quantity,
+                    'Date_MVT' => now()->format('Y-m-d'),
+                    'Event' => $event_id,
+                    'CUID' => Auth::id(),
+                    'UUID' => Auth::id(),
+                ]);
+
+            }
+        }
 
         return response()->redirectTo('/restock')->with(['message' => 'Success!']);
     }
@@ -128,7 +142,7 @@ class RestockController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy($id)
     {

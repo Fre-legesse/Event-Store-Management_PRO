@@ -50,7 +50,7 @@ class Jobs extends Controller
 //        ddd(Input::get("radio"));
 //        ddd($request->Work_Permit);
 
-        $person_id = PersonalInformation::create([
+        $person_id = PersonalInformation::query()->create([
             "First_Name" => $request->First_Name,
             "Middle_Name" => $request->Middle_Name,
             "Last_Name" => $request->Last_Name,
@@ -62,7 +62,7 @@ class Jobs extends Controller
         ])->id;
 
 //        ddd($person_id);
-        Address::create([
+        Address::query()->create([
             "PIID" => $person_id,
             "Phone" => $request->Mobile_Number_One,
             "Mobile" => $request->Mobile_Number_Two,
@@ -73,7 +73,7 @@ class Jobs extends Controller
         ]);
 
 //        ddd($request->Qualification_Under_Graduate);
-        Education::create([
+        Education::query()->create([
             "Qualification" => $request->Qualification_Post_Graduate,
             "Field_of_Study" => $request->Field_of_Study_Post_Graduate,
             "Name_of_University" => $request->Name_of_University_Post_Graduate,
@@ -83,7 +83,7 @@ class Jobs extends Controller
             "CDATE" => now(),
             "UDATE" => now(),
         ]);
-        Education::create([
+        Education::query()->create([
             "Qualification" => $request->Qualification_Under_Graduate,
             "Field_of_Study" => $request->Field_of_Study_Under_Graduate,
             "Name_of_University" => $request->Name_of_University_Under_Graduate,
@@ -93,7 +93,7 @@ class Jobs extends Controller
             "CDATE" => now(),
             "UDATE" => now(),
         ]);
-        Education::create([
+        Education::query()->create([
             "Qualification" => $request->Qualification_Other,
             "Field_of_Study" => $request->Field_of_Study_Other,
             "Name_of_University" => $request->Name_of_University_Other,
@@ -103,7 +103,7 @@ class Jobs extends Controller
             "CDATE" => now(),
             "UDATE" => now(),
         ]);
-        Education::create([
+        Education::query()->create([
             "Qualification" => "High School",
             "Field_of_Study" => "Genderal",
             "Name_of_University" => $request->Institute_Name_High_School,
@@ -114,7 +114,7 @@ class Jobs extends Controller
             "UDATE" => now(),
         ]);
 
-        Language::create([
+        Language::query()->create([
             "PIID" => $person_id,
             "Language" => "English",
             "Status" => $request->English_Language_Ability,
@@ -122,7 +122,7 @@ class Jobs extends Controller
             "UDATE" => now(),
         ]);
 
-        $experience_id = Experience::create([
+        $experience_id = Experience::query()->create([
             "Job_Title" => $request->Job_Title,
             "From" => $request->Date_Attended_From_Experience,
             "To" => $request->Dates_Attended_to_Experience,
@@ -133,28 +133,28 @@ class Jobs extends Controller
             "UDATE" => now(),
         ])->id;
 
-        ExperienceDetail::create([
+        ExperienceDetail::query()->create([
             "EXID" => $experience_id,
             "Duties" => $request->Duties,
             "CDATE" => now(),
             "UDATE" => now(),
         ]);
 
-        OtherInformation::create([
+        OtherInformation::query()->create([
             "PIID" => $person_id,
             "Description" => $request->License,
             "CDATE" => now(),
             "UDATE" => now(),
         ]);
 
-        Achievement::create([
+        Achievement::query()->create([
             "PIID" => $person_id,
             "Description" => $request->Achievements,
             "CDATE" => now(),
             "UDATE" => now(),
         ]);
 
-        JobPostAndPersonalInformation::create([
+        JobPostAndPersonalInformation::query()->create([
             "JPID"=>$job_id,
             "PIID"=>$person_id,
             "CDATE" => now(),

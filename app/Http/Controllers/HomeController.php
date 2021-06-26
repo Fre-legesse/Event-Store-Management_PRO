@@ -32,9 +32,9 @@ class HomeController extends Controller
         //$users=User::role('admin')->get();
 
 
-//    Role::create(['name' => 'User']);
+//    Role::query()->create(['name' => 'User']);
 //
-//    Permission::create(['name' => 'Normal']);
+//    Permission::query()->create(['name' => 'Normal']);
 //
 //    $role=Role::findByName('User');
 //    $permission=Permission::findByName('Normal');

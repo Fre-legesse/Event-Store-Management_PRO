@@ -89,21 +89,42 @@
                                          <input type="text" class="form-control" id="email1" name="Requester" style="width: 450px;background-color: white;" value="{{ $ItemRequest->Requester }}" disabled >
 
                                     </div>
-                                </div>
-                                    <div class="form-group row">
-                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Responsible Person</label>
-                                    <div class="col-md-9">
-                                             <input type="text" class="form-control" id="email1" name="Responsible_Person" style="width: 450px;background-color: white;" value="{{ $ItemRequest->Responsible_person }}" disabled >
-
-                                    </div>
-                                </div>
                                 <div class="form-group row">
-                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Phone Number</label>
-                                    <div class="col-md-9">
-                                             <input type="text" class="form-control" id="email1" name="Phone_Number" style="width: 450px;background-color: white;" value="{{ $ItemRequest->Phone_Number }}" disabled >
+                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Responsible
+                                Person (BGI)</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="email1" name="Responsible_Person_BGI"
+                                       style="width: 450px;" value="{{ $ItemRequest->Responsible_person_BGI }}" disabled>
 
-                                    </div>
-                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Phone
+                                Number (BGI)</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="email1" name="Phone_Number_BGI"
+                                       style="width: 450px;" value="{{ $ItemRequest->Phone_Number_BGI }}" disabled>
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Responsible
+                                Person (Client)</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="email1" name="Responsible_Person_Client"
+                                       style="width: 450px;" value="{{ $ItemRequest->Responsible_person_Client }}" disabled>
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Phone
+                                Number (Client)</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="email1" name="Phone_Number_Client"
+                                       style="width: 450px;" value="{{ $ItemRequest->Phone_Number_Client }}" disabled>
+
+                            </div>
+                        </div>
                                     <div class="form-group row">
                                         <label for="email1" class="col-sm-3 text-right control-label col-form-label">Return Date</label>
                                         <div class="col-sm-9">

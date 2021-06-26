@@ -102,7 +102,7 @@ class ReceivedController extends Controller
 
             if ($value[0] != NULL) {
 
-                $category1 = requested_item_list::find(['Event_ID' => $id, 'ItemCode' => $key]);
+                $category1 = requested_item_list::query()->find(['Event_ID' => $id, 'ItemCode' => $key]);
                 $category1length = sizeof($category1);
                 $value1 = 0;
                 $value2 = $value[0];
@@ -198,7 +198,7 @@ class ReceivedController extends Controller
     {
         $data = Event_Type::all();
         $item = DB::table('stocks')->select('Item', \DB::raw('SUM(Quantity) AS Quantity'))->groupby('Item')->get();
-        $Event = Event::find($id);
+        $Event = Event::query()->find($id);
         $requested_list = DB::table('reqested_item_lists')->join('stock_items', 'reqested_item_lists.ItemCode', '=', 'stock_items.Item_Code')->where(['stock_items.Status' => 'Returnable', 'reqested_item_lists.Event_ID' => $id])->select('*')->get();
         $idd = $Event->EVID;
         $itemrequest = DB::table('item_requests')->where('Event_id', '=', $idd)->get();

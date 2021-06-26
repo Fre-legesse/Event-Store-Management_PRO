@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\item_request;
 use App\Models\requested_item_list;
 use App\Models\stock_category;
 use App\Models\stock_item;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
@@ -15,7 +18,6 @@ class StockitemController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function __construct()
     {
@@ -35,21 +37,22 @@ class StockitemController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
         $category = Stock_category::all();
 
-        return view('stock.itemadd')->with('category', $category);
-        //
+        return response()->view('stock.itemadd', [
+            'category' => $category
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return RedirectResponse
      */
     public function store(Request $request)
     {
@@ -90,7 +93,7 @@ class StockitemController extends Controller
         ]);
 
 
-        Stock_item::create($request->all());
+        Stock_item::query()->create($request->all());
         //dd($request->all());
         return redirect()->back()->with('message', 'Created Successfully');
     }
@@ -99,7 +102,7 @@ class StockitemController extends Controller
      * Display the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show($id)
     {
@@ -111,7 +114,7 @@ class StockitemController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit($id)
     {
@@ -121,9 +124,9 @@ class StockitemController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(Request $request, $id)
     {
@@ -131,25 +134,31 @@ class StockitemController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified Item from requested item list.
      *
      * @param Request $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy(Request $request)
     {
-        debug($request->all());
-        return requested_item_list::query()->where('Stock_ID', $request->stock_id)->where('Event_ID', $request->event_id)->first()->delete();
+        $requested_item = requested_item_list::query()->where('Stock_ID', $request->stock_id)->where('Event_ID', $request->event_id)->first();
+        if (intval($requested_item->Quantity) >= 100) {
+            item_request::query()->where('Event_id', '=', $request->event_id)->update([
+                'ApprovalTwo' => 'Not Required',
+            ]);
+        }
+        return $requested_item->delete();
     }
 
     /**
      * Remove the specified item from Stock Items list.
      *
      * @param int $item_id
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
-    public function delete($item_id){
-        stock_item::find($item_id)->delete();
+    public function delete($item_id)
+    {
+        stock_item::query()->find($item_id)->delete();
 
         return back();
     }

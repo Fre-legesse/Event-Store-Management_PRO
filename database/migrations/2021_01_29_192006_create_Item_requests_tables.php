@@ -13,7 +13,7 @@ class CreateItemRequestsTables extends Migration
      */
     public function up()
     {
-        Schema::create('Item_requests', function (Blueprint $table) {
+        Schema::query()->create('Item_requests', function (Blueprint $table) {
             $table->integer('IRID', true);
             $table->string('Company');
             $table->string('Department');

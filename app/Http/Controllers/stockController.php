@@ -76,7 +76,7 @@ class stockController extends Controller
             'Quantity' => 'required',
         ]);
         $id = $request->Stock_Room;
-        $Item = Stock_stock_room::find($id);
+        $Item = Stock_stock_room::query()->find($id);
         //dd($Item);
         $ItemCom = $Item->Company;
         $ItemDep = $Item->Department;

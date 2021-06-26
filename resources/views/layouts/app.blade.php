@@ -25,13 +25,8 @@
     <!-- CSRF Token -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/images/logo.png')}}">
     <title>Store Management</title>
-    <!-- Custom CSS -->
-    <!-- <link href="../../assets/libs/flot/css/float-chart.css" rel="stylesheet"> -->
-    <!-- Custom CSS -->
-    {{--    jQuery CDN--}}
-    <script src="{{asset('assets/libs/jquery.min.js')}}"></script>
 
-    <link href="{{asset('dist/css/style.min.css')}}" rel="stylesheet">
+{{--    Loading animation style--}}
     <link href="{{asset('css/loading_animation.css')}}" rel="stylesheet">
 
     <script src="{{asset('js/popper.min.js')}}"></script>
@@ -43,7 +38,6 @@
     {{--    Bootstrap CDN --}}
 {{--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"--}}
 {{--          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">--}}
-    <link rel="{{asset('asset')}}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -52,10 +46,16 @@
     <![endif]-->
 
     {{--    Scripts--}}
+    {{--    jQuery CDN--}}
+    <script src="{{asset('assets/libs/jquery.min.js')}}"></script>
+
+    {{--    Bootstrap Script--}}
+    <script src="{{asset('assets/libs/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+
     {{--    Bootstrap--}}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-            crossorigin="anonymous"></script>
+{{--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"--}}
+{{--            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"--}}
+{{--            crossorigin="anonymous"></script>--}}
     <!-- Bootstrap tether Core JavaScript -->
     <!-- <script src="../../assets/libs/popper.js/dist/umd/popper.min.js"></script> -->
     {{--<script src="{{asset('assets/libs/bootstrap/dist/js/bootstrap.min.js')}}"></script>--}}
@@ -250,11 +250,8 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href=""
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
-                                src="../../assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31">
-                        </a>@php
-                            if(Auth::user())
-                            Auth::user()->name
-                        @endphp
+                                src="{{asset('assets/images/users/1.jpg')}}" alt="user" class="rounded-circle" width="31">
+                        </a>
                         <div class="dropdown-menu dropdown-menu-right user-dd animated">
                             <!--   <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet m-r-5 m-l-5"></i> My Balance</a>
@@ -266,7 +263,7 @@
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                <i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+                                <i class="fa fa-power-off m-r-5 m-l-5"></i> Logout ({{auth()->user()->name}})</a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
@@ -321,7 +318,7 @@
                                 class="mdi mdi-transcribe"></i><span class="hide-menu">Transaction</span></a></li>
                     <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
                                                 href="{{url('/Event')}}" aria-expanded="false"><i
-                                class="fab fa-wpforms"></i><span class="hide-menu">Event Form</span></a></li>
+                                class="fab fa-wpforms"></i><span class="hide-menu">Event</span></a></li>
 {{--                    <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"--}}
 {{--                                                aria-expanded="false"><i class="mdi mdi-shuffle-variant"></i><span--}}
 {{--                                class="hide-menu">Stock Movement</span></a></li>--}}

@@ -13,14 +13,14 @@ class CreateStockFabricsTable extends Migration
      */
     public function up()
     {
-        Schema::create('stock_fabrics', function (Blueprint $table) {
+        Schema::query()->create('stock_fabrics', function (Blueprint $table) {
             $table->integer('SFID', true);
             $table->string('Type');
             $table->string('Fabric');
             $table->string('Company');
             $table->string('Department');
             $table->integer('CUID');
-            
+
             $table->integer('UUID');
             $table->timestamps();
         });

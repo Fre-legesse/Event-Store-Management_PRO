@@ -13,8 +13,8 @@ class CreateStockItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('stock_items', function (Blueprint $table) {
-            
+        Schema::query()->create('stock_items', function (Blueprint $table) {
+
             $table->integer('SIID', true);
             $table->string('Company');
             $table->string('Department');
@@ -30,7 +30,7 @@ class CreateStockItemsTable extends Migration
             $table->string('Status', 50);
             $table->integer('CUID');
             $table->integer('UUID');
-            
+
             $table->timestamps();
         });
     }

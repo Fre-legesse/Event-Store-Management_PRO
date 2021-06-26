@@ -128,7 +128,7 @@ class dependencycontroller extends Controller
 //$items=DB::table('Stocks')->join('stock_items', 'stock_items.SIID', '=', 'Stocks.Item')->where(['stock_items.Type'=>$input['value'],])->paginate(10);
 //return view('profile_update',compact('profile_data','country_data'));
         #select item to check asset no if no
-        if (isset(stock::find($input['value'])->Asset_No)) {
+        if (isset(stock::query()->find($input['value'])->Asset_No)) {
             return 1;
         }
         $item = DB::table('stocks')
@@ -137,7 +137,7 @@ class dependencycontroller extends Controller
                 function ($join) {
                     $join->on('stocks.Item', '=', 'k.ItemCode');
                 })
-            ->where('stocks.Item', stock::find($input['value'])->Item)
+            ->where('stocks.Item', stock::query()->find($input['value'])->Item)
             ->groupby('stocks.Item')
             ->get();
 
@@ -180,7 +180,7 @@ class dependencycontroller extends Controller
             ]);
         }
 
-        $item_code = stock::find($input['value2'])->Item;
+        $item_code = stock::query()->find($input['value2'])->Item;
 
 //        DB::insert('insert into reqested_item_lists (Request_Id,Event_ID,ItemCode,Stock_ID,Quantity,Qty,CUID,UUID,created_at,updated_at) values(?,?,?,?,?,?,?,?,now(),now())', [$input['value'], $input['value1'], $item_code, $input['value2'], $input['value3'], $input['value3'], $input['value4'], $input['value5']]);
         debug('Event_ID: ' . $input['value1'] . ' Stock_ID: ' . $input['value2']);

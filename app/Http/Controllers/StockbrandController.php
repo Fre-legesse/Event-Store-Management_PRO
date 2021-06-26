@@ -68,7 +68,7 @@ class StockbrandController extends Controller
             'Company' => $loc,
             'Department' => $dep,
         ]);
-        Stock_brand::create(
+        Stock_brand::query()->create(
             [
                 'Type' => $request->Type,
                 'Brand' => $request->Brand,
@@ -105,7 +105,7 @@ class StockbrandController extends Controller
         //
         $category = Stock_category::all();
 //return view('profile_update',compact('profile_data','country_data'));
-        $Item = Stock_brand::find($id);
+        $Item = Stock_brand::query()->find($id);
         return view('Item.categorybrandedit', compact('Item', 'category'));
     }
 
@@ -125,7 +125,7 @@ class StockbrandController extends Controller
 
         ]);
 
-        $update = Stock_brand::find($id);
+        $update = Stock_brand::query()->find($id);
         //dd($request->all());
         $update->update(['Brand' => $request->Brand]);
         $update->update(['Type' => $request->Type]);
@@ -144,7 +144,7 @@ class StockbrandController extends Controller
     public function destroy($id)
     {
         //
-        $category = Stock_brand::find($id);
+        $category = Stock_brand::query()->find($id);
         $category->delete();
         return redirect('/Brand')->with('message', 'Fabric Material Removed');
     }

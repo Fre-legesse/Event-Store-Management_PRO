@@ -13,7 +13,7 @@ class CreateStockStockRoomsTable extends Migration
      */
     public function up()
     {
-        Schema::create('stock_stock_rooms', function (Blueprint $table) {
+        Schema::query()->create('stock_stock_rooms', function (Blueprint $table) {
             $table->integer('SRID', true);
             $table->string('Company', 50);
             $table->string('Department', 50);
@@ -24,7 +24,7 @@ class CreateStockStockRoomsTable extends Migration
             $table->text('Description')->nullable();
             $table->string('ShortName', 50);
             $table->integer('CUID');
-            
+
             $table->integer('UUID');
            $table->timestamps();
         });

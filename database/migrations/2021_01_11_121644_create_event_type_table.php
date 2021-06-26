@@ -13,7 +13,7 @@ class CreateEventTypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('event_types', function (Blueprint $table) {
+        Schema::query()->create('event_types', function (Blueprint $table) {
             $table->integer('ETID', true);
             $table->string('Type_Name', 50)->unique('Type_Name');
             $table->string('Company');

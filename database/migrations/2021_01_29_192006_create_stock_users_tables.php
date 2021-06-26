@@ -13,14 +13,14 @@ class CreateStockUsersTables extends Migration
      */
     public function up()
     {
-        Schema::create('stock_users', function (Blueprint $table) {
+        Schema::query()->create('stock_users', function (Blueprint $table) {
            $table->integer('ID', true);
             $table->string('Stock_ID');
             $table->string('User_ID');
             $table->string('CUID');
-         
-          
-            
+
+
+
             $table->integer('UUID');
             $table->timestamps();
         });

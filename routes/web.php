@@ -99,7 +99,7 @@ Route::get('/event/approve', [EventControllerAlias::class, 'display_approval'])-
 
 //Restock
 Route::get('/restock', [RestockController::class, 'index'])->middleware('auth')->name('restock');
-Route::get('/restock/{id}', [RestockController::class, 'show'])->middleware('auth')->name('detail_restock_item');
+Route::get('/restock/{event_id}', [RestockController::class, 'show'])->middleware('auth')->name('detail_restock_item');
 
 
 //POST
@@ -109,7 +109,7 @@ Route::post('/event/approve/{id}', [EventControllerAlias::class, 'approve'])->mi
 Route::post('/event/publish/{item_request_id}', [EventControllerAlias::class, 'publish'])->middleware('auth')->name('publish_item_request_post');
 
 //Restock
-Route::post('/restock/{id}', [RestockController::class, 'update'])->middleware('auth')->name('restock_post');
+Route::post('/restock/{event_id}', [RestockController::class, 'update'])->middleware('auth')->name('restock_post');
 
 //Item
 Route::post('/item/delete/{item_id}', [StockitemController::class, 'delete'])->middleware('auth')->name('delete_item_post');

@@ -13,19 +13,19 @@ class CreateReqestedItemListsTables extends Migration
      */
     public function up()
     {
-        Schema::create('reqested_item_lists', function (Blueprint $table) {
+        Schema::query()->create('reqested_item_lists', function (Blueprint $table) {
             $table->integer('RILID', true);
             $table->string('Request_ID');
             $table->string('Event_ID');
             $table->string('ItemCode');
             $table->string('Quantity');
             $table->integer('Approval1Quantity');
-            $table->integer('Approval2Quantity');   
+            $table->integer('Approval2Quantity');
             $table->integer('IssuedQuantity');
             $table->integer('Issued');
             $table->integer('Item_Remaining');
             $table->integer('CUID');
-            
+
             $table->integer('UUID');
             $table->timestamps();
         });

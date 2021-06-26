@@ -13,7 +13,7 @@ class CreateApproverWorkflowsTables extends Migration
      */
     public function up()
     {
-        Schema::create('approver_workflows', function (Blueprint $table) {
+        Schema::query()->create('approver_workflows', function (Blueprint $table) {
            $table->integer('ID', true);
             $table->string('Item_Id');
             $table->string('Item_Name');

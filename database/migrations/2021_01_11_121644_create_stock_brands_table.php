@@ -13,14 +13,14 @@ class CreateStockBrandsTable extends Migration
      */
     public function up()
     {
-        Schema::create('stock_brands', function (Blueprint $table) {
+        Schema::query()->create('stock_brands', function (Blueprint $table) {
             $table->integer('SBID', true);
             $table->string('Type');
             $table->string('Brand');
             $table->string('Company');
             $table->string('Department');
             $table->integer('CUID');
-            
+
             $table->integer('UUID');
             $table->timestamps();
         });

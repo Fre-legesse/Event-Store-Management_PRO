@@ -10,7 +10,7 @@
                     <tr>
                         <th scope="col">Event</th>
                         <th scope="col">Requester</th>
-                        <th scope="col">Responsible</th>
+                        <th scope="col">Responsible (BGI)</th>
                         <th scope="col">Return Date</th>
                         <th scope="col">Phone Number</th>
                         <th scope="col">Remaining Days</th>
@@ -23,15 +23,15 @@
                             <tr>
                                 <td>{{$item->Event_Name}}</td>
                                 <td>{{$item->Requester}}</td>
-                                <td>{{$item->Responsible_person}}</td>
+                                <td>{{$item->Responsible_person_BGI}}</td>
                                 <td>{{$item->Return_date}}</td>
                                 <td>{{$item->Phone_Number}}</td>
-                                <td>{{date_diff(now(),date_create_from_format('Y-m-d',\App\Models\item_request::find($item->Request_ID)->Return_date))->format('%a')}} days
+                                <td>{{date_diff(now(),date_create_from_format('Y-m-d',\App\Models\item_request::query()->find($item->Request_ID)->Return_date))->format('%a')}} days
                                 </td>
                                 <td>
                                     <div class="row">
                                         <a  type="button"
-                                           href="/restock/{{ $item->RILID }}"
+                                           href="/restock/{{ $item->EVID }}"
                                            class="btn btn-info btn-md">Detail</a>
                                     </div>
                                 </td>

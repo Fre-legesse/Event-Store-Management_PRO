@@ -13,14 +13,14 @@ class CreateStockManufacturersTable extends Migration
      */
     public function up()
     {
-        Schema::create('stock_manufacturers', function (Blueprint $table) {
+        Schema::query()->create('stock_manufacturers', function (Blueprint $table) {
             $table->integer('SMID', true);
             $table->string('Type');
             $table->string('Manufacturer');
             $table->string('Company');
             $table->string('Department');
             $table->integer('CUID');
-            
+
             $table->integer('UUID');
             $table->timestamps();
         });

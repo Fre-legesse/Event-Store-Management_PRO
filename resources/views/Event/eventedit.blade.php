@@ -110,19 +110,37 @@
                         </div>
                         <div class="form-group row">
                             <label for="lname" class="col-sm-3 text-right control-label col-form-label">Responsible
-                                Person</label>
+                                Person (BGI)</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" id="email1" name="Responsible_Person"
-                                       style="width: 450px;" value="{{ $ItemRequest->Responsible_person }}" disabled>
+                                <input type="text" class="form-control" id="email1" name="Responsible_Person_BGI"
+                                       style="width: 450px;" value="{{ $ItemRequest->Responsible_person_BGI }}" disabled>
 
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="lname" class="col-sm-3 text-right control-label col-form-label">Phone
-                                Number</label>
+                                Number (BGI)</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" id="email1" name="Phone_Number"
-                                       style="width: 450px;" value="{{ $ItemRequest->Phone_Number }}" disabled>
+                                <input type="text" class="form-control" id="email1" name="Phone_Number_BGI"
+                                       style="width: 450px;" value="{{ $ItemRequest->Phone_Number_BGI }}" disabled>
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Responsible
+                                Person (Client)</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="email1" name="Responsible_Person_Client"
+                                       style="width: 450px;" value="{{ $ItemRequest->Responsible_person_Client }}" disabled>
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Phone
+                                Number (Client)</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="email1" name="Phone_Number_Client"
+                                       style="width: 450px;" value="{{ $ItemRequest->Phone_Number_Client }}" disabled>
 
                             </div>
                         </div>
@@ -202,14 +220,14 @@
                 @foreach($requested_items as $requested_item)
                     <div class="form-group row">
                         <label for="email1"
-                               class="col-sm-3 text-right control-label col-form-label">{{ \App\Models\Stock_item::find($requested_item->ItemCode)->Item_Code }}</label>
+                               class="col-sm-3 text-right control-label col-form-label">{{ \App\Models\Stock_item::query()->find($requested_item->ItemCode)->Item_Code }}</label>
                         <div class="col-sm-4">
                             @role('Approver_One')
                             <div class="col-sm-8 col-lg-9">
                                 <input type="number" class="form-control"
                                        name="first_approver_quantity_array[][{{$requested_item->Stock_ID}}]"
                                        min="0"
-                                       max="{{ $requested_item->Approval1Quantity??\App\Models\stock::find($requested_item->Stock_ID)->Quantity}}"
+                                       max="{{ $requested_item->Approval1Quantity??\App\Models\stock::query()->find($requested_item->Stock_ID)->Quantity}}"
                                        value="{{ $requested_item->Quantity}}"
                                        placeholder="Requested Quantity: {{ $requested_item->Quantity}}" required>
                             </div>
@@ -220,7 +238,7 @@
                                 <input type="number" class="form-control" id="second_approver_quantity"
                                        name="second_approver_quantity_array[][{{$requested_item->Stock_ID}}]"
                                        min="0"
-                                       max="{{ $requested_item->Approval1Quantity??\App\Models\stock::find($requested_item->Stock_ID)->Quantity}}"
+                                       max="{{ $requested_item->Approval1Quantity??\App\Models\stock::query()->find($requested_item->Stock_ID)->Quantity}}"
                                        value="{{ $requested_item->Approval1Quantity}}"
                                        placeholder="First Approved : {{ $requested_item->Approval1Quantity  ?? "Haven't Approved Yet"}}"
                                        required>

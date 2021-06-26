@@ -110,21 +110,37 @@
                         </div>
                         <div class="form-group row">
                             <label for="lname" class="col-sm-3 text-right control-label col-form-label">Responsible
-                                Person</label>
+                                Person (BGI)</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" id="email1" name="Responsible_Person"
-                                       style="width: 450px;background-color: white;"
-                                       value="{{ $ItemRequest->Responsible_person }}" disabled>
+                                <input type="text" class="form-control" id="email1" name="Responsible_Person_BGI"
+                                       style="width: 450px;" value="{{ $ItemRequest->Responsible_person_BGI }}" disabled>
 
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="lname" class="col-sm-3 text-right control-label col-form-label">Phone
-                                Number</label>
+                                Number (BGI)</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" id="email1" name="Phone_Number"
-                                       style="width: 450px;background-color: white;"
-                                       value="{{ $ItemRequest->Phone_Number }}" disabled>
+                                <input type="text" class="form-control" id="email1" name="Phone_Number_BGI"
+                                       style="width: 450px;" value="{{ $ItemRequest->Phone_Number_BGI }}" disabled>
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Responsible
+                                Person (Client)</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="email1" name="Responsible_Person_Client"
+                                       style="width: 450px;" value="{{ $ItemRequest->Responsible_person_Client }}" disabled>
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Phone
+                                Number (Client)</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="email1" name="Phone_Number_Client"
+                                       style="width: 450px;" value="{{ $ItemRequest->Phone_Number_Client }}" disabled>
 
                             </div>
                         </div>
@@ -153,7 +169,7 @@
                 @foreach($requested_items as $requested_item)
                     <div class="form-group row">
                         <label for="issued_quantity"
-                               class="col-sm-3 text-right control-label col-form-label">{{ \App\Models\Stock_item::find($requested_item->ItemCode)->Item_Code }}</label>
+                               class="col-sm-3 text-right control-label col-form-label">{{ \App\Models\Stock_item::query()->find($requested_item->ItemCode)->Item_Code }}</label>
                         <div class="col-sm-4">
                             <div class="col-sm-8 col-lg-9">
                                 <input type="text" class="form-control"

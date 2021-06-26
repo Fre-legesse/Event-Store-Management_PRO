@@ -13,13 +13,13 @@ class CreateStockCategorysTable extends Migration
      */
     public function up()
     {
-        Schema::create('stock_categorys', function (Blueprint $table) {
+        Schema::query()->create('stock_categorys', function (Blueprint $table) {
             $table->integer('STID', true);
             $table->string('Company', 50);
             $table->string('Department', 50);
             $table->string('Type');
             $table->integer('CUID');
-            
+
             $table->integer('UUID');
             $table->timestamps();
         });

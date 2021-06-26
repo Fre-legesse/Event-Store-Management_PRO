@@ -13,7 +13,7 @@ class CreatereturnabledatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('returnabledates', function (Blueprint $table) {
+        Schema::query()->create('returnabledates', function (Blueprint $table) {
            $table->integer('ID', true);
             $table->integer('retrun_date');
             $table->integer('Status');

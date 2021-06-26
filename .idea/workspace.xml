@@ -22,14 +22,54 @@
     <list default="true" id="cbfe88f1-96b0-46e1-961f-1a43d4b3fd8f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/dependencycontroller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/dependencycontroller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EventController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Eventtypecontroller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Eventtypecontroller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Jobs.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Jobs.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ReceivedController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ReceivedController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RestockController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RestockController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StockbrandController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StockbrandController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StockcategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StockcategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StockcolorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StockcolorController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StockfabricController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StockfabricController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StockitemController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StockitemController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StockmanufacturerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StockmanufacturerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Stockroomcontroller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Stockroomcontroller.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/stockController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/stockController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/withdrawal.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/withdrawal.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/2021_03_03_000000_create_stock_users_tables.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/2021_03_03_000000_create_stock_users_tables.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_returnabledates_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_returnabledates_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_19_000000_create_failed_jobs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_08_19_000000_create_failed_jobs_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_11_121644_create_event_type_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_11_121644_create_event_type_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_11_121644_create_stock_brands_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_11_121644_create_stock_brands_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_11_121644_create_stock_categorys_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_11_121644_create_stock_categorys_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_11_121644_create_stock_colors_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_11_121644_create_stock_colors_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_11_121644_create_stock_fabrics_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_11_121644_create_stock_fabrics_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_11_121644_create_stock_manufacturers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_11_121644_create_stock_manufacturers_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_11_121644_create_stock_movements_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_11_121644_create_stock_movements_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_11_121644_create_stock_stock_rooms_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_11_121644_create_stock_stock_rooms_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_11_121644_create_stocks_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_11_121644_create_stocks_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_12_120955_create_stock_items_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_12_120955_create_stock_items_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_28_192006_create_permission_tables.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_28_192006_create_permission_tables.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_29_192006_create_Events_tables.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_29_192006_create_Events_tables.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_29_192006_create_Item_requests_tables.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_29_192006_create_Item_requests_tables.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_29_192006_create_approver_workflows_tables.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_29_192006_create_approver_workflows_tables.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_29_192006_create_reqested_item_lists_tables.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_29_192006_create_reqested_item_lists_tables.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_29_192006_create_stock_users_tables.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_29_192006_create_stock_users_tables.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_06_15_075034_create_permission_tables.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_06_15_075034_create_permission_tables.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Event/eventedit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Event/eventedit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Event/eventitemadd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Event/eventitemadd.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/vendor/backpack/base/widgets/inc/wrapper_start.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/backpack/base/widgets/inc/wrapper_start.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Movement/ItemRequest.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Movement/ItemRequest.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Restock/restock.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Restock/restock.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Restock/show_restock.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Restock/show_restock.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Transaction/Issuesedit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Transaction/Issuesedit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Transaction/Receivededit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Transaction/Receivededit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home2.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home2.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -209,7 +249,6 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="ignore.virus.scanning.warn.message" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/public/images" />
@@ -258,7 +297,7 @@
       <workItem from="1624599141534" duration="357000" />
       <workItem from="1624599521661" duration="53000" />
       <workItem from="1624599602170" duration="10341000" />
-      <workItem from="1624689269623" duration="15818000" />
+      <workItem from="1624689269623" duration="25441000" />
     </task>
     <servers />
   </component>
@@ -289,10 +328,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1624597563448" />
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1624514936878">
+    <state x="709" y="356" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1624706033990">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1624514936878" />
+    <state x="709" y="356" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1624706033990" />
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1624713108370">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1624713108370" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1623915595753">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -321,17 +364,17 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1624599460797" />
-    <state x="224" y="53" width="1388" height="899" key="find.popup" timestamp="1624705237045">
+    <state x="23" y="96" width="1878" height="938" key="find.popup" timestamp="1624710390027">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="224" y="53" width="1388" height="899" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1624705237045" />
+    <state x="23" y="96" width="1878" height="938" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1624710390027" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1624540147199">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1624540147199" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1624697052211">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1624710372008">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1624697052211" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1624710372008" />
   </component>
 </project>

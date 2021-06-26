@@ -68,7 +68,7 @@ class StockfabricController extends Controller
             'Company' => $loc,
             'Department' => $dep,
         ]);
-        Stock_fabric::create($request->all());
+        Stock_fabric::query()->create($request->all());
         //dd($request->all());
         return redirect()->back()->with('message', 'Created Successfully');
 
@@ -96,7 +96,7 @@ class StockfabricController extends Controller
         //
         $category = Stock_category::all();
 //return view('profile_update',compact('profile_data','country_data'));
-        $Item = Stock_fabric::find($id);
+        $Item = Stock_fabric::query()->find($id);
         return view('Item.categoryfabricedit', compact('Item', 'category'));
     }
 
@@ -116,7 +116,7 @@ class StockfabricController extends Controller
 
         ]);
 
-        $update = Stock_fabric::find($id);
+        $update = Stock_fabric::query()->find($id);
         //dd($request->all());
         $update->update(['Fabric' => $request->Fabric]);
         $update->update(['Type' => $request->Type]);
@@ -135,7 +135,7 @@ class StockfabricController extends Controller
     public function destroy($id)
     {
         //
-        $category = Stock_fabric::find($id);
+        $category = Stock_fabric::query()->find($id);
         $category->delete();
         return redirect('/Fabric')->with('message', 'Fabric Material Removed');
     }

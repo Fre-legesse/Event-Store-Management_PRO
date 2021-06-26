@@ -13,7 +13,7 @@ class CreateStockMovementsTable extends Migration
      */
     public function up()
     {
-        Schema::create('stock_movements', function (Blueprint $table) {
+        Schema::query()->create('stock_movements', function (Blueprint $table) {
             $table->integer('SMID', true);
             $table->string('Company');
             $table->string('Department');
@@ -30,7 +30,7 @@ class CreateStockMovementsTable extends Migration
             $table->date('Purchase_Date')->nullable();
             $table->text('Remark')->nullable();
             $table->integer('CUID');
-            
+
             $table->integer('UUID');
             $table->timestamps();
         });

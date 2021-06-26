@@ -13,7 +13,7 @@ class CreateStocksTable extends Migration
      */
     public function up()
     {
-        Schema::create('stocks', function (Blueprint $table) {
+        Schema::query()->create('stocks', function (Blueprint $table) {
             $table->integer('SID', true);
             $table->string('Company');
             $table->string('Department');
@@ -24,7 +24,7 @@ class CreateStocksTable extends Migration
             $table->float('MIN', 10, 0)->nullable();
             $table->float('Reorder_Point', 10, 0)->nullable();
             $table->integer('CUID');
-            
+
             $table->integer('UUID');
             $table->timestamps();
         });

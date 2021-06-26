@@ -20,7 +20,7 @@ class StockcolorController extends Controller
     {
         $this->middleware('auth');
     }
-   
+
 
     public function index()
     {
@@ -56,15 +56,15 @@ class StockcolorController extends Controller
          $request->validate([
         'Color' => 'required',
         'Type' => 'required',
-        ]); 
+        ]);
           $loc=Auth::user()->Location;
         $dep=Auth::user()->Department;
        $request->merge([
          'Company' => $loc,
         'Department' => $dep,
-        ]); 
-       
-       Stock_color::create($request->all());
+        ]);
+
+       Stock_color::query()->create($request->all());
           //dd($request->all());
        return redirect()->back()->with('message','Created Successfully');
 
@@ -91,8 +91,8 @@ class StockcolorController extends Controller
     {
         //
         $category=Stock_category::all();
-//return view('profile_update',compact('profile_data','country_data'));   
-    $Item=Stock_color::find($id);
+//return view('profile_update',compact('profile_data','country_data'));
+    $Item=Stock_color::query()->find($id);
     return view('Item.categorycoloredit',compact('Item','category'));
     }
 
@@ -109,16 +109,16 @@ class StockcolorController extends Controller
          $request->validate([
         'Color' => 'required',
         'Type' => 'required',
-        
-        ]); 
-       
-       $update=Stock_color::find($id);
+
+        ]);
+
+       $update=Stock_color::query()->find($id);
           //dd($request->all());
        $update->update(['Color' => $request->Color]);
        $update->update(['Type' => $request->Type]);
-      
+
        $update->update(['UUID' => $request->UUID]);
-       
+
        return redirect('/Color')->with('message','Update Successfully');
     }
 
@@ -131,7 +131,7 @@ class StockcolorController extends Controller
     public function destroy($id)
     {
         //
-         $category= Stock_color::find($id);
+         $category= Stock_color::query()->find($id);
         $category->delete();
         return redirect('/Color')->with('message','Color Removed');
     }

@@ -77,7 +77,7 @@ class Stockroomcontroller extends Controller
             'ShortName' => $Short_Name,
         ]);
 
-        Stock_stock_room::create($request->all());
+        Stock_stock_room::query()->create($request->all());
         //dd($request->all());
         return redirect()->back()->with('message', 'Created Successfully');
 
@@ -105,7 +105,7 @@ class Stockroomcontroller extends Controller
         //
         // $category=Stock_stock_room::all();
 //return view('profile_update',compact('profile_data','country_data'));
-        $Item = Stock_stock_room::find($id);
+        $Item = Stock_stock_room::query()->find($id);
         return view('stock.stockroomedit', compact('Item'));
     }
 
@@ -133,7 +133,7 @@ class Stockroomcontroller extends Controller
             'Department' => $dep,
             'ShortName' => $Short_Name,
         ]);
-        $update = Stock_stock_room::find($id);
+        $update = Stock_stock_room::query()->find($id);
         //dd($request->all());
         $update->update(['Site' => $request->Site]);
         $update->update(['Branch' => $request->Branch]);
@@ -154,7 +154,7 @@ class Stockroomcontroller extends Controller
     public function destroy($id)
     {
         //
-        $category = Stock_stock_room::find($id);
+        $category = Stock_stock_room::query()->find($id);
         $category->delete();
         return redirect('/StockRoom')->with('message', 'Color Removed');
     }

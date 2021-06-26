@@ -56,7 +56,7 @@ class StockcategoryController extends Controller
             'Company' => $loc,
             'Department' => $dep,
         ]);
-        Stock_category::create($request->all());
+        Stock_category::query()->create($request->all());
 
         return redirect()->back()->with('message', 'Created Successfully');
 
@@ -85,7 +85,7 @@ class StockcategoryController extends Controller
 //$profile_data= DB::table('Stock_category')->select('*')->where('id',$user_id)->first();
         $category = Stock_category::all();
 //return view('profile_update',compact('profile_data','country_data'));
-        $Item = Stock_category::find($id);
+        $Item = Stock_category::query()->find($id);
         return view('Item.categoryedit', compact('Item', 'category'));
     }
 
@@ -105,7 +105,7 @@ class StockcategoryController extends Controller
             'Type' => 'required|max:255',
         ]);
 
-        $update = Stock_category::find($id);
+        $update = Stock_category::query()->find($id);
         //dd($request->all());
         $update->update(['Company' => $request->Company]);
         $update->update(['Department' => $request->Department]);
@@ -123,7 +123,7 @@ class StockcategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Stock_category::find($id);
+        $category = Stock_category::query()->find($id);
         $category->delete();
         return redirect('/Category')->with('message', 'Category Removed');
     }

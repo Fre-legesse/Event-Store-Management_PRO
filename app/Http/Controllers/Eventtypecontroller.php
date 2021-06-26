@@ -65,7 +65,7 @@ class Eventtypecontroller extends Controller
             'Company' => $loc,
             'Department' => $dep,
         ]);
-        Event_Type::create($request->all());
+        Event_Type::query()->create($request->all());
         //dd($request->all());
         return redirect()->back()->with('message', 'Created Successfully');
 
@@ -92,7 +92,7 @@ class Eventtypecontroller extends Controller
     {
         //
 
-        $Item = Event_Type::find($id);
+        $Item = Event_Type::query()->find($id);
         return view('Event.eventtypeedit')->with('event', $Item);
     }
 
@@ -111,7 +111,7 @@ class Eventtypecontroller extends Controller
 
         ]);
 
-        $update = Event_Type::find($id);
+        $update = Event_Type::query()->find($id);
         //dd($request->all());
         $update->update(['Type_Name' => $request->Type_Name]);
 
@@ -129,7 +129,7 @@ class Eventtypecontroller extends Controller
     public function destroy($id)
     {
         //
-        $category = Event_Type::find($id);
+        $category = Event_Type::query()->find($id);
         $category->delete();
         return redirect('/Eventtype')->with('message', 'Removed');
     }

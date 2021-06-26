@@ -85,15 +85,15 @@ class withdrawal extends Controller
                                 'IssuedQuantity' => $issued_quantity[$stock_id],
                             ]);
 
-                        stock::find($stock_id)
+                        stock::query()->find($stock_id)
                             ->decrement(
                                 'Quantity', $issued_quantity[$stock_id],
                             );
 
-                        StockMovement::create([
+                        StockMovement::query()->create([
                             'Company' => Auth::user()->Location,
                             'Department' => Auth::user()->Department,
-                            'Stock_Room' => stock::find($stock_id)->Stock_Room,
+                            'Stock_Room' => stock::query()->find($stock_id)->Stock_Room,
                             'Item' => $stock_id,
                             'Transaction' => 'Withdrawal',
                             'Transaction_Type' => 0,
@@ -227,7 +227,7 @@ class withdrawal extends Controller
     {
         $data = Event_Type::all();
         $item = DB::table('stocks')->select('Item', \DB::raw('SUM(Quantity) AS Quantity'))->groupby('Item')->get();
-        $Event = Event::find($id);
+        $Event = Event::query()->find($id);
         $requested_list = DB::table('reqested_item_lists')->where('Event_ID', '=', $id)->where('Issued', '=', null)->get();
         $idd = $Event->EVID;
         $itemrequest = DB::table('item_requests')->where('Event_id', '=', $idd)->get();

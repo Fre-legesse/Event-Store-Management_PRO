@@ -166,7 +166,7 @@
                             <label for="lname" class="col-sm-3 text-right control-label col-form-label">Responsible
                                 Person (Client)</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" id="email1" name="Responsible_Person"
+                                <input type="text" class="form-control" id="email1" name="Responsible_Person_Client"
                                        style="width: 450px;background-color: white;"
                                        value="{{ $ItemRequest->Responsible_person_Client }}" disabled>
 

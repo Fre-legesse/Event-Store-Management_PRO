@@ -13,7 +13,7 @@ class CreateEventsTables extends Migration
      */
     public function up()
     {
-        Schema::create('events', function (Blueprint $table) {
+        Schema::query()->create('events', function (Blueprint $table) {
             $table->integer('EVID', true);
             $table->string('Company');
             $table->string('Department');
@@ -24,7 +24,7 @@ class CreateEventsTables extends Migration
             $table->text('Description')->nullable();
             $table->string('Event_Type');
             $table->integer('CUID');
-            
+
             $table->integer('UUID');
             $table->timestamps();
         });
