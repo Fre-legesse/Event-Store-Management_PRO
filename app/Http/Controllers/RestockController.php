@@ -69,7 +69,10 @@ class RestockController extends Controller
     public function show($event_id)
     {
         return response()->view('Restock.show_restock', [
-            'items' => requested_item_list::query()->where('Event_ID', '=', $event_id)->where('Request_ID', '=', item_request::query()->where('Event_id', $event_id)->first()->IRID)->get(),
+            'items' => requested_item_list::query()->where(function (Builder $query){
+                $query->where('Item_Remaining', '!=', 0)
+                    ->orWhere('Item_Remaining', '=', null);
+            })->where('Event_ID', '=', $event_id)->where('Request_ID', '=', item_request::query()->where('Event_id', $event_id)->first()->IRID)->get(),
             'event' => Event::query()->find($event_id),
             'item_request' => item_request::query()->where('Event_id', $event_id)->first(),
         ]);
@@ -95,43 +98,44 @@ class RestockController extends Controller
      */
     public function update(Request $request, $event_id)
     {
-        foreach ($request->returned_quantity as $key => $returned_quantity) {
-            foreach ($returned_quantity as $stock_id => $item_returned_quantity) {
-//                dd($request->file('item_image')[$key][$stock_id]);
-                $requested_item = requested_item_list::query()->where('Event_ID', '=', $event_id)->where('Stock_ID', '=', $stock_id)->first();
-                $item_remaining = $requested_item->Item_Remaining == null
-                    ? intval($requested_item->IssuedQuantity) - intval($item_returned_quantity)
-                    : (intval($requested_item->Item_Remaining) > 0 ? intval($requested_item->Item_Remaining) - intval($item_returned_quantity) : intval($requested_item->IssuedQuantity) - intval($item_returned_quantity));
-                $requested_item->update([
-                    'Item_Remaining' => $item_remaining,
-                    'Damage_Status' => $request->damage_status[$key][$stock_id],
-                    'Image_Name' => $request->file('item_image')[$key][$stock_id]->getClientOriginalName() . '.' . $request->file('item_image')[$key][$stock_id]->getClientOriginalExtension(),
-                    'File_Path' => $request->file('item_image')[$key][$stock_id]->getRealPath(),
-                ]);
+        if (isset($request->returned_quantity)) {
+            foreach ($request->returned_quantity as $key => $returned_quantity) {
+                foreach ($returned_quantity as $stock_id => $item_returned_quantity) {
+                    $requested_item = requested_item_list::query()->where('Event_ID', '=', $event_id)->where('Stock_ID', '=', $stock_id)->first();
+                    $item_remaining = $requested_item->Item_Remaining === null
+                        ? intval($requested_item->IssuedQuantity) - intval($item_returned_quantity)
+                        : intval($requested_item->Item_Remaining) - intval($item_returned_quantity);
+                    $requested_item->update([
+                        'Item_Remaining' => $item_remaining,
+                        'Damage_Status' => $request->damage_status[$key][$stock_id],
+                        'Image_Name' => $request->file('item_image')[$key][$stock_id]->getClientOriginalName() . '.' . $request->file('item_image')[$key][$stock_id]->getClientOriginalExtension(),
+                        'File_Path' => $request->file('item_image')[$key][$stock_id]->getRealPath(),
+                    ]);
 
-                stock::query()
-                    ->where('Item', $requested_item->ItemCode)
-                    ->first()
-                    ->increment(
-                        'Quantity', $item_returned_quantity,
-                    );
+                    stock::query()
+                        ->where('Item', $requested_item->ItemCode)
+                        ->first()
+                        ->increment(
+                            'Quantity', $item_returned_quantity,
+                        );
 
-                StockMovement::query()->create([
-                    'Company' => Auth::user()->Location,
-                    'Department' => Auth::user()->Department,
-                    'Stock_Room' => stock::query()->where('Item', $requested_item->ItemCode)->first()->SID,
-                    'Item' => $requested_item->ItemCode,
-                    'Transaction' => 'Restocking',
-                    'Transaction_Type' => 1,
-                    'Damage_Status' => $request->damage_status[$key][$stock_id],
-                    'Path_Image' => $request->file('item_image')[$key][$stock_id]->getRealPath(),
-                    'Quantity' => $item_returned_quantity,
-                    'Date_MVT' => now()->format('Y-m-d'),
-                    'Event' => $event_id,
-                    'CUID' => Auth::id(),
-                    'UUID' => Auth::id(),
-                ]);
+                    StockMovement::query()->create([
+                        'Company' => Auth::user()->Location,
+                        'Department' => Auth::user()->Department,
+                        'Stock_Room' => stock::query()->where('Item', $requested_item->ItemCode)->first()->SID,
+                        'Item' => $requested_item->ItemCode,
+                        'Transaction' => 'Restocking',
+                        'Transaction_Type' => 1,
+                        'Damage_Status' => $request->damage_status[$key][$stock_id],
+                        'Path_Image' => $request->file('item_image')[$key][$stock_id]->getRealPath(),
+                        'Quantity' => $item_returned_quantity,
+                        'Date_MVT' => now()->format('Y-m-d'),
+                        'Event' => $event_id,
+                        'CUID' => Auth::id(),
+                        'UUID' => Auth::id(),
+                    ]);
 
+                }
             }
         }
 

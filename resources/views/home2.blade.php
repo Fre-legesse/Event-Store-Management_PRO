@@ -74,7 +74,7 @@
                     </div>
                     <div class="col-md-6 border-left text-center pt-5 pb-5">
                         <h3 class="mb-0" style="font-size: 70px">{{$pending_approval_count}}</h3>
-                        <span class="text-muted" style="font-size: 20px">Unretured Items Count</span>
+                        <span class="text-muted" style="font-size: 20px">Unretured Items</span>
                     </div>
                 </div>
             </div>

@@ -32,6 +32,10 @@
 
     <script src="{{asset('js/popper.min.js')}}"></script>
 
+{{--    Google Material Icons--}}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+
     <!-- Custom CSS -->
     <link href="{{asset('assets/libs/flot/css/float-chart.css')}}" rel="stylesheet">
     <link href="{{asset('dist/css/style.min.css')}}" rel="stylesheet">
