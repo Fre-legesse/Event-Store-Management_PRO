@@ -12,9 +12,9 @@
     <!-- Custom CSS -->
     <link href="../../dist/css/style.min.css" rel="stylesheet">
     <style type="text/css">
-        html { 
+        html {
 
-  background-color:#F5F5F5 ; 
+  background-color:#F5F5F5 ;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -46,7 +46,7 @@
             max-width: 820px;
             padding-left: 1.3rem;
             padding-right: 1rem;
-            
+
             margin:  auto;
             text-align: center;
         }
@@ -73,7 +73,7 @@
             top: 0;
             left: 0;
             background-color: white;
-            
+
 
             z-index: 1;
             opacity: 0.85;
@@ -123,14 +123,14 @@ margin-left: 40px;
     </style>
 </head>
 <body style="background: url(../assets/images/test8.jpg) no-repeat center center fixed; ">
- 
+
   <header class="v-header container">
-   
-   
+
+
     <div class="header-content2 col-md-10" >
-         
-           <!-- background: linear-gradient(to right, #FFCE00 0%, #cfecf8 67%); stroke: black; --> 
-          
+
+           <!-- background: linear-gradient(to right, #FFCE00 0%, #cfecf8 67%); stroke: black; -->
+
 <div class="card" style="background-color: #F5F5F5;">
     <h1 style="color: red;">BGI ETHIOPIA</h1>
                 <div class="card-body">
@@ -138,10 +138,10 @@ margin-left: 40px;
                         @csrf
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-6 col-form-label text-md-left">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-6 col-form-label text-md-left">{{ __('Username') }}</label>
 
                             <div class="col-md-12" >
-                                <input id="email"  type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus style="background-color: #FFF!important;">
+                                <input id="email"  type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required placeholder="E.g: john.doe" autofocus style="background-color: #FFF!important;">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -191,12 +191,12 @@ margin-left: 40px;
                             </div>
                         </div>
                     </form>
-                
+
        </div>
     </div>
     </div>
-  
-    
+
+
   </header>
 </body>
 </html>
