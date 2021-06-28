@@ -28,12 +28,14 @@
 
 {{--    Loading animation style--}}
     <link href="{{asset('css/loading_animation.css')}}" rel="stylesheet">
+    <link href="{{asset('css/chips.css')}}" rel="stylesheet">
 
     <script src="{{asset('js/popper.min.js')}}"></script>
 
     <!-- Custom CSS -->
     <link href="{{asset('assets/libs/flot/css/float-chart.css')}}" rel="stylesheet">
     <link href="{{asset('dist/css/style.min.css')}}" rel="stylesheet">
+
 
     {{--    Bootstrap CDN --}}
 {{--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"--}}
@@ -364,9 +366,9 @@
                             <li class="sidebar-item"><a href="{{url('/Eventtype')}}" class="sidebar-link"><i
                                         class="fas fa-hand-point-right"></i><span class="hide-menu"> Event Type </span></a>
                             </li>
-                            <li class="sidebar-item"><a href="" class="sidebar-link"><i
+                            <li class="sidebar-item"><a href="{{route('super_admin_role')}}" class="sidebar-link"><i
                                         class="fas fa-hand-point-right"></i><span
-                                        class="hide-menu"> Approval workflow </span></a></li>
+                                        class="hide-menu"> Role Management </span></a></li>
                         </ul>
                     </li>
                     @endrole

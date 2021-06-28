@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EventController as EventControllerAlias;
 use App\Http\Controllers\RestockController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\StockitemController;
 use Illuminate\Support\Facades\App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
@@ -101,6 +102,9 @@ Route::get('/event/approve', [EventControllerAlias::class, 'display_approval'])-
 Route::get('/restock', [RestockController::class, 'index'])->middleware('auth')->name('restock');
 Route::get('/restock/{event_id}', [RestockController::class, 'show'])->middleware('auth')->name('detail_restock_item');
 
+//Role
+Route::get('/super_admin/role',[RoleController::class,'index'])->middleware('auth')->name('super_admin_role');
+Route::get('/edit/role/{user_id}',[RoleController::class,'edit'])->middleware('auth')->name('edit_user_role');
 
 //POST
 

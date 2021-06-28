@@ -64,14 +64,6 @@
 
     <!-- Start Row 2 -->
     <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Products</h5>
-                    <div class="pie" style="height: 450px;"></div>
-                </div>
-            </div>
-        </div>
         <div class="col-md-3" onclick="location.href='/event/approve'">
             <div class="card mt-0">
                 <div class="row">
@@ -99,6 +91,14 @@
                         <h3 class="mb-0" style="font-size: 70px">{{$this_week_returnables}}</h3>
                         <span class="text-muted" style="font-size: 20px">This Week Returnables</span>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Products</h5>
+                    <div class="pie" style="height: 450px;"></div>
                 </div>
             </div>
         </div>
