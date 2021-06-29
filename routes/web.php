@@ -92,8 +92,9 @@ Route::post('ajaxRequest3', [App\Http\Controllers\Admin\dependencycontroller::cl
 Route::post('ajaxRequest4', [App\Http\Controllers\Admin\dependencycontroller::class, 'Fabric4'])->name('ajaxRequest4.Fabric4');
 Route::post('ajaxRequest5', [App\Http\Controllers\Admin\dependencycontroller::class, 'additemstore'])->name('ajaxRequest5.Fabric5');
 
-
+//
 //GET
+//
 
 //Event
 Route::get('/event/approve', [EventControllerAlias::class, 'display_approval'])->middleware('auth')->name('approve_event');
@@ -106,7 +107,9 @@ Route::get('/restock/{event_id}', [RestockController::class, 'show'])->middlewar
 Route::get('/super_admin/role',[RoleController::class,'index'])->middleware('auth')->name('super_admin_role');
 Route::get('/edit/role/{user_id}',[RoleController::class,'edit'])->middleware('auth')->name('edit_user_role');
 
+//
 //POST
+//
 
 //Event
 Route::post('/event/approve/{id}', [EventControllerAlias::class, 'approve'])->middleware('auth')->name('approve_event_post');
@@ -118,7 +121,13 @@ Route::post('/restock/{event_id}', [RestockController::class, 'update'])->middle
 //Item
 Route::post('/item/delete/{item_id}', [StockitemController::class, 'delete'])->middleware('auth')->name('delete_item_post');
 
+//Role
+Route::post('/edit/role/{user_id}',[RoleController::class,'update'])->middleware('auth')->name('edit_role_post');
 
+
+//
 //Ajax
+//
+
 Route::post('/item/delete', [StockitemController::class, 'destroy'])->middleware('auth')->name('delete_stock_item_ajax');
 Route::post('/item/add/event',[EventControllerAlias::class,'add_item_to_event'])->middleware('auth')->name('add_item_event_ajax');
