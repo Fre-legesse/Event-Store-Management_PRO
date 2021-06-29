@@ -20,7 +20,7 @@ return [
     'login'                  => 'Login',
     'register'               => 'Register',
     'name'                   => 'Name',
-    'email_address'          => 'E-mail address',
+    'email_address'          => 'Username',
     'password'               => 'Password',
     'old_password'           => 'Old password',
     'new_password'           => 'New password',

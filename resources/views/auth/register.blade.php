@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -43,14 +43,14 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Location') }}</label>
 
                             <div class="col-md-6">
-                                
+
                                 <select id="Location" class="select2 form-control custom-select @error('Location') is-invalid @enderror" name="Location" required>
                                       <option value="">Select</option>
                                             <option value="B">BGI</option>
                                                 <option value="R">Raya</option>
                                                 <option value="Z">Zebidar</option>
-                                                
-                                    
+
+
                                 </select>
                                 @error('Location')
                                     <span class="invalid-feedback" role="alert">
@@ -64,7 +64,7 @@
                             <label for="Department" class="col-md-4 col-form-label text-md-right">{{ __('Department') }}</label>
 
                             <div class="col-md-6">
-                                
+
                                 <select id="Department" class="select2 form-control custom-select @error('Department') is-invalid @enderror" name="Department" required>
                                        <option value="">Select</option>
                                             <option value="GM">General Management</option>
@@ -79,7 +79,7 @@
                                                 <option value="IN">Industry</option>
                                                 <option value="ME">Method</option>
                                                 <option value="IT">Information Technology</option>
-                                    
+
                                 </select>
                                 @error('Department')
                                     <span class="invalid-feedback" role="alert">

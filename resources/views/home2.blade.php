@@ -4,10 +4,10 @@
     <h4>Dashboard</h4>
     <!-- Start Row 1 -->
     <div class="row">
-        <div class="col-md-3" onclick="location.href='/Event'">
+        <div class="col-md-3">
             <div class="card mt-0">
                 <div class="row  justify-content-center">
-                    <div class="col-md-6 text-center pt-5 pb-5">
+                    <div class="col-md-6 text-center pt-5 pb-5"  onclick="location.href='/Event'">
                         <h3 class="mb-0" style="font-size: 70px">{{$total_events_count}}</h3>
                         <span class="text-muted" style="font-size: 20px">Total Events</span>
                     </div>
@@ -44,9 +44,9 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3" onclick="location.href='/event/approve'">
+        <div class="col-md-3" >
             <div class="card mt-0">
-                <div class="row">
+                <div class="row" onclick="location.href='/event/approve'">
                     <div class="col-md-6">
                         <div class="peity_line_good left text-center mt-3 pt-5 pb-5">
                             <img src="{{asset('images/check-mark-symbol-1.jpg')}}" width="100">
@@ -64,9 +64,9 @@
 
     <!-- Start Row 2 -->
     <div class="row">
-        <div class="col-md-3" onclick="location.href='/event/approve'">
+        <div class="col-md-3" >
             <div class="card mt-0">
-                <div class="row">
+                <div class="row" onclick="location.href='/event/approve'">
                     <div class="col-md-6">
                         <div class="peity_line_good left text-center mt-3 pt-5 pb-5">
                             <img src="{{asset('images/bell.png')}}" width="100">
@@ -79,9 +79,9 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3" onclick="location.href='/event/approve'">
+        <div class="col-md-3" >
             <div class="card mt-0">
-                <div class="row">
+                <div class="row" onclick="location.href='/event/approve'">
                     <div class="col-md-6">
                         <div class="peity_line_good left text-center mt-3 pt-5 pb-5">
                             <img src="{{asset('images/check-mark-symbol-1.jpg')}}" width="100">
