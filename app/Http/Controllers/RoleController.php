@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Spatie\Permission\Models\Role;
@@ -40,13 +41,15 @@ class RoleController extends Controller
      *
      * @param int $user_id
      * @param Request $request
-     * @return Response
+     * @return RedirectResponse
      */
     public function update(Request $request, int $user_id)
     {
-        dd($request->all());
-        foreach ($request->role_checkbox as $role) {
-            User::query()->find($user_id)->assignRole($role->name);
+        $sync_roles = [];
+        foreach ($request->role_checkbox as $role_name => $status) {
+            array_push($sync_roles,$role_name);
         }
+        User::query()->find($user_id)->syncRoles($sync_roles);
+        return redirect('/super_admin/role');
     }
 }
