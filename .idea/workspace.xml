@@ -20,8 +20,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cbfe88f1-96b0-46e1-961f-1a43d4b3fd8f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ApproverSettingController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mail/ApprovalRequested.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/ApproverSetting.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/approver_setting/approver_setting.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/testblog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/testblog.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RoleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RoleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/dependencycontroller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/dependencycontroller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EventController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/mail.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/mail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,6 +199,8 @@
       <path value="$PROJECT_DIR$/vendor/maximebf/debugbar" />
       <path value="$PROJECT_DIR$/vendor/directorytree/ldaprecord" />
       <path value="$PROJECT_DIR$/vendor/tightenco/collect" />
+      <path value="$PROJECT_DIR$/vendor/mtdowling/jmespath.php" />
+      <path value="$PROJECT_DIR$/vendor/aws/aws-sdk-php" />
     </include_path>
   </component>
   <component name="ProjectId" id="1s4RQCRycuBmSykU2jdarPRK6wX" />
@@ -209,6 +223,7 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2020.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -255,7 +270,7 @@
       <workItem from="1624689269623" duration="28274000" />
       <workItem from="1624768126480" duration="6398000" />
       <workItem from="1624856717636" duration="4051000" />
-      <workItem from="1624885296154" duration="10764000" />
+      <workItem from="1624885296154" duration="20651000" />
     </task>
     <servers />
   </component>
@@ -314,29 +329,29 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1848" height="882" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1624598036703" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1624512156334">
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1625030404059">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1624512156334" />
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1625030404059" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1624599460797">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1624599460797" />
-    <state x="1943" y="96" width="1878" height="938" key="find.popup" timestamp="1624973758438">
+    <state x="1943" y="96" width="1878" height="938" key="find.popup" timestamp="1625043716233">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="23" y="96" width="1878" height="938" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1624946046695" />
-    <state x="1943" y="96" width="1878" height="938" key="find.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1624973758438" />
-    <state x="23" y="96" width="1878" height="938" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1624774256634" />
+    <state x="1943" y="96" width="1878" height="938" key="find.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1625043716233" />
+    <state x="23" y="96" width="1878" height="938" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1625031743172" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1624540147199">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1624540147199" />
-    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1624974941289">
+    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1625042307394">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1624950301206" />
-    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1624974941289" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1624886723063" />
+    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1625042307394" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1625030167137" />
   </component>
 </project>

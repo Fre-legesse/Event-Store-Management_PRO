@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApproverSettingController;
 use App\Http\Controllers\EventController as EventControllerAlias;
 use App\Http\Controllers\RestockController;
 use App\Http\Controllers\RoleController;
@@ -104,8 +105,12 @@ Route::get('/restock', [RestockController::class, 'index'])->middleware('auth')-
 Route::get('/restock/{event_id}', [RestockController::class, 'show'])->middleware('auth')->name('detail_restock_item');
 
 //Role
-Route::get('/super_admin/role',[RoleController::class,'index'])->middleware('auth')->name('super_admin_role');
-Route::get('/edit/role/{user_id}',[RoleController::class,'edit'])->middleware('auth')->name('edit_user_role');
+Route::get('/super_admin/role', [RoleController::class, 'index'])->middleware('auth')->name('super_admin_role');
+Route::get('/edit/role/{user_id}', [RoleController::class, 'edit'])->middleware('auth')->name('edit_user_role');
+
+//Approver Setting
+Route::get('/edit/approval_setting', [ApproverSettingController::class, 'index'])->middleware('auth')->name('approval_edit');
+
 
 //
 //POST
@@ -122,12 +127,15 @@ Route::post('/restock/{event_id}', [RestockController::class, 'update'])->middle
 Route::post('/item/delete/{item_id}', [StockitemController::class, 'delete'])->middleware('auth')->name('delete_item_post');
 
 //Role
-Route::post('/edit/role/{user_id}',[RoleController::class,'update'])->middleware('auth')->name('edit_role_post');
+Route::post('/edit/role/{user_id}', [RoleController::class, 'update'])->middleware('auth')->name('edit_role_post');
 
+//Approver Setting
+Route::post('/edit/approval_setting', [ApproverSettingController::class, 'store'])->middleware('auth')->name('approval_edit_post');
+Route::post('/edit/user/approval_setting/{approver_setting_id}', [ApproverSettingController::class, 'update'])->middleware('auth')->name('edit_user_approver_setting');
 
 //
 //Ajax
 //
 
 Route::post('/item/delete', [StockitemController::class, 'destroy'])->middleware('auth')->name('delete_stock_item_ajax');
-Route::post('/item/add/event',[EventControllerAlias::class,'add_item_to_event'])->middleware('auth')->name('add_item_event_ajax');
+Route::post('/item/add/event', [EventControllerAlias::class, 'add_item_to_event'])->middleware('auth')->name('add_item_event_ajax');

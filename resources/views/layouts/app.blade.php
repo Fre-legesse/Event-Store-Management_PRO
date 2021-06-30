@@ -363,6 +363,9 @@
                             <li class="sidebar-item"><a href="{{route('super_admin_role')}}" class="sidebar-link"><i
                                         class="fas fa-hand-point-right"></i><span
                                         class="hide-menu"> Role Management </span></a></li>
+                            <li class="sidebar-item"><a href="{{route('approval_edit')}}" class="sidebar-link"><i
+                                        class="fas fa-hand-point-right"></i><span
+                                        class="hide-menu"> Approver Setting</span></a></li>
                         </ul>
                     </li>
                     @endrole

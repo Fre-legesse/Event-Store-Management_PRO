@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ApprovalRequested;
 use App\Models\Event;
 use App\Models\Event_Type;
 use App\Models\item_request;
 use App\Models\requested_item_list;
 use App\Models\Stock;
 use App\Models\Stock_item;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 
 class EventController extends Controller
@@ -487,9 +490,14 @@ DB::table('stocks')->select('Item',\DB::raw('(SUM(stocks.Quantity)'))->join(DB::
     {
 //        dd($request->all());
         if ($request->post_checkbox == 'Posted') {
-            item_request::query()->find($item_request_id)->update([
+            $item_request = item_request::query()->find($item_request_id);
+            $item_request->update([
                 'Posted' => 'Posted',
             ]);
+            // Send mail to the user with Approver_One role
+//            foreach (User::role('Approver_One')->get() as $first_approver){
+//                Mail::to($first_approver)->send(new ApprovalRequested('Hello Eyob, This is a test email from event store management system mail service.'));
+//            }
         }
 
         return response()->redirectTo('/Event');

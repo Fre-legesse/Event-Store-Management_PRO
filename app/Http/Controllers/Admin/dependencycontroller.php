@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
+use App\Models\ApproverSetting;
 use App\Models\item_request;
 use App\Models\requested_item_list;
 use App\Models\stock;
@@ -170,12 +171,13 @@ class dependencycontroller extends Controller
 
         $loc = Auth::user()->Location;
         $dep = Auth::user()->Department;
-        if ($input['category'] == 'PRODUCT' && $input['value3'] < 100) {
-            item_request::query()->where('Event_id', '=', $input['value1'])->update([
+        $rule = ApproverSetting::query()->join('stock_categorys','stock_category_id','=','stock_categorys.STID')->where('stock_categorys.Type','=',$input['category'])->first();
+        if (isset($rule) && $input['value3'] < $rule->amount) {
+            item_request::query()->where('Event_id', '=', $input['value1'])->first()->update([
                 'ApprovalTwo' => 'Not Required',
             ]);
-        } elseif ($input['category'] == 'PRODUCT' && $input['value3'] >= 100) {
-            item_request::query()->where('Event_id', '=', $input['value1'])->update([
+        } elseif (isset($rule) && $input['value3'] >= $rule->amount) {
+            item_request::query()->where('Event_id', '=', $input['value1'])->first()->update([
                 'ApprovalTwo' => 'Pending',
             ]);
         }
