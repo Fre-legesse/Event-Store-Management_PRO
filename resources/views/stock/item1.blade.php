@@ -2,7 +2,7 @@
 
 @section('content')
 <h3>Item List</h3>
-	
+
 		 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -26,7 +26,7 @@ $("#table tr").each(function(index) {
         if (index !== 0) {
 
             $row = $(this);
-          
+
 
             var id = $row.find("td:nth-child(2)").text();
 
@@ -50,15 +50,15 @@ $("#table tr").each(function(index) {
        </div>
          <div class="form-group row">
 <!--          <a href="docAdd.php"><i class="glyphicon glyphicon-plus"></i><span>New</span></a> -->
-         
-	
-      
+
+
+
            <table class="table" id="table">
-		   <thead>
+		   <thead class='thead-light'>
   <tr>
-    
-    
-    
+
+
+
     <th scope="col">Company</th>
     <th scope="col">Department</th>
     <th scope="col">Stock Room</th>
@@ -67,11 +67,11 @@ $("#table tr").each(function(index) {
   </tr>
   </thead>
   <tbody>
-  
+
       @if(count($items) >= 1)
-  		@foreach($items as $item)      
+  		@foreach($items as $item)
   <tr>
-    
+
       		<div class="well">
       			<td>{{ $item->Company }}</td>
                 <td>{{ $item->Department }}</td>
@@ -79,36 +79,36 @@ $("#table tr").each(function(index) {
       	  		<td>{{ $item->Description }}</td>
       	  		<td >
  <div class="row">
-                         
-                              
+
+
             <a style="white-space: nowrap;"  type="button" href="StockRoom/{{ $item->STID }}/edit" class="btn btn-default btn-sm">Edit</a>
-           
+
            <form method="POST" action="/StockRoom/{{ $item->STID }}">
            {{ csrf_field() }}
   {{ method_field('DELETE') }}
 
   <button    type="submit" class="btn btn-danger btn-sm">Delete</button>
 </form>
-        </div>  
+        </div>
 </td>
-              
+
       		</div>
    </tr>
       	@endforeach
 
-    
+
 	@else
   <td>No Item Found</td>
 
 
 @endif
-    
 
-  
+
+
   </tbody>
   <script type="text/javascript">
-    
-   function downloadURI(uri, name) 
+
+   function downloadURI(uri, name)
 {
   alert(uri);
     var link = document.createElement("a");
@@ -117,13 +117,13 @@ $("#table tr").each(function(index) {
     link.click();
 }
   </script>
-   
+
            </table>
          </div>
            <div  class="d-flex justify-content-left">
  {{ $items->links("pagination::bootstrap-4") }}
 </div>
-         
+
             </div>
         </div>
 

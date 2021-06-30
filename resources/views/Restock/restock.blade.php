@@ -6,7 +6,7 @@
         <div class="card-body">
             <div class="form-group row table-responsive">
                 <table class="table table-hover" id="table">
-                    <thead>
+                    <thead class='thead-light'>
                     <tr>
                         <th scope="col">Event</th>
                         <th scope="col">Requester</th>

@@ -48,7 +48,7 @@
         @endif
 
         <table id="crudTable" class="bg-white table table-striped table-hover nowrap rounded shadow-xs border-xs mt-2" cellspacing="0">
-            <thead>
+            <thead class='thead-light'>
               <tr>
                 {{-- Table columns --}}
                 @foreach ($crud->columns() as $column)
@@ -79,17 +79,17 @@
                       data-visible="{{var_export($column['visibleInTable'] ?? true)}}"
                       data-can-be-visible-in-table="true"
                       data-visible-in-modal="{{var_export($column['visibleInModal'] ?? true)}}"
-                      @if(isset($column['visibleInExport']))                     
+                      @if(isset($column['visibleInExport']))
                          @if($column['visibleInExport'] === false)
-                           data-visible-in-export="false"   
-                           data-force-export="false"    
-                         @else    
-                           data-visible-in-export="true"    
-                           data-force-export="true"   
-                         @endif   
-                       @else    
-                         data-visible-in-export="true"    
-                         data-force-export="false"    
+                           data-visible-in-export="false"
+                           data-force-export="false"
+                         @else
+                           data-visible-in-export="true"
+                           data-force-export="true"
+                         @endif
+                       @else
+                         data-visible-in-export="true"
+                         data-force-export="false"
                        @endif
                     @endif
                   >
@@ -98,8 +98,8 @@
                 @endforeach
 
                 @if ( $crud->buttons()->where('stack', 'line')->count() )
-                  <th data-orderable="false" 
-                      data-priority="{{ $crud->getActionsColumnPriority() }}" 
+                  <th data-orderable="false"
+                      data-priority="{{ $crud->getActionsColumnPriority() }}"
                       data-visible-in-export="false"
                       >{{ trans('backpack::crud.actions') }}</th>
                 @endif

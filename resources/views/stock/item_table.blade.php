@@ -44,15 +44,10 @@
 
                 <h4 class="card-title">Item Registration</h4>
                 <div class="form-group row">
-                    <a class="btn btn-lg btn-default" href="Item/create/">Add New</a>
-                    <input type="text" class="form-control" style="width: 200px; float: right;margin-left: 1300px;"
-                           id="searchh" placeholder="Listed Type live search" onkeyup="myFunction()">
-                </div>
-                <div class="form-group row">
                     <!--          <a href="docAdd.php"><i class="glyphicon glyphicon-plus"></i><span>New</span></a> -->
 
                     <table class="table" id="table">
-                        <thead class='thead-light'>
+                        <thead class="thead-light">
                         <tr>
 
 
@@ -62,7 +57,7 @@
                             <th scope="col">Fabric</th>
                             <th scope="col">Color</th>
                             <th scope="col">Status</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">Unreturned Quantity</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -79,18 +74,7 @@
                                         <td>{{ $item->Color }}</td>
                                         <td>{{ $item->Status }}</td>
                                         <td>
-                                            <div class="row">
-
-
-                                                <a style="white-space: nowrap;" type="button"
-                                                   href="Item/{{ $item->SIID }}/edit" class="btn btn-default btn-sm">Edit</a>
-
-                                                <form method="POST" action="/item/delete/{{ $item->SIID }}">
-                                                    {{ csrf_field() }}
-
-                                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                                </form>
-                                            </div>
+                                            {{$item->Item_Remaining??$item->IssuedQuantity}}
                                         </td>
 
                                     </div>

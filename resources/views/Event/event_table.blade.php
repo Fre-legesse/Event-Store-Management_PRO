@@ -51,20 +51,9 @@
                 <div class="clearfix"></div>
 
                 <div class="form-group row">
-                    <label class="mt-2">Week Filter</label>
-                    <div class="col-md-5">
-                        <input type="week" id="week" name="week"
-                               value="{{isset($year,$week) ? $year.'-W'.$week :''}}"
-                               class="form-control" style="height: 36px">
-                    </div>
-                    <label class="mt-2">Brand Filter</label>
-                    <div class="col-md-5">
-                        <select name="brand" class="form-control" style="height: 36px">
-                            <option>Choose Brand</option>
-                            @foreach($brands as $brand)
-                                <option value="{{$brand->SBID}}">{{$brand->Brand}}</option>
-                            @endforeach
-                        </select>
+                    <label class="mt-3">Week Filter</label>
+                    <div class="col-md-9">
+                        <input type="week" id="week" name="week" class="form-control col-md-2" style="height: 36px">
                     </div>
                 </div>
                 <div class="form-group row table-responsive">
@@ -78,7 +67,7 @@
                             <th scope="col">Event Name</th>
                             <th scope="col">Event Type</th>
                             <th scope="col">Event Location</th>
-                            <th scope="col">Responsible(BGI)</th>
+                            <th scope="col">Requester</th>
                             <th scope="col">Return date</th>
                             <th scope="col">Item Requests</th>
                             <th scope="col">Remaining Date For Return</th>
@@ -99,7 +88,7 @@
                                         <td>{{ $item->Event_Name }}</td>
                                         <td>{{ $item->Event_Type }}</td>
                                         <td>{{ $item->Location }}</td>
-                                        <td>{{ $item->Responsible_person_BGI }}</td>
+                                        <td>{{ $item->Requester }}</td>
                                         <td>{{ $item->Return_date }}</td>
                                         <td style='text-align: center;'>
                                             <div class="bs-example">
@@ -191,9 +180,8 @@
                         </style>
                         <script type="text/javascript">
                             $('#week').change(function () {
-                                window.location = "/event/filter/" + $(this).val();
+                                console.log($(this).val());
                             })
-
                             function downloadURI(uri, name) {
                                 alert(uri);
                                 var link = document.createElement("a");
@@ -205,7 +193,7 @@
 
                     </table>
                 </div>
-                <div class="d-flex justify-content-left">
+                <div class="d-flex justify-content-end">
                     {{ $event->links("pagination::bootstrap-4") }}
                 </div>
 

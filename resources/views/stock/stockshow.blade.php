@@ -51,7 +51,7 @@
                 <div class="form-group row">
 
                     <table class="table" id="table">
-                        <thead>
+                        <thead class='thead-light'>
                         <tr>
 
 

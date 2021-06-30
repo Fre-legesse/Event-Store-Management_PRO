@@ -54,7 +54,7 @@
                     <!--          <a href="docAdd.php"><i class="glyphicon glyphicon-plus"></i><span>New</span></a> -->
 
                     <table class="table" id="table">
-                        <thead>
+                        <thead class='thead-light'>
                         <tr>
 
 

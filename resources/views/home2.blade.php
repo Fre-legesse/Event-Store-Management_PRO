@@ -66,7 +66,7 @@
     <div class="row">
         <div class="col-md-3" >
             <div class="card mt-0">
-                <div class="row" onclick="location.href='/event/approve'">
+                <div class="row" onclick="location.href='/items/unreturned'">
                     <div class="col-md-6">
                         <div class="peity_line_good left text-center mt-3 pt-5 pb-5">
                             <img src="{{asset('images/bell.png')}}" width="100">

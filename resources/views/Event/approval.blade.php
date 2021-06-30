@@ -12,7 +12,7 @@
 
             <div class="form-group row table-responsive">
                 <table class="table" id="table">
-                    <thead>
+                    <thead class='thead-light'>
                     <tr>
                         <th scope="col">Event Name</th>
                         <th scope="col">Event Type</th>
@@ -44,7 +44,7 @@
                                                 <a href="#" data-toggle="popover" data-trigger="focus"
                                                    data-html="true" data-placement="top" data-content="
 <table class='table'>
-                  <thead>
+                  <thead class='thead-light'>
           <tr>
                     <th scope='col'>Item List</th>
 

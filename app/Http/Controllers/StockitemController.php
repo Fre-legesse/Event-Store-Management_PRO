@@ -162,4 +162,18 @@ class StockitemController extends Controller
 
         return back();
     }
+
+    public function show_unreturned_items()
+    {
+        return view('stock.item_table', [
+            'items' => requested_item_list::query()
+                ->join('stock_items', 'reqested_item_lists.ItemCode', '=', 'stock_items.SIID')
+                ->where('Issued', '=', 1)
+                ->where(function (\Illuminate\Database\Eloquent\Builder $query) {
+                    $query->where('Item_Remaining', '!=', 0)
+                        ->orWhere('Item_Remaining', '=', null);
+                })->get(),
+
+        ]);
+    }
 }

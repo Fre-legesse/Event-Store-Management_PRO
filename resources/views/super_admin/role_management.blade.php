@@ -29,7 +29,7 @@
                 <div class="form-group row">
                     <table class="table" id="table">
                         {{debug($users)}}
-                        <thead>
+                        <thead class='thead-light'>
                         <tr>
                             <th scope="col">User</th>
                             <th scope="col">Company</th>

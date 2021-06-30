@@ -42,7 +42,7 @@
         </div>
         <div class="table-responsive">
             <table class="table">
-                <thead class="thead-light">
+                <thead class='thead-light'>
                 <tr>
                     <th scope="col">Item Type</th>
                     <th scope="col">User Role</th>

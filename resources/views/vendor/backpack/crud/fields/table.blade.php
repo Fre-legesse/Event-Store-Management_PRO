@@ -47,7 +47,7 @@
 
         <table class="table table-sm table-striped m-b-0">
 
-            <thead>
+            <thead class='thead-light'>
                 <tr>
                     @foreach( $field['columns'] as $column )
                     <th style="font-weight: 600!important;">

@@ -2,21 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\ApprovalRequested;
 use App\Models\Event;
 use App\Models\Event_Type;
 use App\Models\item_request;
 use App\Models\requested_item_list;
 use App\Models\Stock;
+use App\Models\Stock_brand;
 use App\Models\Stock_item;
-use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
 
 
 class EventController extends Controller
@@ -50,7 +48,7 @@ class EventController extends Controller
         //$data=$dat->paginate(10);
         //   $Stock = Stock_category::all();
         // return view('Item.category')->with('items',$Stock);
-        return view('Event.event', ['event' => $data, 'Company' => $loc, 'Department' => $dep, 'link' => $link]);
+        return view('Event.event', ['event' => $data, 'Company' => $loc, 'Department' => $dep, 'link' => $link, 'brands' => Stock_brand::query()->groupBy('Brand')->get()]);
     }
 
     /**
@@ -515,6 +513,61 @@ DB::table('stocks')->select('Item',\DB::raw('(SUM(stocks.Quantity)'))->join(DB::
             'item_code' => Stock_item::query()->find(stock::query()->find($request->item_stock_id)->Item)->Item_Code,
             'requested_quantity' => $request->requested_quantity,
             'stock_id' => $request->item_stock_id,
+        ]);
+    }
+
+    public function show_unreturned_items()
+    {
+        if (Auth::guest()) {
+            //is a guest so redirect
+            return redirect('/');
+        }
+
+        $link = DB::connection()->getPdo();
+
+
+        $loc = Auth::user()->Location;
+        $dep = Auth::user()->Department;
+        $data = DB::table('events')
+            ->join('item_requests', 'item_requests.Event_id', '=', 'events.EVID')
+            ->join('reqested_item_list', 'reqested_item_list.Event_ID', '=', 'events.EVID')
+            ->where('reqested_item_list.Item_Remaining', '<=>', 0)
+            ->orderByDesc('events.created_at')
+            ->paginate(10);
+        //$data=$dat->paginate(10);
+        //   $Stock = Stock_category::all();
+        // return view('Item.category')->with('items',$Stock);
+        return view('Event.event_table', ['event' => $data, 'Company' => $loc, 'Department' => $dep, 'link' => $link]);
+    }
+
+    /**
+     * @param string $week_data
+     * @return Response
+     */
+    public function show_filtered_events(string $week_data)
+    {
+        $week = intval(explode('-W', $week_data)[1]);
+        $year = intval(explode('-W', $week_data)[0]);
+        $link = DB::connection()->getPdo();
+        $loc = Auth::user()->Location;
+        $dep = Auth::user()->Department;
+        $data = DB::table('events')
+            ->join('item_requests', 'item_requests.Event_id', '=', 'events.EVID')
+            ->whereRaw('WEEK(Date_From) <=' . $week . ' and WEEK(Date_To) >=' . $week)
+            ->whereRaw('DATE_FORMAT(Date_From,"%Y") <=' . $year . ' and DATE_FORMAT(Date_To,"%Y") >=' . $year)
+            ->orderByDesc('events.created_at')
+            ->paginate(10);
+        //$data=$dat->paginate(10);
+        //   $Stock = Stock_category::all();
+        // return view('Item.category')->with('items',$Stock);
+        return response()->view('Event.event', [
+            'event' => $data,
+            'Company' => $loc,
+            'Department' => $dep,
+            'link' => $link,
+            'week' => $week,
+            'year' => $year,
+            'brands' => Stock_brand::query()->groupBy('Brand')->get()
         ]);
     }
 

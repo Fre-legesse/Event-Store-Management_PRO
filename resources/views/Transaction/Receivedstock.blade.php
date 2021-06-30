@@ -54,7 +54,7 @@ $("#table tr").each(function(index) {
 
 
            <table class="table" id="table">
-           <thead>
+           <thead class='thead-light'>
   <tr>
 
 

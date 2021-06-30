@@ -99,6 +99,11 @@ Route::post('ajaxRequest5', [App\Http\Controllers\Admin\dependencycontroller::cl
 
 //Event
 Route::get('/event/approve', [EventControllerAlias::class, 'display_approval'])->middleware('auth')->name('approve_event');
+Route::get('/event/filter/{week_data}',[\App\Http\Controllers\EventController::class,'show_filtered_events'])->middleware('auth')->name('event_week_filter');
+
+//Item
+Route::get('/items/unreturned',[StockitemController::class,'show_unreturned_items'])->middleware('auth')->name('show_unretured_items');
+
 
 //Restock
 Route::get('/restock', [RestockController::class, 'index'])->middleware('auth')->name('restock');
@@ -125,6 +130,7 @@ Route::post('/restock/{event_id}', [RestockController::class, 'update'])->middle
 
 //Item
 Route::post('/item/delete/{item_id}', [StockitemController::class, 'delete'])->middleware('auth')->name('delete_item_post');
+
 
 //Role
 Route::post('/edit/role/{user_id}', [RoleController::class, 'update'])->middleware('auth')->name('edit_role_post');
