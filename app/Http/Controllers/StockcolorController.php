@@ -24,7 +24,7 @@ class StockcolorController extends Controller
 
     public function index()
     {
-        $data=DB::table('Stock_colors')->paginate(3);
+        $data=DB::table('Stock_colors')->paginate(10);
         //   $Stock = Stock_category::all();
         // return view('Item.category')->with('items',$Stock);
         return view('Item.categoryColor',['items'=>$data]);

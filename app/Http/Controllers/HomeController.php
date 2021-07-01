@@ -55,8 +55,14 @@ class HomeController extends Controller
 
         return view('home2', [
             'total_events_count' => Event::count(),
-            'active_events_count' => DB::select('SELECT COUNT("events.EVID") AS active_events_count FROM events WHERE now() BETWEEN events.Date_From and events.Date_To')[0]->active_events_count,
-            'this_week_events_count' => DB::select('SELECT count("events.EVID") as this_month_events_count FROM events WHERE WEEK(events.Date_From) =  WEEK(now()) OR WEEK(events.Date_To) =  WEEK(now()) ')[0]->this_month_events_count,
+            'active_events_count' => Event::query()
+                ->join('item_requests', 'item_requests.Event_id', '=', 'events.EVID')
+                ->whereRaw('DATE_FORMAT(now(),"%Y-%m-%d") between DATE_FORMAT(Date_From,"%Y-%m-%d") AND DATE_FORMAT(Date_To,"%Y-%m-%d")')
+                ->count('EVID'),
+            'this_week_events_count' => Event::query()
+                ->join('item_requests', 'item_requests.Event_id', '=', 'events.EVID')
+                ->whereRaw('WEEK(Date_From) <= WEEK(now()) AND WEEK(Date_To) >= WEEK(now()) AND YEAR(Date_To)=YEAR(now())')
+                ->count('EVID'),
             'pending_approval_count' => Auth::user()->hasRole('Approver_One')
                 ? item_request::query()->where('ApprovalOne', '=', 'Pending')->where('Posted', '=', 'Posted')->count()
                 : item_request::query()->where('ApprovalTwo', '=', 'Pending')->where('ApprovalOne', '=', 'Approved')->where('Posted', '=', 'Posted')->count(),

@@ -50,12 +50,6 @@
                 </div>
                 <div class="clearfix"></div>
 
-                <div class="form-group row">
-                    <label class="mt-3">Week Filter</label>
-                    <div class="col-md-9">
-                        <input type="week" id="week" name="week" class="form-control col-md-2" style="height: 36px">
-                    </div>
-                </div>
                 <div class="form-group row table-responsive">
                     <!--          <a href="docAdd.php"><i class="glyphicon glyphicon-plus"></i><span>New</span></a> -->
 

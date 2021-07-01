@@ -100,6 +100,8 @@ Route::post('ajaxRequest5', [App\Http\Controllers\Admin\dependencycontroller::cl
 //Event
 Route::get('/event/approve', [EventControllerAlias::class, 'display_approval'])->middleware('auth')->name('approve_event');
 Route::get('/event/filter/{week_data}/{brand_name}',[\App\Http\Controllers\EventController::class,'show_filtered_events'])->middleware('auth')->name('event_week_filter');
+Route::get('/event/current_ongoing',[EventControllerAlias::class,'show_ongoing_events'])->middleware('auth')->name('current_ongoing_event');
+Route::get('/event/this_week',[EventControllerAlias::class,'show_events_this_week'])->middleware('auth')->name('events_this_week');
 
 //Item
 Route::get('/items/unreturned',[StockitemController::class,'show_unreturned_items'])->middleware('auth')->name('show_unretured_items');

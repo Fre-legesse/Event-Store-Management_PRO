@@ -23,7 +23,7 @@ class StockmanufacturerController extends Controller
 
     public function index()
     {
-        $data = DB::table('Stock_manufacturers')->paginate(3);
+        $data = DB::table('Stock_manufacturers')->paginate(10);
         //   $Stock = Stock_category::all();
         // return view('Item.category')->with('items',$Stock);
         return view('Item.categorymanufacturer', ['items' => $data]);

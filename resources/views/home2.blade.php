@@ -16,10 +16,10 @@
         </div>
         <div class="col-md-3">
             <div class="card mt-0">
-                <div class="row">
+                <div class="row" style="cursor: pointer;" onclick="location.href='/event/current_ongoing'">
                     <div class="col-md-6">
                         <div class="peity_line_good left text-center mt-3 pt-5 pb-5">
-                            <img src="{{asset('images/events.png')}}" width="100">
+                            <img src="{{asset('images/event.svg')}}" width="100">
                         </div>
                     </div>
                     <div class="col-md-6 border-left text-center pt-5 pb-3">
@@ -31,10 +31,10 @@
         </div>
         <div class="col-md-3">
             <div class="card mt-0">
-                <div class="row">
+                <div class="row" style="cursor: pointer;" onclick="location.href='/event/this_week'">
                     <div class="col-md-6">
                         <div class="peity_line_good left text-center mt-3 pt-5 pb-5">
-                            <img src="{{asset('images/event_this_month.png')}}" width="100">
+                            <img src="{{asset('images/week.svg')}}" width="100">
                         </div>
                     </div>
                     <div class="col-md-6 border-left text-center pt-5 pb-5">
@@ -49,7 +49,7 @@
                 <div class="row" style="cursor: pointer;" onclick="location.href='/event/approve'">
                     <div class="col-md-6">
                         <div class="peity_line_good left text-center mt-3 pt-5 pb-5">
-                            <img src="{{asset('images/check-mark-symbol-1.jpg')}}" width="100">
+                            <img src="{{asset('images/pending_approval.svg')}}" width="100">
                         </div>
                     </div>
                     <div class="col-md-6 border-left text-center pt-5 pb-5">
@@ -69,7 +69,7 @@
                 <div class="row" style="cursor: pointer;" onclick="location.href='/items/unreturned'">
                     <div class="col-md-6">
                         <div class="peity_line_good left text-center mt-3 pt-5 pb-5">
-                            <img src="{{asset('images/bell.png')}}" width="100">
+                            <img src="{{asset('images/bell.svg')}}" width="100">
                         </div>
                     </div>
                     <div class="col-md-6 border-left text-center pt-5 pb-5">
@@ -84,7 +84,7 @@
                 <div class="row" style="cursor: pointer;" onclick="location.href='/items/this_week_returnables'">
                     <div class="col-md-6">
                         <div class="peity_line_good left text-center mt-3 pt-5 pb-3">
-                            <img src="{{asset('images/check-mark-symbol-1.jpg')}}" width="100">
+                            <img src="{{asset('images/returnables.svg')}}" width="100">
                         </div>
                     </div>
                     <div class="col-md-6 border-left text-center pt-5 pb-3">

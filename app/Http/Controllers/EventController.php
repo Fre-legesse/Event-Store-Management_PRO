@@ -369,23 +369,23 @@ class EventController extends Controller
         ]);
     }
 
-    public function show_currently_ongoing_events()
-    {
-        if (Auth::guest()) {
-
-            return redirect('/');
-        }
-        $loc = Auth::user()->Location;
-        $dep = Auth::user()->Department;
-        $data = DB::table('events')
-            ->join('item_requests', 'item_requests.Event_id', '=', 'events.EVID')
-            ->where('events.Date_To', '<=', now())
-            ->orderByDesc('events.created_at')
-            ->paginate(10);
-
-
-        return view('Event.event_table', ['event' => $data, 'Company' => $loc, 'Department' => $dep, 'brands' => Stock_brand::query()->groupBy('Brand')->get()]);
-    }
+//    public function show_currently_ongoing_events()
+//    {
+//        if (Auth::guest()) {
+//
+//            return redirect('/');
+//        }
+//        $loc = Auth::user()->Location;
+//        $dep = Auth::user()->Department;
+//        $data = DB::table('events')
+//            ->join('item_requests', 'item_requests.Event_id', '=', 'events.EVID')
+//            ->where('events.Date_To', '<=', now())
+//            ->orderByDesc('events.created_at')
+//            ->paginate(10);
+//
+//
+//        return view('Event.event_table', ['event' => $data, 'Company' => $loc, 'Department' => $dep, 'brands' => Stock_brand::query()->groupBy('Brand')->get()]);
+//    }
 
     /**
      * @param string $week_data
@@ -489,6 +489,36 @@ class EventController extends Controller
                 'link' => $link,
                 'brands' => Stock_brand::query()->groupBy('Brand')->get()]);
         }
+    }
+
+    public function show_ongoing_events()
+    {
+        $loc = Auth::user()->Location;
+        $dep = Auth::user()->Department;
+        return view('Event.event_table', [
+            'event' => Event::query()
+                ->join('item_requests', 'item_requests.Event_id', '=', 'events.EVID')
+                ->whereRaw('DATE_FORMAT(now(),"%Y-%m-%d") between DATE_FORMAT(Date_From,"%Y-%m-%d") AND DATE_FORMAT(Date_To,"%Y-%m-%d")')
+                ->paginate(10),
+            'Company' => $loc,
+            'Department' => $dep,
+            'link' => DB::connection()->getPdo(),
+            'brands' => Stock_brand::query()->groupBy('Brand')->get()]);
+    }
+
+    public function show_events_this_week()
+    {
+        $loc = Auth::user()->Location;
+        $dep = Auth::user()->Department;
+        return view('Event.event_table', [
+            'event' => Event::query()
+                ->join('item_requests', 'item_requests.Event_id', '=', 'events.EVID')
+                ->whereRaw('WEEK(Date_From) <= WEEK(now()) AND WEEK(Date_To) >= WEEK(now()) AND YEAR(Date_To)=YEAR(now())')
+                ->paginate(10),
+            'Company' => $loc,
+            'Department' => $dep,
+            'link' => DB::connection()->getPdo(),
+            'brands' => Stock_brand::query()->groupBy('Brand')->get()]);
     }
 
 }

@@ -19,11 +19,11 @@ class ItemRequestController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index()
     {
         //
-        $data=DB::table('item_requests')->paginate(3);
+        $data=DB::table('item_requests')->paginate(10);
         //   $Stock = Stock_category::all();
         // return view('Item.category')->with('items',$Stock);
         return view('Movement.ItemRequest',['items'=>$data]);
@@ -37,11 +37,11 @@ class ItemRequestController extends Controller
     public function create()
     {
         //
-         $data=DB::table('item_requests')->paginate(3);
+         $data=DB::table('item_requests')->paginate(10);
         //   $Stock = Stock_category::all();
         // return view('Item.category')->with('items',$Stock);
         return view('Movement.ItemRequestadd',['items'=>$data]);
-        
+
     }
 
     /**
