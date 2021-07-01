@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Models\item_request;
+use App\Models\Stock_item;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -56,10 +57,28 @@ class HomeController extends Controller
             'total_events_count' => Event::count(),
             'active_events_count' => DB::select('SELECT COUNT("events.EVID") AS active_events_count FROM events WHERE now() BETWEEN events.Date_From and events.Date_To')[0]->active_events_count,
             'this_week_events_count' => DB::select('SELECT count("events.EVID") as this_month_events_count FROM events WHERE WEEK(events.Date_From) =  WEEK(now()) OR WEEK(events.Date_To) =  WEEK(now()) ')[0]->this_month_events_count,
-            'pending_approval_count' => Auth::user()->hasRole('Approver_One') ? item_request::query()->where('ApprovalOne', '=', 'Pending')->where('Posted', '=', 'Posted')->count() : item_request::query()->where('ApprovalTwo', '=', 'Pending')->where('Posted', '=', 'Posted')->count(),
+            'pending_approval_count' => Auth::user()->hasRole('Approver_One')
+                ? item_request::query()->where('ApprovalOne', '=', 'Pending')->where('Posted', '=', 'Posted')->count()
+                : item_request::query()->where('ApprovalTwo', '=', 'Pending')->where('ApprovalOne', '=', 'Approved')->where('Posted', '=', 'Posted')->count(),
             'pie_chart_data' => DB::select('SELECT stock_items.Brand as brand,SUM(stocks.Quantity) as total FROM stocks,stock_items WHERE stocks.Item = stock_items.SIID AND stock_items.Type = "PRODUCT" GROUP BY Brand'),
-            'unreturned_items_count' => DB::select('SELECT reqested_item_lists.*,COUNT(reqested_item_lists.RILID) as unreturned_items_count FROM reqested_item_lists,item_requests WHERE item_requests.Return_date > DATE_FORMAT(now(),"%Y-%m-%d") AND item_requests.Event_id = reqested_item_lists.Event_ID')[0]->unreturned_items_count,
-            'this_week_returnables'=>DB::select('SELECT reqested_item_lists.*,COUNT(reqested_item_lists.RILID) as this_week_returnables FROM reqested_item_lists,item_requests WHERE WEEK(item_requests.Return_date) = WEEK(now()) AND item_requests.Event_id = reqested_item_lists.Event_ID')[0]->this_week_returnables,
+            'unreturned_items_count' => count(Stock_item::query()
+                ->join('reqested_item_lists', 'reqested_item_lists.ItemCode', '=', 'stock_items.SIID')
+                ->join('item_requests', 'reqested_item_lists.Request_ID', '=', 'item_requests.IRID')
+                ->where('reqested_item_lists.Item_Remaining', '<>', 0)
+                ->where('reqested_item_lists.Issued', '<=>', 1)
+                ->where('item_requests.Return_Date', '>=', now()->format('Y-m-d'))
+                ->where('stock_items.Status', '=', 'Returnable')
+                ->selectRaw('SUM(Item_Remaining) as Item_Remaining,stock_items.Size,stock_items.Fabric,stock_items.Color,stock_items.Status,stock_items.Item_Code')
+                ->groupBy('stock_items.SIID')
+                ->get()),
+            'this_week_returnables' => Stock_item::query()
+                ->join('reqested_item_lists', 'reqested_item_lists.ItemCode', '=', 'stock_items.SIID')
+                ->join('item_requests', 'reqested_item_lists.Request_ID', '=', 'item_requests.IRID')
+                ->where('reqested_item_lists.Item_Remaining', '<>', 0)
+                ->where('reqested_item_lists.Issued', '<=>', 1)
+                ->whereRaw('WEEK(item_requests.Return_Date) = WEEK(now())')
+                ->where('stock_items.Status', '=', 'Returnable')
+                ->count('RILID'),
         ]);
     }
 

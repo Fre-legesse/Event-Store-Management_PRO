@@ -59,10 +59,15 @@
                     </div>
                     <label class="mt-2">Brand Filter</label>
                     <div class="col-md-5">
-                        <select name="brand" class="form-control" style="height: 36px">
-                            <option>Choose Brand</option>
+                        <select name="brand" id="brand" class="form-control" style="height: 36px">
+                            @if(isset($chosen_brand))
+                                <option selected hidden value="{{$chosen_brand}}">{{$chosen_brand}}</option>
+                            @else
+                                <option value='' hidden>Choose Brand</option>
+                            @endif
+                            <option value=''>< Remove Filter ></option>
                             @foreach($brands as $brand)
-                                <option value="{{$brand->SBID}}">{{$brand->Brand}}</option>
+                                <option value="{{$brand->Brand}}">{{$brand->Brand}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -191,7 +196,20 @@
                         </style>
                         <script type="text/javascript">
                             $('#week').change(function () {
-                                window.location = "/event/filter/" + $(this).val();
+                                if ($('#brand').val() !== '') {
+                                    window.location = "/event/filter/" + $(this).val() + '/' + $('#brand').val();
+                                } else {
+                                    window.location = "/event/filter/" + $(this).val() + '/empty';
+                                }
+                            })
+                            $('#brand').change(function () {
+                                if ($('#brand').val() !== '' && $('#week').val() !== '') {
+                                    window.location = "/event/filter/" + $('#week').val() + '/' + $(this).val();
+                                } else if ($('#brand').val() !== null && $('#week').val() === '') {
+                                    window.location = "/event/filter/empty/" + $(this).val();
+                                } else {
+                                    window.location = "/event/filter/empty/empty";
+                                }
                             })
 
                             function downloadURI(uri, name) {

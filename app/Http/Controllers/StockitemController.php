@@ -166,13 +166,32 @@ class StockitemController extends Controller
     public function show_unreturned_items()
     {
         return view('stock.item_table', [
-            'items' => requested_item_list::query()
-                ->join('stock_items', 'reqested_item_lists.ItemCode', '=', 'stock_items.SIID')
-                ->where('Issued', '=', 1)
-                ->where(function (\Illuminate\Database\Eloquent\Builder $query) {
-                    $query->where('Item_Remaining', '!=', 0)
-                        ->orWhere('Item_Remaining', '=', null);
-                })->get(),
+            'items' => Stock_item::query()
+                ->join('reqested_item_lists', 'reqested_item_lists.ItemCode', '=', 'stock_items.SIID')
+                ->join('item_requests', 'reqested_item_lists.Request_ID', '=', 'item_requests.IRID')
+                ->where('reqested_item_lists.Item_Remaining', '<>', 0)
+                ->where('reqested_item_lists.Issued', '<=>', 1)
+                ->where('item_requests.Return_Date', '>=', now()->format('Y-m-d'))
+                ->where('stock_items.Status', '=', 'Returnable')
+                ->selectRaw('SUM(Item_Remaining) as Item_Remaining,stock_items.Size,stock_items.Fabric,stock_items.Color,stock_items.Status,stock_items.Item_Code')
+                ->groupBy('stock_items.SIID')
+                ->orderByDesc('item_requests.Return_Date')
+                ->paginate(10),
+
+        ]);
+    }
+
+    public function show_this_week_returnables(){
+        return view('stock.item_table', [
+            'items' => Stock_item::query()
+                ->join('reqested_item_lists', 'reqested_item_lists.ItemCode', '=', 'stock_items.SIID')
+                ->join('item_requests', 'reqested_item_lists.Request_ID', '=', 'item_requests.IRID')
+                ->where('reqested_item_lists.Item_Remaining', '<>', 0)
+                ->where('reqested_item_lists.Issued', '<=>', 1)
+                ->whereRaw('WEEK(item_requests.Return_Date) = WEEK(now())')
+                ->where('stock_items.Status', '=', 'Returnable')
+                ->orderByDesc('item_requests.Return_Date')
+                ->paginate(10),
 
         ]);
     }
