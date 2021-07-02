@@ -20,20 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cbfe88f1-96b0-46e1-961f-1a43d4b3fd8f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/images/bell.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/event.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/pending_approval.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/returnables.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/week.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EventController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ItemRequestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ItemRequestController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StockcolorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StockcolorController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StockmanufacturerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StockmanufacturerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Event/event_table.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Event/event_table.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home2.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home2.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/bell.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/bell.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/event.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/event.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/pending_approval.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/pending_approval.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/returnables.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/returnables.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/week.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/week.svg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -271,7 +263,7 @@
       <workItem from="1624768126480" duration="6398000" />
       <workItem from="1624856717636" duration="4051000" />
       <workItem from="1624885296154" duration="33562000" />
-      <workItem from="1625113301056" duration="19818000" />
+      <workItem from="1625113301056" duration="23229000" />
     </task>
     <servers />
   </component>
