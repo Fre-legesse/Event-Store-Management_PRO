@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{bootstrap, html5shiv, jquery-1.12.4, jquery-2.2.4, jquery-3.6.0, jquery.flot}" />
+    <file url="PROJECT" libraries="{@popperjs, bootstrap, html5shiv, jquery-1.12.4, jquery-2.2.4, jquery-3.6.0, jquery.flot, select2, selectize.js}" />
   </component>
 </project>

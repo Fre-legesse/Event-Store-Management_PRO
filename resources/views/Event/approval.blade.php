@@ -86,12 +86,17 @@
                                         <div class="row">
                                             <a style="white-space: nowrap;" type="button"
                                                href="/Event/{{ $item->EVID }}/edit"
-                                               class="btn btn-default btn-md"><i
-                                                    class="fa fa-list"></i> Detail</a>
+                                               class="btn btn-default btn-md"><i class="fa fa-list"></i> Detail</a>
                                         </div>
                                     </td>
-                                    @else
-                                        <td></td>
+                                    @elseif((auth()->user()->hasRole('Approver_Two') && $item->ApprovalTwo == 'Approved') || (auth()->user()->hasRole('Approver_One') && $item->ApprovalOne == 'Approved'))
+                                        <td>
+                                            <div class="row">
+                                                <a style="white-space: nowrap;" type="button"
+                                                   href="/Event/{{ $item->EVID }}/edit"
+                                                   class="btn btn-danger btn-md"><i class="fa fa-list"></i> Edit</a>
+                                            </div>
+                                        </td>
                                     @endif
 
                                 </div>

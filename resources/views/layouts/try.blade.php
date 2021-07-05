@@ -50,21 +50,21 @@
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
                             <img src="../../assets/images/logo-icon.png" alt="homepage" class="light-logo" />
-                           
+
                         </b>
                         <!--End Logo icon -->
                          <!-- Logo text -->
                         <span class="logo-text">
                              <!-- dark Logo text -->
                              <img src="../../assets/images/logo-text.png" alt="homepage" class="light-logo" />
-                            
+
                         </span>
                         <!-- Logo icon -->
                         <!-- <b class="logo-icon"> -->
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
                             <!-- <img src="../../assets/images/logo-text.png" alt="homepage" class="light-logo" /> -->
-                            
+
                         <!-- </b> -->
                         <!--End Logo icon -->
                     </a>
@@ -91,7 +91,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                              <span class="d-none d-md-block">Create New <i class="fa fa-angle-down"></i></span>
-                             <span class="d-block d-md-none"><i class="fa fa-plus"></i></span>   
+                             <span class="d-block d-md-none"><i class="fa fa-plus"></i></span>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="#">Action</a>
@@ -144,8 +144,8 @@
                                                 <div class="d-flex no-block align-items-center p-10">
                                                     <span class="btn btn-success btn-circle"><i class="ti-calendar"></i></span>
                                                     <div class="m-l-10">
-                                                        <h5 class="m-b-0">Event today</h5> 
-                                                        <span class="mail-desc">Just a reminder that event</span> 
+                                                        <h5 class="m-b-0">Event today</h5>
+                                                        <span class="mail-desc">Just a reminder that event</span>
                                                     </div>
                                                 </div>
                                             </a>
@@ -154,8 +154,8 @@
                                                 <div class="d-flex no-block align-items-center p-10">
                                                     <span class="btn btn-info btn-circle"><i class="ti-settings"></i></span>
                                                     <div class="m-l-10">
-                                                        <h5 class="m-b-0">Settings</h5> 
-                                                        <span class="mail-desc">You can customize this template</span> 
+                                                        <h5 class="m-b-0">Settings</h5>
+                                                        <span class="mail-desc">You can customize this template</span>
                                                     </div>
                                                 </div>
                                             </a>
@@ -164,8 +164,8 @@
                                                 <div class="d-flex no-block align-items-center p-10">
                                                     <span class="btn btn-primary btn-circle"><i class="ti-user"></i></span>
                                                     <div class="m-l-10">
-                                                        <h5 class="m-b-0">Pavan kumar</h5> 
-                                                        <span class="mail-desc">Just see the my admin!</span> 
+                                                        <h5 class="m-b-0">Pavan kumar</h5>
+                                                        <span class="mail-desc">Just see the my admin!</span>
                                                     </div>
                                                 </div>
                                             </a>
@@ -174,8 +174,8 @@
                                                 <div class="d-flex no-block align-items-center p-10">
                                                     <span class="btn btn-danger btn-circle"><i class="fa fa-link"></i></span>
                                                     <div class="m-l-10">
-                                                        <h5 class="m-b-0">Luanch Admin</h5> 
-                                                        <span class="mail-desc">Just see the my new admin!</span> 
+                                                        <h5 class="m-b-0">Luanch Admin</h5>
+                                                        <span class="mail-desc">Just see the my new admin!</span>
                                                     </div>
                                                 </div>
                                             </a>
@@ -213,7 +213,7 @@
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
-                            
+
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -321,7 +321,7 @@
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
                         <h4 class="page-title">Dashboard</h4>
-                        <div class="ml-auto text-right">
+                        <div class="ml-auto text-left">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -530,7 +530,7 @@
                                         <h6 class="font-medium">James Anderson</h6>
                                         <span class="m-b-15 d-block">Lorem Ipsum is simply dummy text of the printing and type setting industry. </span>
                                         <div class="comment-footer">
-                                            <span class="text-muted float-right">April 14, 2016</span> 
+                                            <span class="text-muted float-right">April 14, 2016</span>
                                             <button type="button" class="btn btn-cyan btn-sm">Edit</button>
                                             <button type="button" class="btn btn-success btn-sm">Publish</button>
                                             <button type="button" class="btn btn-danger btn-sm">Delete</button>
@@ -544,7 +544,7 @@
                                         <h6 class="font-medium">Michael Jorden</h6>
                                         <span class="m-b-15 d-block">Lorem Ipsum is simply dummy text of the printing and type setting industry. </span>
                                         <div class="comment-footer">
-                                            <span class="text-muted float-right">May 10, 2016</span> 
+                                            <span class="text-muted float-right">May 10, 2016</span>
                                             <button type="button" class="btn btn-cyan btn-sm">Edit</button>
                                             <button type="button" class="btn btn-success btn-sm">Publish</button>
                                             <button type="button" class="btn btn-danger btn-sm">Delete</button>
@@ -558,7 +558,7 @@
                                         <h6 class="font-medium">Johnathan Doeting</h6>
                                         <span class="m-b-15 d-block">Lorem Ipsum is simply dummy text of the printing and type setting industry. </span>
                                         <div class="comment-footer">
-                                            <span class="text-muted float-right">August 1, 2016</span> 
+                                            <span class="text-muted float-right">August 1, 2016</span>
                                             <button type="button" class="btn btn-cyan btn-sm">Edit</button>
                                             <button type="button" class="btn btn-success btn-sm">Publish</button>
                                             <button type="button" class="btn btn-danger btn-sm">Delete</button>
@@ -839,7 +839,7 @@
                                         <h6 class="font-medium">James Anderson</h6>
                                         <span class="m-b-15 d-block">Lorem Ipsum is simply dummy text of the printing and type setting industry. </span>
                                         <div class="comment-footer">
-                                            <span class="text-muted float-right">April 14, 2016</span> 
+                                            <span class="text-muted float-right">April 14, 2016</span>
                                             <button type="button" class="btn btn-cyan btn-sm">Edit</button>
                                             <button type="button" class="btn btn-success btn-sm">Publish</button>
                                             <button type="button" class="btn btn-danger btn-sm">Delete</button>
@@ -853,7 +853,7 @@
                                         <h6 class="font-medium">Michael Jorden</h6>
                                         <span class="m-b-15 d-block">Lorem Ipsum is simply dummy text of the printing and type setting industry. </span>
                                         <div class="comment-footer">
-                                            <span class="text-muted float-right">May 10, 2016</span> 
+                                            <span class="text-muted float-right">May 10, 2016</span>
                                             <button type="button" class="btn btn-cyan btn-sm">Edit</button>
                                             <button type="button" class="btn btn-success btn-sm">Publish</button>
                                             <button type="button" class="btn btn-danger btn-sm">Delete</button>
@@ -867,7 +867,7 @@
                                         <h6 class="font-medium">Johnathan Doeting</h6>
                                         <span class="m-b-15 d-block">Lorem Ipsum is simply dummy text of the printing and type setting industry. </span>
                                         <div class="comment-footer">
-                                            <span class="text-muted float-right">August 1, 2016</span> 
+                                            <span class="text-muted float-right">August 1, 2016</span>
                                             <button type="button" class="btn btn-cyan btn-sm">Edit</button>
                                             <button type="button" class="btn btn-success btn-sm">Publish</button>
                                             <button type="button" class="btn btn-danger btn-sm">Delete</button>

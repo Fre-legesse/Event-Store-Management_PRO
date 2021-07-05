@@ -161,13 +161,13 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-
+//        dd('Event ID: '.$id);
         $data = Event_Type::all();
         $item = DB::table('stocks')->select('Item', DB::raw('SUM(Quantity) AS Quantity'))->groupby('Item')->get();
         $Event = Event::query()->find($id);
         $requested_list = DB::table('reqested_item_lists')->where('Event_ID', '=', $id)->get();
         $idd = $Event->EVID;
-        $itemrequest = DB::table('item_requests')->where('Event_id', '=', $id)->get();
+        $itemrequest = item_request::query()->where('Event_id', '=', $id)->get();
 
 
         return response()->view('Event.eventedit', ['event' => $data, 'requested_items' => $requested_list, 'RealEvent' => $Event, 'ItemRequest' => $itemrequest[0], 'item' => $item]);
@@ -261,6 +261,22 @@ class EventController extends Controller
         return back();
     }
 
+    /**
+     * Delete the event.
+     *
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function delete_event(Request $request)
+    {
+//        dd("Event ID: ".$request->event_id);
+        Event::query()->find($request->event_id)->delete();
+        item_request::query()->where('Event_id','=',$request->event_id)->delete();
+        requested_item_list::query()->where('Event_ID','=',$request->event_id)->delete();
+        return \response('Successfully Canceled Event!')->redirectTo('/Event');
+    }
+
+
     public function additem($id)
     {
         $data = Event_Type::all();
@@ -297,8 +313,6 @@ class EventController extends Controller
                 ->paginate(10);
             return view('Event.approval', ['event' => $data, 'Company' => $loc, 'Department' => $dep, 'link' => $link]);
         } elseif (Auth::user()->hasRole('Approver_Two')) {
-
-
             $data = DB::table('events')
                 ->join('item_requests', 'item_requests.Event_id', '=', 'events.EVID')
                 ->where('Posted', '=', 'Posted')
@@ -341,14 +355,11 @@ class EventController extends Controller
      */
     public function publish(Request $request, $item_request_id)
     {
-
         if ($request->post_checkbox == 'Posted') {
             $item_request = item_request::query()->find($item_request_id);
             $item_request->update([
                 'Posted' => 'Posted',
             ]);
-
-
         }
 
         return response()->redirectTo('/Event');

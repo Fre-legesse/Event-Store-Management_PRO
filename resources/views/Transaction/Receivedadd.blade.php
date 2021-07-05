@@ -22,7 +22,7 @@
                                     <h4 class="card-title">Store Items In Stock Room</h4>
 
                                     <div class="form-group row">
-                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Item</label>
+                                    <label for="lname" class="col-sm-3 text-left control-label col-form-label">Item</label>
                                     <div class="col-md-9">
                                              <select class="select2 form-control custom-select" style="width: 40%; height:36px;" name='Type'>
                                         <option value="">Select</option>
@@ -34,7 +34,7 @@
                                     </div>
                                 </div>
                                     <div class="form-group row">
-                                        <label for="email1" class="col-sm-3 text-right control-label col-form-label">Quantity</label>
+                                        <label for="email1" class="col-sm-3 text-left control-label col-form-label">Quantity</label>
                                         <div class="col-sm-9">
                                             <input type="number" class="form-control" id="Quantity" name="Quantity">
                                         </div>

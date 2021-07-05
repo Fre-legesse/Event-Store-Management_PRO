@@ -20,14 +20,14 @@
                             	@csrf
                                 <div class="card-body">
                                     <h4 class="card-title">Create Event Type</h4>
-                                    
+
                                     <div class="form-group row">
-                                        <label for="email1" class="col-sm-3 text-right control-label col-form-label">Event Type</label>
+                                        <label for="email1" class="col-sm-3 text-left control-label col-form-label">Event Type</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="email1" name="Type_Name" placeholder="example: Wedding, Graduation">
                                         </div>
                                     </div>
-                                    
+
                                     <input type="hidden" name="CUID" value="{{ Auth::user()->id }}">
                                     <input type="hidden" name="UUID" value="{{ Auth::user()->id }}">
                                 </div>

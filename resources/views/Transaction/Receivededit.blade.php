@@ -29,13 +29,13 @@
                                     <h4 class="card-title">Event Form</h4>
 
                                     <div class="form-group row">
-                                        <label for="email1" class="col-sm-3 text-right control-label col-form-label">Event Name</label>
+                                        <label for="email1" class="col-sm-3 text-left control-label col-form-label">Event Name</label>
                                         <div class="col-sm-4">
                                             <input type="text" class="form-control" id="email1" name="Event_Name" placeholder="" value="{{ $RealEvent->Event_Name }}" disabled style="background-color: white;">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="email1" class="col-sm-3 text-right control-label col-form-label">Date From</label>
+                                        <label for="email1" class="col-sm-3 text-left control-label col-form-label">Date From</label>
                                         <div class="col-sm-2">
 
 
@@ -44,25 +44,25 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="email1" class="col-sm-3 text-right control-label col-form-label">Date To</label>
+                                        <label for="email1" class="col-sm-3 text-left control-label col-form-label">Date To</label>
                                         <div class="col-sm-2">
                                             <input type="text" class="form-control" id="email1" name="Date_To" placeholder="" value="{{   $newDate = date("m/d/Y", strtotime($RealEvent->Date_To)) }}" disabled style="background-color: white;">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="email1" class="col-sm-3 text-right control-label col-form-label">Location</label>
+                                        <label for="email1" class="col-sm-3 text-left control-label col-form-label">Location</label>
                                         <div class="col-sm-2">
                                             <input type="text" class="form-control" id="email1" name="Location" placeholder="" value="{{ $RealEvent->Location }}" disabled style="background-color: white;">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="email1" class="col-sm-3 text-right control-label col-form-label">Description</label>
+                                        <label for="email1" class="col-sm-3 text-left control-label col-form-label">Description</label>
                                         <div class="col-sm-9">
                                             <textarea  class="form-control" id="email1" name="Event_Name" placeholder="" value="{{ $RealEvent->Description }}" disabled cols="5" rows="5" style="background-color: white;">{{ $RealEvent->Description }}</textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Event Type</label>
+                                    <label for="lname" class="col-sm-3 text-left control-label col-form-label">Event Type</label>
                                     <div class="col-md-9">
                                              <select class="select2 form-control custom-select" style="width: 40%; height:36px;background-color: white;" name='Event_Type' disabled >
                                         <option value="">Select</option>
@@ -84,13 +84,13 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Request Form</h4>
                                     <div class="form-group row">
-                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Requester</label>
+                                    <label for="lname" class="col-sm-3 text-left control-label col-form-label">Requester</label>
                                     <div class="col-md-9">
                                          <input type="text" class="form-control" id="email1" name="Requester" style="width: 450px;background-color: white;" value="{{ $ItemRequest->Requester }}" disabled >
 
                                     </div>
                                 <div class="form-group row">
-                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Responsible
+                            <label for="lname" class="col-sm-3 text-left control-label col-form-label">Responsible
                                 Person (BGI)</label>
                             <div class="col-md-9">
                                 <input type="text" class="form-control" id="email1" name="Responsible_Person_BGI"
@@ -99,7 +99,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Phone
+                            <label for="lname" class="col-sm-3 text-left control-label col-form-label">Phone
                                 Number (BGI)</label>
                             <div class="col-md-9">
                                 <input type="text" class="form-control" id="email1" name="Phone_Number_BGI"
@@ -108,7 +108,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Responsible
+                            <label for="lname" class="col-sm-3 text-left control-label col-form-label">Responsible
                                 Person (Client)</label>
                             <div class="col-md-9">
                                 <input type="text" class="form-control" id="email1" name="Responsible_Person_Client"
@@ -117,7 +117,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Phone
+                            <label for="lname" class="col-sm-3 text-left control-label col-form-label">Phone
                                 Number (Client)</label>
                             <div class="col-md-9">
                                 <input type="text" class="form-control" id="email1" name="Phone_Number_Client"
@@ -126,7 +126,7 @@
                             </div>
                         </div>
                                     <div class="form-group row">
-                                        <label for="email1" class="col-sm-3 text-right control-label col-form-label">Return Date</label>
+                                        <label for="email1" class="col-sm-3 text-left control-label col-form-label">Return Date</label>
                                         <div class="col-sm-9">
                                             <input type="date" class="form-control" id="email1" name="Return_date" style="width: 450px;background-color: white;" disabled >
                                         </div>
@@ -150,7 +150,7 @@
                                           @foreach($item as  $type)
 
                                        <div class="form-group row">
-                                        <label for="email1" class="col-sm-3 text-right control-label col-form-label">{{  $type->Item }}</label>
+                                        <label for="email1" class="col-sm-3 text-left control-label col-form-label">{{  $type->Item }}</label>
                                         <div class="col-sm-4">
                                             <?php $val=0; ?>
                                             @php $Issue=''; @endphp

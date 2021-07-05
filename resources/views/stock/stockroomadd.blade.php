@@ -20,9 +20,9 @@
         <form method="post" action="/StockRoom" class="form-horizontal" >
                             	@csrf
             <div class="card-body">
-                                    
+
             <div class="form-group row">
-                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Site</label>
+                                    <label for="lname" class="col-sm-3 text-left control-label col-form-label">Site</label>
                                     <div class="col-md-9">
                                         <select   class="select2 form-control custom-select" style="width: 75%; height:36px;" name='Site' id="Site">
                                             <option value="">Select</option>
@@ -30,12 +30,12 @@
                                             <option value="HW">Hawassa</option>
                                             <option value="KO">Kombolcha</option>
                                             <option value="RY">Raya</option>
-                                            <option value="ZB">Zebidar</option>                                  
+                                            <option value="ZB">Zebidar</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Branch</label>
+                                    <label for="lname" class="col-sm-3 text-left control-label col-form-label">Branch</label>
                                     <div class="col-md-9">
                                         <select   class="select2 form-control custom-select" style="width: 75%; height:36px;" name='Branch' id="Branch">
                                             <option value="">Select</option>
@@ -43,18 +43,18 @@
                                             <option value="KL">Kaliti</option>
                                             <option value="MC">Maychew</option>
                                             <option value="GU">Gubre</option>
-                                                                             
+
                                         </select>
                                     </div>
                                 </div>
                                     <div class="form-group row">
-                                        <label for="email1" class="col-sm-3 text-right control-label col-form-label">Stock Room Name</label>
+                                        <label for="email1" class="col-sm-3 text-left control-label col-form-label">Stock Room Name</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="email1" name="Stock_Room" placeholder="Short Name Example : SG, CA..">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="email1" class="col-sm-3 text-right control-label col-form-label">Description</label>
+                                        <label for="email1" class="col-sm-3 text-left control-label col-form-label">Description</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="email1" name="Description" placeholder="">
                                         </div>

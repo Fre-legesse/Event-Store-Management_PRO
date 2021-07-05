@@ -27,57 +27,20 @@
                         <h4 class="card-title">Event Form</h4>
 
                         <div class="form-group row">
-                            <label for="email1" class="col-sm-3 text-right control-label col-form-label">Event
+                            <label for="email1" class="col-sm-3 text-left control-label col-form-label">Event
                                 Name</label>
-                            <div class="col-sm-4">
-                                <input type="text" class="form-control" id="email1" name="Event_Name" placeholder=""
-                                       value="{{ $RealEvent->Event_Name }}" disabled style="background-color: white;">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="email1" class="col-sm-3 text-right control-label col-form-label">Date
-                                From</label>
-                            <div class="col-sm-2">
-
-
-                                <input type="text" class="form-control" id="email1" name="Date_From" placeholder=""
-                                       value="{{   $newDate = date("m/d/Y", strtotime($RealEvent->Date_From)) }}"
-                                       disabled style="background-color: white;">
-
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="email1" class="col-sm-3 text-right control-label col-form-label">Date To</label>
-                            <div class="col-sm-2">
-                                <input type="text" class="form-control" id="email1" name="Date_To" placeholder=""
-                                       value="{{   $newDate = date("m/d/Y", strtotime($RealEvent->Date_To)) }}" disabled
-                                       style="background-color: white;">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="email1"
-                                   class="col-sm-3 text-right control-label col-form-label">Location</label>
-                            <div class="col-sm-2">
-                                <input type="text" class="form-control" id="email1" name="Location" placeholder=""
-                                       value="{{ $RealEvent->Location }}" disabled style="background-color: white;">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="email1"
-                                   class="col-sm-3 text-right control-label col-form-label">Description</label>
                             <div class="col-sm-9">
-                                <textarea class="form-control" id="email1" name="Event_Name" placeholder=""
-                                          value="{{ $RealEvent->Description }}" disabled cols="5" rows="5"
-                                          style="background-color: white;">{{ $RealEvent->Description }}</textarea>
+                                <input type="text" class="form-control" id="email1" name="Event_Name" placeholder=""
+                                       value="{{ $RealEvent->Event_Name }}" readonly style="background-color: white;">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Event
+                            <label for="lname" class="col-sm-3 text-left control-label col-form-label">Event
                                 Type</label>
-                            <div class="col-md-9">
+                            <div class="col-sm-9">
                                 <select class="select2 form-control custom-select"
                                         style="width: 40%; height:36px;background-color: white;" name='Event_Type'
-                                        disabled>
+                                        readonly>
                                     <option value="">Select</option>
                                     @foreach($event as  $type)
                                         <option
@@ -85,6 +48,42 @@
                                     @endforeach
                                 </select>
 
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="email1" class="col-sm-3 text-left control-label col-form-label">Date
+                                From</label>
+                            <div class="col-sm-9">
+
+                                <input type="date" class="form-control" id="email1" name="Date_From" placeholder=""
+                                       value="{{$RealEvent->Date_From->format('Y-m-d') }}"
+                                       readonly style="background-color: white;">
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="email1" class="col-sm-3 text-left control-label col-form-label">Date To</label>
+                            <div class="col-sm-9">
+                                <input type="date" class="form-control" id="email1" name="Date_To" placeholder=""
+                                       value="{{$RealEvent->Date_To->format('Y-m-d') }}" readonly
+                                       style="background-color: white;">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="email1"
+                                   class="col-sm-3 text-left control-label col-form-label">Location</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="email1" name="Location" placeholder=""
+                                       value="{{ $RealEvent->Location }}" readonly style="background-color: white;">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="email1"
+                                   class="col-sm-3 text-left control-label col-form-label">Description</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" id="email1" name="Event_Name" placeholder=""
+                                          value="{{ $RealEvent->Description }}" readonly cols="5" rows="5"
+                                          style="background-color: white;">{{ $RealEvent->Description }}</textarea>
                             </div>
                         </div>
                         <input type="hidden" name="CUID" value="{{ Auth::user()->id }}">
@@ -100,56 +99,58 @@
                         <h4 class="card-title">Request Form</h4>
                         <div class="form-group row">
                             <label for="lname"
-                                   class="col-sm-3 text-right control-label col-form-label">Requester</label>
+                                   class="col-sm-3 text-left control-label col-form-label">Requester</label>
                             <div class="col-md-9">
                                 <input type="text" class="form-control" id="email1" name="Requester"
                                        style="width: 450px;background-color: white;"
-                                       value="{{ $ItemRequest->Requester }}" disabled>
+                                       value="{{ $ItemRequest->Requester }}" readonly>
 
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Responsible
+                            <label for="lname" class="col-sm-3 text-left control-label col-form-label">Responsible
                                 Person (BGI)</label>
                             <div class="col-md-9">
                                 <input type="text" class="form-control" id="email1" name="Responsible_Person_BGI"
-                                       style="width: 450px;" value="{{ $ItemRequest->Responsible_person_BGI }}" disabled>
+                                       style="width: 450px;" value="{{ $ItemRequest->Responsible_person_BGI }}"
+                                       readonly>
 
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Phone
+                            <label for="lname" class="col-sm-3 text-left control-label col-form-label">Phone
                                 Number (BGI)</label>
                             <div class="col-md-9">
                                 <input type="text" class="form-control" id="email1" name="Phone_Number_BGI"
-                                       style="width: 450px;" value="{{ $ItemRequest->Phone_Number_BGI }}" disabled>
+                                       style="width: 450px;" value="{{ $ItemRequest->Phone_Number_BGI }}" readonly>
 
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Responsible
+                            <label for="lname" class="col-sm-3 text-left control-label col-form-label">Responsible
                                 Person (Client)</label>
                             <div class="col-md-9">
                                 <input type="text" class="form-control" id="email1" name="Responsible_Person_Client"
-                                       style="width: 450px;" value="{{ $ItemRequest->Responsible_person_Client }}" disabled>
+                                       style="width: 450px;" value="{{ $ItemRequest->Responsible_person_Client }}"
+                                       readonly>
 
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Phone
+                            <label for="lname" class="col-sm-3 text-left control-label col-form-label">Phone
                                 Number (Client)</label>
                             <div class="col-md-9">
                                 <input type="text" class="form-control" id="email1" name="Phone_Number_Client"
-                                       style="width: 450px;" value="{{ $ItemRequest->Phone_Number_Client }}" disabled>
+                                       style="width: 450px;" value="{{ $ItemRequest->Phone_Number_Client }}" readonly>
 
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="email1" class="col-sm-3 text-right control-label col-form-label">Return
+                            <label for="email1" class="col-sm-3 text-left control-label col-form-label">Return
                                 Date</label>
                             <div class="col-sm-9">
                                 <input type="date" class="form-control" id="email1" name="Return_date"
-                                       style="width: 450px;background-color: white;" disabled>
+                                       style="width: 450px;background-color: white;" value="{{$ItemRequest->Return_date->format('Y-m-d')}}" readonly>
                             </div>
                         </div>
 
@@ -165,11 +166,19 @@
 
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Item Selection Form</h4>
+                <h4 class="card-title col-md-4">Item Selection Form</h4>
+                <div class="col-md-6">
+                    <div class="form-check col-sm-2">
+                        <input type="checkbox"
+                               class="form-check-input"
+                               id="select_all_checkbox">
+                        <label class="form-check-label"> Select All!</label>
+                    </div>
+                </div>
                 @foreach($requested_items as $requested_item)
                     <div class="form-group row">
                         <label for="issued_quantity"
-                               class="col-sm-3 text-right control-label col-form-label">{{ \App\Models\Stock_item::query()->find($requested_item->ItemCode)->Item_Code }}</label>
+                               class="col-sm-3 text-left control-label col-form-label">{{ \App\Models\Stock_item::query()->find($requested_item->ItemCode)->Item_Code }}</label>
                         <div class="col-sm-4">
                             <div class="col-sm-8 col-lg-9">
                                 <input type="text" class="form-control"
@@ -181,7 +190,7 @@
                         </div>
                         <div class="col-sm-3">
                             <select name="issued_item[{{$requested_item->Stock_ID}}]"
-                                    class="select2 form-control custom-select" style="width: 40%; height:36px;">
+                                    class="select_all select2 form-control custom-select" style="width: 40%; height:36px;">
                                 <option value="">Select</option>
                                 <option value=1>Issued
                                 </option>
@@ -199,5 +208,19 @@
         </div>
 
     </form>
+<script>
+    $("#select_all_checkbox").change(function () {
+        if ($(this).is(':checked')) {
+            $('.select_all').each(function (index,item) {
+                $(item).val(1)
+            })
+        }else{
+            $('.select_all').each(function (index,item) {
+                $(item).val(0)
+            })
+        }
+    })
+
+</script>
 
 @endsection()

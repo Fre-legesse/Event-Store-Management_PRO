@@ -9,15 +9,15 @@ use Spatie\Permission\Traits\HasRoles;
 
 class Event extends Model
 {
-    use HasFactory;use HasRoles;
+    use HasFactory;
+    use HasRoles;
 
-   protected $table = 'events';
-	//primary Key
-	public $primaryKey ='EVID';
-	//TimeStamps
-	public $timestamps = true;
-
-	 /**
+    public $primaryKey = 'EVID';
+    //primary Key
+    public $timestamps = true;
+    //TimeStamps
+    protected $table = 'events';
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -51,6 +51,8 @@ class Event extends Model
      * @var array
      */
     protected $casts = [
+        'Date_From' => 'datetime',
+        'Date_To' => 'datetime',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];

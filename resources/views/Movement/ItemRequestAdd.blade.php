@@ -22,7 +22,7 @@
             <div class="card-body">
                 <h4 class="card-title">Create Stock Room</h4>
                 <div class="form-group row">
-                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Stock Room</label>
+                    <label for="lname" class="col-sm-3 text-left control-label col-form-label">Stock Room</label>
                     <div class="col-md-9">
                         <select class="select2 form-control custom-select" style="width: 40%; height:36px;" name='Type'>
                             <option value="">Select</option>
@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Item</label>
+                    <label for="lname" class="col-sm-3 text-left control-label col-form-label">Item</label>
                     <div class="col-md-9">
                         <select class="select2 form-control custom-select" style="width: 40%; height:36px;" name='Type'>
                             <option value="">Select</option>
@@ -48,14 +48,14 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="email1" class="col-sm-3 text-right control-label col-form-label">Quantity</label>
+                    <label for="email1" class="col-sm-3 text-left control-label col-form-label">Quantity</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" id="email1" name="Stock_Room"
                                placeholder="example: Table, chair">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="email1" class="col-sm-3 text-right control-label col-form-label">Description</label>
+                    <label for="email1" class="col-sm-3 text-left control-label col-form-label">Description</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" id="email1" name="Description"
                                placeholder="example: Table, chair">
@@ -76,7 +76,7 @@
                 <h4 class="card-title">Item selection</h4>
                 @foreach($category as  $type)
                     <div class="form-group row">
-                        <label for="email1" class="col-sm-3 text-right control-label col-form-label">Description</label>
+                        <label for="email1" class="col-sm-3 text-left control-label col-form-label">Description</label>
                         <div class="col-sm-4">
                             <input type="text" class="form-control" id="email1" name="Description"
                                    placeholder="example: Table, chair">

@@ -20,16 +20,16 @@
                     <form method="post" action="/Retrunabledate" class="form-horizontal" >
                             	@csrf
                                 <div class="card-body">
-                                   
-                                   
+
+
                                     <div class="form-group row">
-                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Return with in </label>
+                                    <label for="lname" class="col-sm-3 text-left control-label col-form-label">Return with in </label>
                                     <div class="col-md-9">
                                         <input type="number" class="form-control" id="email1" name="Retrunabledate"  >
                                     </div>
                                 </div>
-                                    
-                                    
+
+
                                     <input type="hidden" name="CUID" value="{{ Auth::user()->id }}">
                                     <input type="hidden" name="UUID" value="{{ Auth::user()->id }}">
                                 </div>

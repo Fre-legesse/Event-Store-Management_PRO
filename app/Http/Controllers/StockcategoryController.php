@@ -100,17 +100,12 @@ class StockcategoryController extends Controller
     {
         //
         $request->validate([
-            'Company' => 'required',
-            'Department' => 'required',
             'Type' => 'required|max:255',
         ]);
 
         $update = Stock_category::query()->find($id);
         //dd($request->all());
-        $update->update(['Company' => $request->Company]);
-        $update->update(['Department' => $request->Department]);
-        $update->update(['Type' => $request->Type]);
-        $update->update(['UUID' => $request->UUID]);
+        $update->update(['Type' => $request->Type, 'UUID' => $request->UUID,]);
 
         return redirect('/Category')->with('message', 'Update Successfully');
     }

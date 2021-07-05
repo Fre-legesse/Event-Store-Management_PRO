@@ -29,7 +29,7 @@
             <div class="card-body">
                 <h4 class="card-title">Create Item</h4>
                 <div class="form-group row">
-                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Item Type</label>
+                    <label for="lname" class="col-sm-3 text-left control-label col-form-label">Item Type</label>
                     <div class="col-md-9">
                         <select class="select2 form-control custom-select" style="width: 75%; height:36px;" name='Type'
                                 id="Type">
@@ -42,8 +42,8 @@
                         </select>
                     </div>
                 </div>
-                <div class="form-group row">web
-                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Fabric</label>
+                <div class="form-group row">
+                    <label for="lname" class="col-sm-3 text-left control-label col-form-label">Fabric</label>
                     <div class="col-md-9">
                         <select name="Fabric" id="Fabric" class="select2 form-control custom-select"
                                 style="width: 75%; height:36px;">
@@ -52,7 +52,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Color</label>
+                    <label for="lname" class="col-sm-3 text-left control-label col-form-label">Color</label>
                     <div class="col-md-9">
                         <select name="Color" id="Color" class="select2 form-control custom-select"
                                 style="width: 75%; height:36px;">
@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Brand</label>
+                    <label for="lname" class="col-sm-3 text-left control-label col-form-label">Brand</label>
                     <div class="col-md-9">
                         <select name="Brand" id="Brand" class="select2 form-control custom-select"
                                 style="width: 75%; height:36px;">
@@ -70,7 +70,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Manufacturer</label>
+                    <label for="lname" class="col-sm-3 text-left control-label col-form-label">Manufacturer</label>
 
                     <div class="col-md-9">
                         <select name="Manufacturer" id="Manufacturer" class="select2 form-control custom-select"
@@ -80,15 +80,15 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="email1" class="col-sm-3 text-right control-label col-form-label">Size</label>
+                    <label for="email1" class="col-sm-3 text-left control-label col-form-label">Size</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="email1" name="Size"
-                               placeholder="example: Big, small, Double Door" max="10" style="width: 145px;">
+                        <input type="text" class="form-control col-md-6" id="email1" name="Size"
+                               placeholder="example: Big, small, Double Door" max="10">
 
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="email1" class="col-sm-3 text-right control-label col-form-label">Status</label>
+                    <label for="email1" class="col-sm-3 text-left control-label col-form-label">Status</label>
                     <div class="col-sm-9">
                         <select name="Status" id="Status" class="select2 form-control custom-select"
                                 style="width: 75%; height:36px;">
@@ -102,7 +102,7 @@
                 </div>
                 <div class="form-group row">
                     <label for="email1"
-                           class="col-sm-3 text-right control-label col-form-label">Countable/Uncountable</label>
+                           class="col-sm-3 text-left control-label col-form-label">Countable/Uncountable</label>
                     <div class="col-sm-9">
                         <select name="Countable" id="Countable" class="select2 form-control custom-select"
                                 style="width: 75%; height:36px;">

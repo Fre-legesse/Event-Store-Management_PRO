@@ -26,7 +26,7 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Edit Category</h4>
                                     <div class="form-group row">
-                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Company</label>
+                                    <label for="lname" class="col-sm-3 text-left control-label col-form-label">Company</label>
                                     <div class="col-md-9">
                                         <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name='Company'>
                                             <option value="">Select</option>
@@ -36,14 +36,14 @@
                                                 <option value="RY" {{'RY' == $Item->Company  ? 'selected' : ''}}>Raya</option>
                                                 <option value="ZB" {{'ZB' == $Item->Company  ? 'selected' : ''}}>Zebidar</option>
                                                 <option value="ZW" {{'ZW' == $Item->Company  ? 'selected' : ''}}>Ziway</option>
-                                            
+
                                         </select>
                                     </div>
                                 </div>
                                     <div class="form-group row">
-                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Department</label>
+                                    <label for="lname" class="col-sm-3 text-left control-label col-form-label">Department</label>
                                     <div class="col-md-9">
-                                     
+
     <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name='Department'>
                             <option value="">Select</option>
                             <option value="General Management" {{'General Management' == $Item->Department  ? 'selected' : ''}}>General Management</option>
@@ -57,13 +57,13 @@
                                                 <option value="Maintenance(Technique)" {{'Maintenance(Technique' == $Item->Department  ? 'selected' : ''}}>Maintenance(Technique)</option>
                                                 <option value="Industry" {{'Industry' == $Item->Department  ? 'selected' : ''}}>Industry</option>
                                                 <option value="Method" {{'Method' == $Item->Department  ? 'selected' : ''}}>Method</option>
-                                            
+
                                         </select>
                                     </div>
                                 </div>
-                                    
+
                                     <div class="form-group row">
-                                        <label for="email1" class="col-sm-3 text-right control-label col-form-label">Type</label>
+                                        <label for="email1" class="col-sm-3 text-left control-label col-form-label">Type</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="email1" name="Type" value="{{ $Item->Type }}" >
                                         </div>
@@ -76,7 +76,7 @@
                                         <button type="submit" name="Submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </div>
-                               
+
                             </form>
                         </div>
 @endsection()

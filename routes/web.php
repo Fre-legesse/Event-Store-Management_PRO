@@ -99,13 +99,13 @@ Route::post('ajaxRequest5', [App\Http\Controllers\Admin\dependencycontroller::cl
 
 //Event
 Route::get('/event/approve', [EventControllerAlias::class, 'display_approval'])->middleware('auth')->name('approve_event');
-Route::get('/event/filter/{week_data}/{brand_name}',[\App\Http\Controllers\EventController::class,'show_filtered_events'])->middleware('auth')->name('event_week_filter');
-Route::get('/event/current_ongoing',[EventControllerAlias::class,'show_ongoing_events'])->middleware('auth')->name('current_ongoing_event');
-Route::get('/event/this_week',[EventControllerAlias::class,'show_events_this_week'])->middleware('auth')->name('events_this_week');
+Route::get('/event/filter/{week_data}/{brand_name}', [\App\Http\Controllers\EventController::class, 'show_filtered_events'])->middleware('auth')->name('event_week_filter');
+Route::get('/event/current_ongoing', [EventControllerAlias::class, 'show_ongoing_events'])->middleware('auth')->name('current_ongoing_event');
+Route::get('/event/this_week', [EventControllerAlias::class, 'show_events_this_week'])->middleware('auth')->name('events_this_week');
 
 //Item
-Route::get('/items/unreturned',[StockitemController::class,'show_unreturned_items'])->middleware('auth')->name('show_unretured_items');
-Route::get('/items/this_week_returnables',[StockitemController::class,'show_this_week_returnables'])->middleware('auth')->name('show_this_week_returnables');
+Route::get('/items/unreturned', [StockitemController::class, 'show_unreturned_items'])->middleware('auth')->name('show_unretured_items');
+Route::get('/items/this_week_returnables', [StockitemController::class, 'show_this_week_returnables'])->middleware('auth')->name('show_this_week_returnables');
 
 
 //Restock
@@ -128,6 +128,7 @@ Route::get('/edit/approval_setting', [ApproverSettingController::class, 'index']
 Route::post('/event/approve/{id}', [EventControllerAlias::class, 'approve'])->middleware('auth')->name('approve_event_post');
 Route::post('/event/publish/{item_request_id}', [EventControllerAlias::class, 'publish'])->middleware('auth')->name('publish_item_request_post');
 
+
 //Restock
 Route::post('/restock/{event_id}', [RestockController::class, 'update'])->middleware('auth')->name('restock_post');
 
@@ -148,3 +149,4 @@ Route::post('/edit/user/approval_setting/{approver_setting_id}', [ApproverSettin
 
 Route::post('/item/delete', [StockitemController::class, 'destroy'])->middleware('auth')->name('delete_stock_item_ajax');
 Route::post('/item/add/event', [EventControllerAlias::class, 'add_item_to_event'])->middleware('auth')->name('add_item_event_ajax');
+Route::post('/delete/event', [EventControllerAlias::class, 'delete_event'])->middleware('auth')->name('delete_event_ajax');

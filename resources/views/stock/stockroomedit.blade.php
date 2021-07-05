@@ -25,9 +25,9 @@
                                 @method('PUT')
 
                                 <div class="card-body">
-                                    
+
                                   <div class="form-group row">
-                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Site</label>
+                                    <label for="lname" class="col-sm-3 text-left control-label col-form-label">Site</label>
                                     <div class="col-md-9">
                                         <select   class="select2 form-control custom-select" style="width: 75%; height:36px;" name='Site' id="Site">
                                             <option value="">Select</option>
@@ -35,12 +35,12 @@
                                             <option value="HW" {{'HW' == $Item->Site  ? 'selected' : ''}}>Hawassa</option>
                                             <option value="KO" {{'KO' == $Item->Site  ? 'selected' : ''}}>Kombolcha</option>
                                             <option value="RY" {{'RY' == $Item->Site  ? 'selected' : ''}}>Raya</option>
-                                            <option value="ZB" {{'ZB' == $Item->Site  ? 'selected' : ''}}>Zebidar</option>                                  
+                                            <option value="ZB" {{'ZB' == $Item->Site  ? 'selected' : ''}}>Zebidar</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Branch</label>
+                                    <label for="lname" class="col-sm-3 text-left control-label col-form-label">Branch</label>
                                     <div class="col-md-9">
                                         <select   class="select2 form-control custom-select" style="width: 75%; height:36px;" name='Branch' id="Branch">
                                             <option value="">Select</option>
@@ -48,19 +48,19 @@
                                             <option value="KL" {{'KL' == $Item->Branch  ? 'selected' : ''}}>Kaliti</option>
                                             <option value="MC" {{'MC' == $Item->Branch  ? 'selected' : ''}}>Maychew</option>
                                             <option value="GU" {{'GU' == $Item->Branch  ? 'selected' : ''}}>Gubre</option>
-                                                                             
+
                                         </select>
                                     </div>
                                 </div>
-                                                                       
+
                                     <div class="form-group row">
-                                        <label for="email1" class="col-sm-3 text-right control-label col-form-label">Stock Room Name</label>
+                                        <label for="email1" class="col-sm-3 text-left control-label col-form-label">Stock Room Name</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="email1" name="Stock_Room" value="{{ $Item->Stock_Room }}" >
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="email1" class="col-sm-3 text-right control-label col-form-label">Description</label>
+                                        <label for="email1" class="col-sm-3 text-left control-label col-form-label">Description</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="email1" name="Description" value="{{ $Item->Description }}" >
                                         </div>
@@ -73,7 +73,7 @@
                                         <button type="submit" name="Submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </div>
-                               
+
                             </form>
                         </div>
 @endsection()

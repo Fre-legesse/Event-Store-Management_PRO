@@ -85,7 +85,7 @@
                             <th scope="col">Event Location</th>
                             <th scope="col">Responsible(BGI)</th>
                             <th scope="col">Return date</th>
-                            <th scope="col">Item Requests</th>
+                            {{--                            <th scope="col">Item Requests</th>--}}
                             <th scope="col">Remaining Date For Return</th>
                             <th scope="col">First Approval</th>
                             <th scope="col">Second Approval</th>
@@ -106,45 +106,45 @@
                                         <td>{{ $item->Location }}</td>
                                         <td>{{ $item->Responsible_person_BGI }}</td>
                                         <td>{{ $item->Return_date }}</td>
-                                        <td style='text-align: center;'>
-                                            <div class="bs-example">
-                                                <div id="myPopovers">
+                                        {{--                                        <td style='text-align: center;'>--}}
+                                        {{--                                            <div class="bs-example">--}}
+                                        {{--                                                <div id="myPopovers">--}}
 
-                                                    <a href="#" data-toggle="popover" data-trigger="focus"
-                                                       data-html="true" data-placement="top" data-content="
-<table class='table'>
-                  <thead class='thead-light'>
-          <tr>
-                    <th scope='col'>Item List</th>
+                                        {{--                                                    <a href="#" data-toggle="popover" data-trigger="focus"--}}
+                                        {{--                                                       data-html="true" data-placement="top" data-content="--}}
+                                        {{--<table class='table'>--}}
+                                        {{--                  <thead class='thead-light'>--}}
+                                        {{--          <tr>--}}
+                                        {{--                    <th scope='col'>Item List</th>--}}
 
-                    <th scope='col'>Quantity</th>
-                  </tr>
-          </thead>
-          <tbody>
+                                        {{--                    <th scope='col'>Quantity</th>--}}
+                                        {{--                  </tr>--}}
+                                        {{--          </thead>--}}
+                                        {{--          <tbody>--}}
 
-                  @php
-                                                        $sql11 = $link->prepare("SELECT `reqested_item_lists`.*,events.EVID,events.Company,events.Department FROM `reqested_item_lists` INNER JOIN  events ON events.EVID=`reqested_item_lists`.`Event_ID` WHERE `reqested_item_lists`.`Event_ID`= $item->EVID AND events.Company= '$Company'  and events.Department= '$Department' ");
-                                                        $sql11->execute();
-                                                       // $result81 = $sql11->fetchAll(\PDO::FETCH_OBJ);
-                                                       // $result81row=$sql11->rowCount();
+                                        {{--                  @php--}}
+                                        {{--                                                        $sql11 = $link->prepare("SELECT `reqested_item_lists`.*,events.EVID,events.Company,events.Department FROM `reqested_item_lists` INNER JOIN  events ON events.EVID=`reqested_item_lists`.`Event_ID` WHERE `reqested_item_lists`.`Event_ID`= $item->EVID AND events.Company= '$Company'  and events.Department= '$Department' ");--}}
+                                        {{--                                                        $sql11->execute();--}}
+                                        {{--                                                       // $result81 = $sql11->fetchAll(\PDO::FETCH_OBJ);--}}
+                                        {{--                                                       // $result81row=$sql11->rowCount();--}}
 
-                                                    @endphp
+                                        {{--                                                    @endphp--}}
 
-                                                    @php
-                                                        while($result81 = $sql11->fetch(\PDO::FETCH_BOTH)) {
-                                                                   echo "<tr>
-                                                                    ";
-                                                           echo "<td>".$result81['ItemCode']."</td>";
-                                                           echo "<td>".$result81['Quantity']."</td>";
-                                                                    echo  "</tr>";
-                                                                  }
-                                                    @endphp
-                                                        </tbody>
-                                                            </table>" title="Requested Items"><i
-                                                            class="mdi mdi-view-sequential"></i>
-                                                    </a></div>
-                                            </div>
-                                        </td>
+                                        {{--                                                    @php--}}
+                                        {{--                                                        while($result81 = $sql11->fetch(\PDO::FETCH_BOTH)) {--}}
+                                        {{--                                                                   echo "<tr>--}}
+                                        {{--                                                                    ";--}}
+                                        {{--                                                           echo "<td>".$result81['ItemCode']."</td>";--}}
+                                        {{--                                                           echo "<td>".$result81['Quantity']."</td>";--}}
+                                        {{--                                                                    echo  "</tr>";--}}
+                                        {{--                                                                  }--}}
+                                        {{--                                                    @endphp--}}
+                                        {{--                                                        </tbody>--}}
+                                        {{--                                                            </table>" title="Requested Items"><i--}}
+                                        {{--                                                            class="mdi mdi-view-sequential"></i>--}}
+                                        {{--                                                    </a></div>--}}
+                                        {{--                                            </div>--}}
+                                        {{--                                        </td>--}}
                                         <td>{{date_diff(date_create_from_format('Y-m-d',$item->Return_date),now())->format('%a')}}
                                             days
                                         </td>
@@ -160,6 +160,11 @@
                                                        href="/Event/{{ $item->EVID }}/itemadd"
                                                        class="btn btn-warning btn-md"><i
                                                             class="mdi mdi-library-plus"></i> Request Items</a>
+                                                @elseif($item->Posted === 'Posted' && auth()->user()->hasRole(['Approver_One','Approver_Two']))
+                                                    <a style="white-space: nowrap;" type="button"
+                                                       href="/Event/{{ $item->EVID }}/itemadd"
+                                                       class="btn btn-danger btn-md"><i
+                                                            class="mdi mdi-library-plus"></i> Edit</a>
                                                 @endif
                                                 {{--                                                <a style="white-space: nowrap;" type="button"--}}
                                                 {{--                                                   href="/Event/{{ $item->EVID }}/edit" class="btn btn-default btn-sm">Edit</a>--}}

@@ -56,9 +56,7 @@ class StockitemController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $request->validate([
-
             'Countable' => 'required',
             'Status' => 'required',
             'Type' => [
@@ -73,21 +71,34 @@ class StockitemController extends Controller
             ],
         ]);
         $Name = '';
-        if (!is_null($request->Size) and !is_null($request->Fabric) and !is_null($request->Brand)) {
-            $Name = $request->Size . "_" . $request->Color . "_" . $request->Brand . "_" . $request->Fabric . "_" . $request->Type;
-        } elseif (is_null($request->Fabric) and $request->Brand == 'Null') {
-            $Name = $request->Size . "_" . $request->Color . "_" . $request->Type;
-        } elseif (is_null($request->Fabric)) {
-            $Name = $request->Color . "_" . $request->Brand . "_" . $request->Size . "_" . $request->Type;
-        } elseif (is_null($request->Color)) {
-            $Name = $request->Brand . "_" . $request->Type;
-        } else {
-            $Name = $request->Color . "_" . $request->Brand . "_" . $request->Fabric . "_" . $request->Size . "_" . $request->Type;
+        $fields_array = [
+            "Fabric",
+            "Brand",
+            "Size",
+            "Type",
+            "Color",
+            "Manufacturer",
+        ];
+        foreach ($fields_array as $field) {
+            if (!is_null($request->get($field))) {
+                $Name .= "_" . strtoupper($request->get($field));
+            }
         }
+//        if (!is_null($request->Size) and !is_null($request->Fabric) and !is_null($request->Brand)) {
+//            $Name = $request->Size . "_" . $request->Color . "_" . $request->Brand . "_" . $request->Fabric . "_" . $request->Type;
+//        } elseif (is_null($request->Fabric) and $request->Brand == 'Null') {
+//            $Name = $request->Size . "_" . $request->Color . "_" . $request->Type;
+//        } elseif (is_null($request->Fabric)) {
+//            $Name = $request->Color . "_" . $request->Brand . "_" . $request->Size . "_" . $request->Type;
+//        } elseif (is_null($request->Color)) {
+//            $Name = $request->Brand . "_" . $request->Type;
+//        } else {
+//            $Name = $request->Color . "_" . $request->Brand . "_" . $request->Fabric . "_" . $request->Size . "_" . $request->Type;
+//        }
         $loc = Auth::user()->Location;
         $dep = Auth::user()->Department;
         $request->merge([
-            'Item_Code' => $Name,
+            'Item_Code' => trim($Name, "_"),
             'Company' => $loc,
             'Department' => $dep,
         ]);
@@ -181,7 +192,8 @@ class StockitemController extends Controller
         ]);
     }
 
-    public function show_this_week_returnables(){
+    public function show_this_week_returnables()
+    {
         return view('stock.item_table', [
             'items' => Stock_item::query()
                 ->join('reqested_item_lists', 'reqested_item_lists.ItemCode', '=', 'stock_items.SIID')

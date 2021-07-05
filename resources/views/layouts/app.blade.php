@@ -26,15 +26,13 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/images/logo.png')}}">
     <title>Store Management</title>
 
-{{--    Loading animation style--}}
+    {{--    jQuery CDN--}}
+    <script src="{{asset('assets/libs/jquery.min.js')}}"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    {{--    Loading animation style--}}
     <link href="{{asset('css/loading_animation.css')}}" rel="stylesheet">
     <link href="{{asset('css/chips.css')}}" rel="stylesheet">
-
-    <script src="{{asset('js/popper.min.js')}}"></script>
-
-{{--    Google Material Icons--}}
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="{{asset('assets/libs/flot/css/float-chart.css')}}" rel="stylesheet">
@@ -42,37 +40,35 @@
 
 
     {{--    Bootstrap CDN --}}
-{{--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"--}}
-{{--          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">--}}
+    {{--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"--}}
+    {{--          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">--}}
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <![endif]-->
 
     {{--    Scripts--}}
-    {{--    jQuery CDN--}}
-    <script src="{{asset('assets/libs/jquery.min.js')}}"></script>
 
     {{--    Bootstrap Script--}}
     <script src="{{asset('assets/libs/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 
     {{--    Bootstrap--}}
-{{--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"--}}
-{{--            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"--}}
-{{--            crossorigin="anonymous"></script>--}}
-    <!-- Bootstrap tether Core JavaScript -->
+    {{--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"--}}
+    {{--            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"--}}
+    {{--            crossorigin="anonymous"></script>--}}
+<!-- Bootstrap tether Core JavaScript -->
     <!-- <script src="../../assets/libs/popper.js/dist/umd/popper.min.js"></script> -->
     {{--<script src="{{asset('assets/libs/bootstrap/dist/js/bootstrap.min.js')}}"></script>--}}
-    <script src="{{asset('assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js')}}"></script>
-    <script src="{{asset('assets/extra-libs/sparkline/sparkline.js')}}"></script>
+{{--    <script src="{{asset('assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js')}}"></script>--}}
+    {{--    <script src="{{asset('assets/extra-libs/sparkline/sparkline.js')}}"></script>--}}
     <!--Wave Effects -->
     <!--  <script src="../../dist/js/waves.js"></script> -->
     <!--Menu sidebar -->
-    <script src="{{asset('dist/js/sidebarmenu.js')}}"></script>
+{{--    <script src="{{asset('dist/js/sidebarmenu.js')}}"></script>--}}
     <!--Custom JavaScript -->
-    <script src="{{asset('dist/js/custom.min.js')}}"></script>
+{{--    <script src="{{asset('dist/js/custom.min.js')}}"></script>--}}
     <!--This page JavaScript -->
     <script src="{{asset('dist/js/pages/dashboards/dashboard1.js')}}"></script>
     <!-- Charts js Files -->
@@ -189,12 +185,12 @@
                     <!-- Comment -->
                     <!-- ============================================================== -->
                     <li class="nav-item dropdown">
-{{--                        Bell--}}
-{{--                        <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown"--}}
-{{--                           aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-bell font-24"--}}
-{{--                                                                          style="color: white;"></i>--}}
-{{--                        </a>--}}
-                        <!--    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {{--                        Bell--}}
+                    {{--                        <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown"--}}
+                    {{--                           aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-bell font-24"--}}
+                    {{--                                                                          style="color: white;"></i>--}}
+                    {{--                        </a>--}}
+                    <!--    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                <a class="dropdown-item" href="#">Action</a>
                                <a class="dropdown-item" href="#">Another action</a>
                                <div class="dropdown-divider"></div>
@@ -208,11 +204,11 @@
                     <!-- Messages -->
                     <!-- ============================================================== -->
                     <li class="nav-item dropdown">
-{{--                        Message--}}
-{{--                        <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" id="2"--}}
-{{--                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i--}}
-{{--                                class="font-24 mdi mdi-comment-processing" style="color: white;"></i>--}}
-{{--                        </a>--}}
+                        {{--                        Message--}}
+                        {{--                        <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" id="2"--}}
+                        {{--                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i--}}
+                        {{--                                class="font-24 mdi mdi-comment-processing" style="color: white;"></i>--}}
+                        {{--                        </a>--}}
                         <div class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown"
                              aria-labelledby="2">
                             <ul class="list-style-none">
@@ -315,9 +311,9 @@
                     <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
                                                 href="{{url('/Event')}}" aria-expanded="false"><i
                                 class="fab fa-wpforms"></i><span class="hide-menu">Event</span></a></li>
-{{--                    <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"--}}
-{{--                                                aria-expanded="false"><i class="mdi mdi-shuffle-variant"></i><span--}}
-{{--                                class="hide-menu">Stock Movement</span></a></li>--}}
+                    {{--                    <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"--}}
+                    {{--                                                aria-expanded="false"><i class="mdi mdi-shuffle-variant"></i><span--}}
+                    {{--                                class="hide-menu">Stock Movement</span></a></li>--}}
                     @role('Admin')
                     <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
                                                 href="{{url('/event/approve')}}" aria-expanded="false"><i

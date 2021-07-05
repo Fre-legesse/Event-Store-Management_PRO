@@ -24,7 +24,7 @@
                     <div class="card-body">
                         <h4 class="card-title">Event Form</h4>
                         <div class="form-group row">
-                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Event
+                            <label for="lname" class="col-sm-3 text-left control-label col-form-label">Event
                                 Type</label>
                             <div class="col-md-9">
                                 <select required class="select2 form-control custom-select"
@@ -38,7 +38,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="email1" class="col-sm-3 text-right control-label col-form-label">Event
+                            <label for="email1" class="col-sm-3 text-left control-label col-form-label">Event
                                 Name</label>
                             <div class="col-sm-4">
                                 <input required type="text" class="form-control" id="email1" name="Event_Name"
@@ -46,7 +46,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="email1" class="col-sm-3 text-right control-label col-form-label">Date
+                            <label for="email1" class="col-sm-3 text-left control-label col-form-label">Date
                                 From</label>
                             <div class="col-sm-4">
                                 <input required type="date" class="form-control" id="email1" name="Date_From"
@@ -54,7 +54,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="email1" class="col-sm-3 text-right control-label col-form-label">Date To</label>
+                            <label for="email1" class="col-sm-3 text-left control-label col-form-label">Date To</label>
                             <div class="col-sm-4">
                                 <input required type="date" class="form-control" id="email1" name="Date_To"
                                        placeholder="">
@@ -62,7 +62,7 @@
                         </div>
                         <div class="form-group row">
                             <label for="email1"
-                                   class="col-sm-3 text-right control-label col-form-label">Location</label>
+                                   class="col-sm-3 text-left control-label col-form-label">Location</label>
                             <div class="col-sm-4">
                                 <input required type="text" class="form-control" id="email1" name="Location"
                                        placeholder="">
@@ -70,7 +70,7 @@
                         </div>
                         <div class="form-group row">
                             <label for="email1"
-                                   class="col-sm-3 text-right control-label col-form-label">Description</label>
+                                   class="col-sm-3 text-left control-label col-form-label">Description</label>
                             <div class="col-sm-9">
                                 <textarea type="text" class="form-control" id="email1" name="Description" placeholder=""
                                           cols="10" rows="10"></textarea>
@@ -107,7 +107,7 @@
                         <h4 class="card-title">Requester Form</h4>
                         <div class="form-group row">
                             <label for="Requester"
-                                   class="col-sm-3 text-right control-label col-form-label">Requester</label>
+                                   class="col-sm-3 text-left control-label col-form-label">Requester</label>
                             <div class="col-md-9">
                                 <input required type="text" class="form-control" id="email1" name="Requester"
                                        style="width: 450px;" value="{{auth()->user()->name}}" readonly>
@@ -115,7 +115,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Responsible
+                            <label for="lname" class="col-sm-3 text-left control-label col-form-label">Responsible
                                 Person (BGI)</label>
                             <div class="col-md-9">
                                 <input required type="text" class="form-control" id="email1"
@@ -125,7 +125,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Phone
+                            <label for="lname" class="col-sm-3 text-left control-label col-form-label">Phone
                                 Number (BGI)</label>
                             <div class="col-md-9">
                                 <input required type="tel" maxlength="13" minlength="9"
@@ -135,7 +135,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Responsible
+                            <label for="lname" class="col-sm-3 text-left control-label col-form-label">Responsible
                                 Person (Client Side)</label>
                             <div class="col-md-9">
                                 <input required type="text" class="form-control" id="email1"
@@ -145,7 +145,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Phone
+                            <label for="lname" class="col-sm-3 text-left control-label col-form-label">Phone
                                 Number (Client Side)</label>
                             <div class="col-md-9">
                                 <input required type="tel" maxlength="13" minlength="9"
@@ -154,7 +154,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="email1" class="col-sm-3 text-right control-label col-form-label">Return
+                            <label for="email1" class="col-sm-3 text-left control-label col-form-label">Return
                                 Date</label>
                             <div class="col-sm-9">
                                 <input required type="date" class="form-control" id="email1" name="Return_date"
@@ -174,7 +174,7 @@
 
                         <div class="form-group row">
                             <label for="category1"
-                                   class="col-sm-3 text-right control-label col-form-label">Category</label>
+                                   class="col-sm-3 text-left control-label col-form-label">Category</label>
                             <div class="col-md-7">
                                 <select data-search="true" id="category1" class="form-control">
                                     <option value="" selected hidden>Please Select</option>
@@ -187,7 +187,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Item
+                            <label for="lname" class="col-sm-3 text-left control-label col-form-label">Item
                                 List</label>
                             <div class="col-md-7">
                                 <select theme="google" width="400" style="" placeholder="Select Your Favorite"
@@ -199,7 +199,7 @@
                         </div>
                         <div class="form-group row">
 
-                            <label for="stockqty" class="col-sm-3 text-right control-label col-form-label"> Stock
+                            <label for="stockqty" class="col-sm-3 text-left control-label col-form-label"> Stock
                                 Quantity</label>
                             <div class="col-md-9">
                                 <div class="row">
@@ -321,7 +321,7 @@
                                                 "<div class=\"form-group row\" id='item_selection_row_" + data['stock_id'] + "'>" +
                                                 "<div class=\"col-sm-4\" \n" +
                                                 "                        <label for=\"email1\"\n" +
-                                                "                               class=\"col-sm-6 text-right control-label col-form-label\">" + data['item_code'] + "</label>\n" +
+                                                "                               class=\"col-sm-6 text-left control-label col-form-label\">" + data['item_code'] + "</label>\n" +
                                                 "                    </div>\n" +
                                                 "                    <div class=\"col-sm-4\">\n" +
                                                 "                        <input type=\"number\" class=\"form-control\" name='requested_quantity[][" + data['stock_id'] + "]' id='stock_item_" + data['stock_id'] + "'\n" +
@@ -418,7 +418,7 @@
 
         <div class="card">
             <div class="card-body" id="item_selection_list">
-                <h4 class="card-title">Item Selection List</h4>
+                <h4 class="card-title">Requested Items</h4>
             </div>
 
         </div>

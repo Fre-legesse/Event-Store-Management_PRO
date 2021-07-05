@@ -28,7 +28,7 @@
 
 
                                  <div class="form-group row">
-                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Brand</label>
+                                    <label for="lname" class="col-sm-3 text-left control-label col-form-label">Brand</label>
                                     <div class="col-md-9">
 
                          <input type="text" name="Brand" class="form-control" value="{{ $Item->Brand }}">
@@ -38,7 +38,7 @@
 
 
                                     <div class="form-group row">
-                                        <label for="email1" class="col-sm-3 text-right control-label col-form-label">Type</label>
+                                        <label for="email1" class="col-sm-3 text-left control-label col-form-label">Type</label>
                                          <div class="col-md-9">
                                         <select class="select2 form-control custom-select" style="width: 40%; height:36px;" name='Type'>
                                         <option value="">Select</option>

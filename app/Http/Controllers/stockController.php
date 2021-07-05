@@ -100,12 +100,10 @@ class stockController extends Controller
 //                $row->Asset_No = $request->input('Asset_No_'.$i);
 //                // and so on for your all columns s
 //                $row->save();   //at last save into db
-                stock::updateOrCreate(
+                stock::query()->create(
                     [
                         'Stock_Room' => $request->Stock_Room,
                         'Item' => $request->Item,
-                    ],
-                    [
                         'Company' => $request->Company,
                         'Department' => $request->Department,
                         'CUID' => $request->CUID,

@@ -25,7 +25,7 @@
             <div class="card-body">
                 <h4 class="card-title">Edit Category</h4>
                 <div class="form-group row">
-                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Company</label>
+                    <label for="lname" class="col-sm-3 text-left control-label col-form-label">Company</label>
                     <div class="col-md-9">
                         <select class="select2 form-control custom-select" style="width: 100%; height:36px;"
                                 name='Company'>
@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Department</label>
+                    <label for="lname" class="col-sm-3 text-left control-label col-form-label">Department</label>
                     <div class="col-md-9">
 
                         <select class="select2 form-control custom-select" style="width: 100%; height:36px;"
@@ -84,7 +84,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="email1" class="col-sm-3 text-right control-label col-form-label">Type</label>
+                    <label for="email1" class="col-sm-3 text-left control-label col-form-label">Type</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" id="email1" name="Type" value="{{ $Item->Type }}">
                     </div>

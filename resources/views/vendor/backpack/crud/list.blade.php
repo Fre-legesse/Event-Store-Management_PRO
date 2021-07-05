@@ -125,7 +125,7 @@
           <div id="bottom_buttons" class="d-print-none text-center text-sm-left">
             @include('crud::inc.button_stack', ['stack' => 'bottom'])
 
-            <div id="datatable_button_stack" class="float-right text-right hidden-xs"></div>
+            <div id="datatable_button_stack" class="float-right text-left hidden-xs"></div>
           </div>
           @endif
 

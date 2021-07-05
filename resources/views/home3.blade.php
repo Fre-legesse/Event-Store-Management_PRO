@@ -45,7 +45,7 @@
                         <div class="card-body">
                             <h3 class="card-title">Personal Information</h3>
                             <div class="form-group row">
-                                <label for="fname" class="col-sm-3 text-right control-label col-form-label">First
+                                <label for="fname" class="col-sm-3 text-left control-label col-form-label">First
                                     Name</label>
                                 <div class="col-sm-9">
                                     <input required type="text" class="form-control" id="First_Name"
@@ -54,7 +54,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="fname" class="col-sm-3 text-right control-label col-form-label">Middle
+                                <label for="fname" class="col-sm-3 text-left control-label col-form-label">Middle
                                     Name</label>
                                 <div class="col-sm-9">
                                     <input required type="text" class="form-control" id="Middle_Name"
@@ -63,7 +63,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="lname" class="col-sm-3 text-right control-label col-form-label">Last
+                                <label for="lname" class="col-sm-3 text-left control-label col-form-label">Last
                                     Name</label>
                                 <div class="col-sm-9">
                                     <input required type="text" class="form-control" id="Last_Name" name="Last_Name"
@@ -71,7 +71,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="email1" class="col-sm-3 text-right control-label col-form-label">Birth
+                                <label for="email1" class="col-sm-3 text-left control-label col-form-label">Birth
                                     Date</label>
                                 <div class="col-sm-9">
                                     <input required type="date" class="form-control mydatepicker" id="Birth_Date"
@@ -82,7 +82,7 @@
 
                             <div class="form-group row">
                                 <label for="email1"
-                                       class="col-sm-3 text-right control-label col-form-label">Gender</label>
+                                       class="col-sm-3 text-left control-label col-form-label">Gender</label>
                                 <div class="col-md-9">
                                     <div class="custom-control">
                                         <input required type="radio" class="form-check-input required"
@@ -101,7 +101,7 @@
                             </div>
                             <div class="form-group row">
                                 <label for="email1"
-                                       class="col-sm-3 text-right control-label col-form-label">Citizenship</label>
+                                       class="col-sm-3 text-left control-label col-form-label">Citizenship</label>
                                 <div class="col-md-9">
                                     <select class="select2 form-control custom-select" name="Citizenship"
                                             id="Citizenship"
@@ -275,7 +275,7 @@
 
                             <div class="form-group row">
                                 <label for="email1"
-                                       class="col-sm-3 text-right control-label col-form-label">Qualification</label>
+                                       class="col-sm-3 text-left control-label col-form-label">Qualification</label>
                                 <div class="col-md-9">
                                     <div class="custom-control">
                                         <input required type="radio" class="form-check-input required"
@@ -297,7 +297,7 @@
 
                             <div class="form-group row">
                                 <label for="Field_of_Study_Post_Graduate"
-                                       class="col-sm-3 text-right control-label col-form-label">Field of
+                                       class="col-sm-3 text-left control-label col-form-label">Field of
                                     Study</label>
                                 <div class="col-sm-9">
                                     <input required type="text" class="form-control"
@@ -306,7 +306,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="lname" class="col-sm-3 text-right control-label col-form-label">Name of
+                                <label for="lname" class="col-sm-3 text-left control-label col-form-label">Name of
                                     University</label>
                                 <div class="col-sm-9">
                                     <input required type="text" class="form-control"
@@ -319,7 +319,7 @@
 
                             <div class="form-group row">
                                 <label for="email1"
-                                       class="col-sm-3 text-right control-label col-form-label">Country</label>
+                                       class="col-sm-3 text-left control-label col-form-label">Country</label>
                                 <div class="col-md-9">
                                     <select class="select2 form-control custom-select" name="Country_Post_Graduate"
                                             id="Country_Post_Graduate"
@@ -390,7 +390,7 @@
                             </div>
                             <div class="form-group row">
                                 <label for="Attended_From_Post_Graduate"
-                                       class="col-sm-3 text-right control-label col-form-label">Date
+                                       class="col-sm-3 text-left control-label col-form-label">Date
                                     Attended From</label>
                                 <div class="col-sm-9">
                                     <input required type="date" id="Attended_From_Post_Graduate"
@@ -401,7 +401,7 @@
                             </div>
                             <div class="form-group row">
                                 <label for="Dates_Attended_to_Post_Graduate"
-                                       class="col-sm-3 text-right control-label col-form-label">Dates
+                                       class="col-sm-3 text-left control-label col-form-label">Dates
                                     attended To</label>
                                 <div class="col-sm-9">
                                     <input required type="date" id="Dates_Attended_to_Post_Graduate"
@@ -428,7 +428,7 @@
 
                             <div class="form-group row">
                                 <label for="Qualification_Under_Graduate_BA"
-                                       class="col-sm-3 text-right control-label col-form-label">Qualification</label>
+                                       class="col-sm-3 text-left control-label col-form-label">Qualification</label>
                                 <div class="col-md-9">
                                     <div class="custom-control">
                                         <input required type="radio" class="form-check-input required"
@@ -453,7 +453,7 @@
                             </div>
                             <div class="form-group row">
                                 <label for="Field_of_Study_Under_Graduate"
-                                       class="col-sm-3 text-right control-label col-form-label">Field of
+                                       class="col-sm-3 text-left control-label col-form-label">Field of
                                     Study</label>
                                 <div class="col-sm-9">
                                     <input required type="text" class="form-control"
@@ -463,7 +463,7 @@
                             </div>
                             <div class="form-group row">
                                 <label for="Name_of_University_Under_Graduate"
-                                       class="col-sm-3 text-right control-label col-form-label">Name of
+                                       class="col-sm-3 text-left control-label col-form-label">Name of
                                     University</label>
                                 <div class="col-sm-9">
                                     <input required type="text" class="form-control"
@@ -476,7 +476,7 @@
 
                             <div class="form-group row">
                                 <label for="Country_Under_Graduate"
-                                       class="col-sm-3 text-right control-label col-form-label">Country</label>
+                                       class="col-sm-3 text-left control-label col-form-label">Country</label>
                                 <div class="col-md-9">
                                     <select class="select2 form-control custom-select" name="Country_Under_Graduate"
                                             id="Country_Under_Graduate"
@@ -547,7 +547,7 @@
                             </div>
                             <div class="form-group row">
                                 <label for="Attended_From_Under_Graduate"
-                                       class="col-sm-3 text-right control-label col-form-label">Date
+                                       class="col-sm-3 text-left control-label col-form-label">Date
                                     Attended From</label>
                                 <div class="col-sm-9">
                                     <input required type="date" id="Attended_From_Under_Graduate"
@@ -558,7 +558,7 @@
                             </div>
                             <div class="form-group row">
                                 <label for="Dates_Attended_to_Under_Graduate"
-                                       class="col-sm-3 text-right control-label col-form-label">Dates
+                                       class="col-sm-3 text-left control-label col-form-label">Dates
                                     attended To</label>
                                 <div class="col-sm-9">
                                     <input required type="date" id="Dates_Attended_to_Under_Graduate"
@@ -588,7 +588,7 @@
 
                             <div class="form-group row">
                                 <label for="Qualification_Other"
-                                       class="col-sm-3 text-right control-label col-form-label">Qualification</label>
+                                       class="col-sm-3 text-left control-label col-form-label">Qualification</label>
                                 <div class="col-sm-9">
                                     <input required type="text" class="form-control" id="Qualification_Other"
                                            name="Qualification_Other"
@@ -597,7 +597,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="fname" class="col-sm-3 text-right control-label col-form-label">Field of
+                                <label for="fname" class="col-sm-3 text-left control-label col-form-label">Field of
                                     Study</label>
                                 <div class="col-sm-9">
                                     <input required type="text" class="form-control" id="Field_of_Study_Other"
@@ -606,7 +606,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="lname" class="col-sm-3 text-right control-label col-form-label">Name of
+                                <label for="lname" class="col-sm-3 text-left control-label col-form-label">Name of
                                     University</label>
                                 <div class="col-sm-9">
                                     <input required type="text" class="form-control" id="Name_of_University_Other"
@@ -618,7 +618,7 @@
 
                             <div class="form-group row">
                                 <label for="email1"
-                                       class="col-sm-3 text-right control-label col-form-label">Country</label>
+                                       class="col-sm-3 text-left control-label col-form-label">Country</label>
                                 <div class="col-md-9">
                                     <select class="select2 form-control custom-select" name="Country_Other"
                                             id="Country_Other"
@@ -689,7 +689,7 @@
                             </div>
                             <div class="form-group row">
                                 <label for="Attended_From_Other"
-                                       class="col-sm-3 text-right control-label col-form-label">Date
+                                       class="col-sm-3 text-left control-label col-form-label">Date
                                     Attended From</label>
                                 <div class="col-sm-9">
                                     <input required type="date" id="Attended_From_Other" name="Attended_From_Other"
@@ -699,7 +699,7 @@
                             </div>
                             <div class="form-group row">
                                 <label for="Dates_Attended_to_Other"
-                                       class="col-sm-3 text-right control-label col-form-label">Dates
+                                       class="col-sm-3 text-left control-label col-form-label">Dates
                                     attended To</label>
                                 <div class="col-sm-9">
                                     <input required type="date" id="Dates_Attended_to_Other"
@@ -724,7 +724,7 @@
                             <h4 class="card-title">Education | High School</h4>
                             <div class="form-group row">
                                 <label for="Institute_Name"
-                                       class="col-sm-3 text-right control-label col-form-label">Institute
+                                       class="col-sm-3 text-left control-label col-form-label">Institute
                                     Name</label>
                                 <div class="col-sm-9">
                                     <input required type="text" class="form-control" id="Institute_Name_High_School"
@@ -736,7 +736,7 @@
 
                             <div class="form-group row">
                                 <label for="email1"
-                                       class="col-sm-3 text-right control-label col-form-label">Country</label>
+                                       class="col-sm-3 text-left control-label col-form-label">Country</label>
                                 <div class="col-md-9">
                                     <select class="select2 form-control custom-select" name="Country_High_School"
                                             id="Country_High_School"
@@ -807,7 +807,7 @@
                             </div>
                             <div class="form-group row">
                                 <label for="Attended_From_High_School"
-                                       class="col-sm-3 text-right control-label col-form-label">Date
+                                       class="col-sm-3 text-left control-label col-form-label">Date
                                     Attended From</label>
                                 <div class="col-sm-9">
                                     <input required type="date" id="Attended_From_High_School"
@@ -818,7 +818,7 @@
                             </div>
                             <div class="form-group row">
                                 <label for="Dates_Attended_to_High_School"
-                                       class="col-sm-3 text-right control-label col-form-label">Dates
+                                       class="col-sm-3 text-left control-label col-form-label">Dates
                                     attended To</label>
                                 <div class="col-sm-9">
                                     <input required type="date" id="Dates_Attended_to_High_School"
@@ -876,7 +876,7 @@
                     <div class="card-body">
                         <h4 class="card-title">Language</h4>
                         <div class="form-group row">
-                            <label for="email1" class="col-sm-3 text-right control-label col-form-label">Ability/
+                            <label for="email1" class="col-sm-3 text-left control-label col-form-label">Ability/
                                 English</label>
                             <div class="col-md-9">
                                 <div class="custom-control">
@@ -929,7 +929,7 @@
                         <h4 class="card-title">EXPERIENCE </h4>
 
                         <div class="form-group row">
-                            <label for="Job_Title" class="col-sm-3 text-right control-label col-form-label">Job
+                            <label for="Job_Title" class="col-sm-3 text-left control-label col-form-label">Job
                                 Title</label>
                             <div class="col-sm-9">
                                 <input required type="text" class="form-control" id="Job_Title" name="Job_Title"
@@ -938,21 +938,21 @@
                         </div>
                         <div class="form-group row">
                             <label for="Employer"
-                                   class="col-sm-3 text-right control-label col-form-label">Employer</label>
+                                   class="col-sm-3 text-left control-label col-form-label">Employer</label>
                             <div class="col-sm-9">
                                 <input required type="text" class="form-control" id="Employer" name="Employer"
                                        placeholder="Employer Here">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Describe
+                            <label for="lname" class="col-sm-3 text-left control-label col-form-label">Describe
                                 your major duties/responsibilities</label>
                             <div class="col-sm-9">
                                 <textarea id="Duties" name="Duties" class="form-control"></textarea>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="fname" class="col-sm-3 text-right control-label col-form-label">Reason(s)
+                            <label for="fname" class="col-sm-3 text-left control-label col-form-label">Reason(s)
                                 for leaving</label>
                             <div class="col-sm-9">
                                     <textarea name="Reason_for_Leaving" id="Reason_for_Leaving"
@@ -963,7 +963,7 @@
 
                         <div class="form-group row">
                             <label for="email1"
-                                   class="col-sm-3 text-right control-label col-form-label">Country</label>
+                                   class="col-sm-3 text-left control-label col-form-label">Country</label>
                             <div class="col-md-9">
                                 <select class="select2 form-control custom-select" name="Country_Experience"
                                         style="width: 100%; height:36px;">
@@ -1033,7 +1033,7 @@
                         </div>
                         <div class="form-group row">
                             <label for="Date_Attended_From_Experience"
-                                   class="col-sm-3 text-right control-label col-form-label">Date
+                                   class="col-sm-3 text-left control-label col-form-label">Date
                                 Attended From</label>
                             <div class="col-sm-9">
                                 <input required type="date" class="form-control mydatepicker"
@@ -1044,7 +1044,7 @@
                         </div>
                         <div class="form-group row">
                             <label for="Dates_Attended_to__Experience"
-                                   class="col-sm-3 text-right control-label col-form-label">Dates
+                                   class="col-sm-3 text-left control-label col-form-label">Dates
                                 attended To</label>
                             <div class="col-sm-9">
                                 <input required type="date" class="form-control mydatepicker"

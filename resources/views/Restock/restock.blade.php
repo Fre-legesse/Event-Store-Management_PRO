@@ -25,8 +25,8 @@
                                 <td>{{$item->Requester}}</td>
                                 <td>{{$item->Responsible_person_BGI}}</td>
                                 <td>{{$item->Return_date}}</td>
-                                <td>{{$item->Phone_Number}}</td>
-                                <td>{{date_diff(now(),date_create_from_format('Y-m-d',\App\Models\item_request::query()->find($item->Request_ID)->Return_date))->format('%a')}} days
+                                <td>{{$item->Phone_Number_Client}}</td>
+                                <td>{{date_diff(now(),\App\Models\item_request::query()->find($item->Request_ID)->Return_date)->format('%a')}} days
                                 </td>
                                 <td>
                                     <div class="row">

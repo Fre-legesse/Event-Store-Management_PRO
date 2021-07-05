@@ -157,5 +157,8 @@
     <orderEntry type="library" name="jquery-3.6.0" level="application" />
     <orderEntry type="library" name="jquery-1.12.4" level="application" />
     <orderEntry type="library" name="jquery.flot" level="application" />
+    <orderEntry type="library" name="@popperjs" level="application" />
+    <orderEntry type="library" name="select2" level="application" />
+    <orderEntry type="library" name="selectize.js" level="application" />
   </component>
 </module>

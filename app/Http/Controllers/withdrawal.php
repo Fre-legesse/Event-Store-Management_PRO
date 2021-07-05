@@ -230,7 +230,7 @@ class withdrawal extends Controller
         $Event = Event::query()->find($id);
         $requested_list = DB::table('reqested_item_lists')->where('Event_ID', '=', $id)->where('Issued', '=', null)->get();
         $idd = $Event->EVID;
-        $itemrequest = DB::table('item_requests')->where('Event_id', '=', $idd)->get();
+        $itemrequest =item_request::query()->where('Event_id', '=', $idd)->get();
 
         //  dd($itemrequest[0]);
         // return view('Item.category')->with('items',$Stock);
