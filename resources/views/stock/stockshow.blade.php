@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <h3>Items In {{ $items }}</h3>
-
+{{--    <h3>Items In {{ $items }}</h3>--}}
+{{debug($items->first()->Brand)}}
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -18,31 +18,31 @@
         </div>
     @endif
     <div class="box-content">
-        <!-- put your content here -->
-        <script type="text/javascript">
-            function myFunction() {
-                var value = $('#searchh').val();
-                $("#table tr").each(function (index) {
-                    if (index !== 0) {
+{{--        <!-- put your content here -->--}}
+{{--        <script type="text/javascript">--}}
+{{--            function myFunction() {--}}
+{{--                var value = $('#searchh').val();--}}
+{{--                $("#table tr").each(function (index) {--}}
+{{--                    if (index !== 0) {--}}
 
-                        $row = $(this);
+{{--                        $row = $(this);--}}
 
 
-                        var id = $row.find("td:nth-child(2)").text();
+{{--                        var id = $row.find("td:nth-child(2)").text();--}}
 
-                        if (id.indexOf(value) !== 0) {
-                            $row.hide();
-                        } else {
-                            $row.show();
-                        }
-                    }
-                });
-            }
-        </script>
+{{--                        if (id.indexOf(value) !== 0) {--}}
+{{--                            $row.hide();--}}
+{{--                        } else {--}}
+{{--                            $row.show();--}}
+{{--                        }--}}
+{{--                    }--}}
+{{--                });--}}
+{{--            }--}}
+{{--        </script>--}}
         <div class="card">
             <div class="card-body">
 
-                <h4 class="card-title">Items In Stock</h4>
+                <h4 class="card-title">Items In {{ucwords(strtolower($items->first()->Brand))}}</h4>
                 <div class="form-group row">
                     <a class="btn btn-lg btn-default" href="{!! route('create', ['id'=>$id]) !!}">Add New</a>
                     <input type="text" class="form-control" style="width: 200px; float: right;margin-left: 1300px;"
@@ -81,16 +81,16 @@
                                         <td>
                                             <div class="row">
 
-                                            <!--
-            <a style="white-space: nowrap;"  type="button" href="Stock/{{ $item->SID }}/edit" class="btn btn-default btn-sm">Edit</a>
+{{--                                            <!----}}
+{{--            <a style="white-space: nowrap;"  type="button" href="Stock/{{ $item->SID }}/edit" class="btn btn-default btn-sm">Edit</a>--}}
 
-           <form method="POST" action="/Stock/{{ $item->SID }}">
-           {{ csrf_field() }}
-                                            {{ method_field('DELETE') }}
+{{--           <form method="POST" action="/Stock/{{ $item->SID }}">--}}
+{{--           {{ csrf_field() }}--}}
+{{--                                            {{ method_field('DELETE') }}--}}
 
-                                                <button    type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                              </form>
--->
+{{--                                                <button    type="submit" class="btn btn-danger btn-sm">Delete</button>--}}
+{{--                                              </form>--}}
+{{---->--}}
                                             </div>
                                         </td>
 
@@ -101,8 +101,6 @@
 
                         @else
                             <td>No Item Found</td>
-
-
                         @endif
 
 
@@ -119,11 +117,10 @@
                         </script>
 
                     </table>
+                    <div class="d-flex justify-content-left">
+                        {{ $items->links("pagination::bootstrap-4") }}
+                    </div>
                 </div>
-                <div class="d-flex justify-content-left">
-
-                </div>
-
             </div>
         </div>
 

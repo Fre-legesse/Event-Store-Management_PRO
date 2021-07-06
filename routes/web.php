@@ -107,7 +107,6 @@ Route::get('/event/this_week', [EventControllerAlias::class, 'show_events_this_w
 Route::get('/items/unreturned', [StockitemController::class, 'show_unreturned_items'])->middleware('auth')->name('show_unretured_items');
 Route::get('/items/this_week_returnables', [StockitemController::class, 'show_this_week_returnables'])->middleware('auth')->name('show_this_week_returnables');
 
-
 //Restock
 Route::get('/restock', [RestockController::class, 'index'])->middleware('auth')->name('restock');
 Route::get('/restock/{event_id}', [RestockController::class, 'show'])->middleware('auth')->name('detail_restock_item');
@@ -134,7 +133,7 @@ Route::post('/restock/{event_id}', [RestockController::class, 'update'])->middle
 
 //Item
 Route::post('/item/delete/{item_id}', [StockitemController::class, 'delete'])->middleware('auth')->name('delete_item_post');
-
+Route::post('/import/stock_item',[StockitemController::class,'fileImport'])->middleware('auth')->name('import_stock_item_post');
 
 //Role
 Route::post('/edit/role/{user_id}', [RoleController::class, 'update'])->middleware('auth')->name('edit_role_post');

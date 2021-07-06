@@ -113,6 +113,7 @@
                         </select>
                     </div>
                 </div>
+
                 <input type="hidden" name="CUID" value="{{ Auth::user()->id }}">
                 <input type="hidden" name="UUID" value="{{ Auth::user()->id }}">
             </div>
@@ -121,6 +122,11 @@
                     <button type="submit" name="Submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>
+        </form>
+        <form action="/import/stock_item" method="POST" enctype="multipart/form-data">
+            @csrf
+            <input type="file" name="file">
+            <button type="submit" class="btn btn-primary">Import File</button>
         </form>
     </div>
     <script type="text/javascript">

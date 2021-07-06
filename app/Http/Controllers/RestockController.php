@@ -111,7 +111,7 @@ class RestockController extends Controller
                         $requested_item->update([
                             'Item_Remaining' => $item_remaining,
                             'Damage_Status' => $request->damage_status[$key][$stock_id],
-                            'Image_Name' => $image !== null ? $image->getClientOriginalName() . '.' . $image->getClientOriginalExtension() : null,
+                            'Image_Name' => $image !== null ? explode('/',$image->store('damaged_items_photo'))[1] : null,
                             'File_Path' => $image !== null ? $image->getRealPath() : null,
                         ]);
 

@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\StockItemImport;
 use App\Models\item_request;
 use App\Models\requested_item_list;
 use App\Models\stock_category;
 use App\Models\stock_item;
+use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
+use Maatwebsite\Excel\Facades\Excel;
 
 class StockitemController extends Controller
 {
@@ -105,7 +109,6 @@ class StockitemController extends Controller
 
 
         Stock_item::query()->create($request->all());
-        //dd($request->all());
         return redirect()->back()->with('message', 'Created Successfully');
     }
 
@@ -206,5 +209,24 @@ class StockitemController extends Controller
                 ->paginate(10),
 
         ]);
+    }
+
+    /**
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function fileImport(Request $request)
+    {
+//        dd($request->file('file'));
+        $request->validate([
+            'file' => 'required',
+        ]);
+        try {
+            Excel::import(new StockItemImport(), $request->file('file')->store('temp'));
+        } catch (Exception $exception) {
+//            ddd($exception);
+            throw ValidationException::withMessages([$exception->getMessage()]);
+        }
+        return back();
     }
 }

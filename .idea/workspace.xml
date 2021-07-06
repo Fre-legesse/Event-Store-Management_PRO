@@ -20,8 +20,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cbfe88f1-96b0-46e1-961f-1a43d4b3fd8f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Imports/StockItemImport.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-4azibDxywy2Sdky8BhWJz2bDcSBKf1LR.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-BCCliXjvNgYWOrs4CYfxZ9nK4Ke0NnKL.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-CDVCJo5yr9lwHKXNZfCD3ZqcmS03WVnn.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-ECdhFdlgcM2xcyRjshVMRmiBEnRqWUJL.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-ISHmaRejNcDkVOMr9tHQ5h9241OWVWeD.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-PR7dsLmJJ6kqvu9Dg5U4U4o29InpgZ6q.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-eUwa9z2YrCetrcHXycV4knyikPyZ7BcZ.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-fn3thlxsydXIhZZiDFpVkHmpqywKWERo.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-fnYIhKAA7E239ffGNuy32HwY7qgdRJc0.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-gJC7aSTeHt2lGr0FpWIGMWzRXsrfzwdN.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-gwtivFh5iyLzivyvibPscgapsXNPwTt1.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-jAtmIrBcbPNGObBPzvZ9LtrtZ1P06DWl.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-jdmmAcW8GCXN730oNpQ00aZrSujIFxxO.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-mcf4tYHMPUfXW4nekuXAH5D5f9pIjlvs.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RestockController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RestockController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StockitemController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StockitemController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/stock/item.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/stock/item.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/stock/itemadd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/stock/itemadd.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/stock/stockroom.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/stock/stockroom.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/stock/stockshow.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/stock/stockshow.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,6 +233,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/public/assets/libs" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2020.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -263,7 +287,8 @@
       <workItem from="1625113301056" duration="75843000" />
       <workItem from="1625461647208" duration="821000" />
       <workItem from="1625464786340" duration="2604000" />
-      <workItem from="1625487601638" duration="914000" />
+      <workItem from="1625487601638" duration="13604000" />
+      <workItem from="1625560796863" duration="7131000" />
     </task>
     <servers />
   </component>
@@ -298,6 +323,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="709" y="356" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1624706033990" />
+    <state x="2685" y="202" key="#com.intellij.ide.util.MemberChooser" timestamp="1625492288064">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2685" y="202" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1625492288064" />
     <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1624713108370">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -332,21 +361,21 @@
     </state>
     <state x="2808" y="185" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1625050935954" />
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1624599460797" />
-    <state x="1943" y="96" width="1878" height="938" key="find.popup" timestamp="1625465133994">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="23" y="96" width="1878" height="938" key="find.popup" timestamp="1625572392386">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="23" y="96" width="1878" height="938" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1624946046695" />
     <state x="1943" y="96" width="1878" height="938" key="find.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1625465133994" />
-    <state x="23" y="96" width="1878" height="938" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1625404263341" />
+    <state x="23" y="96" width="1878" height="938" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1625572392386" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1624540147199">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1624540147199" />
-    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1625487816319">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1625572369348">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1624950301206" />
-    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1625487816319" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1625393300527" />
+    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1625492913809" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1625572369348" />
   </component>
 </project>

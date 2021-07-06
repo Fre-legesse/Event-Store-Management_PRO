@@ -116,9 +116,6 @@
 
                     </table>
                 </div>
-                <div class="d-flex justify-content-left">
-                    {{ $Stockroom->links("pagination::bootstrap-4") }}
-                </div>
 
             </div>
         </div>
