@@ -123,11 +123,11 @@
                 </div>
             </div>
         </form>
-        <form action="/import/stock_item" method="POST" enctype="multipart/form-data">
-            @csrf
-            <input type="file" name="file">
-            <button type="submit" class="btn btn-primary">Import File</button>
-        </form>
+{{--        <form action="/import/stock_item" method="POST" enctype="multipart/form-data">--}}
+{{--            @csrf--}}
+{{--            <input type="file" name="file">--}}
+{{--            <button type="submit" class="btn btn-primary">Import File</button>--}}
+{{--        </form>--}}
     </div>
     <script type="text/javascript">
 
@@ -163,5 +163,5 @@
         });
 
     </script>
-    <script src="../../js/ajax-jquery2.js"></script>
+{{--    <script src="../../js/ajax-jquery2.js"></script>--}}
 @endsection()

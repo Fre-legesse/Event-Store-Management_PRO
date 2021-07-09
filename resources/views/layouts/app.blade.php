@@ -30,63 +30,13 @@
     <link href="{{asset('css/loading_animation.css')}}" rel="stylesheet">
     <link href="{{asset('css/chips.css')}}" rel="stylesheet">
 
-    <script src="{{asset('js/popper.min.js')}}"></script>
-
-    {{--    Google Material Icons--}}
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="{{asset('assets/libs/flot/css/float-chart.css')}}" rel="stylesheet">
-    <link href="{{asset('dist/css/style.min.css')}}" rel="stylesheet">
-
-
-    {{--    Bootstrap CDN --}}
-    {{--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"--}}
-    {{--          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">--}}
-
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <![endif]-->
-
-    {{--    Scripts--}}
-    {{--    jQuery CDN--}}
-    <script src="{{asset('assets/libs/jquery.min.js')}}"></script>
-
-    {{--    Bootstrap Script--}}
-    <script src="{{asset('assets/libs/bootstrap/dist/js/bootstrap.min.js')}}"></script>
-
-    {{--    Bootstrap--}}
-    {{--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"--}}
-    {{--            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"--}}
-    {{--            crossorigin="anonymous"></script>--}}
-<!-- Bootstrap tether Core JavaScript -->
-    <!-- <script src="../../assets/libs/popper.js/dist/umd/popper.min.js"></script> -->
-    {{--<script src="{{asset('assets/libs/bootstrap/dist/js/bootstrap.min.js')}}"></script>--}}
-    <script src="{{asset('assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js')}}"></script>
-    <script src="{{asset('assets/extra-libs/sparkline/sparkline.js')}}"></script>
-    <!--Wave Effects -->
-    <!--  <script src="../../dist/js/waves.js"></script> -->
-    <!--Menu sidebar -->
-    <script src="{{asset('dist/js/sidebarmenu.js')}}"></script>
-    <!--Custom JavaScript -->
-    <script src="{{asset('dist/js/custom.min.js')}}"></script>
-    <!--This page JavaScript -->
-    <script src="{{asset('dist/js/pages/dashboards/dashboard1.js')}}"></script>
-    <!-- Charts js Files -->
-    <script src="{{asset('assets/libs/flot/excanvas.js')}}"></script>
-    <script src="{{asset('assets/libs/flot/jquery.flot.js')}}"></script>
-    <script src="{{asset('assets/libs/flot/jquery.flot.pie.js')}}"></script>
-    <script src="{{asset('assets/libs/flot/jquery.flot.time.js')}}"></script>
-    <script src="{{asset('assets/libs/flot/jquery.flot.stack.js')}}"></script>
-    <script src="{{asset('assets/libs/flot/jquery.flot.crosshair.js')}}"></script>
-    <script src="{{asset('assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js')}}"></script>
-    <script src="{{asset('dist/js/pages/chart/chart-page-init.js')}}"></script>
-
-    {{--    My Charts--}}
-    <script src="{{asset('js/my_js/my_charts.js')}}"></script>
+<!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/libs/select2/dist/css/select2.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/libs/jquery-minicolors/jquery.minicolors.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/libs/quill/dist/quill.snow.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('dist/css/style.min.css')}}">
+    <script src="{{asset('assets/libs/jquery/dist/jquery.min.js')}}"></script>
 </head>
 
 <body>
@@ -422,8 +372,41 @@
 <!-- ============================================================== -->
 <!-- All Jquery -->
 <!-- ============================================================== -->
+<script src="{{asset('assets/libs/jquery/dist/jquery.min.js')}}"></script>
+<!-- Bootstrap tether Core JavaScript -->
+<script src="{{asset('assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+<!-- slimscrollbar scrollbar JavaScript -->
+<script src="{{asset('assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js')}}"></script>
+<script src="{{asset('assets/extra-libs/sparkline/sparkline.js')}}"></script>
+<!--Wave Effects -->
+<script src="{{asset('dist/js/waves.js')}}"></script>
+<!--Menu sidebar -->
+<script src="{{asset('dist/js/sidebarmenu.js')}}"></script>
+<!--Custom JavaScript -->
+<script src="{{asset('dist/js/custom.min.js')}}"></script>
+<!-- This Page JS -->
+<script src="{{asset('assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js')}}"></script>
+<script src="{{asset('dist/js/pages/mask/mask.init.js')}}"></script>
+<script src="{{asset('assets/libs/select2/dist/js/select2.full.min.js')}}"></script>
+<script src="{{asset('assets/libs/select2/dist/js/select2.min.js')}}"></script>
+<script src="{{asset('assets/libs/jquery-asColor/dist/jquery-asColor.min.js')}}"></script>
+<script src="{{asset('assets/libs/jquery-asGradient/dist/jquery-asGradient.js')}}"></script>
+<script src="{{asset('assets/libs/jquery-asColorPicker/dist/jquery-asColorPicker.min.js')}}"></script>
+<script src="{{asset('assets/libs/jquery-minicolors/jquery.minicolors.min.js')}}"></script>
+<script src="{{asset('assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
+<script src="{{asset('assets/libs/quill/dist/quill.min.js')}}"></script>
+<script src="{{asset('assets/extra-libs/DataTables/datatables.min.js')}}"></script>
 <script>
     $(document).ready(function () {
+        /************************************
+         *            For select 2           *
+         ************************************/
+        $(".select2").select2();
+
+        /****************************************
+         *       Basic Table                   *
+         ****************************************/
+        $('#datatable_table').DataTable();
         let $body = $("body");
         $(document).on({
             ajaxStart: function () {
@@ -434,8 +417,44 @@
             }
         });
     });
-</script>
 
+    /*colorpicker*/
+    $('.demo').each(function () {
+        //
+        // Dear reader, it's actually very easy to initialize MiniColors. For example:
+        //
+        //  $(selector).minicolors();
+        //
+        // The way I've done it below is just for the demo, so don't get confused
+        // by it. Also, data- attributes aren't supported at this time...they're
+        // only used for this demo.
+        //
+        $(this).minicolors({
+            control: $(this).attr('data-control') || 'hue',
+            position: $(this).attr('data-position') || 'bottom left',
+
+            change: function (value, opacity) {
+                if (!value) return;
+                if (opacity) value += ', ' + opacity;
+                if (typeof console === 'object') {
+                    console.log(value);
+                }
+            },
+            theme: 'bootstrap'
+        });
+
+    });
+    /*datwpicker*/
+    jQuery('.mydatepicker').datepicker();
+    jQuery('#datepicker-autoclose').datepicker({
+        autoclose: true,
+        todayHighlight: true
+    });
+    var quill = new Quill('#editor', {
+        theme: 'snow'
+    });
+
+</script>
 </body>
 
 </html>

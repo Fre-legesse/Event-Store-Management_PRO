@@ -45,19 +45,19 @@
                 <h4 class="card-title">Item Registration</h4>
                 <div class="form-group row">
                     <a class="btn btn-lg btn-default" href="Item/create/">Add New</a>
-                    <input type="text" class="form-control" style="width: 200px; float: right;margin-left: 1300px;"
-                           id="searchh" placeholder="Listed Type live search" onkeyup="myFunction()">
+{{--                    <input type="text" class="form-control" style="width: 200px; float: right;margin-left: 1300px;"--}}
+{{--                           id="searchh" placeholder="Listed Type live search" onkeyup="myFunction()">--}}
                 </div>
                 <div class="form-group row">
                     <!--          <a href="docAdd.php"><i class="glyphicon glyphicon-plus"></i><span>New</span></a> -->
 
-                    <table class="table" id="table">
-                        <thead class='thead-light'>
+                    <table class="table" id="datatable_table">
+                        <thead >
                         <tr>
 
 
                             <th scope="col">Item Code</th>
-
+                            <th scope="col">Brand</th>
                             <th scope="col">Size</th>
                             <th scope="col">Fabric</th>
                             <th scope="col">Color</th>
@@ -73,7 +73,7 @@
 
                                     <div class="well">
                                         <td>{{ $item->Item_Code }}</td>
-
+                                        <td>{{ $item->Brand }}</td>
                                         <td>{{ $item->Size }}</td>
                                         <td>{{ $item->Fabric }}</td>
                                         <td>{{ $item->Color }}</td>
@@ -118,6 +118,9 @@
                         </script>
 
                     </table>
+{{--                    <div class="d-flex justify-content-left">--}}
+{{--                        {{ $items->links("pagination::bootstrap-4") }}--}}
+{{--                    </div>--}}
                 </div>
             </div>
         </div>

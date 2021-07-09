@@ -91,6 +91,7 @@
                                 <div class="form-check mr-sm-2">
                                     <input type="checkbox"
                                            class="form-check-input"
+                                           id="post_checkbox"
                                            value="Posted"
                                            name="post_checkbox">
                                     <label class="form-check-label mb-0" for="post_checkbox"> Publish</label>
@@ -176,7 +177,7 @@
                             <label for="category1"
                                    class="col-sm-3 text-left control-label col-form-label">Category</label>
                             <div class="col-md-7">
-                                <select data-search="true" id="category1" class="form-control">
+                                <select data-search="true" id="category1" class="select2 form-control">
                                     <option value="" selected hidden>Please Select</option>
 
                                     @foreach($Stock_category as  $type)
@@ -192,7 +193,7 @@
                             <div class="col-md-7">
                                 <select theme="google" width="400" style="" placeholder="Select Your Favorite"
                                         data-search="true" id="itemlist" style="width: 180px;background-color: white;"
-                                        required disabled class="form-control">
+                                        required disabled class="select2 form-control">
                                     <option value="">Choose Category First</option>
                                 </select>
                             </div>
@@ -203,7 +204,7 @@
                                 Quantity</label>
                             <div class="col-md-9">
                                 <div class="row">
-                                    <input type="number" class="form-control" id="stockqty" name="Return_date"
+                                    <input type="number" class="form-control" id="stockqty" name="stockqty"
                                            style="width: 180px;background-color: white;" disabled value="">
                                     <label class="Control-label col-form-label"> &nbsp; Request QTY. &nbsp; </label>
                                     <input type="number" min="1" max="" class="form-control col-lg-3" id="requestQ"
@@ -218,195 +219,6 @@
                             </div>
 
                         </div>
-
-                        <script type="text/javascript">
-
-                            $("#category1").change(function (e) {
-                                var t = $(this).val();
-                                console.log(t);
-                                //alert(t);
-                                e.preventDefault();
-
-                                $.ajax({
-                                    method: 'POST',
-                                    url: "{{ route('ajaxRequest2.Fabric2') }}",
-                                    data: {value: t},
-                                    headers: {
-                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                    },
-                                    success: function (data) {
-                                        //  alert(data)
-
-                                        //var test  = JSON.stringify(data);
-                                        //alert(data.success);
-                                        //alert(test)
-                                        $('#itemlist').attr('disabled', false);
-                                        $('#itemlist').html(data.htmlappend);
-
-
-                                    },
-                                    error: function (xhr, ajaxOptions, thrownError) {
-                                        alert('n')
-                                        alert(thrownError);
-
-                                    }
-
-                                });
-                            });
-
-                            $("#itemlist").change(function (e) {
-
-                                var stock_item_id = $(this).val();
-                                //alert(t);
-                                e.preventDefault();
-
-                                $.ajax({
-                                    method: 'POST',
-                                    url: "{{ route('ajaxRequest4.Fabric4') }}",
-                                    data: {value: stock_item_id},
-                                    headers: {
-                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                    },
-                                    success: function (data) {
-
-
-                                        //var test  = JSON.stringify(data);
-                                        //alert(data.success);
-                                        //alert(test)
-                                        //$('#stockqty').html(data);
-                                        document.getElementById('stockqty').value = data
-                                        $('#requestQ').attr('max', data)
-                                        if (data == '1') {
-                                            document.getElementById('requestQ').value = 1;
-                                        } else if (data == '0') {
-                                            document.getElementById('requestQ').value = 'No Stock';
-                                            document.getElementById('requestQ').disabled = true;
-                                            document.getElementById('addbtn').disabled = true;
-                                        } else {
-                                            document.getElementById('requestQ').disabled = false;
-
-                                            document.getElementById('addbtn').disabled = false;
-                                        }
-
-
-                                    },
-                                    error: function (xhr, ajaxOptions, thrownError) {
-                                        alert('n')
-                                        alert(xhr.status);
-
-                                    }
-
-                                });
-                            });
-
-                            function additemcall() {
-                                $.ajax({
-                                    method: 'POST',
-                                    url: "{{ route('add_item_event_ajax') }}",
-                                    data: {
-                                        item_stock_id: $("#itemlist").val(),
-                                        requested_quantity: $('#requestQ').val()
-                                    },
-                                    headers: {
-                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                    },
-                                    success: function (data) {
-                                        console.log("Input field exists: " + (document.getElementById('stock_item_' + data['stock_id']) !== null))
-                                        if (document.getElementById('stock_item_' + data['stock_id']) !== null && (parseInt(document.getElementById('stock_item_' + data['stock_id']).value) + parseInt(data['requested_quantity'])) <= parseInt($('#stockqty').val())) {
-                                            document.getElementById('stock_item_' + data['stock_id']).value = parseInt(document.getElementById('stock_item_' + data['stock_id']).value) + parseInt(data['requested_quantity'])
-                                        } else if (document.getElementById('stock_item_' + data['stock_id']) !== null && (parseInt(document.getElementById('stock_item_' + data['stock_id']).value) + parseInt(data['requested_quantity'])) > parseInt($('#stockqty').val())) {
-                                            alert('Requested quantity can not be greater than Stock Quantity.');
-                                        } else {
-                                            $('#item_selection_list').append(
-                                                "<div class=\"form-group row\" id='item_selection_row_" + data['stock_id'] + "'>" +
-                                                "<div class=\"col-sm-4\" \n" +
-                                                "                        <label for=\"email1\"\n" +
-                                                "                               class=\"col-sm-6 text-left control-label col-form-label\">" + data['item_code'] + "</label>\n" +
-                                                "                    </div>\n" +
-                                                "                    <div class=\"col-sm-4\">\n" +
-                                                "                        <input type=\"number\" class=\"form-control\" name='requested_quantity[][" + data['stock_id'] + "]' id='stock_item_" + data['stock_id'] + "'\n" +
-                                                "                               value=" + data['requested_quantity'] + " readonly>\n" +
-                                                "\n" +
-                                                "                    </div>\n" +
-                                                "                    <div class=\"col-sm-2\">\n" +
-                                                "\n" +
-                                                "\n" +
-                                                "                        <div class=\"col-sm-2\">\n" +
-                                                "                            <button type=\"button\" id=\"delete_button\" class=\"btn btn-danger\"\n" +
-                                                "                                    onclick=\"$('#item_selection_row_" + data['stock_id'] + "').remove();\">Delete\n" +
-                                                "                            </button>\n" +
-                                                "                        </div>\n" +
-                                                "\n" +
-                                                "                    </div>" +
-                                                "</div>"
-                                            );
-                                        }
-                                    },
-                                    error: function (xhr, ajaxOptions, thrownError) {
-                                        alert('n')
-                                        alert(xhr.status);
-
-                                    }
-
-                                });
-
-                                {{--var max = document.getElementById('requestQ').getAttribute('max')--}}
-                                {{--var QuanitityofItem = document.getElementById('requestQ').value--}}
-
-                                {{--if (parseInt(max) < parseInt(QuanitityofItem)) {--}}
-                                {{--    return false;--}}
-                                {{--}--}}
-
-                                {{--var t = document.getElementById('requestQ').value--}}
-                                {{--var t1 = document.getElementById('itemlist').value--}}
-                                {{--var t2 = document.getElementById('eventid').value--}}
-                                {{--var t3 = document.getElementById('itemrqid').value--}}
-                                {{--var t4 = document.getElementById('CUID').value--}}
-                                {{--var t5 = document.getElementById('CUID').value--}}
-                                {{--var category = document.getElementById('category1').value--}}
-
-                                {{--//alert(t)--}}
-
-
-                                {{--$.ajax({--}}
-                                {{--    method: 'POST',--}}
-                                {{--    url: "{{ route('ajaxRequest5.Fabric5') }}",--}}
-                                {{--    data: {--}}
-                                //         value: t3,
-                                //         value1: t2,
-                                //         value2: t1,
-                                //         value3: t,
-                                //         value4: t4,
-                                //         value5: t5,
-                                //         category: category,
-                                {{--    },--}}
-                                {{--    headers: {--}}
-                                {{--        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')--}}
-                                {{--    },--}}
-                                {{--    success: function (data) {--}}
-
-
-                                {{--        //alert(data);--}}
-                                {{--        //var test  = JSON.stringify(data);--}}
-                                {{--        //alert(data.success);--}}
-                                {{--        //alert(test)--}}
-                                {{--        //$('#stockqty').html(data);--}}
-                                {{--        location.reload();--}}
-
-                                {{--    },--}}
-                                {{--    error: function (xhr, ajaxOptions, thrownError) {--}}
-                                {{--        alert('n')--}}
-                                {{--        alert(xhr.status);--}}
-
-                                {{--    }--}}
-
-                                {{--});--}}
-
-
-                            }
-                        </script>
-                        <script src="../../js/ajax-jquery2.js"></script>
-
 
                         <input type="hidden" name="CUID" value="{{ Auth::user()->id }}">
                         <input type="hidden" name="UUID" value="{{ Auth::user()->id }}">
@@ -437,6 +249,197 @@
                 document.getElementById($name).value = $one;
             }
         }
+
+        function additemcall() {
+            $.ajax({
+                method: 'POST',
+                url: "{{ route('add_item_event_ajax') }}",
+                data: {
+                    item_stock_id: $("#itemlist").val(),
+                    requested_quantity: $('#requestQ').val(),
+                    stock_quantity: $('#stockqty').val(),
+                },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function (data) {
+                    if (document.getElementById('stock_item_' + data['stock_id']) !== null && (parseInt(document.getElementById('stock_item_' + data['stock_id']).value) + parseInt(data['requested_quantity'])) <= parseInt($('#stockqty').val())) {
+                        document.getElementById('stock_item_' + data['stock_id']).value = parseInt(document.getElementById('stock_item_' + data['stock_id']).value) + parseInt(data['requested_quantity'])
+                    } else if (document.getElementById('stock_item_' + data['stock_id']) !== null && (parseInt(document.getElementById('stock_item_' + data['stock_id']).value) + parseInt(data['requested_quantity'])) > parseInt($('#stockqty').val())) {
+                        alert('Requested quantity can not be greater than Stock Quantity.');
+                    } else {
+                        $('#item_selection_list').append(
+                            "<div class=\"form-group row\" id='item_selection_row_" + data['stock_id'] + "'>" +
+                            "<div class=\"col-sm-4\" \n" +
+                            "                        <label for=\"email1\"\n" +
+                            "                               class=\"col-sm-6 text-left control-label col-form-label\">" + data['item_code'] + "</label>\n" +
+                            "                    </div>\n" +
+                            "                    <div class=\"col-sm-4\">\n" +
+                            "                        <input type=\"number\" class=\"form-control\" name='requested_quantity[][" + data['stock_id'] + "]' id='stock_item_" + data['stock_id'] + "'\n" +
+                            "                               value=" + data['requested_quantity'] + " readonly>\n" +
+                            "\n" +
+                            "                    </div>\n" +
+                            "                    <div class=\"col-sm-2\">\n" +
+                            "\n" +
+                            "\n" +
+                            "                        <div class=\"col-sm-2\">\n" +
+                            "                            <button type=\"button\" id=\"delete_button\" class=\"btn btn-danger\"\n" +
+                            "                                    onclick=\"$('#item_selection_row_" + data['stock_id'] + "').remove();\">Delete\n" +
+                            "                            </button>\n" +
+                            "                        </div>\n" +
+                            "\n" +
+                            "                    </div>" +
+                            "</div>"
+                        );
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    if (xhr.status === 422) {
+                        alert('Make sure you have entered a Valid request quantity. Should not be empty and should not exceed the stock quantity.');
+                    } else {
+                        alert(xhr.status);
+                    }
+                }
+
+            });
+
+            {{--var max = document.getElementById('requestQ').getAttribute('max')--}}
+            {{--var QuanitityofItem = document.getElementById('requestQ').value--}}
+
+            {{--if (parseInt(max) < parseInt(QuanitityofItem)) {--}}
+            {{--    return false;--}}
+            {{--}--}}
+
+            {{--var t = document.getElementById('requestQ').value--}}
+            {{--var t1 = document.getElementById('itemlist').value--}}
+            {{--var t2 = document.getElementById('eventid').value--}}
+            {{--var t3 = document.getElementById('itemrqid').value--}}
+            {{--var t4 = document.getElementById('CUID').value--}}
+            {{--var t5 = document.getElementById('CUID').value--}}
+            {{--var category = document.getElementById('category1').value--}}
+
+            {{--//alert(t)--}}
+
+
+            {{--$.ajax({--}}
+            {{--    method: 'POST',--}}
+            {{--    url: "{{ route('ajaxRequest5.Fabric5') }}",--}}
+            {{--    data: {--}}
+            //         value: t3,
+            //         value1: t2,
+            //         value2: t1,
+            //         value3: t,
+            //         value4: t4,
+            //         value5: t5,
+            //         category: category,
+            {{--    },--}}
+            {{--    headers: {--}}
+            {{--        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')--}}
+            {{--    },--}}
+            {{--    success: function (data) {--}}
+
+
+            {{--        //alert(data);--}}
+            {{--        //var test  = JSON.stringify(data);--}}
+            {{--        //alert(data.success);--}}
+            {{--        //alert(test)--}}
+            {{--        //$('#stockqty').html(data);--}}
+            {{--        location.reload();--}}
+
+            {{--    },--}}
+            {{--    error: function (xhr, ajaxOptions, thrownError) {--}}
+            {{--        alert('n')--}}
+            {{--        alert(xhr.status);--}}
+
+            {{--    }--}}
+
+            {{--});--}}
+
+
+        }
+
+        $(document).ready(function () {
+            $("#category1").change(function (e) {
+                var t = $(this).val();
+                console.log(t);
+                //alert(t);
+                e.preventDefault();
+
+                $.ajax({
+                    method: 'POST',
+                    url: "{{ route('ajaxRequest2.Fabric2') }}",
+                    data: {value: t},
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function (data) {
+                        //  alert(data)
+
+                        //var test  = JSON.stringify(data);
+                        //alert(data.success);
+                        //alert(test)
+                        $('#itemlist').attr('disabled', false);
+                        $('#itemlist').html(data.htmlappend);
+
+
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert('n')
+                        alert(thrownError);
+
+                    }
+
+                });
+            });
+
+            $("#itemlist").change(function (e) {
+
+                var stock_item_id = $(this).val();
+                //alert(t);
+                e.preventDefault();
+
+                $.ajax({
+                    method: 'POST',
+                    url: "{{ route('ajaxRequest4.Fabric4') }}",
+                    data: {value: stock_item_id},
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function (data) {
+
+
+                        //var test  = JSON.stringify(data);
+                        //alert(data.success);
+                        //alert(test)
+                        //$('#stockqty').html(data);
+                        document.getElementById('stockqty').value = data
+                        $('#requestQ').attr('max', data)
+                        if (data == '1') {
+                            document.getElementById('requestQ').value = 1;
+                        } else if (data == '0') {
+                            document.getElementById('requestQ').value = 'No Stock';
+                            document.getElementById('requestQ').disabled = true;
+                            document.getElementById('addbtn').disabled = true;
+                        } else {
+                            document.getElementById('requestQ').disabled = false;
+
+                            document.getElementById('addbtn').disabled = false;
+                        }
+
+
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert('n')
+                        alert(xhr.status);
+
+                    }
+
+                });
+            });
+
+
+        })
+
     </script>
 
 

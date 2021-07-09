@@ -31,7 +31,7 @@ class StockitemController extends Controller
     public function index()
     {
         //
-        $data = DB::table('Stock_items')->paginate(20);
+        $data = DB::table('Stock_items')->get();
         //   $Stock = Stock_category::all();
         // return view('Item.category')->with('items',$Stock);
         return view('stock.item', ['items' => $data]);

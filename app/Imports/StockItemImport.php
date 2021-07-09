@@ -10,16 +10,19 @@ use App\Models\Stock_fabric;
 use App\Models\Stock_item;
 use App\Models\Stock_manufacturer;
 use App\Models\Stock_stock_room;
+use Illuminate\Database\Eloquent\Model;
+use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class StockItemImport implements ToModel, WithHeadingRow, WithCalculatedFormulas
+class StockItemImport implements ToModel, WithHeadingRow, WithCalculatedFormulas, SkipsEmptyRows
 {
 
     public function model(array $row)
     {
 //        dd($row);
+        try{
         $brand_array = [
             "st_george",
             "castel",
@@ -81,6 +84,7 @@ class StockItemImport implements ToModel, WithHeadingRow, WithCalculatedFormulas
                         'Type' => ucwords(strtolower($row['type'])),
                         'Brand' => strtoupper(str_replace('_', ' ', $brand)),
                         'Company' => auth()->user()->Location,
+                        'Asset_Noo' => $row['asset_number']
                     ],
                     [
                         'Department' => auth()->user()->Department,
@@ -99,6 +103,7 @@ class StockItemImport implements ToModel, WithHeadingRow, WithCalculatedFormulas
                     [
                         'Stock_Room' => $stock_room_id,
                         "Item" => $stock_item_id,
+                        'Asset_No'=>$row['asset_number'],
                     ],
                     [
                         'Company' => auth()->user()->Location,
@@ -156,5 +161,10 @@ class StockItemImport implements ToModel, WithHeadingRow, WithCalculatedFormulas
                 'UUID' => auth()->id(),
             ]
         );
+        }catch(\Exception $exception){
+            ddd($row
+            );
+        }
     }
 }
+

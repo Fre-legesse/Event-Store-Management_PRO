@@ -44,9 +44,7 @@
 
 
                 <div class="form-group row">
-                    <a class="btn btn-lg btn-default" href="Event/create/">Add New</a>
-                    <input type="text" class="form-control" style="width: 200px; float: right;margin-left: 1000px;"
-                           id="searchh" placeholder="Listed Type live search" onkeyup="myFunction()">
+                    <a class="btn btn-lg col-sm-12 col-lg-1 btn-default" href="Event/create/">Add New</a>
                 </div>
                 <div class="clearfix"></div>
 
@@ -76,7 +74,7 @@
                     <!--          <a href="docAdd.php"><i class="glyphicon glyphicon-plus"></i><span>New</span></a> -->
 
 
-                    <table class="table" id="table">
+                    <table class="table" id="datatable_table">
                         <thead class='thead-light'>
                         <tr>
 
@@ -228,9 +226,9 @@
 
                     </table>
                 </div>
-                <div class="d-flex justify-content-left">
-                    {{ $event->links("pagination::bootstrap-4") }}
-                </div>
+{{--                <div class="d-flex justify-content-left">--}}
+{{--                    {{ $event->links("pagination::bootstrap-4") }}--}}
+{{--                </div>--}}
 
             </div>
         </div>

@@ -44,7 +44,7 @@ class EventController extends Controller
         $data = DB::table('events')
             ->join('item_requests', 'item_requests.Event_id', '=', 'events.EVID')
             ->orderByDesc('events.created_at')
-            ->paginate(10);
+            ->get();
 
 
         return view('Event.event', ['event' => $data, 'Company' => $loc, 'Department' => $dep, 'link' => $link, 'brands' => Stock_brand::query()->groupBy('Brand')->get()]);
@@ -373,6 +373,10 @@ class EventController extends Controller
      */
     public function add_item_to_event(Request $request)
     {
+        debug($request->all());
+        $request->validate([
+            'requested_quantity' => 'required|numeric|gt:0|lte:stock_quantity',
+        ]);
         return response()->json([
             'item_code' => Stock_item::query()->find(stock::query()->find($request->item_stock_id)->Item)->Item_Code,
             'requested_quantity' => $request->requested_quantity,
