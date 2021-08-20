@@ -29,7 +29,7 @@
             <div class="card-body">
                 <h4 class="card-title">Create Item</h4>
                 <div class="form-group row">
-                    <label for="lname" class="col-sm-3 text-left control-label col-form-label">Item Type</label>
+                    <label for="Type" class="col-sm-3 text-left control-label col-form-label">Item Type</label>
                     <div class="col-md-9">
                         <select class="select2 form-control custom-select" style="width: 75%; height:36px;" name='Type'
                                 id="Type">
@@ -123,45 +123,45 @@
                 </div>
             </div>
         </form>
-{{--        <form action="/import/stock_item" method="POST" enctype="multipart/form-data">--}}
-{{--            @csrf--}}
-{{--            <input type="file" name="file">--}}
-{{--            <button type="submit" class="btn btn-primary">Import File</button>--}}
-{{--        </form>--}}
+        {{--        <form action="/import/stock_item" method="POST" enctype="multipart/form-data">--}}
+        {{--            @csrf--}}
+        {{--            <input type="file" name="file">--}}
+        {{--            <button type="submit" class="btn btn-primary">Import File</button>--}}
+        {{--        </form>--}}
     </div>
-    <script type="text/javascript">
+    <script>
+        $(document).ready(function () {
 
-        $("#Type").change(function (e) {
+            $("#Type").change(function (e) {
 
-            var t = $(this).val();
-            e.preventDefault();
+                var t = $(this).val();
+                e.preventDefault();
 
-            $.ajax({
-                method: 'POST',
-                url: "{{ route('ajaxRequest.post') }}",
-                data: {value: t},
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                success: function (data) {
-                    //alert(data.htmlbrand)
+                $.ajax({
+                    method: 'POST',
+                    url: "{{ route('ajaxRequest.post') }}",
+                    data: {value: t},
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function (data) {
+                        //alert(data.htmlbrand)
 
-                    //var test  = JSON.stringify(data);
-                    //alert(data.success);
-                    //alert(test)
-                    $('#Fabric').html(data.htmlfabric);
-                    $('#Color').html(data.htmlcolor);
-                    $('#Brand').html(data.htmlbrand);
-                    $('#Manufacturer').html(data.htmlmanufacturer);
-                },
-                error: function () {
-                    alert('n')
+                        //var test  = JSON.stringify(data);
+                        //alert(data.success);
+                        //alert(test)
+                        $('#Fabric').html(data.htmlfabric);
+                        $('#Color').html(data.htmlcolor);
+                        $('#Brand').html(data.htmlbrand);
+                        $('#Manufacturer').html(data.htmlmanufacturer);
+                    },
+                    error: function () {
+                        alert('n')
+                    }
 
-                }
-
+                });
             });
-        });
-
+        })
     </script>
-{{--    <script src="../../js/ajax-jquery2.js"></script>--}}
+    {{--    <script src="../../js/ajax-jquery2.js"></script>--}}
 @endsection()

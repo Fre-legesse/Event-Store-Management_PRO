@@ -20,24 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cbfe88f1-96b0-46e1-961f-1a43d4b3fd8f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-C3jHIf5u8w8vGjBk8guVUwHLylQeDFkg.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-JXBOfMtYmZOTlOfYktajj4aiWai2gdCX.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-Rz4W0ag1SNOGPpTEVxGmgxK8h8TDWaHP.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-TyW2uHbM80cNuA1bpIxg2L9ymer4M9nJ.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-dMPXyn2IEjC24YL7U2a5rWr9FnUayWvC.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-iJAjAIQDrNlNz0OjMqpGaYy1ZaTeAQpR.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-pD3jY98dQ0N5L4cZ0yKgvJnAkByLUp5v.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-zU3SyTGK5OHXpnmaAvSay1jEIOHs0ymf.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/dependencycontroller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/dependencycontroller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EventController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StockitemController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StockitemController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Imports/StockItemImport.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Imports/StockItemImport.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Event/event.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Event/event.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/csms (1).sql" beforeDir="false" afterPath="$PROJECT_DIR$/csms (1).sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Event/eventadd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Event/eventadd.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Event/eventedit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Event/eventedit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/stock/item.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/stock/item.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/stock/itemadd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/stock/itemadd.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -224,11 +210,11 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="ignore.virus.scanning.warn.message" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/assets/libs" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="terminal" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2020.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -284,6 +270,9 @@
       <workItem from="1625487601638" duration="13604000" />
       <workItem from="1625560796863" duration="7131000" />
       <workItem from="1625635380766" duration="18504000" />
+      <workItem from="1627979520845" duration="42000" />
+      <workItem from="1627979590663" duration="1767000" />
+      <workItem from="1628843203358" duration="1888000" />
     </task>
     <servers />
   </component>
@@ -314,10 +303,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1624597563448" />
-    <state x="709" y="356" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1624706033990">
+    <state x="709" y="356" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1627979558689">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="709" y="356" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1624706033990" />
+    <state x="709" y="356" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1627979558689" />
     <state x="765" y="202" key="#com.intellij.ide.util.MemberChooser" timestamp="1625638908472">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -327,10 +316,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1624713108370" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1624768182712">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1627979552533">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1624768182712" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1627979552533" />
     <state width="1848" height="882" key="GridCell.Tab.0.bottom" timestamp="1624598036703">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -352,26 +341,26 @@
     </state>
     <state x="2714" y="443" key="NewPhpFileDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1625051326366" />
     <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1625030404059" />
-    <state x="2808" y="185" key="SettingsEditor" timestamp="1625050935954">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="461" y="165" key="SettingsEditor" timestamp="1627980029091">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="2808" y="185" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1625050935954" />
-    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1624599460797" />
-    <state x="23" y="96" width="1878" height="938" key="find.popup" timestamp="1625811896301">
+    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1627980029091" />
+    <state x="23" y="96" width="1878" height="938" key="find.popup" timestamp="1627981365810">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="23" y="96" width="1878" height="938" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1624946046695" />
     <state x="1943" y="96" width="1878" height="938" key="find.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1625465133994" />
-    <state x="23" y="96" width="1878" height="938" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1625811896301" />
+    <state x="23" y="96" width="1878" height="938" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1627981365810" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1624540147199">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1624540147199" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1625816578864">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1628843373334">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1624950301206" />
     <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1625492913809" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1625816578864" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1628843373334" />
   </component>
 </project>

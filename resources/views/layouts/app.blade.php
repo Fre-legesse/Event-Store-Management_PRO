@@ -1,22 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-@php
-    try{
-         // Creating a new connection.
-        // Replace your-hostname, your-db, your-username, your-password according to your database
-        $link = new \PDO(   'mysql:host=localhost;dbname=csms;charset=utf8mb4', //'mysql:host=localhost;dbname=canvasjs_db;charset=utf8mb4',
-                            'root', //'root',
-                            '', //'',
-                            array(
-                                \PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                                \PDO::ATTR_PERSISTENT => false
-                            )
-                        );
-        }
-    catch(\PDOException $ex){
-        print($ex->getMessage());
-    }
-@endphp
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,10 +14,11 @@
     <link href="{{asset('css/loading_animation.css')}}" rel="stylesheet">
     <link href="{{asset('css/chips.css')}}" rel="stylesheet">
 
-<!-- Custom CSS -->
+    <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/libs/select2/dist/css/select2.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/libs/jquery-minicolors/jquery.minicolors.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">
+    <link rel="stylesheet" type="text/css"
+          href="{{asset('assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/libs/quill/dist/quill.snow.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('dist/css/style.min.css')}}">
     <script src="{{asset('assets/libs/jquery/dist/jquery.min.js')}}"></script>
@@ -402,6 +387,7 @@
          *            For select 2           *
          ************************************/
         $(".select2").select2();
+        // $(".select2").on("change", function () { debugger; });
 
         /****************************************
          *       Basic Table                   *
@@ -450,9 +436,9 @@
         autoclose: true,
         todayHighlight: true
     });
-    var quill = new Quill('#editor', {
-        theme: 'snow'
-    });
+    // var quill = new Quill('#editor', {
+    //     theme: 'snow'
+    // });
 
 </script>
 </body>
