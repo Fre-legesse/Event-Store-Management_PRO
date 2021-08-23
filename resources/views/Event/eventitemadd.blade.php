@@ -111,13 +111,15 @@
                                                class="form-check-input"
                                                value="Posted"
                                                checked
-                                               name="post_checkbox">
+                                               name="post_checkbox"
+                                               id="post_checkbox">
                                         <label class="form-check-label mb-0" for="post_checkbox">Publish</label>
                                     @else
                                         <input type="checkbox"
                                                class="form-check-input"
                                                value="Posted"
-                                               name="post_checkbox">
+                                               name="post_checkbox"
+                                               id="post_checkbox">
                                         <label class="form-check-label mb-0" for="post_checkbox">Publish</label>
                                     @endif
 
