@@ -2,7 +2,7 @@
 
 @section('content')
 {{--    <h3>Items In {{ $items }}</h3>--}}
-{{debug($items->first()->Brand)}}
+
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>

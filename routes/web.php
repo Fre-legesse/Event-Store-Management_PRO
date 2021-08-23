@@ -56,11 +56,11 @@ $router->get('Received/{id}/test', [
 
 
 Route::resource('Withdrawal', App\Http\Controllers\withdrawal::class);
-Route::resource('Withdrawal/{id}/test', App\Http\Controllers\withdrawal::class);
-$router->get('withdrawl/{id}/test', [
-    'uses' => 'App\Http\Controllers\withdrawal@test',
-    'as' => 'WithdrawalIssue'
-]);
+//Route::resource('Withdrawal/{id}/test', App\Http\Controllers\withdrawal::class);
+//$router->get('withdrawl/{id}/test', [
+//    'uses' => 'App\Http\Controllers\withdrawal@test',
+//    'as' => 'WithdrawalIssue'
+//]);
 //Route::resource('Stock',App\Http\Controllers\stockController::class);
 //Route::get('Stock/search', [App\Http\Controllers\stockController::class, 'search']);
 $router->get('Stock/show/{id}', [

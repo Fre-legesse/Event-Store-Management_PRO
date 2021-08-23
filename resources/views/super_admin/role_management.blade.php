@@ -28,7 +28,7 @@
             <div class="card-body">
                 <div class="form-group row">
                     <table class="table" id="table">
-                        {{debug($users)}}
+
                         <thead class='thead-light'>
                         <tr>
                             <th scope="col">User</th>

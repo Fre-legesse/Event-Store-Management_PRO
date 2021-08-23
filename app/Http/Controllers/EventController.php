@@ -373,7 +373,7 @@ class EventController extends Controller
      */
     public function add_item_to_event(Request $request)
     {
-        debug($request->all());
+
         $request->validate([
             'requested_quantity' => 'required|numeric|gt:0|lte:stock_quantity',
         ]);

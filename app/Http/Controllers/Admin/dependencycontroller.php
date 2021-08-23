@@ -89,7 +89,7 @@ class dependencycontroller extends Controller
 
 
         //
-        debug(response()->json(['htmlappend' => $htmlappend])->getData());
+
         return response()->json(['htmlappend' => $htmlappend]);
 
 
@@ -163,7 +163,7 @@ class dependencycontroller extends Controller
 
     public function additemstore(Request $request)
     {
-        debug($request->all());
+
         $input = $request->all();
         $id = $input['value1'];
         // return $id;
@@ -185,7 +185,7 @@ class dependencycontroller extends Controller
         $item_code = stock::query()->find($input['value2'])->Item;
 
 //        DB::insert('insert into reqested_item_lists (Request_Id,Event_ID,ItemCode,Stock_ID,Quantity,Qty,CUID,UUID,created_at,updated_at) values(?,?,?,?,?,?,?,?,now(),now())', [$input['value'], $input['value1'], $item_code, $input['value2'], $input['value3'], $input['value3'], $input['value4'], $input['value5']]);
-        debug('Event_ID: ' . $input['value1'] . ' Stock_ID: ' . $input['value2']);
+
         $latest_quantity = requested_item_list::query()->where('Event_ID', $input['value1'])->where('Stock_ID', $input['value2'])->first() !== null
                 ? requested_item_list::query()->where('Event_ID', $input['value1'])->where('Stock_ID', $input['value2'])->first()->Quantity + $input['value3']
                 : $input['value3'];

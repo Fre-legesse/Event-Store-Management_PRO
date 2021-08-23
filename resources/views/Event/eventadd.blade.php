@@ -164,7 +164,7 @@
                                         style="width: 100%; height:36px;" name='Category' id="category1">
                                     <option value="" selected hidden>Please Select</option>
                                     @foreach($Stock_category as  $type)
-                                        {{debug($type->Type)}}
+
                                         <option value="{{ $type->Type}}">{{ $type->Type }}</option>
                                     @endforeach
                                 </select>
