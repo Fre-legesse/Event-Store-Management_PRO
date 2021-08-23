@@ -47,6 +47,20 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label for="event_brand"
+                                   class="col-sm-3 text-left control-label col-form-label">Event Brand</label>
+                            <div class="col-sm-9">
+                                <select type="text" class="select2 form-control" id="event_brand" name="event_brandevent_brand">
+                                    <option selected hidden value="">Select Event Brand</option>
+                                        <option value="BGI CORPORATE">BGI CORPORATE</option>
+                                        <option value="CASTEL">CASTEL</option>
+                                        <option value="DOPPEL">DOPPEL</option>
+                                        <option value="SENQ">SENQ</option>
+                                        <option value="ST GEORGE">ST GEORGE</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="email1" class="col-sm-3 text-left control-label col-form-label">Date
                                 From</label>
                             <div class="col-sm-4">
@@ -200,6 +214,7 @@
                                        style="background-color: white;">
                             </div>
                         </div>
+                        <button type="button" onclick="additemcall()" id="addbtn"  class="btn btn-primary">Add</button>
 
                         <input type="hidden" name="CUID" value="{{ auth()->id() }}">
                         <input type="hidden" name="UUID" value="{{ auth()->id() }}">
@@ -423,7 +438,6 @@
                                 document.getElementById('addbtn').disabled = true;
                             } else {
                                 document.getElementById('requestQ').disabled = false;
-
                                 document.getElementById('addbtn').disabled = false;
                             }
 
